@@ -3,8 +3,6 @@
         <v-card outlined>
             <enti-insert v-if="addEnteDialog"
                             :enteToEdit="enteToEdit"
-                            :possibleParents="enteToEdit == null ? enti : enti.filter(e => e.id !== enteToEdit.id)"
-                            :possiblePersone="possiblePersone"
                             @inserted-ente="addEnteToList"
                             @close-dialog-ente="addEntiDialogOpenClose(false)">
             </enti-insert>
@@ -55,13 +53,11 @@
                 entiHeaders: [
                     { field: 'sigla', title: 'Sigla', filterable: true },
                     { field: 'nome', title: 'Nome esteso', filterable: true },
-                    { field: 'parent.sigla', title: 'Sigla Ente Padre', filterable: true },
                     { title: 'Actions', cell: 'myTemplate', filterable: false, width: '125px' }
                 ],
                 loading: false,
                 addEnteDialog: false,
                 enteToEdit: null,
-                possiblePersone: [],
                 showConfirm: false,
                 selectedForDelete: null
             };
@@ -80,20 +76,6 @@
                     .finally(_ => {
                     that.loading = false;
                 });
-            },
-            getAllPossiblePersone: function () {
-                let that = this;
-                that.loading = true;
-                services.apiCallerPersone.getAllPersone()
-                    .then(res => {
-                        that.possiblePersone = res.data;
-                    })
-                    .catch(err => {
-                        console.log("got an error: ", err);
-                    })
-                    .finally(_ => {
-                        that.loading = false;
-                    });
             },
             addEntiDialogOpenClose: function (openClose) {
                 this.addEnteDialog = openClose;
@@ -137,7 +119,6 @@
         },
         created: function() {
             this.getAllEnti();
-            this.getAllPossiblePersone();
         }
     }
 

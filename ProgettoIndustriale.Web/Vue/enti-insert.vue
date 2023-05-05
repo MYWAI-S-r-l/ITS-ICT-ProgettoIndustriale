@@ -15,25 +15,6 @@
                                       prepend-icon="mdi-domain"
                                       v-model="enteToInsert.sigla">
                         </v-text-field>
-                        <v-select
-                            label="Ente Padre"
-                            v-model="enteToInsert.parent"
-                            :items="possibleParents"
-                            item-text="sigla"
-                            return-object
-                            prepend-icon="mdi-account-edit">
-                        </v-select>
-                        <v-select
-                            v-model="enteToInsert.persone"
-                            :items="possiblePersone"
-                            item-text="matricola"
-                            label="Persone"
-                            multiple
-                            return-object
-                            chips
-                            hint="Scegli persone appartenenti"
-                            persistent-hint
-                        ></v-select>
                     </v-row>
                 </v-form>
             </v-card-text>
@@ -64,18 +45,12 @@ export default {
                 nome:"",
                 sigla:"",
                 parent: null,
-                persone: [],
-                children: []
             },
-            selectedPersone: [],
-            selectedParent: null,
             loading: false,
         };
     },
     props: {
         enteToEdit: null,
-        possibleParents: null,
-        possiblePersone: null,
     },
     watch: {
         enteToEdit: {
@@ -91,8 +66,6 @@ export default {
         insertEnte: function () {
             let that = this;
             that.loading = true;
-            that.enteToInsert.idParent = that.enteToInsert?.parent?.id ?? null;
-            console.log("calling insert ente with: ", that.enteToInsert);
             services.apiCallerEnti.insertEnte(that.enteToInsert)
                 .then(res => {
                     that.$emit('inserted-ente', res.data);
@@ -109,8 +82,6 @@ export default {
                 nome:"",
                 sigla:"",
                 parent: null,
-                persone: [],
-                children: []
             };
             this.$emit('close-dialog-ente');
         }
