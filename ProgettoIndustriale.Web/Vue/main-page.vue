@@ -13,7 +13,6 @@
 </template>
 
 <script>
-    // import { services} from "../Scripts/Services/serviceBuilder";
     export default {
         name: 'main-page',
         data: function () {

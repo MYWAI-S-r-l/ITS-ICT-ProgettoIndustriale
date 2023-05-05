@@ -1,6 +1,5 @@
 ﻿let commonModule = (function () {
-
-    'use strict';
+    "use strict";
 
     // larghezza browser
     let browserWidth = function () {
@@ -26,46 +25,35 @@
 
     // add a single class
     let addClass = function (id, className, setParent) {
-        if (typeof id === "undefined" || typeof className === "undefined")
-            return;
-        if (typeof setParent === "undefined")
-            setParent = false;
-        if (id.substring(0, 1) != "#" && id.substring(0, 1) != ".")
-            id = "#".concat(id);
+        if (typeof id === "undefined" || typeof className === "undefined") return;
+        if (typeof setParent === "undefined") setParent = false;
+        if (id.substring(0, 1) != "#" && id.substring(0, 1) != ".") id = "#".concat(id);
         if (setParent) {
-            if (!$(id).parent().hasClass(className))
-                $(id).parent().addClass(className);
+            if (!$(id).parent().hasClass(className)) $(id).parent().addClass(className);
         } else {
-            if (!$(id).hasClass(className))
-                $(id).addClass(className);
+            if (!$(id).hasClass(className)) $(id).addClass(className);
         }
     };
 
     // remove a single class
     let removeClass = function (id, className, setParent) {
-        if (typeof id === "undefined" || typeof className === "undefined")
-            return;
-        if (typeof setParent === "undefined")
-            setParent = false;
-        if (id.substring(0, 1) != "#" && id.substring(0, 1) != ".")
-            id = "#".concat(id);
+        if (typeof id === "undefined" || typeof className === "undefined") return;
+        if (typeof setParent === "undefined") setParent = false;
+        if (id.substring(0, 1) != "#" && id.substring(0, 1) != ".") id = "#".concat(id);
         if (setParent) {
-            if ($(id).parent().hasClass(className))
-                $(id).parent().removeClass(className);
+            if ($(id).parent().hasClass(className)) $(id).parent().removeClass(className);
         } else {
-            if ($(id).hasClass(className))
-                $(id).removeClass(className);
+            if ($(id).hasClass(className)) $(id).removeClass(className);
         }
     };
 
     return {
-        appBaseUrl: "",    // base URL app,
-        webApiBaseUrl: "",      // base URL web API
-        webBaseUrl: "",      // base URL API
+        appBaseUrl: "", // base URL app,
+        webApiBaseUrl: "", // base URL web API
+        webBaseUrl: "", // base URL API
         addClass: addClass,
         browserHeight: browserHeight,
         browserWidth: browserWidth,
-        removeClass: removeClass
+        removeClass: removeClass,
     };
 })();
-

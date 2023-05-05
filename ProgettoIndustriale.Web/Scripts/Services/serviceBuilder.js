@@ -1,8 +1,6 @@
 ﻿import ApiCallerHelper from "./apiCallerHelper";
 import ApiCallerCommon from "./apiCallerCommon";
-import ApiCallerProtocollo from "./apiCallerProtocollo";
 import ApiCallerEnti from "./apiCallerEnti";
-import ApiCallerPersone from "./apiCallerPersone";
 
 class Services {
 
@@ -14,16 +12,9 @@ class Services {
         return new ApiCallerCommon(this.apiCallerHelper);
     }
 
-    get apiCallerProtocollo() {
-        return new ApiCallerProtocollo(this.apiCallerHelper);
-    }
-    
+
     get apiCallerEnti() {
         return new ApiCallerEnti(this.apiCallerHelper);
-    }
-    
-    get apiCallerPersone() {
-        return new ApiCallerPersone(this.apiCallerHelper);
     }
     
     getDialogWidthVuetify(breakpoint) {

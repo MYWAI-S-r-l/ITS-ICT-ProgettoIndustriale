@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ansaldo.Protocollo.Web.Controllers;
+namespace ProgettoIndustriale.Web.Controllers;
 
 public class MetaController : ControllerBase
 {
-    [AllowAnonymous]
     [HttpGet("/info")]
     public ActionResult<string> Info()
     {

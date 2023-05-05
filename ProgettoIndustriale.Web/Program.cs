@@ -23,11 +23,12 @@ if (builder.Environment.IsDevelopment())
 
 builder.Services.AddElmah();
 
-builder.Services.AddAuthorization(options =>
+builder.Services.AddAuthentication(options =>
 {
-    // everyone is authorized
-    options.FallbackPolicy = options.DefaultPolicy;
-});
+    options.DefaultScheme = "Cookies";
+    options.DefaultChallengeScheme = "oidc";
+})
+    .AddCookie("Cookies");
 
 var app = builder.Build();
 
@@ -41,9 +42,10 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseAuthorization();
 app.UseRouting();
 
+app.UseAuthorization();
+app.UseAuthentication();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

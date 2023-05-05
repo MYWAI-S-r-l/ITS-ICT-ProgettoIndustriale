@@ -20,11 +20,11 @@ mix.setPublicPath('wwwroot');
 
 mix.sass('./Styles/site.scss', 'css/site.css');
 
-mix
-    .vue()
 
-    .js('./Scripts/Services/serviceBuilder.js', 'js/site.js')
-    .js(['./Vue/ComponentBuilder/Home/indexComponentBuilder.js', './Scripts/Home/mainPage.js'], 'js/mainPage.js')
-    
-    .js(['./Vue/ComponentBuilder/Enti/entiComponentBuilder.js', './Scripts/Enti/enti.js'], 'js/enti.js')
-    .js(['./Vue/ComponentBuilder/Enti/entiComponentBuilder.js', './Scripts/Enti/entiInsert.js'], 'js/entiInsert.js')
+mix.vue()
+
+.js('./Scripts/Services/serviceBuilder.js', 'js/site.js')
+.js(['./Vue/ComponentBuilder/Home/indexComponentBuilder.js', './Scripts/Home/mainPage.js'], 'js/mainPage.js')
+
+.js(['./Vue/ComponentBuilder/Enti/entiComponentBuilder.js', './Scripts/Enti/enti.js'], 'js/enti.js')
+.js(['./Vue/ComponentBuilder/Enti/entiComponentBuilder.js', './Scripts/Enti/entiInsert.js'], 'js/entiInsert.js')

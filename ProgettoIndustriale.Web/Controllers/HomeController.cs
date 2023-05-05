@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Ansaldo.Protocollo.Web.Models;
-using Newtonsoft.Json.Linq;
-using System.Net.Http.Headers;
 
 namespace ProgettoIndustriale.Web.Controllers;
 
