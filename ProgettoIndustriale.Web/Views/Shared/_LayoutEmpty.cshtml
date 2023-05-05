@@ -1,0 +1,61 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+
+    <base href="@Url.Content("~/")" />
+
+    <!--Style-->
+    @*<link rel="stylesheet" href="~/lib/MaterialDesign.4.9.95.css" asp-append-version="true" />*@
+    @*<link href="https://cdn.jsdelivr.net/npm/@@mdi/font@5.9.55/css/materialdesignicons.min.css" rel="stylesheet" />*@
+    @* <link rel="stylesheet" href="~/lib/materialdesign-6.4.95/css/materialdesignicons.min.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/lib/vuetify/vuetify.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!--Script-->
+    <script src="~/lib/babel-polyfill/polyfill.min.js" asp-append-version="true"></script>
+
+    <environment include="Development">
+        <script src="~/lib/vue/vue.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/lib/vue/vue.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script type="text/javascript">
+        window.apiUrl = "@Configuration["BaseUrls:WebApiBaseUrl"]";
+        // window.webUrl = "@Configuration["EndPoints:MywaiWeb"]";
+    </script>
+
+    <script src="~/lib/vuetify/vuetify.min.js" asp-append-version="true"></script>
+    <script src="~/lib/axios/axios.min.js" asp-append-version="true"></script>
+    <script src="~/lib/vue/vue.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("headScripts", false)
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/favicon.ico" />
+</head>
+<body>
+    @* @{ *@
+    @*     var user = ApiHelper.GetCurrentUser(Context, Configuration["EndPoints:MywaiApi"]).Result; *@
+    @* } *@
+@*      <script>
+           Vue.prototype.darkMode = "@user.DarkMode.ToString()" === "True";
+        </script>
+*@
+    <div id="myApp">
+        <v-app class="my-app">
+            <v-main>
+                @RenderBody()
+            </v-main>
+        </v-app>
+    </div>
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>

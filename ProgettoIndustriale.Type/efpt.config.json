@@ -1,0 +1,69 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "AENProtocolloAnagraficaContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": null,
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "Ansaldo.Protocollo.Type",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Ente]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Funzionalita]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[FunzionalitaProfili]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Persone]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PersoneEnti]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PersoneProfili]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Profili]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Protocolli]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "nbk-barellie\\sql2019.AENProtocolloAnagrafica.dbo",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

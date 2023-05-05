@@ -1,0 +1,281 @@
+﻿$mywaiColor: #075ca2;
+$mywaiColorLight: #2952a3;
+$mywaiColor2: #24a69a;
+$darkmywaiTheme:#272727;
+$mywaiColorText: #fff;
+$mywaiColorTextDark: #fff;
+
+.myWaiColorText {
+    color: $mywaiColorText !important;
+}
+.myWaiColorTextDark {
+    color: $mywaiColorTextDark !important;
+}
+
+.myWaiColor {
+    color: $mywaiColor !important;
+}
+
+.darkmyWaiBackgrounColor {
+    background-color: $darkmywaiTheme !important;
+}
+
+.myWaiColorTextWhite {
+    color: white !important;
+}
+
+.myWaiColorTextGreen {
+    color: $mywaiColor2 !important;
+}
+
+.myWaiBackgroundColorLight {
+    background-color: $mywaiColorLight !important;
+}
+
+.myWaiBackgroundColorDark {
+    background-color: $mywaiColor2 !important;
+}
+
+.myWaiBackgroundColor {
+    background-color: $mywaiColor !important;
+}
+.myWaiBorderColor-2 {
+    border: 2px solid $mywaiColor !important;
+}
+.myWaiBorderColor-2-hover:hover {
+    border: 2px solid $mywaiColor !important;
+    cursor: pointer;
+}
+
+.lightBorderColor-2 {
+    border: solid 2px $mywaiColorLight !important;
+}
+.darkBorderColor-2 {
+    border: solid 2px $mywaiColor2 !important;
+}
+
+.lightOverlay {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 25px;
+}
+
+.darkOverlay {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+}
+
+.dialogMainContent {
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+// xs --- Extra small devices (portrait phones, less than 576px) WIDE
+// No media query since this is the default in Bootstrap
+
+// sm --- Small devices (landscape phones, 576px and up)
+
+// md --- Medium devices (tablets, 768px and up)
+
+// lg --- Large devices (desktops, 992px and up)
+
+// xl --- Extra large devices (large desktops, 1200px and up)
+
+@media only screen and (max-height: 576px) { // if we want to work on HEIGHT the values are up to us
+    .dialogMainContent {
+        max-height: 40vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        //background-color: aqua; //useful for debug
+    }
+}
+@media only screen and (max-height: 768px) {
+    .dialogMainContent {
+        max-height: 50vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+
+    }
+}
+@media only screen and (max-height: 992px) {
+    .dialogMainContent {
+        max-height: 60vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+}
+@media only screen and (max-height: 1200px) {
+    .dialogMainContent {
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+}
+
+.my-app.v-application .theme--dark.primary--text {
+    color: $mywaiColor2 !important;
+    caret-color: $mywaiColor2 !important;
+}
+
+.my-app.v-application .theme--light.primary--text {
+    color: $mywaiColor !important;
+    caret-color: $mywaiColor !important;
+}
+
+
+.editLabelColor {
+    color: #a1a1a1
+}
+/*Datetime picker*/
+.theme-mywaiGreen .vdatetime-popup__header,
+.theme-mywaiGreen .vdatetime-calendar__month__day--selected > span > span,
+.theme-mywaiGreen .vdatetime-calendar__month__day--selected:hover > span > span {
+    background: $mywaiColor;
+}
+
+.darkTheme-mywaiGreen .vdatetime-popup__header,
+.darkTheme-mywaiGreen .vdatetime-calendar__month__day--selected > span > span,
+.darkTheme-mywaiGreen .vdatetime-calendar__month__day--selected:hover > span > span {
+    background: $mywaiColor;
+    color: #fff;
+}
+
+.theme-mywaiGreen .vdatetime-year-picker__item--selected,
+.theme-mywaiGreen .vdatetime-time-picker__item--selected,
+.theme-mywaiGreen .vdatetime-popup__actions__button,
+.darkTheme-mywaiGreen .vdatetime-popup__actions__button,
+.darkTheme-mywaiGreen .vdatetime-time-picker__item--selected,
+.darkTheme-mywaiGreen .vdatetime-popup__actions__button {
+    background: $mywaiColor;
+    color: white;
+    border-radius: 3px;
+}
+
+.darkTheme-mywaiGreen .vdatetime-popup {
+    background: #1e1e1e;
+    color: #fff;
+}
+/*End Datetime picker*/
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f7f7f7;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dddddd;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #999999;
+}
+/*scrollbar dark mode*/
+
+.darkScrollbar ::-webkit-scrollbar-track {
+    background: #202020 !important;
+}
+
+.darkScrollbar ::-webkit-scrollbar-thumb {
+    /*background: #3e3e3e !important;*/
+    background: red !important;
+}
+
+.darkScrollbar ::-webkit-scrollbar-thumb:hover {
+    background: white !important;
+}
+
+.v-input--is-focused .theme--light.v-label {
+    color: $mywaiColor !important;
+}
+
+.v-input--is-focused .theme--light.v-icon {
+    color: $mywaiColor !important;
+}
+
+.v-input--is-focused .theme--dark.v-label {
+    color: white !important;
+}
+
+.v-input--is-focused .theme--dark.v-icon {
+    color: white !important;
+}
+
+.lightTheme .v-treeview-node__root:before {
+    color: $mywaiColor;
+    caret-color: $mywaiColor;
+}
+
+.lightTheme .v-treeview-node--active .v-treeview-node__content {
+    color: $mywaiColor;
+    caret-color: $mywaiColor;
+}
+
+.darkTheme .v-treeview-node__root:before {
+    color: $mywaiColor2;
+    caret-color: $mywaiColor2;
+}
+.darkTheme .v-treeview-node--active .v-treeview-node__content {
+    color: $mywaiColor2;
+    caret-color: $mywaiColor2;
+}
+
+/* notifier */
+.theme--dark .v-snack__content {
+    font-size: large !important;
+    border-left: 15px solid $mywaiColor2;
+}
+
+.theme--light .v-snack__content {
+    font-size: large !important;
+    border-left: 15px solid $mywaiColor;
+}
+/* end notifier */
+
+/* commons */
+.left-margin-20 {
+    margin-left: 20px;
+}
+
+.margin-15 {
+    margin: 15px;
+}
+
+/* cesso di logo */
+.logo-triangle-light {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40vh 20vw 0 0;
+    border-color: $mywaiColor transparent transparent transparent;
+    display: block;
+}
+.logo-triangle-dark {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40vh 20vw 0 0;
+    border-color: $mywaiColor2 transparent transparent transparent;
+    display: block;
+}
+.logo-circle-light {
+    background: $mywaiColor;
+    width: 25vh;
+    height: 25vh;
+    border-radius: 50%;
+    display: block;
+    margin: 5vh;
+}
+.logo-circle-dark {
+    background: $mywaiColor;
+    width: 25vh;
+    height: 25vh;
+    border-radius: 50%;
+    display: block;
+    margin: 5vh;
+}
+/* fine cesso di logo */

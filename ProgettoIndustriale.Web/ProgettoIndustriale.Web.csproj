@@ -1,0 +1,157 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Helpers\**" />
+    <Content Remove="Helpers\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <None Remove="Helpers\**" />
+    <Compile Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssetsSourceFiles Include="Scripts\commonModule.js" />
+  </ItemGroup>
+  <!-- da trovare modo migliore per portare il common in giro -->
+  <Target Name="CopyFiles" AfterTargets="AfterBuild">
+    <Copy SourceFiles="@(AssetsSourceFiles)" DestinationFolder="wwwroot\js" SkipUnchangedFiles="true" />
+   </Target>
+
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="ElmahCore" Version="2.1.2" />
+    <PackageReference Include="IdentityModel" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Views\Enti\Index.cshtml" />
+    <AdditionalFiles Include="Views\Enti\Insert.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\assets\favicon.ico" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\images\404.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\images\aen-logo.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\images\aen-logo.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\images\avatar.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\images\error.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\images\placeholder-image-user.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\images\placeholder-image.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\site.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\site.min.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\attiGiudiziari.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\attiGiudiziari.js.LICENSE.txt" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\attiGiudiziari.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\attiGiudiziariInsert.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\attiGiudiziariInsert.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\commonModule.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\enti.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\enti.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\entiInsert.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\entiInsert.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\mainPage.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\mainPage.js.LICENSE.txt" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\mainPage.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\persone.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\persone.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\personeInsert.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\personeInsert.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\site.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\site.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\axios\axios.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\axios\axios.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\axios\axios.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\axios\axios.min.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\npm.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\MaterialDesign-Webfont\css\materialdesignicons.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\MaterialDesign-Webfont\css\materialdesignicons.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\MaterialDesign-Webfont\css\materialdesignicons.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\MaterialDesign-Webfont\css\materialdesignicons.min.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\MaterialDesign-Webfont\fonts\materialdesignicons-webfont.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\MaterialDesign-Webfont\fonts\materialdesignicons-webfont.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\MaterialDesign-Webfont\fonts\materialdesignicons-webfont.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\MaterialDesign-Webfont\fonts\materialdesignicons-webfont.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\Roboto.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vuetify\json\attributes.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vuetify\json\tags.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vuetify\json\web-types.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vuetify\vuetify.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vuetify\vuetify.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vuetify\vuetify.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vuetify\vuetify.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vuetify\vuetify.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vuetify\vuetify.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\compiler-sfc.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\compiler-sfc.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.common.dev.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.common.dev.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.common.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.common.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.common.prod.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.common.prod.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.esm.browser.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.esm.browser.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.esm.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.esm.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.common.dev.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.common.dev.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.common.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.common.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.common.prod.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.common.prod.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.esm.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.esm.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\mix-manifest.json" />
+    <_ContentIncludedByDefault Remove="Views\AttiGiudiziari\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\AttiGiudiziari\Insert.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Persone\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Persone\Insert.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Posta\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Posta\InsertEntrata.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Posta\InsertUscita.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Posta\Uscita.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProgettoIndustriale.Business.Imp\ProgettoIndustriale.Business.Imp.csproj" />
+    <ProjectReference Include="..\ProgettoIndustriale.Business\ProgettoIndustriale.Business.csproj" />
+    <ProjectReference Include="..\ProgettoIndustriale.Data\ProgettoIndustriale.Data.csproj" />
+    <ProjectReference Include="..\ProgettoIndustriale.Type\ProgettoIndustriale.Type.csproj" />
+  </ItemGroup>
+
+</Project>

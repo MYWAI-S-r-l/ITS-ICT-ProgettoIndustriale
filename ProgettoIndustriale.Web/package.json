@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production",
+    "prettier": "npx prettier --check  **/Scripts/**/*.js  **/Vue/**/*.vue **/Styles/**/*.scss ",
+    "prettier:fix": "npx prettier --write --ignore-unknown  **/Scripts/**/*.js  **/Vue/**/*.vue **/Styles/**/*.scss ",
+    "prettier:watch": "onchange **/Scripts/**/*.js  **/Vue/**/*.vue **/Styles/**/*.scss -- prettier --write --ignore-unknown {{changed}}"
+  },
+  "devDependencies": {
+    "@mdi/font": "~6.4.95",
+    "@progress/kendo-data-query": "~1.5.5",
+    "@progress/kendo-drawing": "~1.11.0",
+    "@progress/kendo-licensing": "~1.2.1",
+    "@progress/kendo-vue-animation": "~2.4.3",
+    "@progress/kendo-vue-data-tools": "~2.4.3",
+    "@progress/kendo-vue-dateinputs": "~2.4.3",
+    "@progress/kendo-vue-dialogs": "~2.4.3",
+    "@progress/kendo-vue-dropdowns": "~2.4.3",
+    "@progress/kendo-vue-excel-export": "~2.5.0",
+    "@progress/kendo-vue-grid": "~2.4.3",
+    "@progress/kendo-vue-inputs": "~2.4.3",
+    "@progress/kendo-vue-intl": "~2.5.0",
+    "@progress/kendo-vue-layout": "~2.5.0",
+    "@progress/kendo-vue-popup": "~2.5.0",
+    "@progress/kendo-vue-tooltip": "~2.7.3",
+    "@progress/kendo-vue-upload": "~2.6.2",
+    "axios": "~0.27.2",
+    "laravel-mix": "~6.0.49",
+    "onchange": "~7.1.0",
+    "prettier": "~2.7.1",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.55.0",
+    "sass-loader": "^12.1.0",
+    "vue": "~2.6.11",
+    "vue-loader": "~15.9.8",
+    "vue-template-compiler": "~2.6.14",
+    "vuetify": "~2.6.11"
+  },
+  "-vs-binding": {
+    "ProjectOpened": [
+      "watch"
+    ]
+  }
+}
