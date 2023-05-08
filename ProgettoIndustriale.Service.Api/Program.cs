@@ -25,11 +25,14 @@ builder.Services.AddDbContext<ProgettoIndustrialeContext>(opt =>
 {
     opt.UseMySql(
         builder.Configuration["ConnectionStrings:ProgettoIndustriale"],
-        new MySqlServerVersion(new Version(8, 0, 23)), //TODO: CHECK versione
+        new MariaDbServerVersion(new Version(10, 11, 2)), //TODO: CHECK versione
         options => options.EnableRetryOnFailure());
     opt.EnableSensitiveDataLogging();
     opt.EnableDetailedErrors();
 });
+var allowedUrlsForCors = builder.Configuration["AllowedUrlsForCors"].Split(',');
+builder.Services.ConfigureCors("CORSPolicy", allowedUrlsForCors);
+
 
 builder.Services.AddElmah();
 var app = builder.Build();
@@ -44,8 +47,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors("CORSPolicy");
 
-app.MapControllers().RequireAuthorization("ApiScope");
-
+app.MapControllers();
 app.UseElmah();
 
 app.Run();

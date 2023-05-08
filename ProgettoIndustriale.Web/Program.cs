@@ -23,13 +23,6 @@ if (builder.Environment.IsDevelopment())
 
 builder.Services.AddElmah();
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = "Cookies";
-    options.DefaultChallengeScheme = "oidc";
-})
-    .AddCookie("Cookies");
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,8 +37,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.UseAuthorization();
-app.UseAuthentication();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

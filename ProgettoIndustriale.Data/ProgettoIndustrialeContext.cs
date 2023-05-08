@@ -18,7 +18,7 @@ public partial class ProgettoIndustrialeContext : DbContext
     {
     }
 
-    public virtual DbSet<Ente> Ente { get; set; }
+    public virtual DbSet<Ente> Enti { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,6 +36,7 @@ public partial class ProgettoIndustrialeContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.IsDeleted);
         });
         OnModelCreatingPartial(modelBuilder);
     }

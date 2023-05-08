@@ -44,7 +44,6 @@ export default {
             enteToInsert: {
                 nome:"",
                 sigla:"",
-                parent: null,
             },
             loading: false,
         };
@@ -66,6 +65,7 @@ export default {
         insertEnte: function () {
             let that = this;
             that.loading = true;
+            console.log("inserting ente: ", that.enteToInsert)
             services.apiCallerEnti.insertEnte(that.enteToInsert)
                 .then(res => {
                     that.$emit('inserted-ente', res.data);

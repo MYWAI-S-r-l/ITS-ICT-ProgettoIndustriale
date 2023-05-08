@@ -115,8 +115,10 @@
                 url: urlToCall,
                 data: data
             }).then(result => {
+                console.log("result: ", result);
                 return resolve(result);
             }).catch((err) => {
+                console.log("error: ", err);
                 return reject(err);
             });
         });

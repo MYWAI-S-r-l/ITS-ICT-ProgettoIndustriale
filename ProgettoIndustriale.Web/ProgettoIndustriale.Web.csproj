@@ -18,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AssetsSourceFiles Include="Scripts\commonModule.js" />
+    <AssetsSourceFiles Include="Scripts\commonModule.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AssetsSourceFiles>
   </ItemGroup>
   <!-- da trovare modo migliore per portare il common in giro -->
   <Target Name="CopyFiles" AfterTargets="AfterBuild">
@@ -137,14 +139,6 @@
     <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.js" />
     <_ContentIncludedByDefault Remove="wwwroot\lib\vue\vue.runtime.min.js" />
     <_ContentIncludedByDefault Remove="wwwroot\mix-manifest.json" />
-    <_ContentIncludedByDefault Remove="Views\AttiGiudiziari\Index.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\AttiGiudiziari\Insert.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Persone\Index.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Persone\Insert.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Posta\Index.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Posta\InsertEntrata.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Posta\InsertUscita.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Posta\Uscita.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

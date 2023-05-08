@@ -7,14 +7,10 @@
                 <v-list-item-avatar rounded>
                     <v-img :src="getImageSource" :contain="true"></v-img>
                 </v-list-item-avatar>
-                Ansaldo Energia Protocollo
+                Progetto Industriale 
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            Welcome, Enrico
-            &nbsp;
-<!--            <v-avatar class="avatarImage" size="40" @click.stop="userControl = !userControl">-->
-<!--                <v-img class="imageInput" :src="getAvatarSource" contain></v-img>-->
-<!--            </v-avatar>-->
+            Welcome, User
         </v-app-bar>
 
         <!--drawer-->
@@ -22,7 +18,7 @@
             <div style="text-align:center; margin-top:5px;" @click="changePage('')">
                 <img :src="getImageSource" style="height:60px"  alt="companyLogo"/>
                 <p>
-                    Ansaldo Protocollo <span style="font-size:smaller">Version {{ appVersion }}</span>
+                    ITS - ICT <span style="font-size:smaller">Version {{ appVersion }}</span>
                 </p>
             </div>
 
@@ -72,22 +68,6 @@
                 userControl: false,
                 menuModel: [
                     {
-                        title: "Atti Giudiziari",
-                        panelOpen: 0,
-                        items: [
-                            {
-                                name: "Gestione Atti",
-                                icon: "mdi-home",
-                                link: "/attiGiudiziari/"
-                            },
-                            {
-                                name: "Inserimento Atti",
-                                icon: "mdi-home",
-                                link: "/attiGiudiziari/insert"
-                            },
-                        ]
-                    },
-                    {
                         title: "Anagrafica",
                         panelOpen: 0,
                         items: [
@@ -96,11 +76,6 @@
                                 icon: "mdi-tape-measure",
                                 link: "/enti/"
                             },
-                            {
-                                name: "Gestione Persone",
-                                icon: "mdi-tape-measure",
-                                link: "/persone/"
-                            },
                         ]
                     },
                     {
@@ -108,49 +83,17 @@
                         panelOpen: 0,
                         items: [
                             {
-                                name: "Placeholder1",
+                                name: "SubPlaceholder1",
                                 icon: "mdi-tape-measure",
-                                link: "/persone/"
+                                link: "/SubPlaceholder1/"
                             },
                             {
-                                name: "Placeholder2",
+                                name: "SubPlaceholder2",
                                 icon: "mdi-tape-measure",
-                                link: "/persone/insert"
+                                link: "/SubPlaceholder2/SubPlaceholder2"
                             },
                         ]
                     },
-                    {
-                      title: "Posta in entrata",
-                      panelOpen: 0,
-                      items: [
-                        {
-                          name: "Gestione Posta in Entrata",
-                          icon: "mdi-email",
-                          link: "/posta/"
-                        },
-                        {
-                          name: "Inserimento Posta in Entrata",
-                          icon: "mdi-email",
-                          link: "/posta/insertEntrata"
-                        }
-                      ]
-                    },
-                    {
-                      title: "Posta in uscita",
-                      panelOpen: 0,
-                      items: [
-                        {
-                          name: "Gestione Posta in Uscita",
-                          icon: "mdi-email",
-                          link: "/posta/uscita"
-                        },
-                        {
-                          name: "Inserimento Posta in Uscita",
-                          icon: "mdi-email",
-                          link: "/posta/insertUscita"
-                        }
-                      ]
-                    }
                 ],
                 initiallyOpen: [],
                 menuOpen: [

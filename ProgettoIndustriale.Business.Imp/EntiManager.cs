@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ProgettoIndustriale.Type;
+﻿using ProgettoIndustriale.Type;
 using Dto = ProgettoIndustriale.Type.Dto;
 using Domain = ProgettoIndustriale.Type.Domain;
 
@@ -24,14 +22,14 @@ public class EntiManager : IEntiManager
     {
         if (enteId == null)
             return null;
-        var domainEnte = _context.Ente
+        var domainEnte = _context.Enti
             .FirstOrDefault(ente => ente.Id == enteId && !ente.IsDeleted);
         return domainEnte;
     }
     
     public bool DeleteEnte(int enteId)
     {
-        var domainEnte = _context.Ente
+        var domainEnte = _context.Enti
             .FirstOrDefault(ente => ente.Id == enteId && !ente.IsDeleted);
         if (domainEnte == null)
             return false;
@@ -50,7 +48,7 @@ public class EntiManager : IEntiManager
             Sigla = enteToSave.Sigla,
             IsDeleted = false,
         };
-        _context.Ente.Add(domainEnte);
+        _context.Enti.Add(domainEnte);
         _context.SaveChanges();
         enteToSave.Id = domainEnte.Id;
         return enteToSave;
@@ -72,7 +70,7 @@ public class EntiManager : IEntiManager
 
     public List<Dto.Ente> GetAllEnti()
     {
-        var allEnti = _context.Ente
+        var allEnti = _context.Enti
             .Where(x => !x.IsDeleted)
             .ToList();
         return MyMapper<Domain.Ente, Dto.Ente>.MapList(allEnti);

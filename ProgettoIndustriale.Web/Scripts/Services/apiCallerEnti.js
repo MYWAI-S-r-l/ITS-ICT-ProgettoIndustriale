@@ -14,7 +14,8 @@
     insertEnte(enteToInsert) {
         const url = `${commonModule.webApiBaseUrl}/enti/upsertEnte`;
         // return this.apiCallerHelper.callPostWithBearer(url, enteToInsert, false);
-        return this.apiCallerHelper.callGetWithoutBearerForTest(url);
+        console.log("calling: ", url, " with: ", enteToInsert);
+        return this.apiCallerHelper.callPostWithoutBearerForTest(url, enteToInsert);
         
     }
 
