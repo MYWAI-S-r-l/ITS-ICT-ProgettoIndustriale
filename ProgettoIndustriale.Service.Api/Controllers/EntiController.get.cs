@@ -1,5 +1,6 @@
 ﻿using Dto = ProgettoIndustriale.Type.Dto;
 using Microsoft.AspNetCore.Mvc;
+using ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
@@ -15,5 +16,27 @@ public partial class EntiController
     public List<Dto.Ente> GetEnti()
     {
         return _entiManager.GetAllEnti();
+    }
+
+    [HttpGet("getPathParam/{name}")]
+    public string getPathParam(string name)
+    {
+        return "hello, " + name;
+    }
+
+
+    [HttpGet("getTestString")]
+    public String GetTestString(string inputString)
+    {
+        return "Ciao " + inputString;
+    }
+
+    [HttpGet("getTestObject")]
+    public TestObject GetTestObject()
+    {
+        TestObject testObject = new TestObject();
+        testObject.campo1 = "io sono il campo 1";
+        testObject.campo2 = "e io sono il campo 2";
+        return testObject;
     }
 }

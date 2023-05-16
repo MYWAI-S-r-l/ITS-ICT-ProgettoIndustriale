@@ -37,6 +37,10 @@ public partial class ProgettoIndustrialeContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.IsDeleted);
+
+            entity.Property(e => e.Descrizione)
+                .HasMaxLength(50)
+                .IsUnicode(false);
         });
         OnModelCreatingPartial(modelBuilder);
     }

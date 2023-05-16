@@ -43,7 +43,8 @@ export default {
         return {
             enteToInsert: {
                 nome:"",
-                sigla:"",
+                sigla: "",
+                descrizione:""
             },
             loading: false,
         };
@@ -80,7 +81,8 @@ export default {
         closeDialog: function () {
             this.enteToInsert =  {
                 nome:"",
-                sigla:"",
+                sigla: "",
+                descrizione: "",
                 parent: null,
             };
             this.$emit('close-dialog-ente');

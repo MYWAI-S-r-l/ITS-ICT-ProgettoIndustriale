@@ -20,5 +20,6 @@ namespace ProgettoIndustriale.Type.Domain
         public string Nome { get; set; }
         public string Sigla { get; set; }
         public bool IsDeleted { get; set; }
+        public string Descrizione { get; set; }
     }
 }

@@ -46,6 +46,7 @@ public class EntiManager : IEntiManager
         {
             Nome = enteToSave.Nome,
             Sigla = enteToSave.Sigla,
+            Descrizione = enteToSave.Descrizione,
             IsDeleted = false,
         };
         _context.Enti.Add(domainEnte);
@@ -63,6 +64,7 @@ public class EntiManager : IEntiManager
             return null;
         domainEnte.Nome = enteToEdit.Nome;
         domainEnte.Sigla = enteToEdit.Sigla;
+        domainEnte.Descrizione = enteToEdit.Descrizione;
         _context.Update(domainEnte);
         _context.SaveChanges();
         return MyMapper<Domain.Ente, Dto.Ente>.Map(domainEnte);

@@ -18,4 +18,14 @@ public partial class EntiController
     {
         return _entiManager.DeleteEnte(id);
     }
+
+    [HttpPost("postTestObject")]
+    public ActionResult<Dto.TestObject?> TestObject([FromBody] Dto.TestObject? testObject)
+    {
+        if (testObject == null)
+            return BadRequest("invalid request");
+        testObject.campo1 = testObject.campo1 + " - modificato!";
+        testObject.campo2 = testObject.campo2 + " - modificato anche lui!";
+        return testObject;
+    }
 }
