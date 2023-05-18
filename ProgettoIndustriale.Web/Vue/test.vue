@@ -30,7 +30,8 @@
             };
         },
         methods: {
-            helloWorld: function () {
+            helloWorld: function () 
+            //pippo
                 let that = this;
                 that.loading = true;
                 services.apiCallerEnti.getTestApi()
