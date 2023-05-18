@@ -28,5 +28,6 @@ mix.vue()
 
 .js(['./Vue/ComponentBuilder/Enti/entiComponentBuilder.js', './Scripts/Enti/enti.js'], 'js/enti.js')
 .js(['./Vue/ComponentBuilder/Enti/entiComponentBuilder.js', './Scripts/Enti/entiInsert.js'], 'js/entiInsert.js')
+.js(['./Vue/ComponentBuilder/Test/testComponentBuilder.js', './Scripts/Test/test.js'], 'js/test.js')
 
 mix.copy('./Scripts/commonModule.js', './wwwroot/js/commonModule.js')

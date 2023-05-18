@@ -8,7 +8,12 @@
         const url = `${commonModule.webApiBaseUrl}/enti/getAll`;
         // return this.apiCallerHelper.callGetWithBearer(url);
         return this.apiCallerHelper.callGetWithoutBearerForTest(url);
-        
+    }
+
+    getTestApi() {
+        const url = `${commonModule.webApiBaseUrl}/enti/helloWorld`;
+        // return this.apiCallerHelper.callGetWithBearer(url);
+        return this.apiCallerHelper.callGetWithoutBearerForTest(url);
     }
     
     insertEnte(enteToInsert) {

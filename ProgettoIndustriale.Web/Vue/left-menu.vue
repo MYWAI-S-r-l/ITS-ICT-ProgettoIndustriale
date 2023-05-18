@@ -76,6 +76,11 @@
                                 icon: "mdi-tape-measure",
                                 link: "/enti/"
                             },
+                            {
+                                name: "Test",
+                                icon: "mdi-tape-measure",
+                                link: "/test/"
+                            },
                         ]
                     },
                     {

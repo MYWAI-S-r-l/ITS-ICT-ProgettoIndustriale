@@ -12,7 +12,6 @@ class Services {
         return new ApiCallerCommon(this.apiCallerHelper);
     }
 
-
     get apiCallerEnti() {
         return new ApiCallerEnti(this.apiCallerHelper);
     }

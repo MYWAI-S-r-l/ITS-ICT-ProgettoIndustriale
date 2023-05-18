@@ -24,6 +24,11 @@ public partial class EntiController
         return "hello, " + name;
     }
 
+    [HttpGet("helloWorld")]
+    public string GetHelloWorld()
+    {
+        return "Ciao Mondo";
+    }
 
     [HttpGet("getTestString")]
     public String GetTestString(string inputString)

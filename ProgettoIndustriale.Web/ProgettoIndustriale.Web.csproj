@@ -24,10 +24,6 @@
    </Target>
 
   <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="ElmahCore" Version="2.1.2" />
     <PackageReference Include="IdentityModel" Version="6.0.0" />
