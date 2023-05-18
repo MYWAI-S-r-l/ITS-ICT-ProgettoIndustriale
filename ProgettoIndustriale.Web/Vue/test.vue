@@ -31,6 +31,8 @@
         },
         methods: {
             helloWorld: function () {
+                // pluto
+                // paperino
                 let that = this;
                 that.loading = true;
                 services.apiCallerEnti.getTestApi()
