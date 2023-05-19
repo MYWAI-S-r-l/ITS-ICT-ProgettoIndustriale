@@ -12,3 +12,13 @@ public class EnteConfiguration : IEntityTypeConfiguration<Type.Domain.Ente>
 
     }
 }
+
+public class ProvinciaConfiguration : IEntityTypeConfiguration<Type.Domain.Provincia>
+{
+    public void Configure(EntityTypeBuilder<Type.Domain.Provincia> entity)
+    {
+        entity.ToTable("Province");
+        entity.HasKey(e => new { e.Codice});
+
+    }
+}

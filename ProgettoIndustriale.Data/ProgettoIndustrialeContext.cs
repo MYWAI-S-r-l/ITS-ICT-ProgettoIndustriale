@@ -20,6 +20,7 @@ public partial class ProgettoIndustrialeContext : DbContext
 
     public virtual DbSet<Ente> Enti { get; set; }
 
+    public virtual DbSet<Provincia> Province{ get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
