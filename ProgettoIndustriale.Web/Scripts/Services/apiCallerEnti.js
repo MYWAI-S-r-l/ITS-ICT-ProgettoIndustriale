@@ -15,7 +15,11 @@
         // return this.apiCallerHelper.callGetWithBearer(url);
         return this.apiCallerHelper.callGetWithoutBearerForTest(url);
     }
-    
+    getMyName(number) {
+        const url = `${commonModule.webApiBaseUrl}/enti/getMyName/${number}`;
+        // return this.apiCallerHelper.callGetWithBearer(url);
+        return this.apiCallerHelper.callGetWithoutBearerForTest(url);
+    }
     insertEnte(enteToInsert) {
         const url = `${commonModule.webApiBaseUrl}/enti/upsertEnte`;
         // return this.apiCallerHelper.callPostWithBearer(url, enteToInsert, false);

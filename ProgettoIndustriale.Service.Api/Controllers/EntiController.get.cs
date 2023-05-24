@@ -30,6 +30,16 @@ public partial class EntiController
         return "Ciao Mondo";
     }
 
+    [HttpGet("getMyName/{number:int}")]
+    public string GetMyName(int number)
+    {
+        if (number == 0)
+            return "Pippo";
+        if (number == 1)
+            return "Pluto";
+        return "Paperino";
+    }
+    
     [HttpGet("getTestString")]
     public String GetTestString(string inputString)
     {
