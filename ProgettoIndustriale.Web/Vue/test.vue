@@ -35,6 +35,11 @@
                     <v-icon color="mywai">mdi-plus</v-icon>
                     Chiama getMyName con 1
                 </v-btn>&nbsp;
+
+                <v-btn outlined rounded text
+                       @click="riempiLista(10)">
+                    <v-icon color="mywai">mdi-plus</v-icon>
+                </v-btn>&nbsp;
             </v-card-actions>
         </v-card>
     </v-container>
@@ -83,6 +88,12 @@
                     .finally(_ => {
                         that.loading = false;
                     });
+            },
+            riempiLista: function (number) {
+                this.pippo = [];
+                for (let i = 0; i < number; i++) {
+                    this.pippo.push("elemento numero " + i);
+                }
             },
             created: function () {
                 console.log("created");
