@@ -77,7 +77,7 @@
                                 link: "/enti/"
                             },
                             {
-                                name: "Test",
+                                name: "Meteo Province",
                                 icon: "mdi-tape-measure",
                                 link: "/test/"
                             },

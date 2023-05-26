@@ -2,16 +2,16 @@
     <v-container fluid>
         <v-card outlined>
             <v-card-title class="pa-4 mywaiTheme">
-                Test
+                Meteo Province Getter
             </v-card-title>
-            <v-row v-if="apiResult !== ''"
-                   class="pa-5"
-            >
-                Ciao {{ apiResult }}
+            <v-row class="pa-5" v-if="meteoData != null">
+                <simple-meteo-plot :meteoResponse="meteoData"></simple-meteo-plot>
             </v-row>
             <v-row>
                 <list-visualizer
                     :list-to-visualize="pippo"
+                    :column-names="['codice', 'nome', 'sigla', 'regione']"
+                    @pass-to-father="selectElement"
                 >
                     
                 </list-visualizer>
@@ -19,25 +19,8 @@
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn outlined rounded text
-                       @click="helloWorld">
-                    <v-icon color="mywai">mdi-plus</v-icon>
-                    Chiama api di test: {{ apiResult }}
-                </v-btn>&nbsp;
-
-                <v-btn outlined rounded text
-                       @click="getMyName(0)">
-                    <v-icon color="mywai">mdi-plus</v-icon>
-                    Chiama getMyName con 0
-                </v-btn>&nbsp;
-
-                <v-btn outlined rounded text
-                       @click="getMyName(1)">
-                    <v-icon color="mywai">mdi-plus</v-icon>
-                    Chiama getMyName con 1
-                </v-btn>&nbsp;
-
-                <v-btn outlined rounded text
                        @click="riempiLista(10)">
+                    Get Province List
                     <v-icon color="mywai">mdi-plus</v-icon>
                 </v-btn>&nbsp;
             </v-card-actions>
@@ -53,51 +36,40 @@
             return {
                 loading: false,
                 apiResult: "",
-                pippo: []
+                pippo: [],
+                meteoData: null
             };
         },
         methods: {
-            helloWorld: function () {
+            riempiLista: function () {
                 let that = this;
-                that.loading = true;
-                
-                services.apiCallerEnti.getTestApi()
-                    .then(res => {
-                        console.log("got res ", res);
-                        that.apiResult = res.data;
-                    })
-                    .catch(err => {
-                        console.log("got an error: ", err);
-                    })
-                    .finally(_ => {
-                        that.loading = false;
-                    });
-            },
-            getMyName: function (number) {
-                let that = this;
-                that.loading = true;
-
-                services.apiCallerEnti.getMyName(number)
-                    .then(res => {
-                        console.log("got res ", res);
-                        that.apiResult = res.data;
-                    })
-                    .catch(err => {
-                        console.log("got an error: ", err);
-                    })
-                    .finally(_ => {
-                        that.loading = false;
-                    });
-            },
-            riempiLista: function (number) {
                 this.pippo = [];
-                for (let i = 0; i < number; i++) {
-                    this.pippo.push("elemento numero " + i);
-                }
+                services.apiCallerProvince.getAllProvince()
+                    .then(res => {
+                        that.pippo = res.data;
+                    })
+                    .catch(err => {
+                        console.log("got an error: ", err);
+                    })
+                    .finally(_ => {
+                        that.loading = false;
+                    });
             },
-            created: function () {
-                console.log("created");
-            }
+            selectElement: function (value) {
+                let that = this;
+                that.meteoData = null;
+                services.apiCallerProvince.getMeteoForProvincia(value)
+                    .then(res => {
+                        console.log("got res ", res);
+                        that.meteoData = res.data;
+                    })
+                    .catch(err => {
+                        console.log("got an error: ", err);
+                    })
+                    .finally(_ => {
+                        that.loading = false;
+                    });
+            },
         }
     }
 
