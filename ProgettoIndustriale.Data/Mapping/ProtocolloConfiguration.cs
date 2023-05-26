@@ -8,7 +8,16 @@ public class ProvinciaConfiguration : IEntityTypeConfiguration<Type.Domain.Provi
     public void Configure(EntityTypeBuilder<Type.Domain.Provincia> entity)
     {
         entity.ToTable("Province");
-        entity.HasKey(e => new { e.Codice});
+        entity.HasKey(e => new { e.Codice });
+
+    }
+}
+public class TernaTokenConfiguration : IEntityTypeConfiguration<Type.Domain.TernaToken>
+{
+    public void Configure(EntityTypeBuilder<Type.Domain.TernaToken> entity)
+    {
+        entity.ToTable("TernaToken");
+        entity.HasKey(e => new { e.Id });
 
     }
 }
