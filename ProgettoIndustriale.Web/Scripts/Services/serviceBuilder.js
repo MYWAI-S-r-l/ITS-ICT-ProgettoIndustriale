@@ -1,6 +1,5 @@
 ﻿import ApiCallerHelper from "./apiCallerHelper";
 import ApiCallerCommon from "./apiCallerCommon";
-import ApiCallerEnti from "./apiCallerEnti";
 import ApiCallerProvince from "./apiCallerProvince";
 class Services {
 

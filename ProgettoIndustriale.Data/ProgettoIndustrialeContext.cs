@@ -18,12 +18,11 @@ public partial class ProgettoIndustrialeContext : DbContext
     {
     }
 
-    public virtual DbSet<Ente> Enti { get; set; }
-
     public virtual DbSet<Provincia> Province{ get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        /*
         modelBuilder.Entity<Ente>(entity =>
         {
             entity.Property(e => e.Id).ValueGeneratedOnAdd();
@@ -43,6 +42,7 @@ public partial class ProgettoIndustrialeContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
+        */
         OnModelCreatingPartial(modelBuilder);
     }
 
