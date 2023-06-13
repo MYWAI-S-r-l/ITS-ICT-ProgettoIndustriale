@@ -1,4 +1,4 @@
-# Introduction --
+# Introduction 
 Progetto Industriale
 
 # Getting Started
