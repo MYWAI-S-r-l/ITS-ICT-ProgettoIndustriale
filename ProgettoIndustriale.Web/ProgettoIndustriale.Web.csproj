@@ -33,11 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="Views\Enti\Index.cshtml" />
-    <AdditionalFiles Include="Views\Enti\Insert.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\js\commonModule.js" />
     <None Include="wwwroot\js\enti.js" />
     <None Include="wwwroot\js\enti.js.map" />

@@ -47,7 +47,6 @@ public static class MyMapper<TSource, TDestination>
         {
             return cfg =>
             {
-                AddMapping<Domain.Ente, Dto.Ente>(cfg, ignores);
                 AddMapping<Domain.Provincia, Dto.Provincia>(cfg, ignores);
             };
         }

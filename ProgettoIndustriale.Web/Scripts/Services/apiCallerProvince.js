@@ -1,4 +1,5 @@
-﻿export default class ApiCallerProvince {
+﻿export default class ApiCallerProvince
+{
 
     constructor(helper) {
         this.apiCallerHelper = helper;

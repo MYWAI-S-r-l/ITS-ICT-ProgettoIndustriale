@@ -70,12 +70,8 @@
                     {
                         title: "Anagrafica",
                         panelOpen: 0,
-                        items: [
-                            {
-                                name: "Gestione Enti",
-                                icon: "mdi-tape-measure",
-                                link: "/enti/"
-                            },
+                        items:
+                        [
                             {
                                 name: "Meteo Province",
                                 icon: "mdi-tape-measure",
