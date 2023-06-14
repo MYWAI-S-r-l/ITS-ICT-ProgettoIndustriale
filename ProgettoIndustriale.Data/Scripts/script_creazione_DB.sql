@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Macrozone` (
   `ID_macrozone` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(10) NULL,
   `bidding_zone` VARCHAR(10) NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`ID_macrozone`))
 ENGINE = InnoDB;
 
 -- Table `progettoindustriale`.`Region`
@@ -37,10 +37,10 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Province` (
   `ID_province` INT NOT NULL,
   `name` VARCHAR(50) NULL,
   `longitude` VARCHAR(20) NULL,
-  `latitudine` VARCHAR(20) NULL,
+  `latitude` VARCHAR(20) NULL,
   `surface` DECIMAL NULL,
   `altitude` DECIMAL NULL,
-  `residenti` INT NULL,
+  `residents` INT NULL,
   `population_density` DECIMAL(5,2) NULL,
   `number_cities` TINYINT NULL,
   `COD_region` INT NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Date` (
   `month` TINYINT NULL,
   `day` TINYINT NULL,
   `time` TIME NULL,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`ID_date`));
 
 -- Table `progettoindustriale`.`Commodity`
 DROP TABLE IF EXISTS `progettoindustriale`.`Commodity`;
