@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Macrozone` (
   `ID_macrozone` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(10) NULL,
   `bidding_zone` VARCHAR(10) NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`ID_macrozone`))
 ENGINE = InnoDB;
 
 -- Table `progettoindustriale`.`Region`
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Region` (
     REFERENCES `progettoindustriale`.`Macrozone` (`ID_macrozone`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
+ENGINE = InnoDB;
 
 -- Table `progettoindustriale`.`Province`
 DROP TABLE IF EXISTS `progettoindustriale`.`Province`;
@@ -37,10 +37,10 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Province` (
   `ID_province` INT NOT NULL,
   `name` VARCHAR(50) NULL,
   `longitude` VARCHAR(20) NULL,
-  `latitudine` VARCHAR(20) NULL,
+  `latitude` VARCHAR(20) NULL,
   `surface` DECIMAL NULL,
   `altitude` DECIMAL NULL,
-  `residenti` INT NULL,
+  `residents` INT NULL,
   `population_density` DECIMAL(5,2) NULL,
   `number_cities` TINYINT NULL,
   `COD_region` INT NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Province` (
     REFERENCES `progettoindustriale`.`Region` (`ID_region`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
+ENGINE = InnoDB;
 
 -- Table `progettoindustriale`.`Date`
 DROP TABLE IF EXISTS `progettoindustriale`.`Date`;
@@ -63,7 +63,8 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Date` (
   `month` TINYINT NULL,
   `day` TINYINT NULL,
   `time` TIME NULL,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`ID_date`))
+ENGINE = InnoDB;
 
 -- Table `progettoindustriale`.`Commodity`
 DROP TABLE IF EXISTS `progettoindustriale`.`Commodity`;
@@ -79,7 +80,8 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Commodity` (
     FOREIGN KEY (`COD_date`)
     REFERENCES `progettoindustriale`.`Date` (`ID_date`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 -- Table `progettoindustriale`.`Industry`
 DROP TABLE IF EXISTS `progettoindustriale`.`Industry`;
@@ -95,7 +97,8 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Industry` (
     FOREIGN KEY (`COD_province`)
     REFERENCES `progettoindustriale`.`Province` (`ID_province`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 -- Table `progettoindustriale`.`Weather`
 DROP TABLE IF EXISTS `progettoindustriale`.`Weather`;
@@ -130,7 +133,8 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Weather` (
     FOREIGN KEY (`COD_Date`)
     REFERENCES `progettoindustriale`.`Date` (`ID_date`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 -- Table `progettoindustriale`.`Generation`
 DROP TABLE IF EXISTS `progettoindustriale`.`Generation`;
@@ -197,8 +201,3 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Price` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
