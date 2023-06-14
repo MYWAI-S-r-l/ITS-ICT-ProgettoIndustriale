@@ -61,7 +61,7 @@ public partial class ProgettoIndustrialeContext : DbContext
 
             entity.Property(e => e.AddedTime);
         });
-        */
+        
         OnModelCreatingPartial(modelBuilder);
     }
 
