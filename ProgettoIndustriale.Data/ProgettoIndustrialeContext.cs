@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using ProgettoIndustriale.Type.Domain;
+using ProgettoIndustriale.Data.ModelBuilder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using ProgettoIndustriale.Data.ModelBuilder;
@@ -19,14 +20,28 @@ public partial class ProgettoIndustrialeContext : DbContext
     {
     }
 
-    public virtual DbSet<Province> Province { get; set; }
+  
+    //-----
+    public virtual DbSet<Price> Price { get; set; }
+    public virtual DbSet<Load> Load { get; set; }
+    public virtual DbSet<Load> MacroZone { get; set; }
+    //------
+    public virtual DbSet<Province> Province{ get; set; }
     public virtual DbSet<Region> Regions { get; set; }
     public virtual DbSet<Industry> Industry { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Sono stati creati dei file di configurazione nella cartella "ModelBuilder" per avere più ordine.
+
+        modelBuilder.ApplyConfiguration(new ConfigureLoad());
+        modelBuilder.ApplyConfiguration(new ConfigurePrice());
+        modelBuilder.ApplyConfiguration(new ConfigureMacroZone());
         modelBuilder.ApplyConfiguration(new ConfigProvince());
         modelBuilder.ApplyConfiguration(new ConfigRegion());
         modelBuilder.ApplyConfiguration(new ConfigIndustry());
+
+   
     public virtual DbSet<Provincia> Province{ get; set; }
     public virtual DbSet<TernaToken> TernaToken { get; set; }
 
