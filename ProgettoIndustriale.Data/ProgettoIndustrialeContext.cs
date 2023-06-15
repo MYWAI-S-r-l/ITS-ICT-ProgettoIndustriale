@@ -19,30 +19,49 @@ public partial class ProgettoIndustrialeContext : DbContext
     }
 
     public virtual DbSet<Provincia> Province{ get; set; }
+    public virtual DbSet<TernaToken> TernaToken { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        /*
-        modelBuilder.Entity<Ente>(entity =>
+        //modelBuilder.Entity<Ente>(entity =>
+        //{
+        //    entity.Property(e => e.Id).ValueGeneratedOnAdd();
+        //    entity.HasKey(e => e.Id);
+            
+        //    entity.Property(e => e.Nome)
+        //        .HasMaxLength(256)
+        //        .IsUnicode(false);
+
+        //    entity.Property(e => e.Sigla)
+        //        .IsRequired()
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.IsDeleted);
+
+        //    entity.Property(e => e.Descrizione)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //});
+        //OnModelCreatingPartial(modelBuilder);
+
+        modelBuilder.Entity<TernaToken>(entity =>
         {
             entity.Property(e => e.Id).ValueGeneratedOnAdd();
             entity.HasKey(e => e.Id);
-            
-            entity.Property(e => e.Nome)
-                .HasMaxLength(256)
-                .IsUnicode(false);
 
-            entity.Property(e => e.Sigla)
+            entity.Property(e => e.AccessToken)
                 .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.IsDeleted);
 
-            entity.Property(e => e.Descrizione)
-                .HasMaxLength(50)
+            entity.Property(e => e.TokenType)
+                .IsRequired()
+                .HasMaxLength(20)
                 .IsUnicode(false);
+
+            entity.Property(e => e.AddedTime);
         });
-        */
+        
         OnModelCreatingPartial(modelBuilder);
     }
 
