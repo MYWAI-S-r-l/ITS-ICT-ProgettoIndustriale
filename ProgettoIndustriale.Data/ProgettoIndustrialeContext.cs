@@ -27,7 +27,7 @@ public partial class ProgettoIndustrialeContext : DbContext
     public virtual DbSet<MacroZone> MacroZone { get; set; }
     //------
     public virtual DbSet<Province> Province{ get; set; }
-    public virtual DbSet<Region> Regions { get; set; }
+    public virtual DbSet<Region> Region { get; set; }
     public virtual DbSet<Industry> Industry { get; set; }
 
     //-----

@@ -16,9 +16,9 @@ namespace ProgettoIndustriale.Type.Domain
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public int IdMacrozone { get; set; }
+        public int IdMacroZone { get; set; }
 
-        public virtual Macrozone Macrozone { get; set; }
+        public virtual MacroZone MacroZone { get; set; }
         public virtual ICollection<Province> Provinces { get; set; }    
     }
 }

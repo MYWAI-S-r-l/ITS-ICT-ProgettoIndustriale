@@ -23,7 +23,7 @@ namespace ProgettoIndustriale.Data.ModelBuilder
                 .HasMaxLength(45)
                 .IsUnicode(false);
 
-                entity.HasOne(p => p.Macrozone).WithMany().HasForeignKey(m => m.IdMacrozone);//collection in regione
+                entity.HasOne(p => p.MacroZone).WithMany().HasForeignKey(m => m.IdMacroZone);//collection in regione
                 
                 entity.HasMany(p=>p.Provinces).WithOne().HasForeignKey(p => p.IdRegion);
 
