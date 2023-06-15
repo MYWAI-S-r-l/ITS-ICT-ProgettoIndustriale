@@ -1,0 +1,51 @@
+[{
+        "apiCallName": "template",
+        "tableName": "samples",
+        "client": "sample root url",
+        "request": "sample api tree",
+        //This logic choice is made by the RunCalls func
+        "freq": "daily/once",
+        "method": "Get/Post etc...",
+        "auth": "bool",
+        "authType": "OATH2 or None",
+        "parameters": [
+            {
+                "client_id": "k48jhcjhyku2th7t3pg9y2be",
+                "client_secret": "g9khnFNRr8",
+                "grant_type": "client_credentials"
+            }
+        ],
+        "param_type": "body or url",
+        "headers": [
+            {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Test": "Test"
+            }
+        ],
+        "dtoClass": "Dto.TernaToken",
+        "domainClass": "Domain.TernaToken"
+    },
+
+    {
+        "apiCallName": "TernaTokenCall",
+        "tableName": "TernaToken",
+        "client": "https://api.terna.it",
+        "request": "/transparency/oauth/accessToken",
+        "callFrequency": "daily",
+        "method": "Post",
+        "auth": false,
+        "authType": "",
+        "parameters": [
+            {
+                "client_id": "k48jhcjhyku2th7t3pg9y2be",
+                "client_secret": "g9khnFNRr8",
+                "grant_type": "client_credentials"
+            }
+        ],
+        "param_type": "body",
+        "headers": [ { "Content-Type": "application/x-www-form-urlencoded" } ],
+        "dtoClass": "Dto.TernaToken",
+        "domainClass": "Domain.TernaToken"
+    }
+
+]
