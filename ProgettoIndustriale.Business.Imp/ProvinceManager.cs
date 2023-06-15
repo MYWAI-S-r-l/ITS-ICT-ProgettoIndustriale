@@ -15,10 +15,10 @@ public class ProvinceManager : IProvinceManager
     public Dto.Provincia? GetProvincia(string codice)
     {
         var domainProvincia = GetDomainProvincia(codice);
-        return domainProvincia == null ? null : MyMapper<Domain.Provincia, Dto.Provincia>.Map(domainProvincia);
+        return domainProvincia == null ? null : MyMapper<Domain.Province, Dto.Provincia>.Map(domainProvincia);
     }
 
-    private Domain.Provincia? GetDomainProvincia(string? codice)
+    private Domain.Province? GetDomainProvincia(string? codice)
     {
         if (codice == null)
             return null;
@@ -57,7 +57,7 @@ public class ProvinceManager : IProvinceManager
             Regione = provinciaToSave.Regione,
      
         };
-        _context.Province.Add(domainProvincia);
+        _context.Province.Add((Domain.Province)domainProvincia);
         _context.SaveChanges();
         provinciaToSave.Codice = domainProvincia.Codice;
         return provinciaToSave;
@@ -78,7 +78,7 @@ public class ProvinceManager : IProvinceManager
                 }
             );
 
-        _context.Province.AddRange(domainProvince);
+        _context.Province.AddRange((IEnumerable<Domain.Province>)domainProvince);
         _context.SaveChanges();
 
         return provinceToSave;
@@ -97,12 +97,12 @@ public class ProvinceManager : IProvinceManager
         domainProvincia.Regione = provinciaToEdit.Regione;
         _context.Update(domainProvincia);
         _context.SaveChanges();
-        return MyMapper<Domain.Provincia, Dto.Provincia>.Map(domainProvincia);
+        return MyMapper<Domain.Province, Dto.Provincia>.Map(domainProvincia);
     }
 
     public List<Dto.Provincia> GetAllProvince()
     {
         var allProvince = _context.Province.ToList();
-        return MyMapper<Domain.Provincia, Dto.Provincia>.MapList(allProvince);
+        return MyMapper<Domain.Province, Dto.Provincia>.MapList(allProvince);
     }
 }

@@ -8,16 +8,19 @@ using ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.Type.Domain
 {
-    public partial class Provincia
+    public partial class Industry
     {
-        public Provincia()
+        public Industry()
         {
         }
         
         [Key]
-        public string Codice { get; set; }
-        public string Nome { get; set; }
-        public string Sigla { get; set; }
-        public string Regione { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int CountActive { get; set; }
+        public int IdProvince { get; set; }
+
+        public virtual Province Province { get; set; }   
+
     }
 }

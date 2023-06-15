@@ -47,6 +47,7 @@ public static class MyMapper<TSource, TDestination>
         {
             return cfg =>
             {
+                AddMapping<Domain.Province, Dto.Province>(cfg, ignores);
                 //AddMapping<Domain.Ente, Dto.Ente>(cfg, ignores);
                 AddMapping<Domain.Provincia, Dto.Provincia>(cfg, ignores);
                 AddMapping<Domain.TernaToken, Dto.TernaToken>(cfg, ignores);

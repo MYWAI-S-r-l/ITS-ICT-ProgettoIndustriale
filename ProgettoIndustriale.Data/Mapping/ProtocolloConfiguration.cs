@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ProgettoIndustriale.Data.Mapping;
 
-public class ProvinciaConfiguration : IEntityTypeConfiguration<Type.Domain.Provincia>
+public class ProvinciaConfiguration : IEntityTypeConfiguration<Type.Domain.Province>
 {
-    public void Configure(EntityTypeBuilder<Type.Domain.Provincia> entity)
+    public void Configure(EntityTypeBuilder<Type.Domain.Province> entity)
     {
         entity.ToTable("Province");
         entity.HasKey(e => new { e.Codice });

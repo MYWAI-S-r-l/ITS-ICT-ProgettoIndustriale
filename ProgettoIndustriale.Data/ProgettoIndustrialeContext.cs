@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using ProgettoIndustriale.Type.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using ProgettoIndustriale.Data.ModelBuilder;
 
 namespace ProgettoIndustriale.Type;
 public partial class ProgettoIndustrialeContext : DbContext
@@ -18,6 +19,14 @@ public partial class ProgettoIndustrialeContext : DbContext
     {
     }
 
+    public virtual DbSet<Province> Province { get; set; }
+    public virtual DbSet<Region> Regions { get; set; }
+    public virtual DbSet<Industry> Industry { get; set; }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new ConfigProvince());
+        modelBuilder.ApplyConfiguration(new ConfigRegion());
+        modelBuilder.ApplyConfiguration(new ConfigIndustry());
     public virtual DbSet<Provincia> Province{ get; set; }
     public virtual DbSet<TernaToken> TernaToken { get; set; }
 
