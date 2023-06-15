@@ -24,7 +24,7 @@ public partial class ProgettoIndustrialeContext : DbContext
     //-----
     public virtual DbSet<Price> Price { get; set; }
     public virtual DbSet<Load> Load { get; set; }
-    public virtual DbSet<Load> MacroZone { get; set; }
+    public virtual DbSet<MacroZone> MacroZone { get; set; }
     //------
     public virtual DbSet<Province> Province{ get; set; }
     public virtual DbSet<Region> Regions { get; set; }
