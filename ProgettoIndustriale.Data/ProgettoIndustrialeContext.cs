@@ -30,6 +30,12 @@ public partial class ProgettoIndustrialeContext : DbContext
     public virtual DbSet<Region> Regions { get; set; }
     public virtual DbSet<Industry> Industry { get; set; }
 
+    //-----
+
+    public virtual DbSet<Weather> Weather { get; set; }
+
+    public virtual DbSet<Dates> Dates { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Sono stati creati dei file di configurazione nella cartella "ModelBuilder" per avere più ordine.
