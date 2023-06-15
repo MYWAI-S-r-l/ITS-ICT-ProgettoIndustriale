@@ -15,7 +15,7 @@ namespace ProgettoIndustriale.Data.ModelBuilder
             entity.HasKey(e => e.Id );
             entity.Property(e=>e.Name).IsRequired();
             entity.Property(e=>e.BiddingZone).IsRequired();
-            entity.HasOne(e=>e.Regions).WithMany().HasForeignKey(e=>e.IdMacroZone);
+            entity.HasMany(e=>e.Regions).WithOne().HasForeignKey(e=>e.IdMacroZone);
             
         }
     }
