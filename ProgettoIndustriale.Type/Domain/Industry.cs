@@ -15,9 +15,16 @@ namespace ProgettoIndustriale.Type.Domain
         }
         
         [Key]
+        [Column("ID_industry")]
         public int Id { get; set; }
+
+        [Column("name")]
         public string Name { get; set; }
+
+        [Column("count_active")]
         public int CountActive { get; set; }
+
+        [Column("COD_province")]
         public int IdProvince { get; set; }
 
         public virtual Province Province { get; set; }   

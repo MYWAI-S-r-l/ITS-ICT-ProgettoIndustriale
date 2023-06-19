@@ -26,7 +26,7 @@
 
         public double Snowfall { get; set; }
 
-        public double Showers { get; set; }
+        public double Shower { get; set; }
 
         public double Precipitation { get; set; }
 

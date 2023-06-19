@@ -38,7 +38,7 @@ namespace ProgettoIndustriale.Data.ModelBuilder
             
             entity.Property(w => w.Snowfall).IsRequired();
             
-            entity.Property(w => w.Showers).IsRequired();
+            entity.Property(w => w.Shower).IsRequired();
             
             entity.Property(w => w.Precipitation).IsRequired();
             
