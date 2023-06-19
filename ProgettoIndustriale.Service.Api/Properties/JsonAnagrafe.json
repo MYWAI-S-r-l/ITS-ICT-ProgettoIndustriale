@@ -1,0 +1,24 @@
+{
+    [
+        {
+            "percorso": "",
+            "classe": "Domain.Macrozone",
+            "nometabella": "macrozone"
+        },
+        {
+            "percorso": "",
+            "classe": "Domain.Region",
+            "nometabella": "region"
+        },
+        {
+            "percorso": "",
+            "classe": "Domain.Province",
+            "nometabella": "province"
+        },
+        {
+            "percorso": "",
+            "classe": "Domain.Industry",
+            "nometabella": "industry"
+        }
+    ]
+}
