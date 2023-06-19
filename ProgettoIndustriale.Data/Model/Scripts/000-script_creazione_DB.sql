@@ -106,9 +106,9 @@ DROP TABLE IF EXISTS `progettoindustriale`.`Weather`;
 
 CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Weather` (
   `ID_weather` INT NOT NULL AUTO_INCREMENT,
-  `temperature_2_m_Celsius` DECIMAL(4,2) NULL,
+  `temperature_2m_Celsius` DECIMAL(4,2) NULL,
   `dewpoint_2m_Celsius` DECIMAL(4,2) NULL,
-  `relativehumidity_2m_percent` DECIMAL(5,2) NULL,
+  `relative_humidity_2m_percent` DECIMAL(5,2) NULL,
   `apparent_temperature_Celsius` DECIMAL(4,2) NULL,
   `cloudcover_percent` DECIMAL(5,1) NULL,
   `windspeed_10m_km_h` DECIMAL(4,1) NULL,
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Weather` (
   `surface_pressure_hPa` DECIMAL(5,2) NULL,
   `rain_mm` DECIMAL(5,2) NULL,
   `snowfall_mm` DECIMAL(5,2) NULL,
-  `showers_mm` DECIMAL(5,2) NULL,
+  `shower_mm` DECIMAL(5,2) NULL,
   `precipitation_mm` DECIMAL(5,2) NULL,
   `snow_depth_meters` DECIMAL(5,2) NULL,
   `is_day_bool` TINYINT(1) NULL,
