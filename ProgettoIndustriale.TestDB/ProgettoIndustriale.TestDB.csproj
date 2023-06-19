@@ -7,4 +7,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProgettoIndustriale.Business.Imp\ProgettoIndustriale.Business.Imp.csproj" />
+    <ProjectReference Include="..\ProgettoIndustriale.Business\ProgettoIndustriale.Business.csproj" />
+    <ProjectReference Include="..\ProgettoIndustriale.Data\ProgettoIndustriale.Data.csproj" />
+    <ProjectReference Include="..\ProgettoIndustriale.Type\ProgettoIndustriale.Type.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TestDB\" />
+  </ItemGroup>
+
 </Project>
