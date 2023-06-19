@@ -1,4 +1,4 @@
-﻿using ProgettoIndustriale.Type.Domain;
+﻿using dom = ProgettoIndustriale.Type.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +10,8 @@ namespace ProgettoIndustriale.TestDB.TestDB
     public class DataLoad
     {
         public DataLoad() { }
-        public Load Load() {
-            return new Load()
+        public static dom.Load Data() {
+            return new dom.Load()
             {
                 Id = 1,
                 TotalLoadMW = 10,
