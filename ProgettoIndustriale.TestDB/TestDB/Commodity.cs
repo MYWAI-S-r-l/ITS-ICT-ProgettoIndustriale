@@ -7,16 +7,17 @@ using dom=ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.TestDB.TestDB
 {
-    internal class Region
+    internal class Commodity
     {
-        //dom.Region DataRegions = new dom.Region() { Id = 1, Name = "Lazio", IdMacroZone = 2 };
-        public dom.Region data() 
+        public dom.Commodity data() 
         { 
-            return new dom.Region() 
-            {
+            return new dom.Commodity() 
+            { 
                 Id = 1, 
-                Name = "Lazio", 
-                IdMacroZone = 1
+                Name = "Brent",
+                ValueUsd=76.48, 
+                Unit="$/Barile",
+                IdDates=1
             }; 
         }
         
