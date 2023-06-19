@@ -9,7 +9,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
 {
     internal class Province
     {
-        public dom.Province data() 
+        public static dom.Province data() 
         { 
             return new dom.Province() 
             { 

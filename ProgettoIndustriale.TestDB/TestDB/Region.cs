@@ -10,7 +10,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
     internal class Region
     {
         //dom.Region DataRegions = new dom.Region() { Id = 1, Name = "Lazio", IdMacroZone = 2 };
-        public dom.Region data() 
+        public static dom.Region data() 
         { 
             return new dom.Region() 
             {

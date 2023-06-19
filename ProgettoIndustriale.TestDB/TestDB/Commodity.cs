@@ -9,7 +9,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
 {
     internal class Commodity
     {
-        public dom.Commodity data() 
+        public static dom.Commodity data() 
         { 
             return new dom.Commodity() 
             { 

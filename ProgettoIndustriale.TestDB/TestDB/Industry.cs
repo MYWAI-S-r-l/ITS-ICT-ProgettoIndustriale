@@ -9,7 +9,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
 {
     internal class Industry
     {
-        public dom.Industry data() 
+        public static dom.Industry data() 
         { 
             return new dom.Industry() 
             { 
