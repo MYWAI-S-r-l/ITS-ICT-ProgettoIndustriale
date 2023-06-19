@@ -36,6 +36,12 @@ public partial class ProgettoIndustrialeContext : DbContext
 
     public virtual DbSet<Dates> Dates { get; set; }
 
+    //-----
+
+    public virtual DbSet<Commodity> Commodity { get; set; }
+
+    public virtual DbSet<Generation> Generation { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Sono stati creati dei file di configurazione nella cartella "ModelBuilder" per avere più ordine.
@@ -46,6 +52,10 @@ public partial class ProgettoIndustrialeContext : DbContext
         modelBuilder.ApplyConfiguration(new ConfigProvince());
         modelBuilder.ApplyConfiguration(new ConfigRegion());
         modelBuilder.ApplyConfiguration(new ConfigIndustry());
+        modelBuilder.ApplyConfiguration(new ConfigCommodity());
+        modelBuilder.ApplyConfiguration(new ConfigGeneration());
+
+
 
    
     public virtual DbSet<Provincia> Province{ get; set; }
