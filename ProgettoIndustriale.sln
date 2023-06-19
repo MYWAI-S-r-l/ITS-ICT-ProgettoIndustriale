@@ -1,16 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgettoIndustriale.Business", "ProgettoIndustriale.Business\ProgettoIndustriale.Business.csproj", "{813F4644-17C0-4A8D-AB43-6044AA7F07EC}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.Business", "ProgettoIndustriale.Business\ProgettoIndustriale.Business.csproj", "{813F4644-17C0-4A8D-AB43-6044AA7F07EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgettoIndustriale.Data", "ProgettoIndustriale.Data\ProgettoIndustriale.Data.csproj", "{9F4E5A44-6D3D-436B-A676-2BE169E5CBD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.Data", "ProgettoIndustriale.Data\ProgettoIndustriale.Data.csproj", "{9F4E5A44-6D3D-436B-A676-2BE169E5CBD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgettoIndustriale.Type", "ProgettoIndustriale.Type\ProgettoIndustriale.Type.csproj", "{11002927-06A3-41AC-9009-2FA20FA4C023}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.Type", "ProgettoIndustriale.Type\ProgettoIndustriale.Type.csproj", "{11002927-06A3-41AC-9009-2FA20FA4C023}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgettoIndustriale.Business.Imp", "ProgettoIndustriale.Business.Imp\ProgettoIndustriale.Business.Imp.csproj", "{74FA2E6D-4FA2-4E05-918B-5727B3D088B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.Business.Imp", "ProgettoIndustriale.Business.Imp\ProgettoIndustriale.Business.Imp.csproj", "{74FA2E6D-4FA2-4E05-918B-5727B3D088B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgettoIndustriale.Service.Api", "ProgettoIndustriale.Service.Api\ProgettoIndustriale.Service.Api.csproj", "{E25C02C0-1E48-4B28-A8D1-6125EA9F7BD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.Service.Api", "ProgettoIndustriale.Service.Api\ProgettoIndustriale.Service.Api.csproj", "{E25C02C0-1E48-4B28-A8D1-6125EA9F7BD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgettoIndustriale.Web", "ProgettoIndustriale.Web\ProgettoIndustriale.Web.csproj", "{57E981A6-3D6A-479B-B60A-6DB8D1F9978B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.Web", "ProgettoIndustriale.Web\ProgettoIndustriale.Web.csproj", "{57E981A6-3D6A-479B-B60A-6DB8D1F9978B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgettoIndustriale.TestDB", "ProgettoIndustriale.TestDB\ProgettoIndustriale.TestDB.csproj", "{783AA359-237F-4B47-AD74-369B3824DF4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +47,15 @@ Global
 		{57E981A6-3D6A-479B-B60A-6DB8D1F9978B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57E981A6-3D6A-479B-B60A-6DB8D1F9978B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57E981A6-3D6A-479B-B60A-6DB8D1F9978B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{783AA359-237F-4B47-AD74-369B3824DF4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{783AA359-237F-4B47-AD74-369B3824DF4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{783AA359-237F-4B47-AD74-369B3824DF4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{783AA359-237F-4B47-AD74-369B3824DF4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D55B8517-4B5A-4227-8F19-9CBB77E75E31}
 	EndGlobalSection
 EndGlobal
