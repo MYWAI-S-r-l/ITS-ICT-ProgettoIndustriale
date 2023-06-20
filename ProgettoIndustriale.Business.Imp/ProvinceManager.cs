@@ -3,7 +3,7 @@ using Dto = ProgettoIndustriale.Type.Dto;
 using Domain = ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.Business.Imp;
-
+/*
 public class ProvinceManager : IProvinceManager
 {
     private readonly ProgettoIndustrialeContext _context;
@@ -106,3 +106,5 @@ public class ProvinceManager : IProvinceManager
         return MyMapper<Domain.Province, Dto.Provincia>.MapList(allProvince);
     }
 }
+
+*/

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using dom=ProgettoIndustriale.Type.Domain;
@@ -25,6 +28,13 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 IdRegion=1
             }; 
         }
+         public static void loadData() 
+        {
+            var db = DatabaseProva.Context();
+            db.Add(data());
+            db.SaveChanges();
+        }
+
         
     }
 }

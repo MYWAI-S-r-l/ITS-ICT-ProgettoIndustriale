@@ -4,7 +4,7 @@ using ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Business;
-
+/*
 public interface IProvinceManager
 {
     Dto.Provincia? GetProvincia(string codice);
@@ -20,3 +20,5 @@ public interface IProvinceManager
     Dto.Provincia? EditProvincia(Dto.Provincia? provinciaToEdit);
     List<Dto.Provincia> GetAllProvince();
 }
+
+*/
