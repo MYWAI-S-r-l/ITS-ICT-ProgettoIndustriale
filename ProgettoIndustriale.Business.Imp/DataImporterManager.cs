@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using ProgettoIndustriale.Type.Dto;
 
-namespace ProgettoIndustriale.Business
+namespace ProgettoIndustriale.Business.Imp
 {
     public class DataImportManager : IDataImportManager
     {
