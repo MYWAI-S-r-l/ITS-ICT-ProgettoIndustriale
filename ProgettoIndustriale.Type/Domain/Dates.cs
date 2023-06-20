@@ -14,7 +14,7 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("ID_date")]
         public int Id { get; set; }
         [Column("date_time")]
-        public DateTime dateTime { get; set; }
+        public DateTime DateTime { get; set; }
         [Column("year")]
         public int Year { get; set; }
         [Column("month")]
@@ -22,7 +22,7 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("day")]
         public int Day { get; set; }
         [Column("time")]
-        public TimeOnly time { get; set; }
+        public TimeOnly Time { get; set; }
 
         public virtual ICollection<Weather> Weathers { get; set; }
 
