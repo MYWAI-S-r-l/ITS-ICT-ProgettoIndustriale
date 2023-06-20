@@ -1,24 +1,24 @@
 {
     [
         {
-            "percorso": "",
+            "percorso": "ProgettoIndustriale.Data/Dataset",
             "classe": "Domain.Macrozone",
-            "nometabella": "macrozone"
+            "nometabella": "MacroZone"
         },
         {
-            "percorso": "",
-            "classe": "Domain.Region",
-            "nometabella": "region"
+            "percorso": "ProgettoIndustriale.Data/Dataset",
+            "classe": "Domain.Regions",
+            "nometabella": "Regions"
         },
         {
-            "percorso": "",
+            "percorso": "ProgettoIndustriale.Data/Dataset",
             "classe": "Domain.Province",
-            "nometabella": "province"
+            "nometabella": "Provinces"
         },
         {
-            "percorso": "",
+            "percorso": "ProgettoIndustriale.Data/Dataset",
             "classe": "Domain.Industry",
-            "nometabella": "industry"
+            "nometabella": "Industry"
         }
     ]
 }
