@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using ProgettoIndustriale.Type.Dto;
+using ProgettoIndustriale.Type;
 
 namespace ProgettoIndustriale.Business.Imp
 {
@@ -10,6 +11,11 @@ namespace ProgettoIndustriale.Business.Imp
     {
         private static readonly string jsonFilePath = "ProgettoIndustriale.Service.Api/Properties/JsonAnagrafe";
 
+        private readonly ProgettoIndustrialeContext _context;
+        public DataImportManager(ProgettoIndustrialeContext context)
+        {
+            _context = context;
+        }
         public void ImportData(string tableName)
         {
             List<JsonAnagrafe> tableInfos = LoadTableInfos();
