@@ -8,7 +8,7 @@ namespace ProgettoIndustriale.Business
 {
     public class DataImportManager : IDataImportManager
     {
-        private static readonly string jsonFilePath = "path/to/json/file.json";
+        private static readonly string jsonFilePath = "ProgettoIndustriale.Service.Api/Properties/JsonAnagrafe";
 
         public void ImportData(string tableName)
         {
