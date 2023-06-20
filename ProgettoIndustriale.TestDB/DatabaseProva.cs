@@ -11,11 +11,11 @@ namespace ProgettoIndustriale.TestDB
     public class DatabaseProva
     {
         
-
+        public DatabaseProva() { }
         public static ProgettoIndustrialeContext Context()
         {
             var contextOptions = new DbContextOptionsBuilder<ProgettoIndustrialeContext>()
-            .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Test")
+            .UseSqlServer(@"""Server=localhost;Port=3306;Database=progettoindustrialeTest;Uid=test;")
             .Options;
             return new ProgettoIndustrialeContext(contextOptions);
         }
