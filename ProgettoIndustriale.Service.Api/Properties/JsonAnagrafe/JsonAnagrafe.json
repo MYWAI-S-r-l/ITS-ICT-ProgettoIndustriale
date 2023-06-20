@@ -8,12 +8,12 @@
         {
             "percorso": "ProgettoIndustriale.Data/Dataset",
             "classe": "Domain.Regions",
-            "nometabella": "Regions"
+            "nometabella": "Region"
         },
         {
             "percorso": "ProgettoIndustriale.Data/Dataset",
             "classe": "Domain.Province",
-            "nometabella": "Provinces"
+            "nometabella": "Province"
         },
         {
             "percorso": "ProgettoIndustriale.Data/Dataset",
