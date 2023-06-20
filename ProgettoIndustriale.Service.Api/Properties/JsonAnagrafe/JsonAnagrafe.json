@@ -2,18 +2,18 @@
     [
         {
             "percorso": "ProgettoIndustriale.Data/Dataset",
-            "classe": "Domain.Macrozone",
+            "classe": "Domain.MacroZone",
             "nometabella": "MacroZone"
         },
         {
             "percorso": "ProgettoIndustriale.Data/Dataset",
-            "classe": "Domain.Regions",
-            "nometabella": "Region"
+            "classe": "Domain.Region",
+            "nometabella": "Regions"
         },
         {
             "percorso": "ProgettoIndustriale.Data/Dataset",
             "classe": "Domain.Province",
-            "nometabella": "Province"
+            "nometabella": "Provinces"
         },
         {
             "percorso": "ProgettoIndustriale.Data/Dataset",
