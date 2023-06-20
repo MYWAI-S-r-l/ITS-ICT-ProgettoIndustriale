@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgettoIndustriale.Type.Domain;
-using ProgettoIndustriale.Type.Dto;
+
 
 namespace ProgettoIndustriale.Data.ModelBuilder
 {
-    public class ConfigDates(EntityTypeBuilder<Dates> entity)
+    public class ConfigDates: IEntityTypeConfiguration<Dates>
     {
 
         public void Configure (EntityTypeBuilder<Dates> entity)
@@ -26,9 +27,7 @@ namespace ProgettoIndustriale.Data.ModelBuilder
 
             entity.Property(d => d.Day).IsRequired();
 
-            entity.Property(d => d.Time).IsRequired();
-
-            entity.Property(d => d.TimeOnly).IsRequired();
+            entity.Property(d => d.Time).IsRequired();       
 
             entity.HasOne(d => d.Weathers).WithMany().HasForeignKey(d => d.Weathers);
 

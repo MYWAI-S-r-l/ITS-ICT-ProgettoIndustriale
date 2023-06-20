@@ -20,7 +20,7 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("COD_Date")]
         public int IdDate { get; set; }
         public int IdMacroZone { get; set; }
-        public virtual Date Date { get; set; }
+        public virtual Dates Date { get; set; }
         public virtual MacroZone MacroZone { get; set; }
 
     }

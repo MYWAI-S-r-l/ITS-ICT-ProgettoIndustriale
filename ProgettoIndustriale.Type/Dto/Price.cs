@@ -14,7 +14,7 @@ namespace ProgettoIndustriale.Type.Dto
         public  float incentiveComponentEur { get; set; }
         public float unbalancePriceEur { get; set; }
         public MacroZone tblMacroZone { get; set; }
-        public Date tblDate { get; set; }
+        public Dates tblDate { get; set; }
 
     }
 }

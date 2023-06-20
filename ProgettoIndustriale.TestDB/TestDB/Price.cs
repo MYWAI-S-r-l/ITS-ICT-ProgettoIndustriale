@@ -22,6 +22,13 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 IdMacroZone = 1
             };
         }
+
+        public static void LoadDbPrices()
+        {
+            var db = DatabaseProva.Context();
+            db.Add(Prices());
+            db.SaveChanges();
+        }
     }
 
 }

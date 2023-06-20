@@ -22,7 +22,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 Year = 2023,
                 Month = 6,
                 Day = 19,
-                Time = new TimeOnly(16, 46, 10) 
+                Time = new DateTime(2023, 2, 10) 
             };
         }
     }

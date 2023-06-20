@@ -8,8 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProgettoIndustriale.Business.Imp\ProgettoIndustriale.Business.Imp.csproj" />
-    <ProjectReference Include="..\ProgettoIndustriale.Business\ProgettoIndustriale.Business.csproj" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+
     <ProjectReference Include="..\ProgettoIndustriale.Data\ProgettoIndustriale.Data.csproj" />
     <ProjectReference Include="..\ProgettoIndustriale.Type\ProgettoIndustriale.Type.csproj" />
   </ItemGroup>

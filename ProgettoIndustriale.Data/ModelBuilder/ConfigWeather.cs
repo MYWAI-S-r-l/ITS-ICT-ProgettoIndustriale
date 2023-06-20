@@ -14,7 +14,7 @@ namespace ProgettoIndustriale.Data.ModelBuilder
            
             entity.HasKey(w => w.Id);
             
-            entity.HasOne(w => w.Province).WithMany().HasForeingKey<Province>(p => p.IdProvince);
+            entity.HasOne(w => w.Province).WithMany().HasForeignKey(p => p.IdProvince);
             
             entity.HasOne(w => w.Dates).WithMany().HasForeignKey(p => p.IdDates);
             

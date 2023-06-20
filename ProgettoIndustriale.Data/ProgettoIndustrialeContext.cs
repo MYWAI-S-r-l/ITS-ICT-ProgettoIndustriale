@@ -6,7 +6,7 @@ using ProgettoIndustriale.Type.Domain;
 using ProgettoIndustriale.Data.ModelBuilder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using ProgettoIndustriale.Data.ModelBuilder;
+
 
 namespace ProgettoIndustriale.Type;
 public partial class ProgettoIndustrialeContext : DbContext
