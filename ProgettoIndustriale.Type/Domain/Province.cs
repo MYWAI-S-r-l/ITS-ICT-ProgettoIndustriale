@@ -36,12 +36,11 @@ namespace ProgettoIndustriale.Type.Domain
         public int Residents { get; set; }
 
         [Column("population_density")]
-        public float PopulationDensity { get; set; }
+        public decimal PopulationDensity { get; set; }
 
         [Column("number_cities")]
         public int NCities { get; set; }
 
-        [Column("COD_region")]
         public int IdRegion { get; set; }
 
         public virtual Region Region { get; set; }

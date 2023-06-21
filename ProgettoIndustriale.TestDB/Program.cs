@@ -16,7 +16,7 @@ Weather.loadDbWeather();
 //DataMacrozone.loadDbMacrozone();
 //Region.loadDbRegion();
 //Province.LoadDbProvince();
-//Industry.loadDbIndustry();
+Industry.loadDbIndustry();
 
 /*
 ProgettoIndustrialeContext context;

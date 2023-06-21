@@ -18,7 +18,9 @@ namespace ProgettoIndustriale.Data.ConfigClasses
             entity.Property(i => i.Id).IsRequired();
             entity.HasKey(i => i.Id);
 
-            entity.HasOne(i => i.Province).WithMany().HasForeignKey(p => p.IdProvince);//collection in regione
+            entity.HasOne(i => i.Province).WithMany(a => a.Industries).HasForeignKey(p => p.IdProvince);//collection in regione
+
+            entity.Property(p => p.IdProvince).HasColumnName("COD_province");
 
             entity.Property(i => i.Name)
             .IsRequired()

@@ -18,11 +18,12 @@ namespace ProgettoIndustriale.Data.ConfigClasses
                 entity.Property(p => p.Id).IsRequired();
                 entity.HasKey(p => p.Id);
 
-                entity.HasOne(p => p.Region).WithMany().HasForeignKey(p => p.IdRegion);//collection in regione
+                entity.HasOne(p => p.Region).WithMany(a => a.Provinces).HasForeignKey(p => p.IdRegion).HasConstraintName("fk_Province_Region1");//collection in regione
  
 
                 entity.HasMany(p => p.Industries).WithOne().HasForeignKey(p => p.IdProvince);
 
+                entity.Property(p => p.IdRegion).HasColumnName("COD_region");
 
 
                 entity.Property(p => p.Name)
