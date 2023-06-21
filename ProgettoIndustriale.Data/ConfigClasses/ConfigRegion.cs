@@ -24,11 +24,13 @@ namespace ProgettoIndustriale.Data.ConfigClasses
                 .IsUnicode(false)
                 .HasColumnName("name");
 
-                entity.Property(p => p.IdMacroZone).HasColumnName("COD_macrozone");
 
-                entity.HasOne(p => p.MacroZone).WithMany().HasForeignKey(m => m.IdMacroZone).HasConstraintName("fk_Region_Macrozone");//collection in regione
+            entity.HasOne(p => p.MacroZone).WithMany(a => a.Regions).HasForeignKey(m => m.IdMacroZone);//collection in regione
                 
                 entity.HasMany(p=>p.Provinces).WithOne().HasForeignKey(p => p.IdRegion);
+
+                entity.Property(p => p.IdMacroZone).HasColumnName("COD_macrozone");
+                
 
         }
 

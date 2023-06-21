@@ -4,7 +4,7 @@ using ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.Data.ConfigClasses
 {
-    public class ConfigureMacroZone : IEntityTypeConfiguration<MacroZone>
+    public class ConfigMacroZone : IEntityTypeConfiguration<MacroZone>
     {
         public void Configure(EntityTypeBuilder<MacroZone> entity)
         {

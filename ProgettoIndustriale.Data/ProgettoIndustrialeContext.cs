@@ -49,14 +49,16 @@ public partial class ProgettoIndustrialeContext : DbContext
     {
         // Sono stati creati dei file di configurazione nella cartella "ModelBuilder" per avere più ordine.
 
-        modelBuilder.ApplyConfiguration(new ConfigureLoad());
-        modelBuilder.ApplyConfiguration(new ConfigurePrice());
-        modelBuilder.ApplyConfiguration(new ConfigureMacroZone());
+        modelBuilder.ApplyConfiguration(new ConfigLoad());
+        modelBuilder.ApplyConfiguration(new ConfigPrice());
+        modelBuilder.ApplyConfiguration(new ConfigMacroZone());
         modelBuilder.ApplyConfiguration(new ConfigProvince());
         modelBuilder.ApplyConfiguration(new ConfigRegion());
         modelBuilder.ApplyConfiguration(new ConfigIndustry());
         modelBuilder.ApplyConfiguration(new ConfigCommodity());
         modelBuilder.ApplyConfiguration(new ConfigGeneration());
+        modelBuilder.ApplyConfiguration(new ConfigDate());
+        modelBuilder.ApplyConfiguration(new ConfigWeather());
 
 
 

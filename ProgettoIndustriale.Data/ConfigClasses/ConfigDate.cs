@@ -29,15 +29,15 @@ namespace ProgettoIndustriale.Data.ConfigClasses
 
             entity.Property(d => d.Time).IsRequired();       
 
-            entity.HasOne(d => d.Weathers).WithMany().HasForeignKey(d => d.Weathers);
+            entity.HasMany(d => d.Weathers).WithOne().HasForeignKey(d => d.IdDates);
 
-            entity.HasOne(d => d.Commodities).WithMany().HasForeignKey(d => d.Commodities);
+            entity.HasMany(d => d.Commodities).WithOne().HasForeignKey(d => d.IdDates);
 
-            entity.HasOne(d => d.Generations).WithMany().HasForeignKey(d => d.Generations);
+            entity.HasMany(d => d.Generations).WithOne().HasForeignKey(d => d.IdDates);
 
-            entity.HasOne(d => d.Loads).WithMany().HasForeignKey(d => d.Loads);
+            entity.HasMany(d => d.Loads).WithOne().HasForeignKey(d => d.IdDate);
 
-            entity.HasOne(d => d.Prices).WithMany().HasForeignKey(d => d.Prices);
+            entity.HasMany(d => d.Prices).WithOne().HasForeignKey(d => d.IdDate);
 
         }
 

@@ -4,7 +4,7 @@ using ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.Data.ConfigClasses
 {
-    public class ConfigurePrice : IEntityTypeConfiguration<Price>
+    public class ConfigPrice : IEntityTypeConfiguration<Price>
     {
         public void Configure(EntityTypeBuilder<Price> entity)
         {

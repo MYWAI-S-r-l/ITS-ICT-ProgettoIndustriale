@@ -4,7 +4,7 @@ using ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.Data.ConfigClasses
 {
-    public class ConfigureLoad : IEntityTypeConfiguration<Load>
+    public class ConfigLoad : IEntityTypeConfiguration<Load>
     {
         public void Configure(EntityTypeBuilder<Load> entity)
         {
