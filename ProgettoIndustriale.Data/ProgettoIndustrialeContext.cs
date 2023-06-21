@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore.Metadata;
 namespace ProgettoIndustriale.Type;
 public partial class ProgettoIndustrialeContext : DbContext
 {
+    private readonly StreamWriter _logStream = new StreamWriter("mylog.txt", append: true); //TODO: prendere path del log da config
+
     public ProgettoIndustrialeContext()
     {
     }
@@ -105,5 +107,21 @@ public partial class ProgettoIndustrialeContext : DbContext
         OnModelCreatingPartial(modelBuilder);
     }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.LogTo(_logStream.WriteLine).EnableSensitiveDataLogging().EnableDetailedErrors();
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        _logStream.Dispose();
+    }
+
+    public override async ValueTask DisposeAsync()
+    {
+        await base.DisposeAsync();
+        await _logStream.DisposeAsync();
+    }
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
