@@ -29,11 +29,11 @@ namespace ProgettoIndustriale.Data.ConfigClasses
 
             entity.Property(d => d.Time).IsRequired();       
 
-            entity.HasMany(d => d.Weathers).WithOne().HasForeignKey(d => d.IdDate);
+            entity.HasMany(d => d.Weathers).WithOne(a => a.Date).HasForeignKey(d => d.IdDate);
 
-            entity.HasMany(d => d.Commodities).WithOne().HasForeignKey(d => d.IdDate);
+            entity.HasMany(d => d.Commodities).WithOne(a => a.Date).HasForeignKey(d => d.IdDate);
 
-            entity.HasMany(d => d.Generations).WithOne().HasForeignKey(d => d.IdDate);
+            entity.HasMany(d => d.Generations).WithOne(a => a.Date).HasForeignKey(d => d.IdDate);
 
             entity.HasMany(d => d.Loads).WithOne().HasForeignKey(d => d.IdDate);
 

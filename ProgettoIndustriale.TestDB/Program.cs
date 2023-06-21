@@ -11,6 +11,9 @@ using ProgettoIndustriale.TestDB.TestDB;
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
+
+//Generation.loadDbGeneration();
+//Commodity.loadDbCommodity();
 Weather.loadDbWeather();
 //Date.loadDbDate();
 //DataMacrozone.loadDbMacrozone();

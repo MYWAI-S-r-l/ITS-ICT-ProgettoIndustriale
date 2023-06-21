@@ -17,9 +17,16 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 Name = "Brent",
                 ValueUsd=76.48, 
                 Unit="$/Barile",
-                IdDate=1
+                IdDate=3
             }; 
         }
-        
+
+        public static void loadDbCommodity()
+        {
+            var db = DatabaseProva.Context();
+            db.Add(data());
+            db.SaveChanges();
+        }
+
     }
 }

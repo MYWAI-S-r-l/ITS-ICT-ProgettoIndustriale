@@ -14,15 +14,19 @@ namespace ProgettoIndustriale.Data.ConfigClasses
            
             entity.HasKey(w => w.Id);
             
-            entity.HasOne(w => w.Province).WithMany().HasForeignKey(p => p.IdProvince);
+            entity.HasOne(w => w.Province).WithMany(w => w.Weathers).HasForeignKey(p => p.IdProvince);
             
-            entity.HasOne(w => w.Date).WithMany().HasForeignKey(p => p.IdDate);
-            
+            entity.HasOne(w => w.Date).WithMany(w => w.Weathers).HasForeignKey(p => p.IdDate);
+
+            entity.Property(w => w.IdProvince).HasColumnName("COD_province");
+
+            entity.Property(w => w.IdDate).HasColumnName("COD_date");
+
             entity.Property(w => w.Temperature).IsRequired();
             
             entity.Property(w => w.Dewpoint).IsRequired();
-            
-            entity.Property(w => w.RelativeHumidity).IsRequired();
+
+            entity.Property(w => w.RelativeHumidity).IsRequired().HasColumnName("relativehumidity_2m_percent");
             
             entity.Property(w => w.ApparentTemperature).IsRequired();
             
@@ -49,6 +53,8 @@ namespace ProgettoIndustriale.Data.ConfigClasses
             entity.Property(w => w.IdProvince).IsRequired();
             
             entity.Property(w => w.IdDate).IsRequired();
+
+
 
 
 

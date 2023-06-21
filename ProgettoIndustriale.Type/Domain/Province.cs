@@ -45,5 +45,7 @@ namespace ProgettoIndustriale.Type.Domain
 
         public virtual Region Region { get; set; }
         public virtual ICollection<Industry> Industries { get; set; }
+
+        public virtual ICollection<Weather> Weathers { get; set; }
     }
 }

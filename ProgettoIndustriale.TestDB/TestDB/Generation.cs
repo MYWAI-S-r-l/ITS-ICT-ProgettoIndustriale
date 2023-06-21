@@ -10,15 +10,24 @@ namespace ProgettoIndustriale.TestDB.TestDB
     public  class Generation
     {
         
-        public dom.Generation data() 
-        { 
+        public Generation () { }
+        public static dom.Generation data() { 
             return new dom.Generation() 
+
             { 
                 Id = 1, 
                 GenerationGhw = 274.47, 
                 Type="Solar",
-                IdDate=1}; 
+                IdDate=1
+            }; 
         }
-        
+
+        public static void loadDbGeneration()
+        {
+            var db = DatabaseProva.Context();
+            db.Add(data());
+            db.SaveChanges();
+        }
+
     }
 }
