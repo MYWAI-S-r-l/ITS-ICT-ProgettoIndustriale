@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ProgettoIndustriale.Type.Domain
 {
-    public class Dates
+    public class Date
     {
-        public Dates() { }
+        public Date() { }
         [Column("ID_date")]
         public int Id { get; set; }
         [Column("date_time")]

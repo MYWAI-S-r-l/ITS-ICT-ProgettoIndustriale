@@ -12,7 +12,7 @@ namespace ProgettoIndustriale.Type.Dto
         public int idLoad { get; set; }
         public int totalLoadMW { get; set; }
         public float forecastTotalLoadMw { get; set; }
-        public Dates tblDate { get; set; }
+        public Date tblDate { get; set; }
         public  MacroZone tblMacroZone { get; set; }
 
     }

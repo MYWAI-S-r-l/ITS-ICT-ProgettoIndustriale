@@ -19,6 +19,13 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 CountActive=50 
             }; 
         }
-        
+
+        public static void loadDbIndustry()
+        {
+            var db = DatabaseProva.Context();
+            db.Add(data());
+            db.SaveChanges();
+        }
+
     }
 }

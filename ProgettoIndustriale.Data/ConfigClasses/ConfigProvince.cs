@@ -8,7 +8,7 @@ using ProgettoIndustriale.Type.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
 
-namespace ProgettoIndustriale.Data.ModelBuilder
+namespace ProgettoIndustriale.Data.ConfigClasses
 {
     public class ConfigProvince:IEntityTypeConfiguration<Province>
     {

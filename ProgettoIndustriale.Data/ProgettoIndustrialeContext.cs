@@ -3,12 +3,12 @@
 using System;
 using System.Collections.Generic;
 using ProgettoIndustriale.Type.Domain;
-using ProgettoIndustriale.Data.ModelBuilder;
+using ProgettoIndustriale.Data.ConfigClasses;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 
-namespace ProgettoIndustriale.Type;
+namespace ProgettoIndustriale.Data;
 public partial class ProgettoIndustrialeContext : DbContext
 {
     private readonly StreamWriter _logStream = new StreamWriter("mylog.txt", append: true); //TODO: prendere path del log da config
@@ -20,6 +20,7 @@ public partial class ProgettoIndustrialeContext : DbContext
     public ProgettoIndustrialeContext(DbContextOptions<ProgettoIndustrialeContext> options)
         : base(options)
     {
+        
     }
 
   
@@ -36,7 +37,7 @@ public partial class ProgettoIndustrialeContext : DbContext
 
     public virtual DbSet<Weather> Weather { get; set; }
 
-    public virtual DbSet<Dates> Dates { get; set; }
+    public virtual DbSet<Date> Date { get; set; }
 
     //-----
 

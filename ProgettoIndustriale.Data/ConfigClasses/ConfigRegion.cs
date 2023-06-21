@@ -8,20 +8,23 @@ using ProgettoIndustriale.Type.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
 
-namespace ProgettoIndustriale.Data.ModelBuilder
+namespace ProgettoIndustriale.Data.ConfigClasses
 {
     public class ConfigRegion : IEntityTypeConfiguration<Region>
     {
         public void Configure(EntityTypeBuilder<Region> entity)
         {
             
-                entity.Property(p => p.Id).IsRequired();
+                entity.Property(p => p.Id).IsRequired().HasColumnName("ID_region");
                 entity.HasKey(p => p.Id);
 
                 entity.Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(45)
-                .IsUnicode(false);
+                .IsUnicode(false)
+                .HasColumnName("name");
+
+                entity.Property(p => p.IdMacroZone).HasColumnName("COD_macrozone");
 
                 entity.HasOne(p => p.MacroZone).WithMany().HasForeignKey(m => m.IdMacroZone);//collection in regione
                 

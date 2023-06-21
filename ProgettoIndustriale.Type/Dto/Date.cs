@@ -1,9 +1,9 @@
 ﻿namespace ProgettoIndustriale.Type.Dto
 {
-    public class Dates
+    public class Date
     {
 
-        public Dates() { }
+        public Date() { }
 
         public int Id { get; set; }
 

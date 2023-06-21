@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgettoIndustriale.Type.Domain;
 
 
-namespace ProgettoIndustriale.Data.ModelBuilder
+namespace ProgettoIndustriale.Data.ConfigClasses
 {
-    public class ConfigDates: IEntityTypeConfiguration<Dates>
+    public class ConfigDate: IEntityTypeConfiguration<Date>
     {
 
-        public void Configure (EntityTypeBuilder<Dates> entity)
+        public void Configure (EntityTypeBuilder<Date> entity)
 
         {
 

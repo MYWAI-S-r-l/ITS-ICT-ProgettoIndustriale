@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ProgettoIndustriale.TestDB.TestDB
 {
-    public class DataDates
+    public class DataDate
     {
 
-        public DataDates() { }
+        public DataDate() { }
 
-        public static Dates Data() { 
-            return new Dates()
+        public static Date Data() { 
+            return new Date()
 
             {
                 Id = 1,

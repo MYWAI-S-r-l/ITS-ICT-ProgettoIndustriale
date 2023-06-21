@@ -28,7 +28,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 IdRegion=1
             }; 
         }
-         public static void loadData() 
+         public static void LoadDbProvince() 
         {
             var db = DatabaseProva.Context();
             db.Add(data());

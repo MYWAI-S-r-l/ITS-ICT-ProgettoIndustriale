@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgettoIndustriale.Type.Domain;
 
-namespace ProgettoIndustriale.Data.ModelBuilder
+namespace ProgettoIndustriale.Data.ConfigClasses
 {
     public class ConfigCommodity : IEntityTypeConfiguration<Commodity>
     {

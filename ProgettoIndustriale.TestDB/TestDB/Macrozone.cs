@@ -19,6 +19,13 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 BiddingZone = "Nord-Est",
             
             }; 
-        } 
+        }
+
+        public static void loadDbMacrozone()
+        {
+            var db = DatabaseProva.Context();
+            db.Add(Data());
+            db.SaveChanges();
+        }
     }
 }

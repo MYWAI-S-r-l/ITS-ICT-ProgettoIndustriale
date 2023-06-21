@@ -22,7 +22,7 @@ namespace ProgettoIndustriale.Type.Domain
 
         public int IdDates { get; set; }
 
-        public virtual Dates Dates { get; set; }
+        public virtual Date Dates { get; set; }
 
     }
 }
