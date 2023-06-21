@@ -65,11 +65,11 @@ namespace ProgettoIndustriale.Type.Domain
         public int IdProvince { get; set; }
 
         [Column("COD_date")]
-        public int IdDates { get; set; }
+        public int IdDate { get; set; }
 
         public virtual Province Province { get; set; }   
 
-        public virtual Date Dates { get; set; }
+        public virtual Date Date { get; set; }
 
         
 

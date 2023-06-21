@@ -20,9 +20,9 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("unit")]
         public string Unit { get; set; }
 
-        public int IdDates { get; set; }
+        public int IdDate { get; set; }
 
-        public virtual Date Dates { get; set; }
+        public virtual Date Date { get; set; }
 
     }
 }

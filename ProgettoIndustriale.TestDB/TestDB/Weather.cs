@@ -32,7 +32,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 SnowDepth = 0,
                 IsDay = 1,
                 IdProvince = 1,
-                IdDates = 1,
+                IdDate = 1,
 
             };
         }

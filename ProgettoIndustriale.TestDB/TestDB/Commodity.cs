@@ -17,7 +17,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 Name = "Brent",
                 ValueUsd=76.48, 
                 Unit="$/Barile",
-                IdDates=1
+                IdDate=1
             }; 
         }
         

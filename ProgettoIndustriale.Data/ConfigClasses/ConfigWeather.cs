@@ -16,7 +16,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
             
             entity.HasOne(w => w.Province).WithMany().HasForeignKey(p => p.IdProvince);
             
-            entity.HasOne(w => w.Dates).WithMany().HasForeignKey(p => p.IdDates);
+            entity.HasOne(w => w.Date).WithMany().HasForeignKey(p => p.IdDate);
             
             entity.Property(w => w.Temperature).IsRequired();
             
@@ -48,7 +48,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
             
             entity.Property(w => w.IdProvince).IsRequired();
             
-            entity.Property(w => w.IdDates).IsRequired();
+            entity.Property(w => w.IdDate).IsRequired();
 
 
 

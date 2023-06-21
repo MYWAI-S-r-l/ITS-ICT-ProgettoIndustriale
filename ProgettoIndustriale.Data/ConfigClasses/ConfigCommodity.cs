@@ -14,7 +14,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
            
             entity.HasKey(c => c.Id);
                         
-            entity.HasOne(c => c.Dates).WithMany().HasForeignKey(c => c.IdDates);
+            entity.HasOne(c => c.Date).WithMany().HasForeignKey(c => c.IdDate);
             
             entity.Property(c => c.Name).IsRequired();
             
@@ -22,7 +22,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
             
             entity.Property(c => c.Unit).IsRequired();
             
-            entity.Property(c => c.IdDates).IsRequired();
+            entity.Property(c => c.IdDate).IsRequired();
             
           
 

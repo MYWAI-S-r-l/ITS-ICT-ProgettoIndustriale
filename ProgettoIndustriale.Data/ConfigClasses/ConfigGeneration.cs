@@ -14,13 +14,13 @@ namespace ProgettoIndustriale.Data.ConfigClasses
            
             entity.HasKey(g => g.Id);
             
-            entity.HasOne(w => w.Dates).WithMany().HasForeignKey(g => g.IdDates);
+            entity.HasOne(w => w.Date).WithMany().HasForeignKey(g => g.IdDate);
             
             entity.Property(g => g.GenerationGhw).IsRequired();
             
             entity.Property(g => g.Type).IsRequired();
             
-            entity.Property(g => g.IdDates).IsRequired();
+            entity.Property(g => g.IdDate).IsRequired();
 
 
 

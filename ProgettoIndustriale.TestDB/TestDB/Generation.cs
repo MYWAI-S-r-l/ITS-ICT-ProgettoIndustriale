@@ -17,7 +17,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 Id = 1, 
                 GenerationGhw = 274.47, 
                 Type="Solar",
-                IdDates=1}; 
+                IdDate=1}; 
         }
         
     }

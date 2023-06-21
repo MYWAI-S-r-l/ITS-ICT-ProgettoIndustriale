@@ -18,9 +18,9 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("type")]
         public string Type { get; set; }
 
-        public int IdDates { get; set; }
+        public int IdDate { get; set; }
 
-        public virtual Date Dates { get; set; }
+        public virtual Date Date { get; set; }
 
     }
 }

@@ -10,8 +10,10 @@ using ProgettoIndustriale.TestDB.TestDB;
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
+
+Date.loadDbDate();
 //DataMacrozone.loadDbMacrozone();
-Region.loadDbRegion();
+//Region.loadDbRegion();
 //Province.LoadDbProvince();
 //Industry.loadDbIndustry();
 
