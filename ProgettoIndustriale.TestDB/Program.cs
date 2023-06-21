@@ -7,11 +7,12 @@ using Microsoft.IdentityModel.Tokens;
 using ProgettoIndustriale.TestDB.TestDB;
 
 
+
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
-
-Date.loadDbDate();
+Weather.loadDbWeather();
+//Date.loadDbDate();
 //DataMacrozone.loadDbMacrozone();
 //Region.loadDbRegion();
 //Province.LoadDbProvince();

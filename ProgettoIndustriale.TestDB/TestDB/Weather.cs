@@ -1,4 +1,4 @@
-﻿using ProgettoIndustriale.Type.Domain;
+﻿using dom=ProgettoIndustriale.Type.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ProgettoIndustriale.TestDB.TestDB
 {
-    public class DataWeather
+    public class Weather
     {
 
-        public DataWeather() { }
+        public Weather() { }
 
-        public static Weather Data() { 
-            return new Weather ()
+        public static dom.Weather data() { 
+            return new dom.Weather ()
             {
                 Id = 1,
                 Temperature = 20,
@@ -35,6 +35,13 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 IdDate = 1,
 
             };
+        }
+
+        public static void loadDbWeather()
+        {
+            var db = DatabaseProva.Context();
+            db.Add(data());
+            db.SaveChanges();
         }
     }
 }
