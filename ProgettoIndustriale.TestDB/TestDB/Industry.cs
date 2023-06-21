@@ -7,7 +7,7 @@ using dom=ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.TestDB.TestDB
 {
-    internal class Industry
+    internal class DataIndustry
     {
         public static dom.Industry data() 
         { 

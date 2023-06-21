@@ -7,7 +7,7 @@ using dom=ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.TestDB.TestDB
 {
-    internal class Region
+    internal class DataRegion
     {
         //dom.Region DataRegions = new dom.Region() { Id = 1, Name = "Lazio", IdMacroZone = 2 };
         public static dom.Region data() 

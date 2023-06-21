@@ -23,6 +23,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
 
         public static void loadDbMacrozone()
         {
+            
             var db = DatabaseProva.Context();
             db.Add(Data());
             db.SaveChanges();

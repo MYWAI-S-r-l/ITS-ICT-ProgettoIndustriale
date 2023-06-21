@@ -23,7 +23,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
             };
         }
 
-        public static void LoadDbPrices()
+        public static void loadDbPrices()
         {
             var db = DatabaseProva.Context();
             db.Add(Prices());
