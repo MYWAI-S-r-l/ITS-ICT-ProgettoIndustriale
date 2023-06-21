@@ -22,7 +22,6 @@ namespace ProgettoIndustriale.TestDB.TestDB
         public static void loadDbRegion()
         {
             var db = DatabaseProva.Context();
-            db.Database.Log()=Console.Write;
             db.Add(data());
             db.SaveChanges();
         }

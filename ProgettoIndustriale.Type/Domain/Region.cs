@@ -19,8 +19,6 @@ namespace ProgettoIndustriale.Type.Domain
 
         [Column("name")]
         public string Name { get; set; }
-
-        [Column("COD_macrozone")]
         public int IdMacroZone { get; set; }
 
         public virtual MacroZone MacroZone { get; set; }
