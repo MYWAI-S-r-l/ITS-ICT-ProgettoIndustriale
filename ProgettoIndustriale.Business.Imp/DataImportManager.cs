@@ -9,7 +9,7 @@ namespace ProgettoIndustriale.Business.Imp
 {
     public class DataImportManager : IDataImportManager
     {
-        private static readonly string jsonFilePath = "ProgettoIndustriale.Service.Api/Properties/JsonAnagrafe";
+        private static readonly string jsonFilePath = "C:\Users\user\ITS-ICT-ProgettoIndustriale\ProgettoIndustriale.Service.Api\Properties\JsonAnagrafe\JsonAnagrafe.json";
 
         private readonly ProgettoIndustrialeContext _context;
         public DataImportManager(ProgettoIndustrialeContext context)
