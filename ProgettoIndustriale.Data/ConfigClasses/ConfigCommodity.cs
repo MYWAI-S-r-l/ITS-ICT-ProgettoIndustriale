@@ -14,8 +14,10 @@ namespace ProgettoIndustriale.Data.ConfigClasses
            
             entity.HasKey(c => c.Id);
                         
-            entity.HasOne(c => c.Date).WithMany().HasForeignKey(c => c.IdDate);
-            
+            entity.HasOne(c => c.Date).WithMany(a=> a.Commodities).HasForeignKey(c => c.IdDate);
+
+            entity.Property(p => p.IdDate).HasColumnName("COD_date");
+
             entity.Property(c => c.Name).IsRequired();
             
             entity.Property(c => c.ValueUsd).IsRequired();

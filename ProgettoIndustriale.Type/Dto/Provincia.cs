@@ -1,4 +1,6 @@
-﻿namespace ProgettoIndustriale.Type.Dto;
+﻿using ProgettoIndustriale.Type.Domain;
+
+namespace ProgettoIndustriale.Type.Dto;
 
 public class Province
 {

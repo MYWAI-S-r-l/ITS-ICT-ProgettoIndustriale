@@ -7,7 +7,7 @@ using dom=ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.TestDB.TestDB
 {
-    internal class Commodity
+    internal class DataCommodity
     {
         public static dom.Commodity data() 
         { 
@@ -18,9 +18,9 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 ValueUsd=76.48, 
                 Unit="$/Barile",
                 IdDate=3
+                IdDate=1
             }; 
         }
-
         public static void loadDbCommodity()
         {
             var db = DatabaseProva.Context();

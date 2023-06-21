@@ -19,7 +19,6 @@ namespace ProgettoIndustriale.Data.ConfigClasses
                 entity.HasKey(p => p.Id);
 
                 entity.HasOne(p => p.Region).WithMany(a => a.Provinces).HasForeignKey(p => p.IdRegion).HasConstraintName("fk_Province_Region1");//collection in regione
- 
 
                 entity.HasMany(p => p.Industries).WithOne().HasForeignKey(p => p.IdProvince);
 
