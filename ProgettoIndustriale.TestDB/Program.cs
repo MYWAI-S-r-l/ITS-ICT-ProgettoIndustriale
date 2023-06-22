@@ -15,10 +15,10 @@ bool ciclo = true;
 do
 {
     Console.WriteLine("Test Database");
-    Console.WriteLine("\n\n1)Test Macrozone\n2)Test Region\n3)Test Province\n4)Test Industry\n5)Test Date\n6)Test Weather\n" +
-        "7)Test Commodity\n8)Test Generation\n9)Test Load" +
-        "\n10)Test Prices\n11)Inserimento Load Macrozone e Date tutte insieme\n12)EXIT");
-        string user = Console.ReadLine();
+    Console.WriteLine("\n\n1)Test Macrozone\n2)Test Region\n3)Test Province\n4)Test Industry\n5)Test Date\n6)Test Weather\n7)Test Commodity\n8)Test Generation\n9)Test Load\n10)Test Prices\n11)Inserimento Load Macrozone e Date tutte insieme\n12)EXIT");
+    string user = Console.ReadLine();
+    switch(user)
+    { 
     case "1":
         DataMacrozone.loadDbMacrozone(db);
             Console.WriteLine(  $"Nella tabella ci sono {db.MacroZone.Count()} righe /nTest ok");
