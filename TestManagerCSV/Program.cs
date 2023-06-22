@@ -4,6 +4,8 @@ using ProgettoIndustriale.Business;
 using ProgettoIndustriale.Service.Api;
 using ProgettoIndustriale.Data;
 using System;
+using ProgettoIndustriale.Type;
+using Microsoft.EntityFrameworkCore;
 
 class Program
 {
@@ -12,7 +14,10 @@ class Program
         Console.WriteLine("Inserisci il nome della tabella:");
         string tableName = Console.ReadLine();
 
-        DataImportManager dataImportManager = new DataImportManager();
+        var contextOptions = new DbContextOptionsBuilder<ProgettoIndustrialeContext>().UseInMemoryDatabase<ProgettoIndustrialeContext>("ProgettoIndustrialeTest").Options;
+        var db = new ProgettoIndustrialeContext(contextOptions);
+
+        DataImportManager dataImportManager = new DataImportManager(db);
 
         dataImportManager.ImportData(tableName);
 

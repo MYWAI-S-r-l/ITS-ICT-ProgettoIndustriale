@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProgettoIndustriale.Business.Imp\ProgettoIndustriale.Business.Imp.csproj" />
     <ProjectReference Include="..\ProgettoIndustriale.Business\ProgettoIndustriale.Business.csproj" />
     <ProjectReference Include="..\ProgettoIndustriale.Data\ProgettoIndustriale.Data.csproj" />

@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using ProgettoIndustriale.Type.Dto;
 using ProgettoIndustriale.Type;
+using System.Text;
 
 namespace ProgettoIndustriale.Business.Imp
 {
     public class DataImportManager : IDataImportManager
     {
-        private static readonly string jsonFilePath = @"C:Users\user\ITS-ICT-ProgettoIndustriale\ProgettoIndustriale.Service.Api\Properties\JsonAnagrafe\JsonAnagrafe.json";
+        private static readonly string jsonFilePath = @"C:\Users\user\ITS-ICT-ProgettoIndustriale\ProgettoIndustriale.Service.Api\Properties\JsonAnagrafe\JsonAnagrafe.json";
 
         private readonly ProgettoIndustrialeContext _context;
+        
         public DataImportManager(ProgettoIndustrialeContext context)
         {
             _context = context;
         }
+
         public void ImportData(string tableName)
         {
             List<JsonAnagrafe> tableInfos = LoadTableInfos();
@@ -54,7 +57,8 @@ namespace ProgettoIndustriale.Business.Imp
             for (int i = 1; i < csvLines.Length; i++)
             {
                 string[] propertyValues = csvLines[i].Split(',');
-
+                //var macro = new Type.Domain.MacroZone().GetType();
+                //var prova = System.Type.GetType(macro.AssemblyQualifiedName);
                 object domainObject = Activator.CreateInstance(System.Type.GetType(tableInfo.classe));
                 for (int j = 0; j < propertyNames.Length; j++)
                 {
@@ -85,7 +89,8 @@ namespace ProgettoIndustriale.Business.Imp
 
         private List<JsonAnagrafe> LoadTableInfos()
         {
-            string jsonContent = File.ReadAllText(jsonFilePath);
+            string jsonContent = File.ReadAllText(jsonFilePath, encoding: Encoding.UTF8);
+            //var prova =  JsonConvert.DeserializeObject(jsonContent);
             return JsonConvert.DeserializeObject<List<JsonAnagrafe>>(jsonContent);
         }
     }

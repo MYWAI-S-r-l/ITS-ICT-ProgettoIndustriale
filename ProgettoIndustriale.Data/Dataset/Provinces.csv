@@ -1,4 +1,4 @@
-﻿name,longitude,latitude,surface ,altitude,residents,population_density,number_cities,COD_Region
+﻿Name,Longitude,Latitude,Surface,Altitude,Residents,PopulationDensity,NCities,IdRegion
 Alessandria,8.615401155,44.91297351,203.57,95,91059,447,190,1
 Asti,8.204142547,44.89912921,151.31,123,73421,485,118,1
 Biella,8.054082167,45.5665112,46.69,420,42619,913,79,1
