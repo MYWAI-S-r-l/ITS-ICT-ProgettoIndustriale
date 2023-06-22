@@ -23,10 +23,28 @@ namespace ProgettoIndustriale.TestDB.TestDB
 
         public static void loadDbMacrozone()
         {
-            
-            var db = DatabaseProva.Context();
-            db.Add(Data());
-            db.SaveChanges();
+            try
+            {
+                var db = DatabaseProva.Context();
+                db.Add(Data());
+                db.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("errore durante l'inserimento dei dati");
+            }
+
+           
         }
+        /*
+        public static void removeDbMacrozone()
+        {
+            var db = DatabaseProva.Context();
+            Context.DatabaseProva.ExecuteSqlRaw("Truncate table Macrozone");
+            db.SaveChanges();
+
+        }
+        */
     }
 }

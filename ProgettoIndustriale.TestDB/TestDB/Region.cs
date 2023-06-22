@@ -21,9 +21,17 @@ namespace ProgettoIndustriale.TestDB.TestDB
         }
         public static void loadDbRegion()
         {
-            var db = DatabaseProva.Context();
-            db.Add(data());
-            db.SaveChanges();
+            try
+            {
+                var db = DatabaseProva.Context();
+                db.Add(data());
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("errore durante l'inserimento dei dati");
+            }
+            
         }
 
     }

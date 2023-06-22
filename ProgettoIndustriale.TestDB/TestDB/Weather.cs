@@ -39,6 +39,14 @@ namespace ProgettoIndustriale.TestDB.TestDB
 
         public static void loadDbWeather()
         {
+            try
+            {
+
+            }catch(Exception)
+            {
+                Console.WriteLine("errore durante l'inserimento dei dati");
+            }
+
             var db = DatabaseProva.Context();
             db.Add(data());
             db.SaveChanges();

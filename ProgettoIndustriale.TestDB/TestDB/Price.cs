@@ -25,9 +25,19 @@ namespace ProgettoIndustriale.TestDB.TestDB
 
         public static void loadDbPrices()
         {
-            var db = DatabaseProva.Context();
-            db.Add(Prices());
-            db.SaveChanges();
+            try
+            {
+                //var db = DatabaseProva.Context();
+                db.Add(Prices());
+                db.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("errore durante l'inserimento dei dati");
+            }
+
+           
         }
     }
 
