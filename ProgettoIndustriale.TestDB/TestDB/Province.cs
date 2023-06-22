@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using ProgettoIndustriale.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 IdRegion=1
             }; 
         }
-         public static void LoadDbProvince() 
+         public static void LoadDbProvince(ProgettoIndustrialeContext db) 
         {
             try
             {

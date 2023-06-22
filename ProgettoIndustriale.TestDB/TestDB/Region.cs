@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgettoIndustriale.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 IdMacroZone = 1
             }; 
         }
-        public static void loadDbRegion()
+        public static void loadDbRegion(ProgettoIndustrialeContext db)
         {
             try
             {

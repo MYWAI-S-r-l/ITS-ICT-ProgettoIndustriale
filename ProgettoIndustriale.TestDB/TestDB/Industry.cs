@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgettoIndustriale.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
             }; 
         }
 
-        public static void loadDbIndustry()
+        public static void loadDbIndustry(ProgettoIndustrialeContext db)
         {
 
             try

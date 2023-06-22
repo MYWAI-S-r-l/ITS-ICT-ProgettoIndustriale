@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProgettoIndustriale.Data;
 
 namespace ProgettoIndustriale.TestDB.TestDB
 {
@@ -21,7 +22,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
 
             }; 
         }
-        public static void loadDbLoad()
+        public static void loadDbLoad(ProgettoIndustrialeContext db)
         {
 
             try

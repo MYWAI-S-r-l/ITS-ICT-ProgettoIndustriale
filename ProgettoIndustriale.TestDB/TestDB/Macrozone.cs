@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProgettoIndustriale.Data;
 
 namespace ProgettoIndustriale.TestDB.TestDB
 {
@@ -21,7 +22,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
             }; 
         }
 
-        public static void loadDbMacrozone()
+        public static void loadDbMacrozone(ProgettoIndustrialeContext db)
         {
             try
             {
@@ -37,14 +38,8 @@ namespace ProgettoIndustriale.TestDB.TestDB
 
            
         }
-        /*
-        public static void removeDbMacrozone()
-        {
-            var db = DatabaseProva.Context();
-            Context.DatabaseProva.ExecuteSqlRaw("Truncate table Macrozone");
-            db.SaveChanges();
-
-        }
-        */
+        
+        
+        
     }
 }

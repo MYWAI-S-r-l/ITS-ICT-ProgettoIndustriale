@@ -113,6 +113,7 @@ public partial class ProgettoIndustrialeContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.LogTo(_logStream.WriteLine).EnableSensitiveDataLogging().EnableDetailedErrors();
+        
     }
 
     public override void Dispose()

@@ -1,4 +1,5 @@
-﻿using ProgettoIndustriale.Type.Domain;
+﻿using ProgettoIndustriale.Data;
+using ProgettoIndustriale.Type.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
             };
         }
 
-        public static void loadDbPrices()
+        public static void loadDbPrices(ProgettoIndustrialeContext db)
         {
             try
             {
