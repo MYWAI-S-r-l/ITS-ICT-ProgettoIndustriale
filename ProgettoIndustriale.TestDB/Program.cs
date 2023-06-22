@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-string user = Console.ReadLine();
 var db = DatabaseProva.Context();
 bool ciclo = true;
 do
@@ -19,6 +18,7 @@ do
     Console.WriteLine("\n\n1)Test Macrozone\n2)Test Region\n3)Test Province\n4)Test Industry\n5)Test Date\n6)Test Weather\n" +
         "7)Test Commodity\n8)Test Generation\n9)Test Load" +
         "\n10)Test Prices\n11)Inserimento Load Macrozone e Date tutte insieme\n12)EXIT");
+        string user = Console.ReadLine();
     case "1":
         DataMacrozone.loadDbMacrozone(db);
             Console.WriteLine(  $"Nella tabella ci sono {db.MacroZone.Count()} righe /nTest ok");
