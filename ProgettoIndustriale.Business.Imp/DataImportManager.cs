@@ -9,7 +9,7 @@ namespace ProgettoIndustriale.Business.Imp
 {
     public class DataImportManager : IDataImportManager
     {
-        private static readonly string jsonFilePath = "C:\Users\user\ITS-ICT-ProgettoIndustriale\ProgettoIndustriale.Service.Api\Properties\JsonAnagrafe\JsonAnagrafe.json";
+        private static readonly string jsonFilePath = @"C:Users\user\ITS-ICT-ProgettoIndustriale\ProgettoIndustriale.Service.Api\Properties\JsonAnagrafe\JsonAnagrafe.json";
 
         private readonly ProgettoIndustrialeContext _context;
         public DataImportManager(ProgettoIndustrialeContext context)
@@ -67,7 +67,10 @@ namespace ProgettoIndustriale.Business.Imp
                 domainObjects.Add(domainObject);
             }
 
-            // Do something with the domainObjects list (e.g., save it to a database)
+            // Salva gli oggetti di dominio nel database
+            _context.AddRange(domainObjects);
+            _context.SaveChanges();
+
         }
 
         private void SetProperty(object obj, string propertyName, string propertyValue)

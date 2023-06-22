@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProgettoIndustriale.Business.Imp\ProgettoIndustriale.Business.Imp.csproj" />
+    <ProjectReference Include="..\ProgettoIndustriale.Business\ProgettoIndustriale.Business.csproj" />
+    <ProjectReference Include="..\ProgettoIndustriale.Data\ProgettoIndustriale.Data.csproj" />
+    <ProjectReference Include="..\ProgettoIndustriale.Service.Api\ProgettoIndustriale.Service.Api.csproj" />
+    <ProjectReference Include="..\ProgettoIndustriale.Type\ProgettoIndustriale.Type.csproj" />
+  </ItemGroup>
+
+</Project>
