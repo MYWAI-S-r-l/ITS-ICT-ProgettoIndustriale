@@ -17,8 +17,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 Name = "Brent",
                 ValueUsd=76.48, 
                 Unit="$/Barile",
-                IdDate=3
-                IdDate=1
+                IdDate=1,
             }; 
         }
         public static void loadDbCommodity()

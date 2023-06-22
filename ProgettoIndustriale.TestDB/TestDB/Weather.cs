@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProgettoIndustriale.TestDB.TestDB
 {
-    public class Weather
+    public class DataWeather
     {
 
-        public Weather() { }
+        public DataWeather() { }
 
         public static dom.Weather data() { 
             return new dom.Weather ()

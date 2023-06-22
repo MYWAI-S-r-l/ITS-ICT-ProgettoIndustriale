@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProgettoIndustriale.TestDB.TestDB
 {
-    public class Date
+    public class DataDate
     {
 
-        public Date() { }
+        public DataDate() { }
 
         public static dom.Date data() { 
             return new dom.Date()

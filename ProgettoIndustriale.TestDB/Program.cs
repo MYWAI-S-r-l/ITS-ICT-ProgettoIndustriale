@@ -15,46 +15,45 @@ string user = Console.ReadLine();
 
 switch (user)
 {
-    case "1": DataCommodity.loadDbCommodity();
+    case "1":
+        DataMacrozone.loadDbMacrozone();
         break;
-    case "2": DataDate.loadDbDate();
+    case "2":
+        DataRegion.loadDbRegion();
         break;
-    case "3": DataGeneration.loadDbGeneration();
+    case "3":
+        DataProvince.LoadDbProvince();
         break;
-    case "4": DataIndustry.loadDbIndustry();
+    case "4":
+        DataIndustry.loadDbIndustry();
         break;
-    case "5": DataLoad.loadDbLoad();
+    case "5":
+       DataDate.loadDbDate();
         break;
-    case "6": DataMacrozone.loadDbMacrozone();
-        break;
-    case "7": DataPrice.LoadDbPrices();
-        break;
-    case "8": DataGeneration.loadDbGeneration();
-        break;
-    case "9": DataRegion.loadDbRegion();
-        break;
-    case "10":
+    case "6":
         DataWeather.loadDbWeather();
         break;
-
-
+    case "7":
+        DataCommodity.loadDbCommodity();
+        break;
+    case "8":
+        DataGeneration.loadDbGeneration();
+        break;
+    case "9":
+        DataLoad.loadDbLoad();
+        break;
+    case "10":
+        DataPrice.loadDbPrices();
+        break;
     default:
         break;
 }
 
 // See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+//Console.WriteLine("Hello, World!");
 
 
-//Generation.loadDbGeneration();
-//Commodity.loadDbCommodity();
-Weather.loadDbWeather();
-//Date.loadDbDate();
-//DataMacrozone.loadDbMacrozone();
-//Region.loadDbRegion();
-//Province.LoadDbProvince();
-//Industry.loadDbIndustry();
-DataCommodity.loadDbCommodity();
+
 
 /*
 ProgettoIndustrialeContext context;
