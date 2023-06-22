@@ -8,8 +8,8 @@ using ProgettoIndustriale.TestDB.TestDB;
 
 
 Console.WriteLine("Test Database");
-Console.WriteLine("\n\n1)Test Commodity\n2)Test Date\n3)Test Generation\n4)Test Industry\n5)Test Load\n6)Test Macrozone\n)" +
-    "7)Test Price\nn8)Test Province\n9)Test Region\n10)Weather\n");
+Console.WriteLine("\n\n1)Test Macrozone\n2)Test Region\n3)Test Province\n4)Test Industry\n5)Test Date\n6)Test Weather\n)" +
+    "7)Test Commodity\nn8)Test Generation\n9)Test Loat\n10)Test Prices\n");
 
 string user = Console.ReadLine();
 

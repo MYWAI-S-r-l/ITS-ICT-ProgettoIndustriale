@@ -10,7 +10,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
     public  class DataGeneration
     {
         
-        public Generation () { }
+        public DataGeneration () { }
         public static dom.Generation data() { 
             return new dom.Generation() 
 
