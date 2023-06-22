@@ -47,7 +47,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 Console.WriteLine("errore durante l'inserimento dei dati");
             }
 
-            var db = DatabaseProva.Context();
+            
             db.Add(data());
             db.SaveChanges();
         }

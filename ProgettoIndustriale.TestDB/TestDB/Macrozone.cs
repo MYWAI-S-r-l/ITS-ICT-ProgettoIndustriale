@@ -26,7 +26,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
         {
             try
             {
-                var db = DatabaseProva.Context();
+                
                 db.Add(Data());
                 db.SaveChanges();
 
