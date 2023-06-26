@@ -4,6 +4,7 @@ using ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
+/*
 public partial class ProvinceController
 {
     [HttpGet("get/{codice}")]
@@ -19,3 +20,5 @@ public partial class ProvinceController
     }
 
 }
+
+*/

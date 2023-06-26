@@ -8,16 +8,20 @@ using ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.Type.Domain
 {
-    public partial class Provincia
+    public partial class Region
     {
-        public Provincia()
+        public Region()
         {
         }
-        
-        [Key]
-        public string Codice { get; set; }
-        public string Nome { get; set; }
-        public string Sigla { get; set; }
-        public string Regione { get; set; }
+
+        [Column("ID_region")]
+        public int Id { get; set; }
+
+        [Column("name")]
+        public string Name { get; set; }
+        public int IdMacroZone { get; set; }
+
+        public virtual MacroZone MacroZone { get; set; }
+        public virtual ICollection<Province> Provinces { get; set; }    
     }
 }

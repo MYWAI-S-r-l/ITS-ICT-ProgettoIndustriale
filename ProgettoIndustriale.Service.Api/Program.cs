@@ -5,6 +5,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using ElmahCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProgettoIndustriale.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

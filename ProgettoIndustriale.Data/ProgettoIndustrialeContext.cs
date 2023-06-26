@@ -3,12 +3,16 @@
 using System;
 using System.Collections.Generic;
 using ProgettoIndustriale.Type.Domain;
+using ProgettoIndustriale.Data.ConfigClasses;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace ProgettoIndustriale.Type;
+
+namespace ProgettoIndustriale.Data;
 public partial class ProgettoIndustrialeContext : DbContext
 {
+    private readonly StreamWriter _logStream = new StreamWriter("../../../../ProgettoIndustriale.Data/log/mylog.txt", append: false); //TODO: prendere path del log da config
+
     public ProgettoIndustrialeContext()
     {
     }
@@ -16,34 +20,41 @@ public partial class ProgettoIndustrialeContext : DbContext
     public ProgettoIndustrialeContext(DbContextOptions<ProgettoIndustrialeContext> options)
         : base(options)
     {
+        
     }
 
-    public virtual DbSet<Provincia> Province{ get; set; }
+  
+    //BE
+    public virtual DbSet<Price> Price { get; set; }
+    public virtual DbSet<Load> Load { get; set; }
+    public virtual DbSet<MacroZone> MacroZone { get; set; }
+    public virtual DbSet<Province> Province{ get; set; }
+    public virtual DbSet<Region> Region { get; set; }
+    public virtual DbSet<Industry> Industry { get; set; }
+    public virtual DbSet<Weather> Weather { get; set; }
+    public virtual DbSet<Date> Date { get; set; }
+    public virtual DbSet<Commodity> Commodity { get; set; }
+    public virtual DbSet<Generation> Generation { get; set; }
+
+    //----Terna
     public virtual DbSet<TernaToken> TernaToken { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        //modelBuilder.Entity<Ente>(entity =>
-        //{
-        //    entity.Property(e => e.Id).ValueGeneratedOnAdd();
-        //    entity.HasKey(e => e.Id);
-            
-        //    entity.Property(e => e.Nome)
-        //        .HasMaxLength(256)
-        //        .IsUnicode(false);
+        // Sono stati creati dei file di configurazione nella cartella "ModelBuilder" per avere più ordine.
 
-        //    entity.Property(e => e.Sigla)
-        //        .IsRequired()
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.IsDeleted);
-
-        //    entity.Property(e => e.Descrizione)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //});
-        //OnModelCreatingPartial(modelBuilder);
-
+        modelBuilder.ApplyConfiguration(new ConfigLoad());
+        modelBuilder.ApplyConfiguration(new ConfigPrice());
+        modelBuilder.ApplyConfiguration(new ConfigMacroZone());
+        modelBuilder.ApplyConfiguration(new ConfigProvince());
+        modelBuilder.ApplyConfiguration(new ConfigRegion());
+        modelBuilder.ApplyConfiguration(new ConfigIndustry());
+        modelBuilder.ApplyConfiguration(new ConfigCommodity());
+        modelBuilder.ApplyConfiguration(new ConfigGeneration());
+        modelBuilder.ApplyConfiguration(new ConfigDate());
+        modelBuilder.ApplyConfiguration(new ConfigWeather());
+        //-------TERNA
         modelBuilder.Entity<TernaToken>(entity =>
         {
             entity.Property(e => e.Id).ValueGeneratedOnAdd();
@@ -61,9 +72,34 @@ public partial class ProgettoIndustrialeContext : DbContext
 
             entity.Property(e => e.AddedTime);
         });
-        
-        OnModelCreatingPartial(modelBuilder);
+
+
     }
 
+
+
+   
+    //public virtual DbSet<Provincia> Province{ get; set; }
+    
+
+    
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.LogTo(_logStream.WriteLine).EnableSensitiveDataLogging().EnableDetailedErrors();
+        
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        _logStream.Dispose();
+    }
+
+    public override async ValueTask DisposeAsync()
+    {
+        await base.DisposeAsync();
+        await _logStream.DisposeAsync();
+    }
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
