@@ -41,15 +41,17 @@ namespace ProgettoIndustriale.TestDB.TestDB
         {
             try
             {
+                db.Add(data());
+                db.SaveChanges();
 
-            }catch(Exception)
+            }
+            catch(Exception)
             {
                 Console.WriteLine("errore durante l'inserimento dei dati");
             }
 
             
-            db.Add(data());
-            db.SaveChanges();
+            
         }
     }
 }

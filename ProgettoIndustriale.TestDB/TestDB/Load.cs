@@ -27,7 +27,6 @@ namespace ProgettoIndustriale.TestDB.TestDB
 
             try
             {
-                
                 db.Add(Data());
                 db.SaveChanges();
             }
