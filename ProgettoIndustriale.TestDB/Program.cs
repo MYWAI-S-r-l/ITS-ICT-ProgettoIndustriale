@@ -10,10 +10,12 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-var db = DatabaseProva.Context();
+
+
 bool ciclo = true;
 do
 {
+    var db = DatabaseProva.Context();
     Console.WriteLine("Test Database");
     Console.WriteLine("\n\n1)Test Macrozone\n2)Test Region\n3)Test Province\n4)Test Industry\n5)Test Date\n6)Test Weather\n7)Test Commodity\n8)Test Generation\n9)Test Load\n10)Test Prices\n11)Inserimento Load Macrozone e Date tutte insieme\n12)Inserimento di tutte le tabelle\n13)EXIT");
     string user = Console.ReadLine();
@@ -22,49 +24,82 @@ do
     case "1":
         DataMacrozone.loadDbMacrozone(db);
         Console.WriteLine(  $"Nella tabella ci sono {db.MacroZone.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "2":
         DataRegion.loadDbRegion(db);
         Console.WriteLine($"Nella tabella ci sono {db.Region.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "3":
         DataProvince.LoadDbProvince(db);
         Console.WriteLine($"Nella tabella ci sono {db.Province.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "4":
         DataIndustry.loadDbIndustry(db);
         Console.WriteLine($"Nella tabella ci sono {db.Industry.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "5":
         DataDate.loadDbDate(db);
         Console.WriteLine($"Nella tabella ci sono {db.Date.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "6":
         DataWeather.loadDbWeather(db);
         Console.WriteLine($"Nella tabella ci sono {db.Weather.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "7":
         DataCommodity.loadDbCommodity(db);
         Console.WriteLine($"Nella tabella ci sono {db.Commodity.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "8":
         DataGeneration.loadDbGeneration(db);
         Console.WriteLine($"Nella tabella ci sono {db.Generation.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "9":
         DataLoad.loadDbLoad(db);
         Console.WriteLine($"Nella tabella ci sono {db.Load.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "10":
         DataPrice.loadDbPrices(db);
         Console.WriteLine($"Nella tabella ci sono {db.Price.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "11":
         ClasseGenerale.load(db);
         Console.WriteLine($"Nella tabella ci sono {db.Load.Count()} righe /nTest ok");
         Console.WriteLine($"Nella tabella ci sono {db.Date.Count()} righe /nTest ok");
         Console.WriteLine($"Nella tabella ci sono {db.MacroZone.Count()} righe /nTest ok");
-        break;
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            break;
     case "12":
             DataMacrozone.loadDbMacrozone(db);
             Console.WriteLine($"Nella tabella ci sono {db.MacroZone.Count()} righe /nTest ok");
@@ -95,6 +130,11 @@ do
 
             DataPrice.loadDbPrices(db);
             Console.WriteLine($"Nella tabella ci sono {db.Price.Count()} righe /nTest ok");
+            db.Database.EnsureDeleted();
+            db.SaveChanges();
+            db.Dispose();
+            
+            
 
             break;
     case "13":
