@@ -5,9 +5,10 @@ using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Business;
 
-public interface IProvinceManager
+public interface ICommodityManager
 {
-        Dto.Province? GetProvince(int id);
-   
-        List<Dto.Province> GetAllProvinces();
+    Dto.Commodity? GetCommodity(int id);
+
+    List<Dto.Commodity> GetAllCommodities();
 }
+

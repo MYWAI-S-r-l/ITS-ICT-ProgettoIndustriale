@@ -5,9 +5,10 @@ using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Business;
 
-public interface IProvinceManager
+public interface IGenerationManager
 {
-        Dto.Province? GetProvince(int id);
+    Dto.Generation? GetGeneration(int id);
    
-        List<Dto.Province> GetAllProvinces();
+    List<Dto.Generation> GetAllGenerations();
 }
+

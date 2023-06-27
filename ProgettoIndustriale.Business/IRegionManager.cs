@@ -4,10 +4,10 @@ using ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Business;
-
-public interface IProvinceManager
+public interface IRegionManager
 {
-        Dto.Province? GetProvince(int id);
-   
-        List<Dto.Province> GetAllProvinces();
+    Dto.Region? GetRegion(int id);
+
+    List<Dto.Region> GetAllRegions();
 }
+

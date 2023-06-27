@@ -5,9 +5,10 @@ using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Business;
 
-public interface IProvinceManager
+public interface IMacroZoneManager
 {
-        Dto.Province? GetProvince(int id);
-   
-        List<Dto.Province> GetAllProvinces();
+    Dto.MacroZone? GetMacroZone(int id);
+
+    List<Dto.MacroZone> GetAllMacroZones();
 }
+

@@ -5,9 +5,10 @@ using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Business;
 
-public interface IProvinceManager
+public interface IWeatherManager
 {
-        Dto.Province? GetProvince(int id);
-   
-        List<Dto.Province> GetAllProvinces();
+    Dto.Weather? GetWeather(int id);
+
+    List<Dto.Weather> GetAllWeathers();
 }
+
