@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using ProgettoIndustriale.Business;
 using ProgettoIndustriale.Business.Imp;
 using ProgettoIndustriale.Type;
+using ProgettoIndustriale.Data;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 

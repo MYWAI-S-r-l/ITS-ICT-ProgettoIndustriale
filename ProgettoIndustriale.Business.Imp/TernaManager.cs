@@ -1,6 +1,7 @@
 ﻿using ProgettoIndustriale.Type;
 using Dto = ProgettoIndustriale.Type.Dto;
 using Domain = ProgettoIndustriale.Type.Domain;
+using ProgettoIndustriale.Data;
 
 namespace ProgettoIndustriale.Business.Imp;
 
