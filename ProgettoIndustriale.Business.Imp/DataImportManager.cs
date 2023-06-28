@@ -6,6 +6,7 @@ using ProgettoIndustriale.Type.Dto;
 using ProgettoIndustriale.Type;
 using System.Text;
 
+
 namespace ProgettoIndustriale.Business.Imp
 {
     public class DataImportManager : IDataImportManager
@@ -72,6 +73,10 @@ namespace ProgettoIndustriale.Business.Imp
             }
 
             // Salva gli oggetti di dominio nel database
+
+
+            //object domainObject = Activator.CreateInstance(System.Type.GetType(tableInfo.classe));
+            //_context.RemoveRange(_context.);
             _context.AddRange(domainObjects);
             _context.SaveChanges();
 

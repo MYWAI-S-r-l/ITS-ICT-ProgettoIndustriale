@@ -6,13 +6,19 @@ using ProgettoIndustriale.Data;
 using System;
 using ProgettoIndustriale.Type;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure; // Aggiungi questo import
 
 class Program
 {
     static void Main()
     {
-        var contextOptions = new DbContextOptionsBuilder<ProgettoIndustrialeContext>().UseInMemoryDatabase<ProgettoIndustrialeContext>("ProgettoIndustrialeTest").Options;
-        var db = new ProgettoIndustrialeContext(contextOptions);
+        string connectionString = "Server=localhost;Port=3306;Database=progettoindustriale;Uid=RestUser;Pwd=restPassword;";
+        var serverVersion = new MySqlServerVersion(new Version(10, 11, 2)); // Sostituisci con la versione del tuo server MariaDB
+
+        var optionsBuilder = new DbContextOptionsBuilder<ProgettoIndustrialeContext>();
+        optionsBuilder.UseMySql(connectionString, serverVersion); // Utilizza la connessione a MariaDB specificando la versione del server
+
+        var db = new ProgettoIndustrialeContext(optionsBuilder.Options);
 
         DataImportManager dataImportManager = new DataImportManager(db);
 
@@ -20,16 +26,19 @@ class Program
         dataImportManager.ImportData("MacroZone");
 
         // Importa i dati per la tabella Regions
-        dataImportManager.ImportData("Regions");
+        //dataImportManager.ImportData("Regions");
 
         // Importa i dati per la tabella Provinces
-        dataImportManager.ImportData("Provinces");
+        //dataImportManager.ImportData("Provinces");
 
         // Importa i dati per la tabella Industry
-        dataImportManager.ImportData("Industry");
+        //dataImportManager.ImportData("Industry");
 
         Console.WriteLine("Importazione completata.");
     }
 }
+
+
+
 
 
