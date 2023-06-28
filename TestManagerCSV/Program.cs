@@ -11,17 +11,25 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Inserisci il nome della tabella:");
-        string tableName = Console.ReadLine();
-
         var contextOptions = new DbContextOptionsBuilder<ProgettoIndustrialeContext>().UseInMemoryDatabase<ProgettoIndustrialeContext>("ProgettoIndustrialeTest").Options;
         var db = new ProgettoIndustrialeContext(contextOptions);
 
         DataImportManager dataImportManager = new DataImportManager(db);
 
-        dataImportManager.ImportData(tableName);
+        // Importa i dati per la tabella MacroZone
+        dataImportManager.ImportData("MacroZone");
+
+        // Importa i dati per la tabella Regions
+        dataImportManager.ImportData("Regions");
+
+        // Importa i dati per la tabella Provinces
+        dataImportManager.ImportData("Provinces");
+
+        // Importa i dati per la tabella Industry
+        dataImportManager.ImportData("Industry");
 
         Console.WriteLine("Importazione completata.");
     }
 }
+
 
