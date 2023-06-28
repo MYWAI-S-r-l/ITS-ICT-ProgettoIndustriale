@@ -47,9 +47,31 @@ public static class MyMapper<TSource, TDestination>
         {
             return cfg =>
             {
-                AddMapping<Domain.Province, Dto.Province>(cfg, ignores);
-                //AddMapping<Domain.Ente, Dto.Ente>(cfg, ignores);
-                //AddMapping<Domain.Provincia, Dto.Provincia>(cfg, ignores);
+                AddMapping<Domain.Industry,     Dto.Industry>(cfg, ignores);
+                AddMapping<Domain.Province,     Dto.Province>(cfg, ignores);
+                AddMapping<Domain.Region,       Dto.Region>(cfg, ignores);
+                AddMapping<Domain.MacroZone,    Dto.MacroZone>(cfg, ignores);
+                AddMapping<Domain.Date,         Dto.Date>(cfg, ignores);
+                AddMapping<Domain.Commodity,    Dto.Commodity>(cfg, ignores);
+                AddMapping<Domain.Load,         Dto.Load>(cfg, ignores);
+                AddMapping<Domain.Price,        Dto.Price>(cfg, ignores);
+                AddMapping<Domain.Generation,   Dto.Generation>(cfg, ignores);
+                AddMapping<Domain.Weather,      Dto.Weather>(cfg, ignores);
+
+
+                AddMapping<Dto.Industry,    Domain.Industry>(cfg, ignores);
+                AddMapping<Dto.Province,    Domain.Province>(cfg, ignores);
+                AddMapping<Dto.Region,      Domain.Region>(cfg, ignores);
+                AddMapping<Dto.MacroZone,   Domain.MacroZone>(cfg, ignores);
+                AddMapping<Dto.Date,        Domain.Date>(cfg, ignores);
+                AddMapping<Dto.Commodity,   Domain.Commodity>(cfg, ignores);
+                AddMapping<Dto.Load,        Domain.Load>(cfg, ignores);
+                AddMapping<Dto.Price,       Domain.Price>(cfg, ignores);
+                AddMapping<Dto.Generation,  Domain.Generation>(cfg, ignores);
+                AddMapping<Dto.Weather,     Domain.Weather>(cfg, ignores);
+
+
+
                 AddMapping<Domain.TernaToken, Dto.TernaToken>(cfg, ignores);
                 AddMapping<Dto.TernaToken, Domain.TernaToken>(cfg, ignores);
             };
