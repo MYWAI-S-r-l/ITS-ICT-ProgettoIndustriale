@@ -1,4 +1,4 @@
-﻿﻿using ProgettoIndustriale.Type;
+﻿using ProgettoIndustriale.Type;
 using Dto = ProgettoIndustriale.Type.Dto;
 using Domain = ProgettoIndustriale.Type.Domain;
 using ProgettoIndustriale.Type.Dto;
@@ -7,30 +7,67 @@ using Microsoft.Identity.Client;
 using System.Collections.Generic;
 
 namespace ProgettoIndustriale.Business.Imp;
-public class UtilsManager : IUtilsManager
+public class PriceManager : IPriceManager
+
 {
     private readonly ProgettoIndustrialeContext _context;
-    public UtilsManager(ProgettoIndustrialeContext context)
-    {
-        _context = context;
+    public PriceManager(ProgettoIndustrialeContext context)
+    { 
+        _context= context;
     }
-    public List<Dto.Province> GetAllProvinces()
+    public List<Dto.Price> GetAllPrice()
     {
 
-        var allProvince = _context.Province.ToList();
-        return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
+        var allPrice = _context.Price.ToList();
+        return MyMapper<Domain.Price, Dto.Price>.MapList(allPrice);
 
     }
 
-    public List<Dto.Province> GetProvincebyMacrozone(string macrozone)
+    public List<Dto.Price> GetPricebyMacrozone(List<string> macrozone)
     {
-        throw new NotImplementedException();
+        var allPrice = _context.Price.ToList();
+        return MyMapper<Domain.Price, Dto.Price>.MapList(allPrice);
+        
     }
 
-    public List<Dto.Province> GetProvincebyRegion(List<string> regions)
+
+    public List<Dto.Price> GetPricebyDate(DateTime startDate, DateTime endDate)
     {
-        throw new NotImplementedException();
+        if (startDate > endDate)
+        {
+            throw new ArgumentException("La data di inizio non può essere successiva alla data di fine.");
+        }
+
+        if (startDate > DateTime.Today)
+        {
+            throw new ArgumentException("La data di inizio non può essere futura.");
+        }
+
+        var allPrice = _context.Price.ToList();
+        return MyMapper<Domain.Price, Dto.Price>.MapList(allPrice);
+        
     }
+
+    public List<Dto.Price> GetWeatherbyMacrozoneDate(List<string> macrozone, DateTime startDate, DateTime endDate)
+    {
+
+        if (startDate > endDate)
+        {
+            throw new ArgumentException("La data di inizio non può essere successiva alla data di fine.");
+        }
+
+        if (startDate > DateTime.Today)
+        {
+            throw new ArgumentException("La data di inizio non può essere futura.");
+        }
+
+
+        var allWeather = _context.Price.ToList();
+        return MyMapper<Domain.Price, Dto.Price>.MapList(allPrice);
+        
+
+    }
+
 }
 
 /*
@@ -138,4 +175,3 @@ public class ProvinceManager : IProvinceManager
 }
 
 */
-

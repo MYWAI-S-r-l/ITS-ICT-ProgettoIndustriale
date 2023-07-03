@@ -1,4 +1,4 @@
-﻿﻿using ProgettoIndustriale.Type;
+﻿using ProgettoIndustriale.Type;
 using Dto = ProgettoIndustriale.Type.Dto;
 using Domain = ProgettoIndustriale.Type.Domain;
 using ProgettoIndustriale.Type.Dto;
@@ -7,30 +7,67 @@ using Microsoft.Identity.Client;
 using System.Collections.Generic;
 
 namespace ProgettoIndustriale.Business.Imp;
-public class UtilsManager : IUtilsManager
+public class WeatherManager : IWeatherManager
+
 {
     private readonly ProgettoIndustrialeContext _context;
-    public UtilsManager(ProgettoIndustrialeContext context)
-    {
-        _context = context;
+    public WeatherManager(ProgettoIndustrialeContext context)
+    { 
+        _context= context;
     }
-    public List<Dto.Province> GetAllProvinces()
+    public List<Dto.Weather> GetAllWeather()
     {
 
-        var allProvince = _context.Province.ToList();
-        return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
+        var allWeather = _context.Weather.ToList();
+        return MyMapper<Domain.Weather, Dto.Weather>.MapList(allWeather);
 
     }
 
-    public List<Dto.Province> GetProvincebyMacrozone(string macrozone)
+    public List<Dto.Weather> GetWeatherbyProvince(List<string> province)
     {
-        throw new NotImplementedException();
+        var allWeather = _context.Weather.ToList();
+        return MyMapper<Domain.Weather, Dto.Weather>.MapList(allWeather);
+        
     }
 
-    public List<Dto.Province> GetProvincebyRegion(List<string> regions)
+
+    public List<Dto.Weather> GetWeatherbyDate(DateTime startDate, DateTime endDate)
     {
-        throw new NotImplementedException();
+        if (startDate > endDate)
+        {
+            throw new ArgumentException("La data di inizio non può essere successiva alla data di fine.");
+        }
+
+        if (startDate > DateTime.Today)
+        {
+            throw new ArgumentException("La data di inizio non può essere futura.");
+        }
+
+        var allWeather = _context.Weather.ToList();
+        return MyMapper<Domain.Weather, Dto.Weather>.MapList(allWeather);
+        
     }
+
+    public List<Dto.Weather> GetWeatherbyProvinceDate(List<string> province, DateTime startDate, DateTime endDate)
+    {
+
+        if (startDate > endDate)
+        {
+            throw new ArgumentException("La data di inizio non può essere successiva alla data di fine.");
+        }
+
+        if (startDate > DateTime.Today)
+        {
+            throw new ArgumentException("La data di inizio non può essere futura.");
+        }
+
+
+        var allWeather = _context.Weather.ToList();
+        return MyMapper<Domain.Weather, Dto.Weather>.MapList(allWeather);
+        
+
+    }
+
 }
 
 /*
@@ -138,4 +175,3 @@ public class ProvinceManager : IProvinceManager
 }
 
 */
-
