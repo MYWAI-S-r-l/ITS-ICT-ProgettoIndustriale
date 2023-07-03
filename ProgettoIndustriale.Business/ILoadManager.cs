@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using ProgettoIndustriale.Type;
-using ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Business;
@@ -11,5 +10,12 @@ namespace ProgettoIndustriale.Business;
 
 public interface ILoadManager
 {
+    public List<Dto.Load> getAllLoads();
+    public List<Dto.Load> getLoadsbyFilter(string macrozone, DateTime startDate, DateTime endDate);
+    public List<Dto.Load> getLoadbyMacrozone(List<string> nameMacroZone);
+    public List<Dto.Load> getloadbyDates(DateTime startDate, DateTime endDate);
+
+
+   
     
 }

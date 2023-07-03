@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using ProgettoIndustriale.Type;
-
 using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Business;
@@ -9,10 +8,10 @@ namespace ProgettoIndustriale.Business;
  * ************************************/
 
 
-public interface ICommodityManager
+public interface IGenerationManager
 {
-    public List<Dto.Commodity> getAllCommodities();
-    public List<Dto.Commodity> getComoditybyDates(DateTime startDate, DateTime endDate);
-    
+    public List<Dto.Generation> getAllGenerations();
+    public List<Dto.Generation> getGenerationsbyDates(DateTime startDate, DateTime endDate);
+
     
 }
