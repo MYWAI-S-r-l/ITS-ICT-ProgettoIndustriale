@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ProgettoIndustriale.Type.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 
 namespace ProgettoIndustriale.Data.ConfigClasses
 {
@@ -15,7 +16,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
         public void Configure(EntityTypeBuilder<Province> entity)
         {
             
-                entity.Property(p => p.Id).IsRequired();
+                entity.Property(p => p.Id).IsRequired().HasValueGenerator<GuidValueGenerator>();
                 entity.HasKey(p => p.Id);
 
                 entity.HasOne(p => p.Region).WithMany(a => a.Provinces).HasForeignKey(p => p.IdRegion).HasConstraintName("fk_Province_Region1");//collection in regione

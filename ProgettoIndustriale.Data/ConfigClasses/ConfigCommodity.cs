@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.Data.ConfigClasses
@@ -10,7 +11,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
         public void Configure(EntityTypeBuilder<Commodity> entity)
         {
 
-            entity.Property(c => c.Id).IsRequired();
+            entity.Property(c => c.Id).IsRequired().HasValueGenerator<GuidValueGenerator>();  
            
             entity.HasKey(c => c.Id);
                         
