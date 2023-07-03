@@ -26,7 +26,7 @@ class Program
         dataImportManager.ImportData("MacroZone");
 
         // Importa i dati per la tabella Regions
-        //dataImportManager.ImportData("Regions");
+        dataImportManager.ImportData("Regions");
 
         // Importa i dati per la tabella Provinces
         //dataImportManager.ImportData("Provinces");
