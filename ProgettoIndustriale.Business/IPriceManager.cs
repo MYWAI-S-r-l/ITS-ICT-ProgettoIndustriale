@@ -12,9 +12,9 @@ namespace ProgettoIndustriale.Business;
 public interface IPriceManager
 {
 
-    public List<Dto.Price> GetAllPrice();
-    public List<Dto.Price> GetPricebyDate(DateTime startDate, DateTime endDate);
-    public List<Dto.Price> GetPricebyMacrozone(List<string> macrozone);
-    public List<Dto.Price> GetPricebyProvinceDate(List<string> macrozone, DateTime startDate, DateTime endDate);
+    public List<Dto.Price> GetAllPrices();
+    public List<Dto.Price> GetPricesbyDates(DateTime startDate, DateTime endDate);
+    public List<Dto.Price> GetPricesbyMacrozones(List<string> macrozone);
+    public List<Dto.Price> GetPricesbyMacrozonesDates(List<string> macrozone, DateTime startDate, DateTime endDate);
 
 }

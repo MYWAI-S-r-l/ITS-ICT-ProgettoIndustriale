@@ -1,6 +1,6 @@
 ﻿using ProgettoIndustriale.Type;
 using Dto = ProgettoIndustriale.Type.Dto;
-using Domain = ProgettoIndustriale.Type.Domain;
+using Dom = ProgettoIndustriale.Type.Domain;
 using ProgettoIndustriale.Type.Dto;
 using ProgettoIndustriale.Data;
 using Microsoft.Identity.Client;
@@ -15,23 +15,23 @@ public class PriceManager : IPriceManager
     { 
         _context= context;
     }
-    public List<Dto.Price> GetAllPrice()
+    public List<Dto.Price> GetAllPrices()
     {
 
-        var allPrice = _context.Price.ToList();
-        return MyMapper<Domain.Price, Dto.Price>.MapList(allPrice);
+        var allPrices = _context.Price.ToList();
+        return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
 
     }
 
-    public List<Dto.Price> GetPricebyMacrozone(List<string> macrozone)
+    public List<Dto.Price> GetPricesbyMacrozones(List<string> macrozones)
     {
-        var allPrice = _context.Price.ToList();
-        return MyMapper<Domain.Price, Dto.Price>.MapList(allPrice);
+        var allPrices = _context.Price.ToList();
+        return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
         
     }
 
 
-    public List<Dto.Price> GetPricebyDate(DateTime startDate, DateTime endDate)
+    public List<Dto.Price> GetPricesbyDates(DateTime startDate, DateTime endDate)
     {
         if (startDate > endDate)
         {
@@ -43,12 +43,12 @@ public class PriceManager : IPriceManager
             throw new ArgumentException("La data di inizio non può essere futura.");
         }
 
-        var allPrice = _context.Price.ToList();
-        return MyMapper<Domain.Price, Dto.Price>.MapList(allPrice);
+        var allPrices = _context.Price.ToList();
+        return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
         
     }
 
-    public List<Dto.Price> GetWeatherbyMacrozoneDate(List<string> macrozone, DateTime startDate, DateTime endDate)
+    public List<Dto.Price> GetPricesbyMacrozonesDates(List<string> macrozones, DateTime startDate, DateTime endDate)
     {
 
         if (startDate > endDate)
@@ -62,8 +62,8 @@ public class PriceManager : IPriceManager
         }
 
 
-        var allWeather = _context.Price.ToList();
-        return MyMapper<Domain.Price, Dto.Price>.MapList(allPrice);
+        var allPrices = _context.Price.ToList();
+        return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
         
 
     }
