@@ -5,6 +5,7 @@ using System.IO;
 using ProgettoIndustriale.Type.Dto;
 using ProgettoIndustriale.Type;
 using System.Text;
+using ProgettoIndustriale.Data;
 
 
 namespace ProgettoIndustriale.Business.Imp

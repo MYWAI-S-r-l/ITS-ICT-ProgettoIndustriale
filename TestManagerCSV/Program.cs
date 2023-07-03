@@ -7,6 +7,7 @@ using System;
 using ProgettoIndustriale.Type;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure; // Aggiungi questo import
+using ProgettoIndustriale.Data;
 
 class Program
 {
@@ -29,10 +30,10 @@ class Program
         dataImportManager.ImportData("Regions");
 
         // Importa i dati per la tabella Provinces
-        //dataImportManager.ImportData("Provinces");
+        dataImportManager.ImportData("Provinces");
 
         // Importa i dati per la tabella Industry
-        //dataImportManager.ImportData("Industry");
+        dataImportManager.ImportData("Industry");
 
         Console.WriteLine("Importazione completata.");
     }
