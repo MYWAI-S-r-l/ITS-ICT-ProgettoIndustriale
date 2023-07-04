@@ -39,8 +39,8 @@ public partial class ProgettoIndustrialeContext : DbContext
     public virtual DbSet<Generation> Generation { get; set; }
     public virtual DbSet<ApiCallsLogs> ApiCallsLogs { get; set; }
 
-    //----Terna
-    public virtual DbSet<TernaToken> TernaToken { get; set; }
+    //----Token
+    public virtual DbSet<Token> Token { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ public partial class ProgettoIndustrialeContext : DbContext
         modelBuilder.ApplyConfiguration(new ConfigDate());
         modelBuilder.ApplyConfiguration(new ConfigWeather());
         
-        modelBuilder.ApplyConfiguration(new ConfigTernaToken());
+        modelBuilder.ApplyConfiguration(new ConfigToken());
         modelBuilder.ApplyConfiguration(new ConfigApiCallsLogs());
     }
 

@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.Web", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.TestDB", "ProgettoIndustriale.TestDB\ProgettoIndustriale.TestDB.csproj", "{783AA359-237F-4B47-AD74-369B3824DF4F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.TestDACQApi", "ProgettoIndustriale.TestDACQApi\ProgettoIndustriale.TestDACQApi.csproj", "{FCA22CCF-6E2C-48AD-B610-4819F3FCFC16}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementi di soluzione", "Elementi di soluzione", "{F8268044-D944-49C1-B6FA-45529E71B844}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestManagerCSV", "TestManagerCSV\TestManagerCSV.csproj", "{411D4072-55AD-4641-9EF9-14995F631A66}"
@@ -55,6 +57,10 @@ Global
 		{783AA359-237F-4B47-AD74-369B3824DF4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{783AA359-237F-4B47-AD74-369B3824DF4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{783AA359-237F-4B47-AD74-369B3824DF4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCA22CCF-6E2C-48AD-B610-4819F3FCFC16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA22CCF-6E2C-48AD-B610-4819F3FCFC16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA22CCF-6E2C-48AD-B610-4819F3FCFC16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA22CCF-6E2C-48AD-B610-4819F3FCFC16}.Release|Any CPU.Build.0 = Release|Any CPU
 		{411D4072-55AD-4641-9EF9-14995F631A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{411D4072-55AD-4641-9EF9-14995F631A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{411D4072-55AD-4641-9EF9-14995F631A66}.Release|Any CPU.ActiveCfg = Release|Any CPU

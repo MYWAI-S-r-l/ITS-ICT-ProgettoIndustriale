@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="log\" />
+    <Folder Include="Model\Scripts\Procedures\" />
   </ItemGroup>
 
 </Project>
