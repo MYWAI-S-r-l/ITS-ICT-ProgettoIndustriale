@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.Service
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.Web", "ProgettoIndustriale.Web\ProgettoIndustriale.Web.csproj", "{57E981A6-3D6A-479B-B60A-6DB8D1F9978B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgettoIndustriale.TestDB", "ProgettoIndustriale.TestDB\ProgettoIndustriale.TestDB.csproj", "{783AA359-237F-4B47-AD74-369B3824DF4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgettoIndustriale.TestDB", "ProgettoIndustriale.TestDB\ProgettoIndustriale.TestDB.csproj", "{783AA359-237F-4B47-AD74-369B3824DF4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgettoIndustriale.TestDACQApi", "ProgettoIndustriale.TestDACQApi\ProgettoIndustriale.TestDACQApi.csproj", "{FCA22CCF-6E2C-48AD-B610-4819F3FCFC16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{783AA359-237F-4B47-AD74-369B3824DF4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{783AA359-237F-4B47-AD74-369B3824DF4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{783AA359-237F-4B47-AD74-369B3824DF4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCA22CCF-6E2C-48AD-B610-4819F3FCFC16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA22CCF-6E2C-48AD-B610-4819F3FCFC16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA22CCF-6E2C-48AD-B610-4819F3FCFC16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA22CCF-6E2C-48AD-B610-4819F3FCFC16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

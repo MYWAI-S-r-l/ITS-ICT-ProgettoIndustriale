@@ -2,6 +2,7 @@
 using Dto = ProgettoIndustriale.Type.Dto;
 using Domain = ProgettoIndustriale.Type.Domain;
 using ProgettoIndustriale.Type.Dto;
+using ProgettoIndustriale.Data;
 
 //using Microsoft.AspNetCore.Mvc;
 //using Newtonsoft.Json;
