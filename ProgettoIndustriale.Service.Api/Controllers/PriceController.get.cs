@@ -7,17 +7,31 @@ namespace ProgettoIndustriale.Service.Api.Controllers;
 
 public partial class PriceController
 {
-    [HttpGet("get/{codice}")]
-    public Dto.Price? GetPrice(string codice)
+
+    [HttpGet("getAllPrices")]
+    public List<Dto.Price> GetAllPrices()
     {
-        return _priceManager.GetPrice(codice);
+        return _priceManager.GetAllPrices();
     }
 
-    [HttpGet("getAll")]
-    public List<Dto.Price> GetPrice()
+    [HttpGet("getPricesbyDates")]
+    public List<Dto.Price> GetPricesbyDates(DateTime startDate, DateTime endDate)
     {
-        return _priceManager.GetAllPrice();
+        return _priceManager.GetPricesbyDates(startDate, endDate);
     }
+
+    [HttpGet("getGetPricesbyMacrozones")]
+    public List<Dto.Price> GetPricesbyMacrozones(List<string> macrozone)
+    {
+        return _priceManager.GetPricesbyMacrozones(macrozone);
+    }
+
+    [HttpGet("getGetPricesbyMacrozonesDates")]
+    public List<Dto.Price> GetPricesbyMacrozonesDates(List<string> macrozone, DateTime startDate, DateTime endDate)
+    {
+        return _priceManager.GetPricesbyMacrozonesDates(macrozone, startDate, endDate);
+    }
+
 
 }
 

@@ -6,7 +6,7 @@ using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
-public partial class ProvinceController
+public partial class PriceController
 {
     [HttpPost("insertPriceFromApi")]
     public ActionResult<List<Dto.Price>> InsertPriceFromApi()
