@@ -1,24 +1,22 @@
 ﻿using Dto = ProgettoIndustriale.Type.Dto;
 using Microsoft.AspNetCore.Mvc;
 using ProgettoIndustriale.Type.Dto;
+using ProgettoIndustriale.Business;
+
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
-/*
-public partial class ProvinceController
+
+public partial class WeatherController
 {
-    [HttpGet("get/{codice}")]
-    public Dto.Provincia? GetProvincia(string codice)
+
+    [HttpGet("getAllWeathers")]
+
+    public List<Dto.Weather>GetAllWeathers()
     {
-        return _provinceManager.GetProvincia(codice);
+        return _weatherManager.GetAllWeathers();
     }
 
-    [HttpGet("getAll")]
-    public List<Dto.Provincia> GetProvince()
-    {
-        return _provinceManager.GetAllProvince();
-    }
 
 }
 
-*/

@@ -20,18 +20,5 @@ public partial class PriceController
         return _priceManager.GetPricesbyDates(startDate, endDate);
     }
 
-    [HttpGet("getGetPricesbyMacrozones")]
-    public List<Dto.Price> GetPricesbyMacrozones(List<string> macrozone)
-    {
-        return _priceManager.GetPricesbyMacrozones(macrozone);
-    }
-
-    [HttpGet("getGetPricesbyMacrozonesDates")]
-    public List<Dto.Price> GetPricesbyMacrozonesDates(List<string> macrozone, DateTime startDate, DateTime endDate)
-    {
-        return _priceManager.GetPricesbyMacrozonesDates(macrozone, startDate, endDate);
-    }
-
-
 }
 
