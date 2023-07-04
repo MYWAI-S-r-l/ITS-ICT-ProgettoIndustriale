@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.Data.ConfigClasses
@@ -10,7 +11,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
         public void Configure(EntityTypeBuilder<Weather> entity)
         {
 
-            entity.Property(w => w.Id).IsRequired();
+            entity.Property(w => w.Id).IsRequired().HasValueGenerator<GuidValueGenerator>();
            
             entity.HasKey(w => w.Id);
             

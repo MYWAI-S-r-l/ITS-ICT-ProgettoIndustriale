@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using ProgettoIndustriale.Type.Domain;
 
 
@@ -17,7 +18,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
 
         {
 
-            entity.Property(d => d.Id).IsRequired();
+            entity.Property(d => d.Id).IsRequired().HasValueGenerator<GuidValueGenerator>(); 
 
             entity.Property(d => d.DateTime).IsRequired();
 
