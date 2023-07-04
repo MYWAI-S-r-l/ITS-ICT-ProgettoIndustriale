@@ -6,7 +6,9 @@ using ProgettoIndustriale.Type.Dto;
 using ProgettoIndustriale.Type;
 using System.Text;
 using ProgettoIndustriale.Data;
-
+using System.Reflection;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProgettoIndustriale.Business.Imp
 {
@@ -20,6 +22,8 @@ namespace ProgettoIndustriale.Business.Imp
         {
             _context = context;
         }
+
+
 
         public void ImportData(string tableName)
         {
@@ -59,8 +63,6 @@ namespace ProgettoIndustriale.Business.Imp
             for (int i = 1; i < csvLines.Length; i++)
             {
                 string[] propertyValues = csvLines[i].Split(',');
-                //var macro = new Type.Domain.MacroZone().GetType();
-                //var prova = System.Type.GetType(macro.AssemblyQualifiedName);
                 object domainObject = Activator.CreateInstance(System.Type.GetType(tableInfo.classe));
                 for (int j = 0; j < propertyNames.Length; j++)
                 {
@@ -75,9 +77,6 @@ namespace ProgettoIndustriale.Business.Imp
 
             // Salva gli oggetti di dominio nel database
 
-
-            //object domainObject = Activator.CreateInstance(System.Type.GetType(tableInfo.classe));
-            //_context.RemoveRange(_context.);
             _context.AddRange(domainObjects);
             _context.SaveChanges();
 
@@ -96,7 +95,6 @@ namespace ProgettoIndustriale.Business.Imp
         private List<JsonAnagrafe> LoadTableInfos()
         {
             string jsonContent = File.ReadAllText(jsonFilePath, encoding: Encoding.UTF8);
-            //var prova =  JsonConvert.DeserializeObject(jsonContent);
             return JsonConvert.DeserializeObject<List<JsonAnagrafe>>(jsonContent);
         }
     }

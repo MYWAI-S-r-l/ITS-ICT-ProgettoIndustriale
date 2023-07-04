@@ -2,21 +2,21 @@
     {
         "percorso": "C:\\Users\\user\\ITS-ICT-ProgettoIndustriale\\ProgettoIndustriale.Data\\Dataset\\MacroZone.csv",
         "classe": "ProgettoIndustriale.Type.Domain.MacroZone, ProgettoIndustriale.Type",
-        "nometabella": "MacroZone"
+        "nometabella": "macrozone"
     },
     {
-        "percorso": "C:\\Users\\user\\ITS-ICT-ProgettoIndustriale\\ProgettoIndustriale.Data\\Dataset\\Regions.csv",
+        "percorso": "C:\\Users\\user\\ITS-ICT-ProgettoIndustriale\\ProgettoIndustriale.Data\\Dataset\\Region.csv",
         "classe": "ProgettoIndustriale.Type.Domain.Region, ProgettoIndustriale.Type",
-        "nometabella": "Regions"
+        "nometabella": "region"
     },
     {
-        "percorso": "C:\\Users\\user\\ITS-ICT-ProgettoIndustriale\\ProgettoIndustriale.Data\\Dataset\\Provinces.csv",
+        "percorso": "C:\\Users\\user\\ITS-ICT-ProgettoIndustriale\\ProgettoIndustriale.Data\\Dataset\\Province.csv",
         "classe": "ProgettoIndustriale.Type.Domain.Province, ProgettoIndustriale.Type",
-        "nometabella": "Provinces"
+        "nometabella": "province"
     },
     {
         "percorso": "C:\\Users\\user\\ITS-ICT-ProgettoIndustriale\\ProgettoIndustriale.Data\\Dataset\\Industry.csv",
         "classe": "ProgettoIndustriale.Type.Domain.Industry, ProgettoIndustriale.Type",
-        "nometabella": "Industry"
+        "nometabella": "industry"
     }
     ]

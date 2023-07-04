@@ -21,19 +21,25 @@ class Program
 
         var db = new ProgettoIndustrialeContext(optionsBuilder.Options);
 
+
+        DataResetManager dataResetManager = new DataResetManager(db);
+        dataResetManager.ResetData(); // Resetta i dati delle tabelle specificate nel JSON
+        Console.WriteLine("Reset dei dati completato.");
+
+
         DataImportManager dataImportManager = new DataImportManager(db);
 
         // Importa i dati per la tabella MacroZone
-        dataImportManager.ImportData("MacroZone");
+        dataImportManager.ImportData("macrozone");
 
         // Importa i dati per la tabella Regions
-        dataImportManager.ImportData("Regions");
+        dataImportManager.ImportData("region");
 
         // Importa i dati per la tabella Provinces
-        dataImportManager.ImportData("Provinces");
+        dataImportManager.ImportData("province");
 
         // Importa i dati per la tabella Industry
-        dataImportManager.ImportData("Industry");
+        dataImportManager.ImportData("industry");
 
         Console.WriteLine("Importazione completata.");
     }
