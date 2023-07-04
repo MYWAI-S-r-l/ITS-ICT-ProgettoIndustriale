@@ -73,7 +73,6 @@ CREATE TABLE IF NOT EXISTS `progettoindustriale`.`Commodity` (
   `ID_commodity` INT NOT NULL,
   `name` VARCHAR(20) NULL,
   `value_USD` DECIMAL(5,2) NULL,
-  `unit` VARCHAR(10) NULL,
   `COD_date` INT NOT NULL,
   PRIMARY KEY (`ID_commodity`),
   INDEX `fk_Commodity_Date1_idx` (`COD_date` ASC) VISIBLE,
