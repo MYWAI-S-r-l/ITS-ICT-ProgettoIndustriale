@@ -23,4 +23,8 @@
     <ProjectReference Include="..\ProgettoIndustriale.Type\ProgettoIndustriale.Type.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\configs\" />
+  </ItemGroup>
+
 </Project>

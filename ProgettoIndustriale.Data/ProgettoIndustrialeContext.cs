@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 
+
 namespace ProgettoIndustriale.Data;
 public partial class ProgettoIndustrialeContext : DbContext
 {
@@ -35,6 +36,7 @@ public partial class ProgettoIndustrialeContext : DbContext
     public virtual DbSet<Date> Date { get; set; }
     public virtual DbSet<Commodity> Commodity { get; set; }
     public virtual DbSet<Generation> Generation { get; set; }
+    public virtual DbSet<ApiCallsLogs> ApiCallsLogs { get; set; }
 
     //----Terna
     public virtual DbSet<TernaToken> TernaToken { get; set; }
@@ -54,26 +56,9 @@ public partial class ProgettoIndustrialeContext : DbContext
         modelBuilder.ApplyConfiguration(new ConfigGeneration());
         modelBuilder.ApplyConfiguration(new ConfigDate());
         modelBuilder.ApplyConfiguration(new ConfigWeather());
-        //-------TERNA
-        modelBuilder.Entity<TernaToken>(entity =>
-        {
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
-            entity.HasKey(e => e.Id);
-
-            entity.Property(e => e.AccessToken)
-                .IsRequired()
-                .HasMaxLength(50)
-                .IsUnicode(false);
-
-            entity.Property(e => e.TokenType)
-                .IsRequired()
-                .HasMaxLength(20)
-                .IsUnicode(false);
-
-            entity.Property(e => e.AddedTime);
-        });
-
-
+        
+        modelBuilder.ApplyConfiguration(new ConfigTernaToken());
+        modelBuilder.ApplyConfiguration(new ConfigApiCallsLogs());
     }
 
 

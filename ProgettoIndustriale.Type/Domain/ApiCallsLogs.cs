@@ -9,21 +9,21 @@ using ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.Type.Domain
 {
-    public partial class TernaToken
+    public partial class ApiCallsLogs
     {
-        public TernaToken()
+        public ApiCallsLogs()
         {
         }
         
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        //[JsonPropertyName("access_token")]
-        public string AccessToken { get; set; }
-        //[JsonPropertyName("token_type")]
-        public string TokenType { get; set; }
-
-        public DateTime AddedTime { get; set; }
+        [Column("ApiCallName")]
+        public string ApiCallName { get; set; }
+        [Column("CallFrequency")]
+        public string CallFrequency { get; set; }
+        [Column("LastSuccessfulRun")]
+        public DateTime LastSuccessfulRun { get; set; }
         
     }
 }

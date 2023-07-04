@@ -70,10 +70,10 @@ public static class MyMapper<TSource, TDestination>
                 AddMapping<Dto.Generation,  Domain.Generation>(cfg, ignores);
                 AddMapping<Dto.Weather,     Domain.Weather>(cfg, ignores);
 
-
-
                 AddMapping<Domain.TernaToken, Dto.TernaToken>(cfg, ignores);
+                AddMapping<Domain.ApiCallsLogs, Dto.ApiCallsLogs>(cfg, ignores);
                 AddMapping<Dto.TernaToken, Domain.TernaToken>(cfg, ignores);
+                AddMapping<Dto.ApiCallsLogs, Domain.ApiCallsLogs>(cfg, ignores);
             };
         }
 

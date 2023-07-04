@@ -13,13 +13,21 @@ public class ProvinciaConfiguration : IEntityTypeConfiguration<Type.Domain.Provi
 
     }
 }
-
-*/
 public class TernaTokenConfiguration : IEntityTypeConfiguration<Type.Domain.TernaToken>
 {
     public void Configure(EntityTypeBuilder<Type.Domain.TernaToken> entity)
     {
         entity.ToTable("TernaToken");
+        entity.HasKey(e => new { e.Id });
+
+    }
+}
+
+public class ApiCallsLogsConfiguration : IEntityTypeConfiguration<Type.Domain.ApiCallsLogs>
+{
+    public void Configure(EntityTypeBuilder<Type.Domain.ApiCallsLogs> entity)
+    {
+        entity.ToTable("ApiCallsLogs");
         entity.HasKey(e => new { e.Id });
 
     }
