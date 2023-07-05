@@ -14,20 +14,24 @@ using System.Globalization;
 using System.Xml;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Configuration;
 
 namespace ProgettoIndustriale.Business.Imp;
 
 public class ApiManager : IApiManager
 {
+    private readonly IConfiguration _configuration;
     private readonly ProgettoIndustrialeContext _context;
-    public ApiManager(ProgettoIndustrialeContext context)
+    public ApiManager(ProgettoIndustrialeContext context, IConfiguration configuration)
     {
+        _configuration = configuration;
         _context = context;
     }
 
     public Dto.JsonApiConfig? ProcessConfigFile(string jsonConfigLocation)
     {
         //the location of the jsonConfig file must be passed to the program
+
         try
         {
             var jsonConfig = System.IO.File.ReadAllText(jsonConfigLocation);
@@ -38,7 +42,13 @@ public class ApiManager : IApiManager
 
         catch (JsonException ex)
         {
-            Console.WriteLine($"Error deserializing JSON: {ex.Message}");
+            Console.WriteLine($"Error Deserializing JSON: {ex.Message}");
+            return null;
+        }
+
+        catch (System.IO.DirectoryNotFoundException ex)
+        {
+            Console.WriteLine($"Error with filepath: {ex.Message}");
             return null;
         }
         
@@ -289,8 +299,7 @@ public class ApiManager : IApiManager
 
                     //return the object needed to check that the data was added/updated. ApiCall CRUD run on ApiCall/JsonApiTemplate
                     //How?
-                    //Either check that the number of records is what I expected
-                    //Or simply that I get a 200 Active Directory message
+                    //Simply that I get a 200 Active Directory message
                 }
             }
         }
@@ -298,3 +307,10 @@ public class ApiManager : IApiManager
     }
 
 }
+
+//To Do:
+//When inserting data that has a date_id / COD_date, need to work in JOINs using the date values of the data & the the DATE
+//column of the date table to insert the date_id / COD_date?
+// How? 
+// Raw SQL query on insertion
+// Entity Framework

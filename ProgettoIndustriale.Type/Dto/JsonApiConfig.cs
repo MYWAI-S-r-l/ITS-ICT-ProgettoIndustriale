@@ -9,5 +9,6 @@ namespace ProgettoIndustriale.Type.Dto
     public class JsonApiConfig
     {
         public List<JsonApiTemplate>? apiCalls { get; set; }
+        public JsonApiTemplate template { get; set; }
     }
 }
