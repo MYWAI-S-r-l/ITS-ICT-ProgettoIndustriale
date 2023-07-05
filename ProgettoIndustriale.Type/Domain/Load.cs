@@ -17,8 +17,11 @@ namespace ProgettoIndustriale.Type.Domain
         public int TotalLoadMW { get; set; }
         [Column("forecast_total_load_MW")]
         public float ForecastTotalLoadMw { get; set; }
-        [Column("COD_Date")]
+
+        [Column("COD_date")]
         public int IdDate { get; set; }
+
+        [Column("COD_macrozone")]
         public int IdMacroZone { get; set; }
         public virtual Date Date { get; set; }
         public virtual MacroZone MacroZone { get; set; }

@@ -14,7 +14,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
         public static dom.Load Data() {
             return new dom.Load()
             {
-                Id = 1,
+               
                 TotalLoadMW = 10,
                 ForecastTotalLoadMw = 11.2f,
                 IdDate = 1,

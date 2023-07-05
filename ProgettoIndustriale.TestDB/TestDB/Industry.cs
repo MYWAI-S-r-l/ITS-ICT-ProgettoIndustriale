@@ -14,7 +14,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
         { 
             return new dom.Industry() 
             { 
-                Id = 1, 
+                
                 Name = "Tim", 
                 IdProvince = 1, 
                 CountActive=50 

@@ -14,7 +14,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
         { 
             return new dom.Commodity() 
             { 
-                Id = 1, 
+                
                 Name = "Brent",
                 ValueUsd=76.48, 
                 Unit="$/Barile",

@@ -16,7 +16,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
             return new dom.Generation() 
 
             { 
-                Id = 1, 
+                
                 GenerationGhw = 274.47, 
                 Type="Solar",
                 IdDate=1

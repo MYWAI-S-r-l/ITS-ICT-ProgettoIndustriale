@@ -16,7 +16,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
         public static dom.Weather data() { 
             return new dom.Weather ()
             {
-                Id = 1,
+                
                 Temperature = 20,
                 Dewpoint = 25,
                 RelativeHumidity = 55,

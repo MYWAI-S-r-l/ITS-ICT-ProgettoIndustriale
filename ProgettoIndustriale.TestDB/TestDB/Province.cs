@@ -17,14 +17,14 @@ namespace ProgettoIndustriale.TestDB.TestDB
         { 
             return new dom.Province() 
             { 
-                Id = 1, 
+               
                 Name = "Rome", 
                 Longitude= "12.4963655", 
                 Latitude= "41.9027835" , 
                 Surface=1.285f ,
                 Altitude=21, 
                 Residents=2873,
-                PopulationDensity=2235,
+                PopulationDensity=1,
                 NCities=121, 
                 IdRegion=1
             }; 

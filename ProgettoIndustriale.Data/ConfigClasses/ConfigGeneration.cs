@@ -11,7 +11,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
         public void Configure(EntityTypeBuilder<Generation> entity)
         {
 
-            entity.Property(g => g.Id).IsRequired().HasValueGenerator<GuidValueGenerator>();
+            entity.Property(g => g.Id).IsRequired().ValueGeneratedOnAdd();
 
             entity.HasKey(g => g.Id);
             

@@ -18,7 +18,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
 
         {
 
-            entity.Property(d => d.Id).IsRequired().HasValueGenerator<GuidValueGenerator>(); 
+            entity.Property(d => d.Id).IsRequired().ValueGeneratedOnAdd();
 
             entity.Property(d => d.DateTime).IsRequired();
 
@@ -28,17 +28,19 @@ namespace ProgettoIndustriale.Data.ConfigClasses
 
             entity.Property(d => d.Day).IsRequired();
 
-            entity.Property(d => d.Time).IsRequired();       
+            entity.Property(d => d.Time).IsRequired();
 
-            entity.HasMany(d => d.Weathers).WithOne(a => a.Date).HasForeignKey(d => d.IdDate);
 
-            entity.HasMany(d => d.Commodities).WithOne(a => a.Date).HasForeignKey(d => d.IdDate);
+            entity.HasMany(d => d.Weathers).WithOne(a => a.Date).HasForeignKey(d => d.IdDate).HasConstraintName("COD_date");
 
-            entity.HasMany(d => d.Generations).WithOne(a => a.Date).HasForeignKey(d => d.IdDate);
+            entity.HasMany(d => d.Commodities).WithOne(a => a.Date).HasForeignKey(d => d.IdDate).HasConstraintName("COD_date");
 
-            entity.HasMany(d => d.Loads).WithOne().HasForeignKey(d => d.IdDate);
+            entity.HasMany(d => d.Generations).WithOne(a => a.Date).HasForeignKey(d => d.IdDate).HasConstraintName("COD_date");
 
-            entity.HasMany(d => d.Prices).WithOne().HasForeignKey(d => d.IdDate);
+            entity.HasMany(d => d.Loads).WithOne(x=>x.Date).HasForeignKey(d => d.IdDate).HasConstraintName("COD_date");
+
+            entity.HasMany(d => d.Prices).WithOne(x => x.Date).HasForeignKey(d => d.IdDate).HasConstraintName("COD_date");
+
 
         }
 

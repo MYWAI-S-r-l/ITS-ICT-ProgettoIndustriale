@@ -13,6 +13,10 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("bidding_zone")]
         public string BiddingZone { get; set; }
         public virtual ICollection<Region> Regions { get; set; }
+        public virtual ICollection<Load> Loads { get; set; }
+
+        public virtual ICollection<Price> Prices { get; set; }
+
 
     }
 }

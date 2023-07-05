@@ -15,7 +15,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
         { 
             return new dom.Region() 
             {
-                Id = 1, 
+                
                 Name = "Lazio", 
                 IdMacroZone = 1
             }; 

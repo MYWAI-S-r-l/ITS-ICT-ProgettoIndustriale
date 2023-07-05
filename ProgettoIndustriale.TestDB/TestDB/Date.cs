@@ -18,7 +18,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
 
             {
                 
-                Id = 1,
+                
                 DateTime = new DateTime(2023, 6, 19),
                 Year = 2023,
                 Month = 6,
