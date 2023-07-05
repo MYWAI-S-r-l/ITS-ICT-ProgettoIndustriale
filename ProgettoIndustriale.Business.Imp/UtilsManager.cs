@@ -28,6 +28,20 @@ public class UtilsManager : IUtilsManager
         return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
 
     }
+    public List<Dto.Region> GetAllRegions()
+    {
+
+        var allRegion = _context.Region.ToList();
+        return MyMapper<Domain.Region, Dto.Region>.MapList(allRegion);
+
+    }
+    public List<Dto.MacroZone> GetAllMacroZone()
+    {
+
+        var allMacrozone = _context.MacroZone.ToList();
+        return MyMapper<Domain.MacroZone, Dto.MacroZone>.MapList(allMacrozone);
+
+    }
 
 
     //QUESTO FORSE NON SERVE
@@ -78,13 +92,13 @@ public class UtilsManager : IUtilsManager
         return MyMapper<Domain.Region, Dto.Region>.MapList(listRegions);
     }
 
-    public Dto.MacroZone getMacrozoneHavingRegion(string region)
+    public Dto.MacroZone GetMacrozoneHavingRegion(string region)
     {
         Domain.MacroZone macrozone=_context.Region.Where(x=>x.Name==region).Select(x=>x.MacroZone).First();
         return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone);
     }
 
-    public Dto.MacroZone getMacrozoneHavingProvince(string province)
+    public Dto.MacroZone GetMacrozoneHavingProvince(string province)
     {
         Domain.MacroZone macrozone = _context.Province.Where(x => x.Region.Name == province).Select(x => x.Region.MacroZone).First();
         return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone);
