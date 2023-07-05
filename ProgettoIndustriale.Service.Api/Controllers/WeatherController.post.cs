@@ -13,14 +13,14 @@ public partial class WeatherController
     {
         return _weatherManager.GetWeathersbyProvinces(province);
     }
-    [HttpGet("getWeathersbyDates")]
+    [HttpPost("getWeathersbyDates")]
 
     public List<Dto.Weather> GetWeathersbyDates(DateTime startDate, DateTime endDate)
     {
         return _weatherManager.GetWeathersbyDates(startDate, endDate);
     }
 
-    [HttpGet("getWeathersbyProvincesDates")]
+    [HttpPost("getWeathersbyProvincesDates")]
 
     public List<Dto.Weather> GetWeathersbyProvincesDates(List<string> province, DateTime startDate, DateTime endDate)
     {
