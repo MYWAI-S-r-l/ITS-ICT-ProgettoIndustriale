@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Xml;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ProgettoIndustriale.Data;
 
 namespace ProgettoIndustriale.Business.Imp;
 
