@@ -17,6 +17,10 @@ namespace Ansaldo.Protocollo.Business.Imp
     {
         private readonly ProgettoIndustrialeContext _context;
 
+        public LoadManager(ProgettoIndustrialeContext context)
+        {
+            _context = context;
+        }
         public List<Dto.Load> getAllLoads()
         {
             List<Dom.Load> loads = _context.Load.ToList();
