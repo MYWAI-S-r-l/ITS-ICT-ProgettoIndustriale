@@ -9,7 +9,7 @@ using ProgettoIndustriale.Type.Domain;
 using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
-
+using MySqlConnector;
 
 namespace ProgettoIndustriale.Business.Imp
 {
@@ -62,11 +62,11 @@ namespace ProgettoIndustriale.Business.Imp
             string connectionString = "Server=localhost;Port=3306;Database=progettoindustriale;Uid=RestUser;Pwd=restPassword;";
             var serverVersion = new MySqlServerVersion(new Version(10, 11, 2));
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("ResetAutoIncrement", connection))
+                using (MySqlCommand command = new MySqlCommand("ResetAutoIncrement", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -81,7 +81,7 @@ namespace ProgettoIndustriale.Business.Imp
 
             List<JsonAnagrafe> tableInfos = JsonConvert.DeserializeObject<List<JsonAnagrafe>>(jsonContent);
 
-            //tableInfos.Reverse(); // Inverte l'ordine degli elementi nella lista
+            tableInfos.Reverse(); // Inverte l'ordine degli elementi nella lista
 
             return tableInfos;
         }
