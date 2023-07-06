@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 namespace ProgettoIndustriale.Data;
 public partial class ProgettoIndustrialeContext : DbContext
 {
+    //Commentato temporaneamente perchè causa molti errori.
     //private readonly StreamWriter _logStream = new StreamWriter("../../../../ProgettoIndustriale.Data/log/mylog.txt", append: false); //TODO: prendere path del log da config
 
     public ProgettoIndustrialeContext()

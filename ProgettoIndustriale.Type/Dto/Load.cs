@@ -9,11 +9,11 @@ namespace ProgettoIndustriale.Type.Dto
     public class Load
     {
         public Load() { }
-        public int idLoad { get; set; }
+        public int Id { get; set; }
         public int totalLoadMW { get; set; }
         public float forecastTotalLoadMw { get; set; }
-        public Date tblDate { get; set; }
-        public  MacroZone tblMacroZone { get; set; }
+        public Date Date { get; set; }
+        public  MacroZone MacroZone { get; set; }
 
     }
 }

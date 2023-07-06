@@ -23,7 +23,7 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("day")]
         public int Day { get; set; }
         [Column("time")]
-        public TimeSpan Time { get; set; }
+        public TimeOnly Time { get; set; }
 
         public virtual ICollection<Weather> Weathers { get; set; }
 
