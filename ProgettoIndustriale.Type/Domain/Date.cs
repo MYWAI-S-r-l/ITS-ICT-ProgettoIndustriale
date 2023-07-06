@@ -22,8 +22,8 @@ namespace ProgettoIndustriale.Type.Domain
         public int Month { get; set; }
         [Column("day")]
         public int Day { get; set; }
-        [Column("time")]
-        public TimeOnly Time { get; set; }
+        [Column("hour")]
+        public int Hour { get; set; }
 
         public virtual ICollection<Weather> Weathers { get; set; }
 

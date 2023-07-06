@@ -28,7 +28,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
 
             entity.Property(d => d.Day).IsRequired();
 
-            entity.Property(d => d.Time).IsRequired();
+            entity.Property(d => d.Hour).IsRequired();
 
 
             entity.HasMany(d => d.Weathers).WithOne(a => a.Date).HasForeignKey(d => d.IdDate).HasConstraintName("COD_date");
