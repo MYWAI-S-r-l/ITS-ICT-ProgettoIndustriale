@@ -121,48 +121,6 @@ public class ApiManager : IApiManager
         }
     }
 
-    //might change void into ActionResult, depending on the check function
-    public void UpdateTable(object dtoObject, Dto.JsonApiTemplate apiCall)
-    {
-
-        //ToDO:
-        //Data JOIN check and condition
-        //Add new records and don't touch old one rather than replace everything
-        //By date_id, probably
-
-        //Alphavantage and APIs that don't take start/end date
-        //Filter after the request by date (could have to update class with "extra_parameters"
-        //E.g. once --> start and end date for historical data
-               // daily --> use current date & granularity depending on extra_parameters
-
-        //Deserializes the content of the API call into a domain object
-        object? domainObject = System.Text.Json.JsonSerializer.Deserialize(
-            System.Text.Json.JsonSerializer
-            .Serialize(dtoObject), System.Type.GetType(apiCall.domainClass));
-
-        // Get the DbSet corresponding to the table dynamically.
-        var dbSetProperty = _context.GetType().GetProperty(apiCall.tableName);
-        if (dbSetProperty != null && dbSetProperty.PropertyType.IsGenericType)
-        {
-            //obtains dbSet object
-            var dbSet = dbSetProperty.GetValue(_context);
-            if (dbSet != null)
-            {
-                // Add the domainObject to the DbSet.
-                MethodInfo? addMethod = dbSet.GetType().GetMethod("Add");
-                addMethod.Invoke(dbSet, new[] { domainObject });
-                _context.SaveChanges();
-            }
-
-            //return dtoObject;
-            //needs to be some type of return to say it worked, or to feed the func that checks it worked
-            //create another log table?
-        }
-
-
-
-    }
-
     public Dto.TernaToken? GetToken()
     {
         //update Dto and Domain objects to be aspecific to tokenType --> maybe add TokenProvider field in db (using url?)?
@@ -308,9 +266,6 @@ public class ApiManager : IApiManager
         {
             if (!string.IsNullOrEmpty(apiCall.dtoClass))
             {
-                //occhio che senza system va a prendere il namespace (vedi esplora soluzioni)
-                //var dtoType = System.Type.GetType(apiCall.dtoClass);
-
                 string? fullyQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoClass);
 
                 var dtoInstance = GetClassInstance(fullyQualifiedName);
@@ -319,7 +274,6 @@ public class ApiManager : IApiManager
                     .Deserialize(responseContent, dtoInstance.GetType());
 
                 UpdateTable(deserializedContent, apiCall);
-
             }
         }
         
@@ -330,21 +284,62 @@ public class ApiManager : IApiManager
         var reflectedType = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetType(strFullyQualifiedName) != null);
         System.Type ? type = reflectedType.GetType(strFullyQualifiedName);
         return Activator.CreateInstance(type);
-
-        //foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
-        //{
-        //    type = asm.GetType(strFullyQualifiedName);
-        //    if (type != null)
-        //    {
-        //        Console.WriteLine("test");
-        //        Console.WriteLine(asm);
-        //        return Activator.CreateInstance(type);
-        //    }
-
-        //}
-        //return null;
     }
 
+    public bool HasListDictionaryAttribute(object obj)
+    {
+        System.Type? type = obj.GetType();
+
+    }
+
+    public void UpdateTable(object dtoObject, Dto.JsonApiTemplate apiCall)
+    {
+
+        //ToDO:
+        //Data JOIN check and condition
+        //Add new records and don't touch old one rather than replace everything
+        //By date_id, probably
+
+        //Alphavantage and APIs that don't take start/end date
+        //Filter after the request by date (could have to update class with "extra_parameters"
+        //E.g. once --> start and end date for historical data
+        // daily --> use current date & granularity depending on extra_parameters
+
+        //Commodity checks
+        if (apiCall.tableName == "Commodity")
+        {
+
+        }
+
+        string? fullyQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.domainClass);
+
+        var domainInstance = GetClassInstance(fullyQualifiedName);
+
+        //Deserializes the content of the API call into a domain object
+        object? domainObject = System.Text.Json.JsonSerializer.Deserialize(
+            System.Text.Json.JsonSerializer
+            .Serialize(dtoObject), domainInstance.GetType();
+
+        // Get the DbSet corresponding to the table dynamically.
+        var dbSetProperty = _context.GetType().GetProperty(apiCall.tableName);
+        if (dbSetProperty != null && dbSetProperty.PropertyType.IsGenericType)
+        {
+            //obtains dbSet object
+            var dbSet = dbSetProperty.GetValue(_context);
+            if (dbSet != null)
+            {
+                // Add the domainObject to the DbSet.
+                MethodInfo? addMethod = dbSet.GetType().GetMethod("Add");
+                addMethod.Invoke(dbSet, new[] { domainObject });
+                _context.SaveChanges();
+            }
+
+            //return dtoObject;
+            //needs to be some type of return to say it worked, or to feed the func that checks it worked
+            //create another log table?
+        }
+
+    }
 }
 
 //To Do:

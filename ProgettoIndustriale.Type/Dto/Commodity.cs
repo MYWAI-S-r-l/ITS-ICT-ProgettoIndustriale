@@ -11,7 +11,7 @@ namespace ProgettoIndustriale.Type.Dto
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("data")]
-        public List<Dictionary<string, string>> Data { get; set; }
+        public List<CommodityData> Data { get; set; }
         [JsonPropertyName("unit")]
         public string Unit  { get; set; }
 
