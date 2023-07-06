@@ -9,6 +9,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using ProgettoIndustriale.Type.Domain;
 using System.Security.Cryptography.X509Certificates;
+using System.Runtime.CompilerServices;
 
 namespace ProgettoIndustriale.Business.Imp;
 
@@ -104,25 +105,51 @@ public class UtilsManager : IUtilsManager
         return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone);
     }
 
-    public List<int> GetNActiveIndustriesbyCatandProv(List<Dto.Province> provinces = null, List<string> category = null)
+    public List<Tuple<string, string, int>> GetNActiveIndustriesbyCatandProv(List<Dto.Province> provinces = null, List<string> category = null)
     {
-        List<int> nactive =new List<int>();
+        
         if(provinces==null)
         {
             provinces = GetAllProvinces();
         }
         List<Domain.Province> lProvinces = MyMapper<Dto.Province, Domain.Province>.MapList(provinces);
-        if (category==null)
+
+        List<Tuple<string, string, int>> result;
+        if (category == null)
         {
-            nactive = _context.Industry.Include(x => x.Province).Where(x => lProvinces.Contains(x.Province)).Select(x => x.CountActive).ToList();
+            
+            result = _context.Industry.Include(x => x.Province)
+                .Where(x => lProvinces.Contains(x.Province))
+                .GroupBy(x => new Tuple<string, string>(x.Province.Name, x.Name))
+                .Select(x => new Tuple<string, string, int>
+                (
+
+                    x.Key.Item1,
+                    x.Key.Item2,
+                    x.Sum(y => y.CountActive)
+                )).ToList();
+
+
         }
+        
         else
         {
-            nactive = _context.Industry.Include(x => x.Province).Where(x => lProvinces.Contains(x.Province) && category.Contains(x.Name)).Select(x => x.CountActive).ToList();
+            result = _context.Industry.Include(x => x.Province)
+                .Where(x => lProvinces
+                .Contains(x.Province) && category
+                .Contains(x.Name))
+                .GroupBy(x => new Tuple<string, string>(x.Province.Name, x.Name))
+                .Select(x => new Tuple<string, string, int>
+                (
+                    x.Key.Item1,
+                    x.Key.Item2,
+                    x.Sum(y => y.CountActive)
+                )).ToList();
         }
+        
 
 
-        return nactive;
+        return result;
     }
 
    

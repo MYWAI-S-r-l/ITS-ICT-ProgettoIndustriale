@@ -18,7 +18,7 @@ public interface IUtilsManager
     public List<Dto.Region> GetRegionsbyMacrozone(string macrozone);
 
     public Dto.MacroZone GetMacrozoneHavingRegion(string region);
-    public List<int> GetNActiveIndustriesbyCatandProv(List<Dto.Province> provinces=null, List<string> category=null);
+    public List<Tuple<string, string, int>> GetNActiveIndustriesbyCatandProv(List<Dto.Province> provinces=null, List<string> category=null);
 
 
 }
