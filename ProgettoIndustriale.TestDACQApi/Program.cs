@@ -12,20 +12,20 @@ class Program
     {
 
         var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddEnvironmentVariables()
             .Build();
 
-        //// Connection string for the MariaDB database -- Find how to use the one in API settings
-        //var connectionString = "Server=localhost;Port=3310;Database=YourDatabaseName;Uid=YourUsername;Pwd=YourPassword;";
         //var serverVersion = new MySqlServerVersion(new Version(10, 11, 3)); // Sostituisci con la versione del tuo server MariaDB
 
-        //// Create the DbContext using the connection string
-        //var optionsBuilder = new DbContextOptionsBuilder<ProgettoIndustrialeContext>();
-        //optionsBuilder.UseMySql(connectionString, serverVersion);
+        var connectionString = configuration.GetConnectionString("ProgettoIndustriale");
 
-        //var dbContext = new ProgettoIndustrialeContext(optionsBuilder.Options);
-        var dbContext = new ProgettoIndustrialeContext();
+        var options = new DbContextOptionsBuilder<ProgettoIndustrialeContext>()
+           .UseMySql(connectionString, new MariaDbServerVersion(new Version (10, 11, 3)))
+           .Options;
+
+        var dbContext = new ProgettoIndustrialeContext(options);
 
         // Create an instance of ApiManager and pass the DbContext
         var apiManager = new ProgettoIndustriale.Business.Imp.ApiManager(dbContext, configuration);

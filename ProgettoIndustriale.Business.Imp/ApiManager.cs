@@ -57,7 +57,7 @@ public class ApiManager : IApiManager
     public async Task RunCalls(Dto.JsonApiConfig config)
     {
         //check that the Json starts reading where it should (in this case, skip the first template call
-        foreach (var apiCall in config.apiCalls.Skip(1))
+        foreach (var apiCall in config.apiCalls)
         {
             //check whether apiCall is daily or once.
             //Depending on, interact with apiCallsLogs table
@@ -79,7 +79,7 @@ public class ApiManager : IApiManager
 
                     AddApiLog(apiCall);
                 }
-                if ((DateTime.Now - log.LastSuccessfulRun).TotalHours >= 24)
+                else if ((DateTime.Now - log.LastSuccessfulRun).TotalHours >= 24)
                 {
                     try
                     {
@@ -95,7 +95,7 @@ public class ApiManager : IApiManager
                 }
             }
 
-            if (apiCall.callFrequency.Equals("once", StringComparison.OrdinalIgnoreCase))
+            else if (apiCall.callFrequency.Equals("once", StringComparison.OrdinalIgnoreCase))
             {
                 Dto.ApiCallsLogs? log = GetApiLog(apiCall);
                 if(log == null)
@@ -124,6 +124,17 @@ public class ApiManager : IApiManager
     //might change void into ActionResult, depending on the check function
     public void UpdateTable(object dtoObject, Dto.JsonApiTemplate template)
     {
+
+        //ToDO:
+        //Data JOIN check and condition
+        //Add new records and don't touch old one rather than replace everything
+        //By date_id, probably
+
+        //Alphavantage and APIs that don't take start/end date
+        //Filter after the request by date (could have to update class with "extra_parameters"
+        //E.g. once --> start and end date for historical data
+               // daily --> use current date & granularity depending on extra_parameters
+
         System.Type? domainType = System.Type.GetType(template.domainClass);
 
         if (domainType != null)
@@ -173,9 +184,19 @@ public class ApiManager : IApiManager
 
     public Domain.ApiCallsLogs? GetDomainApiLog(Dto.JsonApiTemplate apiCall)
     {
-        Domain.ApiCallsLogs? domainApiCallLog = _context.ApiCallsLogs.FirstOrDefault(
+        try
+        {
+            Domain.ApiCallsLogs? domainApiCallLog = _context.ApiCallsLogs.FirstOrDefault(
             domainApiCall => domainApiCall.ApiCallName == apiCall.apiCallName);
-        return domainApiCallLog;
+            return domainApiCallLog;
+        }
+        
+        catch(System.NullReferenceException ex)
+        {
+            Console.WriteLine($"DB Error during apiCall {apiCall.apiCallName}: {ex.Message}");
+            return null;
+        }
+        
     }
 
     //return type could change to ActionResult, depending on what's needed
@@ -276,7 +297,8 @@ public class ApiManager : IApiManager
                 }
                 else if (apiCall.param_type.Equals("body", StringComparison.OrdinalIgnoreCase))
                 {
-                    request.AddParameter(key, value, ParameterType.GetOrPost);
+                    //possible issue with parameter Type
+                    request.AddParameter(key, value, RestSharp.ParameterType.RequestBody);
                 }
             }
         }
@@ -290,17 +312,13 @@ public class ApiManager : IApiManager
             if (!string.IsNullOrEmpty(apiCall.dtoClass))
             {
                 //occhio che senza system va a prendere il namespace (vedi esplora soluzioni)
-                System.Type? dtoType = System.Type.GetType(apiCall.dtoClass);
-                if (dtoType != null)
-                {
-                    var deserializedContent = System.Text.Json.JsonSerializer.Deserialize(responseContent, dtoType);
+                //var dtoType = System.Type.GetType(apiCall.dtoClass);
 
-                    UpdateTable(deserializedContent, apiCall);
+                var deserializedContent = System.Text.Json.JsonSerializer
+                    .Deserialize(responseContent, System.Type.GetType(apiCall.dtoClass));
 
-                    //return the object needed to check that the data was added/updated. ApiCall CRUD run on ApiCall/JsonApiTemplate
-                    //How?
-                    //Simply that I get a 200 Active Directory message
-                }
+                UpdateTable(deserializedContent, apiCall);
+
             }
         }
         

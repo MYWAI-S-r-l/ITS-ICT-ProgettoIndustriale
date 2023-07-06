@@ -4,7 +4,7 @@
         "tableName": "samples",
         "client": "sample root url",
         "request": "sample api tree",
-        "freq": "daily/once",
+        "callFrequency": "daily/once",
         "method": "Get/Post etc...",
         "auth": false,
         "authType": "OATH2 or None",
@@ -27,6 +27,30 @@
     },
 
     "apiCalls": [
+
+        {
+            "apiCallName": "CommoditiesWTIDaily",
+            "tableName": "Commodities",
+            "client": "https://www.alphavantage.co",
+            "request": "query",
+            "callFrequency": "daily",
+            "method": "Get",
+            "auth": false,
+            "authType": "",
+            "parameters": [
+                {
+                    "function": "WTI",
+                    "interval": "daily",
+                    "apikey": "9e6703e6-9b76-458b-abc5-1d24dc826e6d"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {}
+            ],
+            "dtoClass": "Dto.Commodity",
+            "domainClass": "Domain.Commodity"
+        },
 
         {
             "apiCallName": "TernaTokenCall",
