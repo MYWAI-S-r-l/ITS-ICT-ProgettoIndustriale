@@ -19,14 +19,18 @@ public class PriceManager : IPriceManager
     public List<Dto.Price> GetAllPrices()
     {
 
-        var allPrices = _context.Price.ToList();
+        var allPrices = _context.Price
+            .Include(x=> x.Date)
+            .Include(x=> x.MacroZone).ToList();
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
 
     }
 
     public List<Dto.Price> GetPricesbyMacrozones(List<string> macrozones)
     {
-        var allPrices = _context.Price.Include(x => x.MacroZone)
+        var allPrices = _context.Price
+            .Include(x => x.MacroZone)
+            .Include(x => x.Date)
             .Where(x=> macrozones.Contains(x.MacroZone.Name)).ToList();
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
         
@@ -46,6 +50,8 @@ public class PriceManager : IPriceManager
         }
 
         var allPrices = _context.Price
+            .Include(x => x.Date)
+            .Include(x => x.MacroZone)
             .Where(x=> x.Date.DateTime>startDate && x.Date.DateTime<endDate).ToList();
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
         

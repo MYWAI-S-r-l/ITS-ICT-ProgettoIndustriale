@@ -20,14 +20,21 @@ public class WeatherManager : IWeatherManager
     public List<Dto.Weather> GetAllWeathers()
     {
 
-        var allWeathers = _context.Weather.ToList();
+        var allWeathers = _context.Weather
+            .Include(x => x.Province)
+            .Include(x => x.Date).ToList();
         return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
 
     }
 
     public List<Dto.Weather> GetWeathersbyProvinces(List<string> province)
     {
-        var allWeathers = _context.Weather.Include(x => x.Province)
+        var allWeathers = _context.Weather
+
+            .Include (x => x.Date)
+            .Include(x => x.Province)
+            .ThenInclude(x=> x.Region)
+            .ThenInclude(x => x.MacroZone)
             .Where(x => province.Contains(x.Province.Name)).ToList();
         return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
         
@@ -47,7 +54,12 @@ public class WeatherManager : IWeatherManager
         }
 
         var allWeathers = _context.Weather
-            .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate).ToList();
+            .Include(x => x.Province)
+            .ThenInclude(x => x.Region)
+            .ThenInclude(x => x.MacroZone)
+            .Include(x => x.Date)
+            .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate)
+            .ToList();
         return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
 
     }
@@ -66,8 +78,11 @@ public class WeatherManager : IWeatherManager
         }
 
 
-        var allWeathers = _context.Weather.Include(x => x.Province)
-        .Include(x => x.Date)
+        var allWeathers = _context.Weather
+            .Include(x => x.Province)
+            .ThenInclude(x => x.Region)
+            .ThenInclude(x => x.MacroZone)
+            .Include(x => x.Date)
             .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate && province
             .Contains(x.Province.Name)).ToList();
         return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);

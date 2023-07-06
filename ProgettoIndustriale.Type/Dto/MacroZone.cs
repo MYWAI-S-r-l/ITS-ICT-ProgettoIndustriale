@@ -10,8 +10,8 @@ namespace ProgettoIndustriale.Type.Dto
     {
         public MacroZone() { }
         public int Id { get; set; }
-        public string name {get; set;}
-        public string bidding_zone { get; set; }
+        public string Name {get; set;}
+        public string BiddingZone { get; set; }
 
     }
 }
