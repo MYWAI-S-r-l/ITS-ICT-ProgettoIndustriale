@@ -122,7 +122,7 @@ public class ApiManager : IApiManager
     }
 
     //might change void into ActionResult, depending on the check function
-    public void UpdateTable(object dtoObject, Dto.JsonApiTemplate template)
+    public void UpdateTable(object dtoObject, Dto.JsonApiTemplate apiCall)
     {
 
         //ToDO:
@@ -135,34 +135,31 @@ public class ApiManager : IApiManager
         //E.g. once --> start and end date for historical data
                // daily --> use current date & granularity depending on extra_parameters
 
-        System.Type? domainType = System.Type.GetType(template.domainClass);
+        //Deserializes the content of the API call into a domain object
+        object? domainObject = System.Text.Json.JsonSerializer.Deserialize(
+            System.Text.Json.JsonSerializer
+            .Serialize(dtoObject), System.Type.GetType(apiCall.domainClass));
 
-        if (domainType != null)
+        // Get the DbSet corresponding to the table dynamically.
+        var dbSetProperty = _context.GetType().GetProperty(apiCall.tableName);
+        if (dbSetProperty != null && dbSetProperty.PropertyType.IsGenericType)
         {
-            //Deserializes the content of the API call into a domain object
-            object? domainObject = System.Text.Json.JsonSerializer.Deserialize(
-                System.Text.Json.JsonSerializer.Serialize(dtoObject), domainType);
-
-            // Get the DbSet corresponding to the table dynamically.
-            var dbSetProperty = _context.GetType().GetProperty(template.tableName);
-            if (dbSetProperty != null && dbSetProperty.PropertyType.IsGenericType)
+            //obtains dbSet object
+            var dbSet = dbSetProperty.GetValue(_context);
+            if (dbSet != null)
             {
-                //obtains dbSet object
-                var dbSet = dbSetProperty.GetValue(_context);
-                if (dbSet != null)
-                {
-                    // Add the domainObject to the DbSet.
-                    MethodInfo? addMethod = dbSet.GetType().GetMethod("Add");
-                    addMethod.Invoke(dbSet, new[] { domainObject });
-                    _context.SaveChanges();
-                }
-
-                //return dtoObject;
-                //needs to be some type of return to say it worked, or to feed the func that checks it worked
-                //create another log table?
+                // Add the domainObject to the DbSet.
+                MethodInfo? addMethod = dbSet.GetType().GetMethod("Add");
+                addMethod.Invoke(dbSet, new[] { domainObject });
+                _context.SaveChanges();
             }
 
+            //return dtoObject;
+            //needs to be some type of return to say it worked, or to feed the func that checks it worked
+            //create another log table?
         }
+
+
 
     }
 
@@ -314,14 +311,38 @@ public class ApiManager : IApiManager
                 //occhio che senza system va a prendere il namespace (vedi esplora soluzioni)
                 //var dtoType = System.Type.GetType(apiCall.dtoClass);
 
+                string? fullyQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoClass);
+
+                var dtoInstance = GetClassInstance(fullyQualifiedName);
+
                 var deserializedContent = System.Text.Json.JsonSerializer
-                    .Deserialize(responseContent, System.Type.GetType(apiCall.dtoClass));
+                    .Deserialize(responseContent, dtoInstance.GetType());
 
                 UpdateTable(deserializedContent, apiCall);
 
             }
         }
         
+    }
+
+    public object? GetClassInstance(string strFullyQualifiedName)
+    {
+        var reflectedType = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetType(strFullyQualifiedName) != null);
+        System.Type ? type = reflectedType.GetType(strFullyQualifiedName);
+        return Activator.CreateInstance(type);
+
+        //foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+        //{
+        //    type = asm.GetType(strFullyQualifiedName);
+        //    if (type != null)
+        //    {
+        //        Console.WriteLine("test");
+        //        Console.WriteLine(asm);
+        //        return Activator.CreateInstance(type);
+        //    }
+
+        //}
+        //return null;
     }
 
 }
