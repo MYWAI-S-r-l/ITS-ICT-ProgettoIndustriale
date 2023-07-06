@@ -10,16 +10,19 @@ using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
 using MySqlConnector;
+using Microsoft.Extensions.Configuration;
 
 namespace ProgettoIndustriale.Business.Imp
 {
     public class DataResetManager : IDataResetManager
     {
         private readonly ProgettoIndustrialeContext _context;
+        private readonly IConfiguration _configuration;
 
-        public DataResetManager(ProgettoIndustrialeContext context)
+        public DataResetManager(ProgettoIndustrialeContext context, IConfiguration config)
         {
             _context = context;
+            _configuration = config;
         }
 
         public void ResetData()
@@ -53,14 +56,14 @@ namespace ProgettoIndustriale.Business.Imp
 
             }
 
-            ResetAutoIncrement();
+            //ResetAutoIncrement();
 
         }
 
-        public void ResetAutoIncrement()
+        public void ResetAutoIncrement(string connectionString, string serverVersion)
         {
-            string connectionString = "Server=localhost;Port=3306;Database=progettoindustriale;Uid=RestUser;Pwd=restPassword;";
-            var serverVersion = new MySqlServerVersion(new Version(10, 11, 2));
+            //string connectionString = "Server=localhost;Port=3306;Database=progettoindustriale;Uid=RestUser;Pwd=restPassword;";
+            //var serverVersion = new MySqlServerVersion(new Version(10, 11, 2));
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
