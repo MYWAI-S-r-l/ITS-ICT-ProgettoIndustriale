@@ -25,14 +25,19 @@ public class UtilsManager : IUtilsManager
     public List<Dto.Province> GetAllProvinces()
     {
 
-        var allProvince = _context.Province.ToList();
+        var allProvince = _context.Province
+            .Include(x=>x.Region)
+            .ThenInclude(y=>y.MacroZone)
+            .ToList();
         return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
 
     }
     public List<Dto.Region> GetAllRegions()
     {
 
-        var allRegion = _context.Region.ToList();
+        var allRegion = _context.Region
+            .Include(x=>x.MacroZone)
+            .ToList();
         return MyMapper<Domain.Region, Dto.Region>.MapList(allRegion);
 
     }
@@ -48,7 +53,9 @@ public class UtilsManager : IUtilsManager
     //QUESTO FORSE NON SERVE
     public List<int> GetRegionsbyName(List<string> reg)
     {
-        List<int> regions = _context.Region.Where(x => reg.Contains(x.Name)).Select(x => x.Id).ToList();
+        List<int> regions = _context.Region
+            .Include(x => x.MacroZone)
+            .Where(x => reg.Contains(x.Name)).Select(x => x.Id).ToList();
         /*
         foreach (var item in reg)
         {
@@ -70,7 +77,10 @@ public class UtilsManager : IUtilsManager
         */
 
         //
-        List<Domain.Province> listProvinces = _context.Province.Include(x => x.Region).Where(x => regions.Contains(x.Region.Name)).ToList();
+        List<Domain.Province> listProvinces = _context.Province
+            .Include(x => x.Region)
+            .ThenInclude(y => y.MacroZone)
+            .Where(x => regions.Contains(x.Region.Name)).ToList();
         return MyMapper<Domain.Province, Dto.Province>.MapList(listProvinces);
         
         
@@ -95,14 +105,29 @@ public class UtilsManager : IUtilsManager
 
     public Dto.MacroZone GetMacrozoneHavingRegion(string region)
     {
-        Domain.MacroZone macrozone=_context.Region.Where(x=>x.Name==region).Select(x=>x.MacroZone).First();
+        Domain.MacroZone macrozone=_context.Region
+            .Include(x=>x.MacroZone)
+            .Where(x=>x.Name==region)
+            .Select(x=>x.MacroZone)
+            .FirstOrDefault();
         return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone);
     }
 
     public Dto.MacroZone GetMacrozoneHavingProvince(string province)
     {
-        Domain.MacroZone macrozone = _context.Province.Where(x => x.Region.Name == province).Select(x => x.Region.MacroZone).First();
-        return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone);
+
+        
+       
+            var macrozone = _context.Province
+                .Include(x => x.Region)
+                .ThenInclude(y => y.MacroZone)
+                //.Where(x => x.Name == province)
+                //.Select(x => x.Region.MacroZone)
+                .FirstOrDefault(x => x.Name == province).Region.MacroZone;
+            return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone);
+        
+            
+        
     }
 
     public List<Tuple<string, string, int>> GetNActiveIndustriesbyCatandProv(List<Dto.Province> provinces = null, List<string> category = null)
@@ -118,7 +143,10 @@ public class UtilsManager : IUtilsManager
         if (category == null)
         {
             
-            result = _context.Industry.Include(x => x.Province)
+            result = _context.Industry
+                .Include(x => x.Province)
+                .ThenInclude(x => x.Region)
+                .ThenInclude(y => y.MacroZone)
                 .Where(x => lProvinces.Contains(x.Province))
                 .GroupBy(x => new Tuple<string, string>(x.Province.Name, x.Ateco))
                 .Select(x => new Tuple<string, string, int>
@@ -134,7 +162,10 @@ public class UtilsManager : IUtilsManager
         
         else
         {
-            result = _context.Industry.Include(x => x.Province)
+            result = _context.Industry
+                .Include(x => x.Province)
+                .ThenInclude(x => x.Region)
+                .ThenInclude(y => y.MacroZone)
                 .Where(x => lProvinces
                 .Contains(x.Province) && category
                 .Contains(x.Ateco))

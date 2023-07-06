@@ -9,7 +9,9 @@
 
         public string Name { get; set; }
 
-        public double ValueUsd { get; set; }
+        //trasforma ---> dizionario {data,valore}
+        //forse utilizzo oggetto intermedio ?
+        public List<Dictionary<string, string>> Data { get; set; }
 
         public string Unit  { get; set; }
 
