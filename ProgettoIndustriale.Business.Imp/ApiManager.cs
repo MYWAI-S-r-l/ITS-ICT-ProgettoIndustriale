@@ -1,4 +1,5 @@
 ﻿using ProgettoIndustriale.Type;
+using ProgettoIndustriale.Data;
 using Dto = ProgettoIndustriale.Type.Dto;
 using Domain = ProgettoIndustriale.Type.Domain;
 using ProgettoIndustriale.Type.Dto;
