@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProgettoIndustriale.Type.Dto;
 using RestSharp;
 using System;
 using System.Globalization;
@@ -15,9 +16,9 @@ public partial class UtilsController
     }
 
     [HttpPost("GetNActiveIndustriesbyCatandProv")]
-    public List<Tuple<string, string, int>> GetNActiveIndustriesbyCatandProv([FromBody] List<Dto.Province> provinces, [FromBody] List<string> category)
+    public List<Tuple<string, string, int>> GetNActiveIndustriesbyCatandProv([FromBody] RequestActiveIndustries activeIndustries)
     {
-        return _utilsManager.GetNActiveIndustriesbyCatandProv(provinces,category);
+        return _utilsManager.GetNActiveIndustriesbyCatandProv(activeIndustries.provincesList, activeIndustries.categoriesList);
     }
 }
 
