@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 namespace ProgettoIndustriale.Data;
 public partial class ProgettoIndustrialeContext : DbContext
 {
-    private readonly StreamWriter _logStream = new StreamWriter("../../../../ProgettoIndustriale.Data/log/mylog.txt", append: false); //TODO: prendere path del log da config
+    //private readonly StreamWriter _logStream = new StreamWriter("../../../../ProgettoIndustriale.Data/log/mylog.txt", append: false); //TODO: prendere path del log da config
 
     public ProgettoIndustrialeContext()
     {
@@ -84,22 +84,22 @@ public partial class ProgettoIndustrialeContext : DbContext
 
     
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.LogTo(_logStream.WriteLine).EnableSensitiveDataLogging().EnableDetailedErrors();
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    optionsBuilder.LogTo(_logStream.WriteLine).EnableSensitiveDataLogging().EnableDetailedErrors();
         
-    }
+    //}
 
-    public override void Dispose()
-    {
-        base.Dispose();
-        _logStream.Dispose();
-    }
+    //public override void Dispose()
+    //{
+    //    base.Dispose();
+    //    _logStream.Dispose();
+    //}
 
-    public override async ValueTask DisposeAsync()
-    {
-        await base.DisposeAsync();
-        await _logStream.DisposeAsync();
-    }
+    //public override async ValueTask DisposeAsync()
+    //{
+    //    await base.DisposeAsync();
+    //    await _logStream.DisposeAsync();
+    //}
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

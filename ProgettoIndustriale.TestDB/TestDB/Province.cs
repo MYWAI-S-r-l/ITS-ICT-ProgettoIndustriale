@@ -26,7 +26,8 @@ namespace ProgettoIndustriale.TestDB.TestDB
                 Residents=2873,
                 PopulationDensity=1,
                 NCities=121, 
-                IdRegion=1
+                IdRegion=1,
+                
             }; 
         }
          public static void LoadDbProvince(ProgettoIndustrialeContext db) 
@@ -44,7 +45,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
 
             
         }
-
+        
         
     }
 }

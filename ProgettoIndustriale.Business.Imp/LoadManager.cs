@@ -23,7 +23,7 @@ namespace Ansaldo.Protocollo.Business.Imp
         }
         public List<Dto.Load> getAllLoads()
         {
-            List<Dom.Load> loads = _context.Load.ToList();
+            List<Dom.Load> loads = _context.Load.Include(x=>x.MacroZone).Include(y=>y.Date).ToList();
             return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
         }
 

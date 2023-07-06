@@ -14,11 +14,11 @@ public partial class UtilsController
         return _utilsManager.GetProvincebyRegion(regions);
     }
 
-    [HttpPost("GetNActiveIndustriesbyCatandProv")]
-    public List<int> GetNActiveIndustriesbyCatandProv(List<Dto.Province> provinces, List<string> category)
-    {
-        return _utilsManager.GetNActiveIndustriesbyCatandProv(provinces,category);
-    }
+    //[HttpPost("GetNActiveIndustriesbyCatandProv")]
+    //public List<int> GetNActiveIndustriesbyCatandProv(List<Dto.Province> provinces, List<string> category)
+    //{
+    //    return _utilsManager.GetNActiveIndustriesbyCatandProv(provinces,category);
+    //}
 }
 
 
