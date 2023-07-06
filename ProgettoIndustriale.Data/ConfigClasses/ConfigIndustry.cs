@@ -23,7 +23,11 @@ namespace ProgettoIndustriale.Data.ConfigClasses
 
             entity.Property(p => p.IdProvince).HasColumnName("COD_province");
 
-            entity.Property(i => i.Name)
+            entity.Property(i => i.Ateco)
+            .IsRequired()
+            .HasMaxLength(45)
+            .IsUnicode(false);
+            entity.Property(i => i.Description)
             .IsRequired()
             .HasMaxLength(45)
             .IsUnicode(false);

@@ -120,7 +120,7 @@ public class UtilsManager : IUtilsManager
             
             result = _context.Industry.Include(x => x.Province)
                 .Where(x => lProvinces.Contains(x.Province))
-                .GroupBy(x => new Tuple<string, string>(x.Province.Name, x.Name))
+                .GroupBy(x => new Tuple<string, string>(x.Province.Name, x.Ateco))
                 .Select(x => new Tuple<string, string, int>
                 (
 
@@ -137,8 +137,8 @@ public class UtilsManager : IUtilsManager
             result = _context.Industry.Include(x => x.Province)
                 .Where(x => lProvinces
                 .Contains(x.Province) && category
-                .Contains(x.Name))
-                .GroupBy(x => new Tuple<string, string>(x.Province.Name, x.Name))
+                .Contains(x.Ateco))
+                .GroupBy(x => new Tuple<string, string>(x.Province.Name, x.Ateco))
                 .Select(x => new Tuple<string, string, int>
                 (
                     x.Key.Item1,

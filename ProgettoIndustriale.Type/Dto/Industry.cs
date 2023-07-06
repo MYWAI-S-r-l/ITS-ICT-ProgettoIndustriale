@@ -1,4 +1,6 @@
-﻿namespace ProgettoIndustriale.Type.Dto;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ProgettoIndustriale.Type.Dto;
 
 public class Industry
 {
@@ -7,7 +9,8 @@ public class Industry
     }
 
     public int Id { get; set; }
-    public string Name { get; set; }
+    public string Ateco { get; set; }
+    public string Description { get; set; }
     public int CountActive { get; set; }
     public Province Province { get; set; }
 }
