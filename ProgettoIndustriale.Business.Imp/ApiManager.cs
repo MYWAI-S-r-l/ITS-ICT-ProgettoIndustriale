@@ -286,12 +286,6 @@ public class ApiManager : IApiManager
         return Activator.CreateInstance(type);
     }
 
-    public bool HasListDictionaryAttribute(object obj)
-    {
-        System.Type? type = obj.GetType();
-
-    }
-
     public void UpdateTable(object dtoObject, Dto.JsonApiTemplate apiCall)
     {
 
@@ -305,20 +299,77 @@ public class ApiManager : IApiManager
         //E.g. once --> start and end date for historical data
         // daily --> use current date & granularity depending on extra_parameters
 
-        //Commodity checks
-        if (apiCall.tableName == "Commodity")
-        {
-
-        }
-
         string? fullyQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.domainClass);
 
         var domainInstance = GetClassInstance(fullyQualifiedName);
 
+
+        //Commodity Checks
+        if (apiCall.tableName == "Commodity")
+        {
+            var properties = dtoObject.GetType().GetProperties();
+
+            //frequency check
+            if (apiCall.callFrequency == "daily")
+            {
+
+                var filterDate = DateTime.Today.AddDays(-7);
+
+                foreach (var property in properties)
+                {
+                    if (property.Name == "Data")
+                    {
+                        var dtoData = dtoObject.GetType().GetProperty("Data");
+                        var domainDate = domainInstance.GetType().GetProperty("Date");
+                        var domainValue = domainInstance.GetType().GetProperty("ValueUsd");
+
+                        if (dtoData != null && domainDate != null && domainValue != null)
+                        {
+                            //this contains all the data couples from 1980 onwards
+                            List<Dto.CommodityData>? dtoDataValues = dtoData.GetValue(dtoObject) as List<Dto.CommodityData>;
+
+                            Dto.CommodityData? filteredDataValue = dtoDataValues
+                                .FirstOrDefault(dataItem => dataItem.GetType()
+                                .GetProperty("Date").GetValue(dataItem) > filterDate);
+
+                            var dateValue = filteredDataValue.Date;
+                            var valueUsd = filteredDataValue.Value;
+
+                            domainDate.SetValue(domainInstance, dateValue);
+                            domainValue.SetValue(domainInstance, valueUsd);
+
+                            Console.WriteLine("Test");
+                        }
+                    }
+                    else
+                    {
+                        var dtoValue = dtoObject.GetType().GetProperty(property.Name);
+                        var domainValue = domainInstance.GetType().GetProperty(property.Name);
+
+                        if (dtoValue != null && domainValue != null)
+                        {
+                            var value = dtoValue.GetValue(dtoObject);
+                            domainValue.SetValue(domainInstance, value);
+                        }
+                    }
+
+                }
+
+            }
+
+            else if (apiCall.callFrequency == "once")
+            {
+
+            }
+
+
+        }
+
+
         //Deserializes the content of the API call into a domain object
         object? domainObject = System.Text.Json.JsonSerializer.Deserialize(
             System.Text.Json.JsonSerializer
-            .Serialize(dtoObject), domainInstance.GetType();
+            .Serialize(dtoObject), domainInstance.GetType());
 
         // Get the DbSet corresponding to the table dynamically.
         var dbSetProperty = _context.GetType().GetProperty(apiCall.tableName);

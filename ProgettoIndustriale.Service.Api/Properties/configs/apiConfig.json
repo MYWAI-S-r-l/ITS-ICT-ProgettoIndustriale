@@ -30,7 +30,7 @@
 
         {
             "apiCallName": "CommoditiesWTIDaily",
-            "tableName": "Commodities",
+            "tableName": "Commodity",
             "client": "https://www.alphavantage.co",
             "request": "query",
             "callFrequency": "daily",

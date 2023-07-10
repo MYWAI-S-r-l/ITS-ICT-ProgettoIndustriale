@@ -6,8 +6,9 @@ namespace ProgettoIndustriale.Type.Dto
     {
 
         public CommodityData() { }
-        
+        [JsonPropertyName("date")]
         public string? Date { get; set; }
+        [JsonPropertyName("value")]
         public string? Value { get; set; }
 
     }
