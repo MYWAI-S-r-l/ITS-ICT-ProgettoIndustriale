@@ -21,40 +21,31 @@ class Program
             .AddEnvironmentVariables()
             .Build();
 
-        //string connectionString = "Server=localhost;Port=3306;Database=progettoindustriale;Uid=RestUser;Pwd=restPassword;";
         var connectionString = configuration.GetConnectionString("ProgettoIndustriale");
-        //var serverVersion = new MySqlServerVersion(new Version(10, 11, 2)); // Sostituisci con la versione del tuo server MariaDB
-
-        //var optionsBuilder = new DbContextOptionsBuilder<ProgettoIndustrialeContext>();
-        //optionsBuilder.UseMySql(connectionString, serverVersion); // Utilizza la connessione a MariaDB specificando la versione del server
+        var serverVersion = new MariaDbServerVersion(new Version(10, 11, 3)); // Aggiungi la dichiarazione di serverVersion
 
         var options = new DbContextOptionsBuilder<ProgettoIndustrialeContext>()
-            .UseMySql(connectionString, new MariaDbServerVersion(new Version(10, 11, 3))).Options;
+            .UseMySql(connectionString, serverVersion).Options;
 
         var db = new ProgettoIndustrialeContext(options);
 
-
         DataResetManager dataResetManager = new DataResetManager(db, configuration);
-        dataResetManager.ResetData(); // Resetta i dati delle tabelle specificate nel JSON
+        dataResetManager.ResetData();
         dataResetManager.ResetAutoIncrement(connectionString, serverVersion);
         Console.WriteLine("Reset dei dati completato.");
 
-
         DataImportManager dataImportManager = new DataImportManager(db);
-
         // Importa i dati per la tabella MacroZone
         dataImportManager.ImportData("macrozone");
-
         // Importa i dati per la tabella Regions
         dataImportManager.ImportData("region");
-
         // Importa i dati per la tabella Provinces
         dataImportManager.ImportData("province");
-
         // Importa i dati per la tabella Industry
         dataImportManager.ImportData("industry");
 
         Console.WriteLine("Importazione completata.");
+
     }
 }
 

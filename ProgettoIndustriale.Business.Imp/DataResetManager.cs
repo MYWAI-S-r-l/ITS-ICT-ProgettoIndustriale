@@ -46,9 +46,7 @@ namespace ProgettoIndustriale.Business.Imp
                     // Cancella tutti i dati dalla tabella
                     dbSet.RemoveRange(dbSet);
 
-                    //// Ripristina l'ID auto-incrementale
-                    //string resetSql = $"ALTER TABLE {tableInfo.nometabella} AUTO_INCREMENT = 1";
-                    //_context.Database.ExecuteSqlRaw(resetSql);
+                    
 
                 }
 
@@ -60,23 +58,22 @@ namespace ProgettoIndustriale.Business.Imp
 
         }
 
-        public void ResetAutoIncrement(string connectionString, string serverVersion)
-        {
-            //string connectionString = "Server=localhost;Port=3306;Database=progettoindustriale;Uid=RestUser;Pwd=restPassword;";
-            //var serverVersion = new MySqlServerVersion(new Version(10, 11, 2));
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+        public void ResetAutoIncrement(string connectionString, MariaDbServerVersion serverVersion)
+        {
+            using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
 
-                using (MySqlCommand command = new MySqlCommand("ResetAutoIncrement", connection))
+                using (var command = connection.CreateCommand())
                 {
+                    command.CommandText = "ResetAutoIncrement";
                     command.CommandType = CommandType.StoredProcedure;
-
                     command.ExecuteNonQuery();
                 }
             }
         }
+
 
         private List<JsonAnagrafe> LoadTableInfos()
         {
