@@ -5,6 +5,7 @@ using ProgettoIndustriale.Type.Dto;
 using ProgettoIndustriale.Data;
 using Microsoft.Identity.Client;
 using System.Collections.Generic;
+using Azure;
 
 namespace ProgettoIndustriale.Business.Imp;
 public class GenerationManager : IGenerationManager
@@ -28,16 +29,7 @@ public class GenerationManager : IGenerationManager
 
     public List<Generation> getGenerationsbyDates(DateTime startDate, DateTime endDate)
     {
-        if (startDate > endDate)
-        {
-            throw new ArgumentException("La data di inizio non può essere successiva alla data di fine.");
-        }
-
-        if (startDate > DateTime.Today)
-        {
-            throw new ArgumentException("La data di inizio non può essere futura.");
-        }
-
+        
         var allGenerations = _context.Generation
             .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate).ToList();
         return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);

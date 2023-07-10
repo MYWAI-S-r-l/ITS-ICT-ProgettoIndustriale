@@ -15,8 +15,23 @@ namespace ProgettoIndustriale.Service.Api.Controllers
        
 
         [HttpGet("getCommoditybyDates")]
-        public IEnumerable<dto.Commodity> getCommodityByDates(DateTime startDate, DateTime endDate)
+        public object getCommodityByDates(DateTime startDate, DateTime endDate)
         {
+            if (startDate > endDate)
+            {
+               return BadRequest("La data di inizio non può essere successiva alla data di fine");
+            }
+
+            if (startDate > DateTime.Now)
+            {
+                return BadRequest("La data di inizio non può essere futura.");
+                
+            }
+            if (startDate == default || endDate == default)
+            {
+                return BadRequest("Inserire data");
+            }
+            
             return _commodityManager.getComoditybyDates(startDate, endDate);
         }
         

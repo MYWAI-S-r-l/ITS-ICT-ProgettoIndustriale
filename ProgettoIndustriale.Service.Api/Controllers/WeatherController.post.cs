@@ -15,15 +15,33 @@ public partial class WeatherController
     }
     [HttpPost("getWeathersbyDates")]
 
-    public List<Dto.Weather> GetWeathersbyDates(DateTime startDate, DateTime endDate)
+    public object GetWeathersbyDates(DateTime startDate, DateTime endDate)
     {
+        if (startDate > endDate)
+        {
+            return BadRequest("La data di inizio non può essere successiva alla data di fine");
+        }
+
+        if (startDate > DateTime.Now)
+        {
+            return BadRequest("La data di inizio non può essere futura.");
+        }
         return _weatherManager.GetWeathersbyDates(startDate, endDate);
     }
 
     [HttpPost("getWeathersbyProvincesDates")]
 
-    public List<Dto.Weather> GetWeathersbyProvincesDates(List<string> province, DateTime startDate, DateTime endDate)
+    public object GetWeathersbyProvincesDates(List<string> province, DateTime startDate, DateTime endDate)
     {
+        if (startDate > endDate)
+        {
+            return BadRequest("La data di inizio non può essere successiva alla data di fine");
+        }
+
+        if (startDate > DateTime.Now)
+        {
+            return BadRequest("La data di inizio non può essere futura.");
+        }
         return _weatherManager.GetWeathersbyProvincesDates(province, startDate, endDate);
     }
 }

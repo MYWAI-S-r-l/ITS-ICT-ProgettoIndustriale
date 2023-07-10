@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers
@@ -14,15 +15,49 @@ namespace ProgettoIndustriale.Service.Api.Controllers
 
         [HttpGet("getLoadByFilter")]
 
-        public IEnumerable<dto.Load> getLoadByFilter(string macrozone, DateTime startDate, DateTime endTime)
+        public object getLoadByFilter(string macrozone, DateTime startDate, DateTime endDate)
         {
-            return _loadManager.getLoadsbyFilter(macrozone, startDate, endTime);
+            if (startDate > endDate)
+            {
+                return BadRequest("La data di inizio non può essere successiva alla data di fine");
+            }
+
+            if (startDate > DateTime.Now)
+            {
+                return BadRequest("La data di inizio non può essere futura.");
+
+            }
+            if (startDate == default || endDate == default)
+            {
+                return BadRequest("Inserire data");
+            }
+            if (macrozone.IsNullOrEmpty() )
+            {
+                return BadRequest("Inserire macrozone");
+
+            }
+            
+            return _loadManager.getLoadsbyFilter(macrozone, startDate, endDate);
 
         }
 
         [HttpGet("getLoadbyDates")]
-        public IEnumerable<dto.Load> getLoadByDates(DateTime startDate, DateTime endDate)
+        public object getLoadByDates(DateTime startDate, DateTime endDate)
         {
+            if (startDate > endDate)
+            {
+                return BadRequest("La data di inizio non può essere successiva alla data di fine");
+            }
+
+            if (startDate > DateTime.Now)
+            {
+                return BadRequest("La data di inizio non può essere futura");
+
+            }
+            if (startDate == default || endDate == default)
+            {
+                return BadRequest("Inserire data");
+            }
             return _loadManager.getloadbyDates(startDate, endDate);
         }
         

@@ -14,10 +14,25 @@ public partial class GenerationController
     {
         return _generationManager.getAllGenerations();
     }
-    [HttpGet("GetGenerationsbyDates/{startDate}/{endDate}")]
-    public List<Dto.Generation> GetGenerationsbyDates(DateTime startDate, DateTime endDate)
+    [HttpGet("GetGenerationsbyDates")]
+    public object GetGenerationsbyDates(DateTime startDate, DateTime endDate)
     {
+        if (startDate > endDate)
+        {   
+            return BadRequest("La data di inizio non può essere successiva alla data di fine");
+        }
+
+        if (startDate > DateTime.Now)
+        {
+            return BadRequest("La data di inizio non può essere futura.");
+        }
+        if (startDate == default || endDate == default)
+        {
+            return BadRequest("Inserire data");
+        }
+
         return _generationManager.getGenerationsbyDates(startDate,endDate);
+
     }
     
 
