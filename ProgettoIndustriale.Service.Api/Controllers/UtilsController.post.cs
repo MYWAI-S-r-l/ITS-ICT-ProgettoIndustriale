@@ -9,6 +9,11 @@ namespace ProgettoIndustriale.Service.Api.Controllers;
 
 public partial class UtilsController
 {
+    [HttpPost("getAllProvinces")]
+    public List<Dto.Province> GetAllProvinces(List<string> prov)
+    {
+        return _utilsManager.GetAllProvinces(prov);
+    }
     [HttpPost("getProvincebyRegion")]
     public List<Dto.Province> GetProvincebyRegion(List<string> regions)
     {
@@ -16,7 +21,7 @@ public partial class UtilsController
     }
 
     [HttpPost("GetNActiveIndustriesbyCatandProv")]
-    public List<Tuple<string, string, int>> GetNActiveIndustriesbyCatandProv([FromBody] RequestActiveIndustries activeIndustries)
+    public List<Business.IUtilsManager.MyAtecoClass> GetNActiveIndustriesbyCatandProv([FromBody] RequestActiveIndustries activeIndustries)
     {
         return _utilsManager.GetNActiveIndustriesbyCatandProv(activeIndustries.provincesList, activeIndustries.categoriesList);
     }

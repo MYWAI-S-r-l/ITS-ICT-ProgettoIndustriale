@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using ProgettoIndustriale.Type.Domain;
 using System.Security.Cryptography.X509Certificates;
 using System.Runtime.CompilerServices;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ProgettoIndustriale.Business.Imp;
 
@@ -22,13 +23,24 @@ public class UtilsManager : IUtilsManager
     {
         _context = context;
     }
-    public List<Dto.Province> GetAllProvinces()
+    public List<Dto.Province> GetAllProvinces(List<string> prov=null)
     {
-
-        var allProvince = _context.Province
-            .Include(x=>x.Region)
-            .ThenInclude(y=>y.MacroZone)
-            .ToList();
+        List <Domain.Province> allProvince;
+        if (prov.IsNullOrEmpty())
+        {
+            allProvince = _context.Province
+                .Include(x => x.Region)
+                .ThenInclude(y => y.MacroZone)
+                .ToList();
+        }
+        else
+        {
+            allProvince= _context.Province
+                .Include(x => x.Region)
+                .ThenInclude(y => y.MacroZone)
+                .Where(x=>prov.Contains(x.Name))
+                .ToList();
+        }
         return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
 
     }
@@ -130,33 +142,26 @@ public class UtilsManager : IUtilsManager
         
     }
 
-    public List<Tuple<string, string, int>> GetNActiveIndustriesbyCatandProv(List<Dto.Province> provinces = null, List<string> category = null)
+    public List<Business.IUtilsManager.MyAtecoClass> GetNActiveIndustriesbyCatandProv(List<string> prov = null, List<string> category = null)
     {
-        
-        if(provinces==null)
-        {
-            provinces = GetAllProvinces();
-        }
+
+        //ottengo la lista delle province con i nomi passati dalla lista
+        List<Dto.Province> provinces = GetAllProvinces(prov);
         List<Domain.Province> lProvinces = MyMapper<Dto.Province, Domain.Province>.MapList(provinces);
 
-        List<Tuple<string, string, int>> result;
-        if (category == null)
+        List<Business.IUtilsManager.MyAtecoClass> result;
+        if (category.IsNullOrEmpty())
         {
-            
-            result = _context.Industry
+             result = _context.Industry
                 .Include(x => x.Province)
-                .ThenInclude(x => x.Region)
-                .ThenInclude(y => y.MacroZone)
                 .Where(x => lProvinces.Contains(x.Province))
                 .GroupBy(x => new Tuple<string, string>(x.Province.Name, x.Ateco))
-                .Select(x => new Tuple<string, string, int>
+                .Select(x => new Business.IUtilsManager.MyAtecoClass
                 (
-
                     x.Key.Item1,
                     x.Key.Item2,
                     x.Sum(y => y.CountActive)
                 )).ToList();
-
 
         }
         
@@ -164,13 +169,11 @@ public class UtilsManager : IUtilsManager
         {
             result = _context.Industry
                 .Include(x => x.Province)
-                .ThenInclude(x => x.Region)
-                .ThenInclude(y => y.MacroZone)
                 .Where(x => lProvinces
                 .Contains(x.Province) && category
                 .Contains(x.Ateco))
                 .GroupBy(x => new Tuple<string, string>(x.Province.Name, x.Ateco))
-                .Select(x => new Tuple<string, string, int>
+                .Select(x => new Business.IUtilsManager.MyAtecoClass
                 (
                     x.Key.Item1,
                     x.Key.Item2,
@@ -184,4 +187,5 @@ public class UtilsManager : IUtilsManager
     }
 
    
+
 }

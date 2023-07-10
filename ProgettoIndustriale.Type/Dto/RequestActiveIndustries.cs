@@ -9,7 +9,7 @@ namespace ProgettoIndustriale.Type.Dto
     public class RequestActiveIndustries
     {
         public RequestActiveIndustries() { }
-        public List <Province> provincesList { get; set; }
+        public List <string> provincesList { get; set; }
         public List <string> categoriesList { get; set; }
         
 

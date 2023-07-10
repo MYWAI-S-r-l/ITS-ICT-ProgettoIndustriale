@@ -9,11 +9,7 @@ public partial class UtilsController
 {
     
 
-    [HttpGet("getAllProvinces")]
-    public List<Dto.Province> GetAllProvinces()
-    {
-        return _utilsManager.GetAllProvinces();
-    }
+    
     [HttpGet("getAllRegions")]
     public List<Dto.Region> GetAllRegions()
     {
