@@ -34,6 +34,7 @@ public class UtilsManager : IUtilsManager
         return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
 
     }
+    
 
     public List<Dto.Province> GetProvincesDetails(List<string> prov)
     {
@@ -156,6 +157,7 @@ public class UtilsManager : IUtilsManager
         { 
             provinces= GetAllProvinces();
         }
+        
         else
         {
             provinces = GetProvincesDetails(prov);
