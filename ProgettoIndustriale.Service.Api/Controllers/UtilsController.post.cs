@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.IdentityModel.Tokens;
 using ProgettoIndustriale.Type.Domain;
 using ProgettoIndustriale.Type.Dto;
@@ -14,7 +15,7 @@ public partial class UtilsController
 
 
     [HttpPost("getProvincesDetails")]
-    public Object GetProvincesDetails(List<string> prov)
+    public Object GetProvincesDetails([BindRequired] List<string> prov)
     {
         if(prov.IsNullOrEmpty()||prov.First()=="string")
         {
@@ -24,8 +25,22 @@ public partial class UtilsController
     }
 
     [HttpPost("getNActiveIndustriesbyCatandProv")]
-    public List<Business.IUtilsManager.MyAtecoClass> GetNActiveIndustriesbyCatandProv([FromBody] RequestActiveIndustries activeIndustries)
+    public Object GetNActiveIndustriesbyCatandProv([FromBody] RequestActiveIndustries activeIndustries)
     {
+        if (!activeIndustries.provincesList.IsNullOrEmpty())
+        {
+            if (activeIndustries.provincesList.First() == "string")
+            {
+                return BadRequest("inserire una provincia o mettere la lista vuota");
+            }
+        }
+        if (!activeIndustries.categoriesList.IsNullOrEmpty())
+        {
+            if (activeIndustries.categoriesList.First() == "string")
+            {
+                return BadRequest("inserire una categoria o mettere la lista vuota");
+            }
+        }
         return _utilsManager.GetNActiveIndustriesbyCatandProv(activeIndustries.provincesList, activeIndustries.categoriesList);
     }
 }

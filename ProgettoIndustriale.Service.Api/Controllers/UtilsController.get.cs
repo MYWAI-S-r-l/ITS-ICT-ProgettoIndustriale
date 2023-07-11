@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ProgettoIndustriale.Type.Dto;
 using Microsoft.IdentityModel.Tokens;
+using ProgettoIndustriale.Type.Domain;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
@@ -27,38 +29,29 @@ public partial class UtilsController
     }
 
     
-    [HttpGet("getMacrozoneHavingProvince/{province}")]
-    public Dto.MacroZone getMacrozoneHavingProvince(string province)
+    [HttpGet("getMacrozoneHavingProvince")]
+    public Object getMacrozoneHavingProvince([BindRequired] string province)
     {
         return _utilsManager.GetMacrozoneHavingProvince(province);
     }
-    [HttpGet("getRegionsbyMacrozone/{macrozone}")]
-    public List<Dto.Region> GetRegionsbyMacrozone(string macrozone)
+    [HttpGet("getRegionsbyMacrozone")]
+    public Object GetRegionsbyMacrozone([BindRequired] string macrozone)
     {
         return _utilsManager.GetRegionsbyMacrozone(macrozone);
     }
-    [HttpGet("getMacrozoneHavingRegion/{region}")]
-    public Dto.MacroZone GetMacrozoneHavingRegion(string region)
+    [HttpGet("getMacrozoneHavingRegion")]
+    public Object GetMacrozoneHavingRegion([BindRequired] string region)
     {
         return _utilsManager.GetMacrozoneHavingRegion(region);
     }
-    [HttpGet("getProvincebyRegion/{regions}")]
-    public Object GetProvincebyRegion(string regions)
+    [HttpGet("getProvincebyRegion")]
+    public Object GetProvincebyRegion([BindRequired] string region)
     {
-        if (regions.IsNullOrEmpty())
-        {
-            return BadRequest("inserire una regione");
-        }
-        return _utilsManager.GetProvincebyRegion(regions);
+        return _utilsManager.GetProvincebyRegion(region);
     }
-    [HttpGet("getProvincebyMacrozone/{macrozone}")]
-    public Object GetProvincebyMacrozone(string macrozone)
+    [HttpGet("getProvincebyMacrozone")]
+    public Object GetProvincebyMacrozone([BindRequired] string macrozone)
     {
-        if (macrozone.IsNullOrEmpty())
-        {
-            return BadRequest("inserire una macrozone");
-        }
-
         return _utilsManager.GetProvincebyMacrozone(macrozone);
     }
 
