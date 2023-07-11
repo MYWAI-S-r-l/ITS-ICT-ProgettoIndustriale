@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost    Database: progettoindustriale
+-- Host: localhost    Database: progettoindustrialetest
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.11.3-MariaDB
 
@@ -19,19 +19,25 @@
 -- Table structure for table `commodity`
 --
 
+drop database if exists progettoindustrialeTest;
+
+create database progettoindustrialeTest;
+
+use progettoindustrialeTest;
+
 DROP TABLE IF EXISTS `commodity`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `commodity` (
   `ID_commodity` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL,
-  `value_USD` decimal(5,2) DEFAULT NULL,
-  `unit` varchar(10) DEFAULT NULL,
+  `name` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `value_USD` double DEFAULT NULL,
+  `unit` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `COD_date` int(11) NOT NULL,
   PRIMARY KEY (`ID_commodity`),
   KEY `fk_Commodity_Date1_idx` (`COD_date`),
   CONSTRAINT `fk_Commodity_Date1` FOREIGN KEY (`COD_date`) REFERENCES `date` (`ID_date`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +46,7 @@ CREATE TABLE `commodity` (
 
 LOCK TABLES `commodity` WRITE;
 /*!40000 ALTER TABLE `commodity` DISABLE KEYS */;
-INSERT INTO `commodity` VALUES (1,'Brent',76.48,'$/Barile',1),(2,'Kevin',77.48,'$/Barile',3),(3,'Stephen',76.50,'$/Barile',5),(4,'Milla',79.87,'$/Barile',2),(5,'Carl',76.97,'$/Barile',6),(6,'Tommmas',80.16,'$/Barile',4);
+INSERT INTO `commodity` VALUES (1,'Brent',76.48,'$/Barile',1),(2,'Kevin',77.48,'$/Barile',3),(3,'Stephen',76.5,'$/Barile',5),(4,'Milla',79.87,'$/Barile',2),(5,'Carl',76.97,'$/Barile',6),(6,'Tommmas',80.16,'$/Barile',4);
 /*!40000 ALTER TABLE `commodity` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,13 +59,13 @@ DROP TABLE IF EXISTS `date`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `date` (
   `ID_date` int(11) NOT NULL AUTO_INCREMENT,
-  `date_time` timestamp NULL DEFAULT NULL,
+  `date_time` datetime DEFAULT NULL,
   `year` smallint(6) DEFAULT NULL,
   `month` tinyint(4) DEFAULT NULL,
   `day` tinyint(4) DEFAULT NULL,
   `hour` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID_date`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +74,7 @@ CREATE TABLE `date` (
 
 LOCK TABLES `date` WRITE;
 /*!40000 ALTER TABLE `date` DISABLE KEYS */;
-INSERT INTO `date` VALUES (1,'2019-06-18 22:00:00',2019,6,19,1),(2,'2019-12-19 23:00:00',2019,12,20,2),(3,'2020-08-26 22:00:00',2020,8,27,3),(4,'2021-05-15 22:00:00',2021,5,16,4),(5,'2022-10-29 22:00:00',2022,10,30,5),(6,'2023-07-05 22:00:00',2023,7,6,6);
+INSERT INTO `date` VALUES (1,'2019-06-19 00:00:00',2019,6,19,1),(2,'2019-12-20 00:00:00',2019,12,20,2),(3,'2020-08-27 00:00:00',2020,8,27,3),(4,'2021-05-16 00:00:00',2021,5,16,4),(5,'2022-10-30 00:00:00',2022,10,30,5),(6,'2023-07-06 00:00:00',2023,7,6,6);
 /*!40000 ALTER TABLE `date` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,13 +87,13 @@ DROP TABLE IF EXISTS `generation`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `generation` (
   `ID_generation` int(11) NOT NULL AUTO_INCREMENT,
-  `Generation_ghw` decimal(5,2) DEFAULT NULL,
-  `type` varchar(45) DEFAULT NULL,
+  `Generation_ghw` double DEFAULT NULL,
+  `type` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `COD_date` int(11) NOT NULL,
   PRIMARY KEY (`ID_generation`),
   KEY `fk_Generation_Date1_idx` (`COD_date`),
   CONSTRAINT `fk_Generation_Date1` FOREIGN KEY (`COD_date`) REFERENCES `date` (`ID_date`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +102,7 @@ CREATE TABLE `generation` (
 
 LOCK TABLES `generation` WRITE;
 /*!40000 ALTER TABLE `generation` DISABLE KEYS */;
-INSERT INTO `generation` VALUES (1,274.47,'Solar',1),(2,260.87,'Wind',5),(3,300.65,'Water',3),(4,270.30,'Rain',4),(5,290.65,'Geothermal',6),(6,285.69,'Solar',2);
+INSERT INTO `generation` VALUES (1,274.47,'Solar',1),(2,260.87,'Wind',5),(3,300.65,'Water',3),(4,270.3,'Rain',4),(5,290.65,'Geothermal',6),(6,285.69,'Solar',2);
 /*!40000 ALTER TABLE `generation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,13 +116,13 @@ DROP TABLE IF EXISTS `industry`;
 CREATE TABLE `industry` (
   `ID_industry` int(11) NOT NULL AUTO_INCREMENT,
   `count_active` int(11) DEFAULT NULL,
-  `description` varchar(100) DEFAULT NULL,
-  `ateco_code` varchar(10) DEFAULT NULL,
+  `description` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `ateco_code` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `COD_province` int(11) NOT NULL,
   PRIMARY KEY (`ID_industry`),
   KEY `fk_Industry_Province1_idx` (`COD_province`),
   CONSTRAINT `fk_Industry_Province1` FOREIGN KEY (`COD_province`) REFERENCES `province` (`ID_province`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +145,7 @@ DROP TABLE IF EXISTS `load`;
 CREATE TABLE `load` (
   `ID_load` int(11) NOT NULL AUTO_INCREMENT,
   `total_load_MW` int(11) DEFAULT NULL,
-  `forecast_total_load_MW` decimal(10,3) DEFAULT NULL,
+  `forecast_total_load_MW` double DEFAULT NULL,
   `COD_date` int(11) NOT NULL,
   `COD_macrozone` int(11) NOT NULL,
   PRIMARY KEY (`ID_load`),
@@ -147,7 +153,7 @@ CREATE TABLE `load` (
   KEY `fk_Load_Macrozone1_idx` (`COD_macrozone`),
   CONSTRAINT `fk_Load_Date1` FOREIGN KEY (`COD_date`) REFERENCES `date` (`ID_date`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Load_Macrozone1` FOREIGN KEY (`COD_macrozone`) REFERENCES `macrozone` (`ID_macrozone`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +162,7 @@ CREATE TABLE `load` (
 
 LOCK TABLES `load` WRITE;
 /*!40000 ALTER TABLE `load` DISABLE KEYS */;
-INSERT INTO `load` VALUES (1,10,11.200,1,2),(2,18,13.500,5,1),(3,29,15.000,2,6),(4,31,10.600,4,4),(5,50,9.400,6,3),(6,6,18.000,3,5);
+INSERT INTO `load` VALUES (1,10,11.2,1,2),(2,18,13.5,5,1),(3,29,15,2,6),(4,31,10.6,4,4),(5,50,9.4,6,3),(6,6,18,3,5);
 /*!40000 ALTER TABLE `load` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,10 +175,10 @@ DROP TABLE IF EXISTS `macrozone`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `macrozone` (
   `ID_macrozone` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(10) DEFAULT NULL,
-  `bidding_zone` varchar(10) DEFAULT NULL,
+  `name` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `bidding_zone` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   PRIMARY KEY (`ID_macrozone`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,9 +200,9 @@ DROP TABLE IF EXISTS `price`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `price` (
   `ID_price` int(11) NOT NULL AUTO_INCREMENT,
-  `base_price_EURxMWh` decimal(7,3) DEFAULT NULL,
-  `incentive_component_EURxMWh` decimal(7,3) DEFAULT NULL,
-  `unbalance_price_EURxMWh` decimal(7,3) DEFAULT NULL,
+  `base_price_EURxMWh` double DEFAULT NULL,
+  `incentive_component_EURxMWh` double DEFAULT NULL,
+  `unbalance_price_EURxMWh` double DEFAULT NULL,
   `COD_macrozone` int(11) NOT NULL,
   `COD_date` int(11) NOT NULL,
   PRIMARY KEY (`ID_price`),
@@ -204,7 +210,7 @@ CREATE TABLE `price` (
   KEY `fk_Prezzi_Date1_idx` (`COD_date`),
   CONSTRAINT `fk_Price_Date1` FOREIGN KEY (`COD_date`) REFERENCES `date` (`ID_date`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Price_Macrozone1` FOREIGN KEY (`COD_macrozone`) REFERENCES `macrozone` (`ID_macrozone`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +219,7 @@ CREATE TABLE `price` (
 
 LOCK TABLES `price` WRITE;
 /*!40000 ALTER TABLE `price` DISABLE KEYS */;
-INSERT INTO `price` VALUES (1,15.220,14.220,10.220,3,1),(2,12.220,11.220,14.220,2,6),(3,18.220,17.220,13.220,7,4),(4,25.220,26.220,10.220,5,3),(5,10.220,9.220,16.220,4,2),(6,9.220,10.220,19.220,1,5);
+INSERT INTO `price` VALUES (1,15.22,14.22,10.22,3,1),(2,12.22,11.22,14.22,2,6),(3,18.22,17.22,13.22,7,4),(4,25.22,26.22,10.22,5,3),(5,10.22,9.22,16.22,4,2),(6,9.22,10.22,19.22,1,5);
 /*!40000 ALTER TABLE `price` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,19 +232,19 @@ DROP TABLE IF EXISTS `province`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `province` (
   `ID_province` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  `longitude` varchar(20) DEFAULT NULL,
-  `latitude` varchar(20) DEFAULT NULL,
-  `surface` decimal(10,0) DEFAULT NULL,
-  `altitude` decimal(10,0) DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `longitude` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `latitude` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `surface` double DEFAULT NULL,
+  `altitude` double DEFAULT NULL,
   `residents` int(11) DEFAULT NULL,
-  `population_density` decimal(5,2) DEFAULT NULL,
+  `population_density` double DEFAULT NULL,
   `number_cities` int(11) DEFAULT NULL,
   `COD_region` int(11) NOT NULL,
   PRIMARY KEY (`ID_province`),
   KEY `fk_Province_Region1_idx` (`COD_region`),
   CONSTRAINT `fk_Province_Region1` FOREIGN KEY (`COD_region`) REFERENCES `region` (`ID_region`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +253,7 @@ CREATE TABLE `province` (
 
 LOCK TABLES `province` WRITE;
 /*!40000 ALTER TABLE `province` DISABLE KEYS */;
-INSERT INTO `province` VALUES (1,'Rome','15.4963655','40.9027835',21,1,2873,1.00,121,2),(2,'Genoa','11.4963655','46.9027835',35,2,12873,2.00,200,5),(3,'Turin','10.4963655','48.9027835',28,6,9873,9.00,158,1),(4,'Milan','16.4963655','41.9027835',40,12,1873,6.00,368,3),(5,'Venice','19.4963655','39.9027835',26,8,35873,4.00,312,6),(6,'Florence','20.4963655','60.9027835',23,2,6873,5.00,1587,4),(7,'Naples','14.4963655','43.9027835',38,7,5873,2.00,3685,7);
+INSERT INTO `province` VALUES (1,'Rome','15.4963655','40.9027835',21,1,2873,1,121,2),(2,'Genoa','11.4963655','46.9027835',35,2,12873,2,200,5),(3,'Turin','10.4963655','48.9027835',28,6,9873,9,158,1),(4,'Milan','16.4963655','41.9027835',40,12,1873,6,368,3),(5,'Venice','19.4963655','39.9027835',26,8,35873,4,312,6),(6,'Florence','20.4963655','60.9027835',23,2,6873,5,1587,4),(7,'Naples','14.4963655','43.9027835',38,7,5873,2,3685,7);
 /*!40000 ALTER TABLE `province` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,12 +266,12 @@ DROP TABLE IF EXISTS `region`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `region` (
   `ID_region` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
+  `name` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `COD_macrozone` int(11) NOT NULL,
   PRIMARY KEY (`ID_region`),
   KEY `fk_Region_Macrozone_idx` (`COD_macrozone`),
   CONSTRAINT `fk_Region_Macrozone` FOREIGN KEY (`COD_macrozone`) REFERENCES `macrozone` (`ID_macrozone`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,19 +293,19 @@ DROP TABLE IF EXISTS `weather`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `weather` (
   `ID_weather` int(11) NOT NULL AUTO_INCREMENT,
-  `temperature_2m_Celsius` decimal(4,2) DEFAULT NULL,
-  `dewpoint_2m_Celsius` decimal(4,2) DEFAULT NULL,
-  `relative_humidity_2m_percent` decimal(5,2) DEFAULT NULL,
-  `apparent_temperature_Celsius` decimal(4,2) DEFAULT NULL,
-  `cloudcover_percent` decimal(5,1) DEFAULT NULL,
-  `windspeed_10m_km_h` decimal(4,1) DEFAULT NULL,
-  `windspeed_80m_km_h` decimal(5,1) DEFAULT NULL,
-  `surface_pressure_hPa` decimal(5,2) DEFAULT NULL,
-  `rain_mm` decimal(5,2) DEFAULT NULL,
-  `snowfall_mm` decimal(5,2) DEFAULT NULL,
-  `shower_mm` decimal(5,2) DEFAULT NULL,
-  `precipitation_mm` decimal(5,2) DEFAULT NULL,
-  `snow_depth_meters` decimal(5,2) DEFAULT NULL,
+  `temperature_2m_Celsius` double DEFAULT NULL,
+  `dewpoint_2m_Celsius` double DEFAULT NULL,
+  `relative_humidity_2m_percent` double DEFAULT NULL,
+  `apparent_temperature_Celsius` double DEFAULT NULL,
+  `cloudcover_percent` double DEFAULT NULL,
+  `windspeed_10m_km_h` double DEFAULT NULL,
+  `windspeed_80m_km_h` double DEFAULT NULL,
+  `surface_pressure_hPa` double DEFAULT NULL,
+  `rain_mm` double DEFAULT NULL,
+  `snowfall_mm` double DEFAULT NULL,
+  `shower_mm` double DEFAULT NULL,
+  `precipitation_mm` double DEFAULT NULL,
+  `snow_depth_meters` double DEFAULT NULL,
   `is_day_bool` tinyint(1) DEFAULT NULL,
   `COD_province` int(11) NOT NULL,
   `COD_date` int(11) NOT NULL,
@@ -308,7 +314,7 @@ CREATE TABLE `weather` (
   KEY `fk_Weather_Date1_idx` (`COD_date`),
   CONSTRAINT `fk_Weather_Date1` FOREIGN KEY (`COD_date`) REFERENCES `date` (`ID_date`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Weather_Province1` FOREIGN KEY (`COD_province`) REFERENCES `province` (`ID_province`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -317,12 +323,12 @@ CREATE TABLE `weather` (
 
 LOCK TABLES `weather` WRITE;
 /*!40000 ALTER TABLE `weather` DISABLE KEYS */;
-INSERT INTO `weather` VALUES (1,20.00,25.00,40.00,24.00,44.0,30.0,78.0,40.00,10.00,0.00,11.00,12.00,0.00,1,2,1),(2,18.00,27.00,70.00,19.00,80.0,15.0,75.0,35.00,15.00,5.00,15.00,14.00,0.00,2,1,6),(3,23.00,29.00,62.50,25.00,56.0,18.0,62.0,45.00,6.00,15.00,13.00,16.00,0.00,4,6,4),(4,15.00,20.00,50.00,22.00,46.0,35.0,70.0,23.00,20.00,25.00,23.00,9.00,0.00,6,4,5),(5,10.00,25.00,55.60,28.00,30.0,40.0,55.0,18.00,18.00,35.00,20.00,5.00,0.00,5,5,3),(6,6.00,18.00,60.00,20.00,8.0,6.0,82.0,55.00,12.00,6.00,50.00,0.00,0.00,3,3,2);
+INSERT INTO `weather` VALUES (1,20,25,40,24,44,30,78,40,10,0,11,12,0,1,2,1),(2,18,27,70,19,80,15,75,35,15,5,15,14,0,2,1,6),(3,23,29,62.5,25,56,18,62,45,6,15,13,16,0,4,6,4),(4,15,20,50,22,46,35,70,23,20,25,23,9,0,6,4,5),(5,10,25,55.6,28,30,40,55,18,18,35,20,5,0,5,5,3),(6,6,18,60,20,8,6,82,55,12,6,50,0,0,3,3,2);
 /*!40000 ALTER TABLE `weather` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'progettoindustriale'
+-- Dumping routines for database 'progettoindustrialetest'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -334,4 +340,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-11 11:29:31
