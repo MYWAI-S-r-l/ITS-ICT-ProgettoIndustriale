@@ -34,20 +34,7 @@ public class UtilsManager : IUtilsManager
         return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
 
     }
-    public List<Dto.Region> GetAllRegions()
-    {
-
-        var allRegion = _context.Region.ToList();
-        return MyMapper<Domain.Region, Dto.Region>.MapList(allRegion);
-
-    }
-    public List<Dto.MacroZone> GetAllMacroZone()
-    {
-
-        var allMacrozone = _context.MacroZone.ToList();
-        return MyMapper<Domain.MacroZone, Dto.MacroZone>.MapList(allMacrozone);
-
-    }
+    
 
     public List<Dto.Province> GetProvincesDetails(List<string> prov)
     {
