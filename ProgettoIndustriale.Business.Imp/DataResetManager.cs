@@ -77,15 +77,10 @@ namespace ProgettoIndustriale.Business.Imp
 
         private List<JsonAnagrafe> LoadTableInfos()
         {
-            //string jsonContent = System.IO.File.ReadAllText(@"C:\Users\user\ITS-ICT-ProgettoIndustriale\ProgettoIndustriale.Service.Api\Properties\JsonAnagrafe\JsonAnagrafe.json");
             string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Properties", "JsonAnagrafe", "JsonAnagrafe.json");
-            string jsonContent = System.IO.File.ReadAllText(jsonFilePath);
-
-
+            string jsonContent = File.ReadAllText(jsonFilePath);
             List<JsonAnagrafe> tableInfos = JsonConvert.DeserializeObject<List<JsonAnagrafe>>(jsonContent);
-
-            tableInfos.Reverse(); // Inverte l'ordine degli elementi nella lista
-
+            tableInfos.Reverse();
             return tableInfos;
         }
     }

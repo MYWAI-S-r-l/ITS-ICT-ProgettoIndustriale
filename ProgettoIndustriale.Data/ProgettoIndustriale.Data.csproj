@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dataset\**" />
+    <EmbeddedResource Remove="Dataset\**" />
+    <None Remove="Dataset\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProgettoIndustriale.Type\ProgettoIndustriale.Type.csproj" />
   </ItemGroup>
 
@@ -17,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-	<Folder Include="Dataset\" />
     <Folder Include="log\" />
   </ItemGroup>
 
