@@ -1,15 +1,20 @@
 ﻿using Dto = ProgettoIndustriale.Type.Dto;
 using Microsoft.AspNetCore.Mvc;
 using ProgettoIndustriale.Type.Dto;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
 
 public partial class UtilsController
 {
-    
 
-    
+    [HttpGet("getAllProvinces")]
+    public List<Dto.Province> GetAllProvinces()
+    {
+        return _utilsManager.GetAllProvinces();
+    }
+
     [HttpGet("getAllRegions")]
     public List<Dto.Region> GetAllRegions()
     {
@@ -21,11 +26,7 @@ public partial class UtilsController
         return _utilsManager.GetAllMacroZone();
     }
 
-    [HttpGet("getProvincebyMacrozone/{macrozone}")]
-    public List<Dto.Province> GetProvincebyMacrozone(string macrozone)
-    {
-        return _utilsManager.GetProvincebyMacrozone(macrozone);
-    }
+    
     [HttpGet("getMacrozoneHavingProvince/{province}")]
     public Dto.MacroZone getMacrozoneHavingProvince(string province)
     {
@@ -41,7 +42,25 @@ public partial class UtilsController
     {
         return _utilsManager.GetMacrozoneHavingRegion(region);
     }
+    [HttpGet("getProvincebyRegion/{regions}")]
+    public Object GetProvincebyRegion(string regions)
+    {
+        if (regions.IsNullOrEmpty())
+        {
+            return BadRequest("inserire una regione");
+        }
+        return _utilsManager.GetProvincebyRegion(regions);
+    }
+    [HttpGet("getProvincebyMacrozone/{macrozone}")]
+    public Object GetProvincebyMacrozone(string macrozone)
+    {
+        if (macrozone.IsNullOrEmpty())
+        {
+            return BadRequest("inserire una macrozone");
+        }
 
+        return _utilsManager.GetProvincebyMacrozone(macrozone);
+    }
 
 
 

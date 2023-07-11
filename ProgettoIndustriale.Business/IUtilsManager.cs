@@ -9,13 +9,15 @@ namespace ProgettoIndustriale.Business;
 
 public interface IUtilsManager
 {
-    public List<Dto.Province> GetAllProvinces(List<string> prov = null);
+    public List<Dto.Province> GetAllProvinces();
     public List<Dto.Region> GetAllRegions();
     public List<Dto.MacroZone> GetAllMacroZone();
 
+    public List<Dto.Province> GetProvincesDetails(List<string> prov);
+
     public List<Dto.Province> GetProvincebyMacrozone(string macrozone);
     public Dto.MacroZone GetMacrozoneHavingProvince(string province);
-    public List<Dto.Province> GetProvincebyRegion(List<string> regions);//nome
+    public List<Dto.Province> GetProvincebyRegion(string region);//nome
     public List<Dto.Region> GetRegionsbyMacrozone(string macrozone);
 
     public Dto.MacroZone GetMacrozoneHavingRegion(string region);

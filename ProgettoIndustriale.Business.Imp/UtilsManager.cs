@@ -23,36 +23,41 @@ public class UtilsManager : IUtilsManager
     {
         _context = context;
     }
-    public List<Dto.Province> GetAllProvinces(List<string> prov=null)
+    public List<Dto.Province> GetAllProvinces()
     {
-        List <Domain.Province> allProvince;
-        if (prov.IsNullOrEmpty())
-        {
+        List <Domain.Province> 
             allProvince = _context.Province
                 .Include(x => x.Region)
                 .ThenInclude(y => y.MacroZone)
                 .ToList();
-        }
-        else
-        {
-            allProvince= _context.Province
-                .Include(x => x.Region)
-                .ThenInclude(y => y.MacroZone)
-                .Where(x=>prov.Contains(x.Name))
-                .ToList();
-        }
+     
         return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
 
     }
-    public List<Dto.Region> GetAllRegions()
+
+    public List<Dto.Province> GetProvincesDetails(List<string> prov)
     {
+        List<Domain.Province> 
+            allProvince = _context.Province
+                .Include(x => x.Region)
+                .ThenInclude(y => y.MacroZone)
+                .Where(x => prov.Contains(x.Name))
+                .ToList();
+        
+        return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
+    }
+
+
+
+     public List<Dto.Region> GetAllRegions()
+     {
 
         var allRegion = _context.Region
             .Include(x=>x.MacroZone)
             .ToList();
         return MyMapper<Domain.Region, Dto.Region>.MapList(allRegion);
 
-    }
+     }
     public List<Dto.MacroZone> GetAllMacroZone()
     {
 
@@ -79,7 +84,7 @@ public class UtilsManager : IUtilsManager
         return regions;
     }
 
-    public List<Dto.Province> GetProvincebyRegion(List<string> regions)
+    public List<Dto.Province> GetProvincebyRegion(string region)
     {
         //CON LA FUNZIONE APPENA CREATA
         /*
@@ -92,7 +97,8 @@ public class UtilsManager : IUtilsManager
         List<Domain.Province> listProvinces = _context.Province
             .Include(x => x.Region)
             .ThenInclude(y => y.MacroZone)
-            .Where(x => regions.Contains(x.Region.Name)).ToList();
+            .Where(x => x.Region.Name==region)
+            .ToList();
         return MyMapper<Domain.Province, Dto.Province>.MapList(listProvinces);
         
         
@@ -103,7 +109,8 @@ public class UtilsManager : IUtilsManager
         List<Domain.Province> listProvinces = _context.Province
             .Include(x => x.Region)
                 .ThenInclude(r => r.MacroZone)
-            .Where(x => x.Region.MacroZone.Name == macrozone).ToList();
+            .Where(x => x.Region.MacroZone.Name==macrozone)
+            .ToList();
         return MyMapper<Domain.Province, Dto.Province>.MapList(listProvinces);
     }
 
@@ -127,8 +134,6 @@ public class UtilsManager : IUtilsManager
 
     public Dto.MacroZone GetMacrozoneHavingProvince(string province)
     {
-
-        
        
             var macrozone = _context.Province
                 .Include(x => x.Region)
@@ -146,7 +151,15 @@ public class UtilsManager : IUtilsManager
     {
 
         //ottengo la lista delle province con i nomi passati dalla lista
-        List<Dto.Province> provinces = GetAllProvinces(prov);
+        List<Dto.Province> provinces;
+        if (prov.IsNullOrEmpty()) 
+        { 
+            provinces= GetAllProvinces();
+        }
+        else
+        {
+            provinces = GetProvincesDetails(prov);
+        }
         List<Domain.Province> lProvinces = MyMapper<Dto.Province, Domain.Province>.MapList(provinces);
 
         List<Business.IUtilsManager.MyAtecoClass> result;
@@ -164,7 +177,6 @@ public class UtilsManager : IUtilsManager
                 )).ToList();
 
         }
-        
         else
         {
             result = _context.Industry
