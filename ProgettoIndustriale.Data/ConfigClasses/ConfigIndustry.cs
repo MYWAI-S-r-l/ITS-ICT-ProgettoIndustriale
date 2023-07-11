@@ -26,7 +26,9 @@ namespace ProgettoIndustriale.Data.ConfigClasses
             entity.Property(i => i.Ateco)
             .IsRequired()
             .HasMaxLength(45)
-            .IsUnicode(false);
+            .IsUnicode(false)
+            .HasColumnName("ateco_code");
+
             entity.Property(i => i.Description)
             .IsRequired()
             .HasMaxLength(45)

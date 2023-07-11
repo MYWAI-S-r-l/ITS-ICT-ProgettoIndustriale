@@ -13,11 +13,11 @@ public partial class ProvinceController
         return _provinceManager.GetProvincia(codice);
     }
 
-    [HttpGet("getAll")]
-    public List<Dto.Provincia> GetProvince()
-    {
-        return _provinceManager.GetAllProvince();
-    }
+//[HttpGet("getAll")]
+//public List<Dto.Provincia> GetProvince()
+// {
+// return _provinceManager.GetAllProvince();
+// }
 
 }
 

@@ -1,0 +1,22 @@
+[
+    {
+        "percorso": "C:\\ProgettoIndustriale\\CSV\\MacroZone.csv",
+        "classe": "ProgettoIndustriale.Type.Domain.MacroZone, ProgettoIndustriale.Type",
+        "nometabella": "macrozone"
+    },
+    {
+        "percorso": "C:\\ProgettoIndustriale\\CSV\\Region.csv",
+        "classe": "ProgettoIndustriale.Type.Domain.Region, ProgettoIndustriale.Type",
+        "nometabella": "region"
+    },
+    {
+        "percorso": "C:\\ProgettoIndustriale\\CSV\\Province.csv",
+        "classe": "ProgettoIndustriale.Type.Domain.Province, ProgettoIndustriale.Type",
+        "nometabella": "province"
+    },
+    {
+        "percorso": "C:\\ProgettoIndustriale\\CSV\\Industry.csv",
+        "classe": "ProgettoIndustriale.Type.Domain.Industry, ProgettoIndustriale.Type",
+        "nometabella": "industry"
+    }
+    ]
