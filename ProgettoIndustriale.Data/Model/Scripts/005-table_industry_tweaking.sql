@@ -1,6 +1,6 @@
 ALTER TABLE `progettoindustriale`.`Industry`
-RENAME COLUMN IF EXISTS `COD_ateco` TO `description`;
+RENAME COLUMN IF EXISTS `name` TO `description`;
 
 ALTER TABLE `progettoindustriale`.`Industry`
 ADD COLUMN IF NOT EXISTS `ateco_code` VARCHAR(10) NULL AFTER `description`,
-MODIFY COLUMN `description` VARCHAR(100);
+MODIFY COLUMN `description` VARCHAR(255);
