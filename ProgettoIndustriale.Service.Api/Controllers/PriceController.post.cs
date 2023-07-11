@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.IdentityModel.Tokens;
 using RestSharp;
 using System;
@@ -9,20 +10,20 @@ namespace ProgettoIndustriale.Service.Api.Controllers;
 
 public partial class PriceController
 {
-    [HttpPost("getGetPricesbyMacrozones")]
-    public object GetPricesbyMacrozones(List<string> macrozone)
+    [HttpPost("getPricesbyMacrozones")]
+    public object GetPricesbyMacrozones( [BindRequired] List<string> macrozone)
     {
-        if (macrozone.First() == "string" || macrozone.First().IsNullOrEmpty())
+        if (macrozone.First() == "string")
         {
             return BadRequest("Inserire almeno una macrozone");
         }
         return _priceManager.GetPricesbyMacrozones(macrozone);
     }
 
-    [HttpPost("getGetPricesbyMacrozonesDates")]
-    public object GetPricesbyMacrozonesDates(List<string> macrozone, DateTime startDate = default, DateTime endDate = default)
+    [HttpPost("getPricesbyMacrozonesDates")]
+    public object GetPricesbyMacrozonesDates([BindRequired] List<string> macrozone, [BindRequired] DateTime startDate = default, [BindRequired] DateTime endDate = default)
     {
-        if (macrozone.First() == "string" || macrozone.First().IsNullOrEmpty())
+        if (macrozone.First() == "string")
         {
             return BadRequest("Inserire almeno una macrozone");
         }
@@ -36,10 +37,7 @@ public partial class PriceController
             return BadRequest("La data di inizio non può essere futura.");
 
         }
-        if (startDate == default || endDate == default)
-        {
-            return BadRequest("Inserire data");
-        }
+        
 
         return _priceManager.GetPricesbyMacrozonesDates(macrozone, startDate, endDate);
     }

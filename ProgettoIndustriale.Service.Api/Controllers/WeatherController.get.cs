@@ -17,6 +17,20 @@ public partial class WeatherController
         return _weatherManager.GetAllWeathers();
     }
 
+    [HttpGet("getWeathersbyDates")]
 
+    public object GetWeathersbyDates(DateTime startDate, DateTime endDate)
+    {
+        if (startDate > endDate)
+        {
+            return BadRequest("La data di inizio non può essere successiva alla data di fine");
+        }
+
+        if (startDate > DateTime.Now)
+        {
+            return BadRequest("La data di inizio non può essere futura.");
+        }
+        return _weatherManager.GetWeathersbyDates(startDate, endDate);
+    }
 }
 

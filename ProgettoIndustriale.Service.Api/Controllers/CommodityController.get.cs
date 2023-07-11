@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers
@@ -15,7 +16,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers
        
 
         [HttpGet("getCommoditybyDates")]
-        public object getCommodityByDates(DateTime startDate, DateTime endDate)
+        public object getCommodityByDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
         {
             if (startDate > endDate)
             {

@@ -1,6 +1,7 @@
 ﻿using Dto = ProgettoIndustriale.Type.Dto;
 using Microsoft.AspNetCore.Mvc;
 using ProgettoIndustriale.Type.Dto;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
@@ -15,7 +16,7 @@ public partial class PriceController
     }
 
     [HttpGet("getPricesbyDates")]
-    public object GetPricesbyDates(DateTime startDate, DateTime endDate)
+    public object GetPricesbyDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
         if (startDate > endDate)
         {

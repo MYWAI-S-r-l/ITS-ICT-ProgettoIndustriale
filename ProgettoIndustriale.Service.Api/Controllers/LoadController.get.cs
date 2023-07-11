@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.IdentityModel.Tokens;
 using dto = ProgettoIndustriale.Type.Dto;
 
@@ -15,7 +16,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers
 
         [HttpGet("getLoadByFilter")]
 
-        public object getLoadByFilter(string macrozone, DateTime startDate, DateTime endDate)
+        public object getLoadByFilter([BindRequired] string macrozone, [BindRequired] DateTime startDate, [BindRequired]  DateTime endDate)
         {
             if (startDate > endDate)
             {
@@ -31,18 +32,14 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             {
                 return BadRequest("Inserire data");
             }
-            if (macrozone.IsNullOrEmpty() )
-            {
-                return BadRequest("Inserire macrozone");
-
-            }
+            
             
             return _loadManager.getLoadsbyFilter(macrozone, startDate, endDate);
 
         }
 
         [HttpGet("getLoadbyDates")]
-        public object getLoadByDates(DateTime startDate, DateTime endDate)
+        public object getLoadByDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
         {
             if (startDate > endDate)
             {
