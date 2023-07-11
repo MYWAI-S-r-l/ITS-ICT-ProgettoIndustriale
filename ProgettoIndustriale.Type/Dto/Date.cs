@@ -15,7 +15,7 @@
 
         public int Day { get; set; }
 
-        public TimeOnly time { get; set; }
+        public int Hour { get; set; }
 
     }
 }

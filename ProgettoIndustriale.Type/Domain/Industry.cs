@@ -18,8 +18,11 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("ID_industry")]
         public int Id { get; set; }
 
-        [Column("name")]
-        public string Name { get; set; }
+        [Column("ateco_code")]
+        public string Ateco { get; set; }
+
+        [Column("description")]
+        public string Description { get; set; }
 
         [Column("count_active")]
         public int CountActive { get; set; }

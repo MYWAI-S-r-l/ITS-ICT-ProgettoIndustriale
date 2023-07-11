@@ -16,14 +16,18 @@ namespace ProgettoIndustriale.Data.ConfigClasses
         public void Configure(EntityTypeBuilder<Industry> entity)
         {
 
-            entity.Property(i => i.Id).IsRequired().HasValueGenerator<GuidValueGenerator>();
+            entity.Property(i => i.Id).IsRequired().ValueGeneratedOnAdd();
             entity.HasKey(i => i.Id);
 
             entity.HasOne(i => i.Province).WithMany(a => a.Industries).HasForeignKey(p => p.IdProvince);//collection in regione
 
             entity.Property(p => p.IdProvince).HasColumnName("COD_province");
 
-            entity.Property(i => i.Name)
+            entity.Property(i => i.Ateco)
+            .IsRequired()
+            .HasMaxLength(45)
+            .IsUnicode(false);
+            entity.Property(i => i.Description)
             .IsRequired()
             .HasMaxLength(45)
             .IsUnicode(false);

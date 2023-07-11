@@ -39,7 +39,7 @@
 
         public virtual Province Province { get; set; }   
 
-        public virtual Date Dates { get; set; }
+        public virtual Date Date { get; set; }
 
     }
 }

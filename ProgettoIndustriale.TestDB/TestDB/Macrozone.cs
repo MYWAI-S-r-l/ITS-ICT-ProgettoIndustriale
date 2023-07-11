@@ -15,7 +15,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
         public static dom.MacroZone Data() { 
             return new dom.MacroZone() 
             { 
-                Id = 1, 
+                 
                 Name = "Nord", 
                 BiddingZone = "Nord-Est",
             

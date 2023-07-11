@@ -9,12 +9,12 @@ namespace ProgettoIndustriale.Type.Dto
     public class Price
     {
         public Price() { }
-        public int idPrice { get; set; }
+        public int Id { get; set; }
         public float basePriceEur { get; set; }
         public  float incentiveComponentEur { get; set; }
         public float unbalancePriceEur { get; set; }
-        public MacroZone tblMacroZone { get; set; }
-        public Date tblDate { get; set; }
+        public MacroZone MacroZone { get; set; }
+        public Date Date { get; set; }
 
     }
 }

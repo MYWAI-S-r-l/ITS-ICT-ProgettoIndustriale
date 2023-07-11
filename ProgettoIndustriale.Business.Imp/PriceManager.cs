@@ -5,6 +5,7 @@ using ProgettoIndustriale.Type.Dto;
 using ProgettoIndustriale.Data;
 using Microsoft.Identity.Client;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProgettoIndustriale.Business.Imp;
 public class PriceManager : IPriceManager
@@ -18,14 +19,19 @@ public class PriceManager : IPriceManager
     public List<Dto.Price> GetAllPrices()
     {
 
-        var allPrices = _context.Price.ToList();
+        var allPrices = _context.Price
+            .Include(x=> x.Date)
+            .Include(x=> x.MacroZone).ToList();
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
 
     }
 
     public List<Dto.Price> GetPricesbyMacrozones(List<string> macrozones)
     {
-        var allPrices = _context.Price.ToList();
+        var allPrices = _context.Price
+            .Include(x => x.MacroZone)
+            .Include(x => x.Date)
+            .Where(x=> macrozones.Contains(x.MacroZone.Name)).ToList();
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
         
     }
@@ -43,7 +49,10 @@ public class PriceManager : IPriceManager
             throw new ArgumentException("La data di inizio non può essere futura.");
         }
 
-        var allPrices = _context.Price.ToList();
+        var allPrices = _context.Price
+            .Include(x => x.Date)
+            .Include(x => x.MacroZone)
+            .Where(x=> x.Date.DateTime>startDate && x.Date.DateTime<endDate).ToList();
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
         
     }
@@ -62,7 +71,11 @@ public class PriceManager : IPriceManager
         }
 
 
-        var allPrices = _context.Price.ToList();
+        var allPrices = _context.Price.Include(x=>x.MacroZone)
+            .Include(x=>x.Date)
+            .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate && macrozones
+            .Contains(x.MacroZone.Name)).ToList();
+
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
         
 

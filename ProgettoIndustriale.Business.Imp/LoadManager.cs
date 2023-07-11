@@ -17,9 +17,13 @@ namespace Ansaldo.Protocollo.Business.Imp
     {
         private readonly ProgettoIndustrialeContext _context;
 
+        public LoadManager(ProgettoIndustrialeContext context)
+        {
+            _context = context;
+        }
         public List<Dto.Load> getAllLoads()
         {
-            List<Dom.Load> loads = _context.Load.ToList();
+            List<Dom.Load> loads = _context.Load.Include(x=>x.MacroZone).Include(y=>y.Date).ToList();
             return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
         }
 
@@ -27,7 +31,11 @@ namespace Ansaldo.Protocollo.Business.Imp
 
         public List<Load> getloadbyDates(DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            List<Dom.Load> loads = _context.Load
+                .Include(x => x.MacroZone)
+                .Include(y => y.Date)
+                .Where(c=>c.Date.DateTime>startDate && c.Date.DateTime<endDate).ToList();
+            return MyMapper<Dom.Load, Dto.Load>.MapList(loads).ToList();
         }
 
         // Questo metodo restituisce una lista di oggetti Load filtrata per nome di macrozone, usando il metodo Include per caricare la relazione con l’entità MacroZone
@@ -42,7 +50,10 @@ namespace Ansaldo.Protocollo.Business.Imp
         public List<Dto.Load> getLoadsbyFilter(string macrozone, DateTime startDate, DateTime endDate)
         {
            
-           List<Dom.Load> loads = _context.Load.Include(x=>x.Date).Where(p=>p.Date.DateTime>startDate && p.Date.DateTime < endDate).ToList();
+           List<Dom.Load> loads = _context.Load
+                .Include(x=>x.Date)
+                .Where(p=>p.Date.DateTime>startDate && p.Date.DateTime < endDate && p.MacroZone.Name==macrozone )
+                .ToList();
             return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
         }
     }

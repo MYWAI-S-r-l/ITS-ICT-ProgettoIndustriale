@@ -11,8 +11,8 @@ namespace ProgettoIndustriale.Data.ConfigClasses
         public void Configure(EntityTypeBuilder<Weather> entity)
         {
 
-            entity.Property(w => w.Id).IsRequired().HasValueGenerator<GuidValueGenerator>();
-           
+            entity.Property(w => w.Id).IsRequired().ValueGeneratedOnAdd();
+
             entity.HasKey(w => w.Id);
             
             entity.HasOne(w => w.Province).WithMany(w => w.Weathers).HasForeignKey(p => p.IdProvince);
@@ -27,7 +27,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
             
             entity.Property(w => w.Dewpoint).IsRequired();
 
-            entity.Property(w => w.RelativeHumidity).IsRequired().HasColumnName("relativehumidity_2m_percent");
+            entity.Property(w => w.RelativeHumidity).IsRequired();//.HasColumnName("relative_humidity_2m_percent");
             
             entity.Property(w => w.ApparentTemperature).IsRequired();
             

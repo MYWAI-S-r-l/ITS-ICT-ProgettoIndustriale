@@ -16,8 +16,8 @@ namespace ProgettoIndustriale.Data.ConfigClasses
         public void Configure(EntityTypeBuilder<Region> entity)
         {
             
-                entity.Property(p => p.Id).IsRequired().HasColumnName("ID_region").HasValueGenerator<GuidValueGenerator>();
-                entity.HasKey(p => p.Id);
+                entity.Property(p => p.Id).IsRequired().HasColumnName("ID_region").ValueGeneratedOnAdd();
+            entity.HasKey(p => p.Id);
 
                 entity.Property(p => p.Name)
                 .IsRequired()

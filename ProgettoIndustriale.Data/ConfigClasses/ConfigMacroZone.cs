@@ -12,7 +12,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
             //Proprietà dei vari campi, chiave primaria ed esterna.
             //Tutti i campi sono richiesti, per poter verificare eventuali problemi direttamente dal codice
 
-            entity.Property(e => e.Id).IsRequired().HasColumnName("ID_macrozone").HasValueGenerator<GuidValueGenerator>();
+            entity.Property(e => e.Id).IsRequired().HasColumnName("ID_macrozone").ValueGeneratedOnAdd();
             entity.HasKey(e => e.Id );
             entity.Property(e=>e.Name).IsRequired().HasColumnName("name"); ;
             entity.Property(e=>e.BiddingZone).IsRequired().HasColumnName("bidding_zone"); ;

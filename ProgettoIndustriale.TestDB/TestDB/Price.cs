@@ -16,6 +16,7 @@ namespace ProgettoIndustriale.TestDB.TestDB
         {
             return new dom.Price()
             {
+                
                 BasePriceEur = 12.22f,
                 IncentiveComponentEur = 12.22f,
                 UnbalancePriceEur = 10.22f,

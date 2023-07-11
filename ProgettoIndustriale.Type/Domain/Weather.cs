@@ -19,11 +19,13 @@ namespace ProgettoIndustriale.Type.Domain
         public int Id { get; set; }
         //[Column ("temperature_2_m - °C")] questa è un decoratore per associare il nome alla tab
         
-        [Column("temperature_2_m_Celsius")]
+        [Column("temperature_2m_Celsius")]
         public double Temperature { get; set; }
 
         [Column("dewpoint_2m_Celsius")]
         public double Dewpoint { get; set; }
+
+        [Column("relative_humidity_2m_percent")]
         public double RelativeHumidity { get; set; }
 
         [Column("apparent_temperature_Celsius")]
@@ -47,7 +49,7 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("snowfall_mm")]
         public double Snowfall { get; set; }
 
-        [Column("showers_mm")]
+        [Column("shower_mm")]
         public double Shower { get; set; }
 
         [Column("precipitation_mm")]

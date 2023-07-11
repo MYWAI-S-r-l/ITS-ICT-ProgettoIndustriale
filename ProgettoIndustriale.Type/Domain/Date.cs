@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,8 @@ namespace ProgettoIndustriale.Type.Domain
         public int Month { get; set; }
         [Column("day")]
         public int Day { get; set; }
-        [Column("time")]
-        public DateTime Time { get; set; }
+        [Column("hour")]
+        public int Hour { get; set; }
 
         public virtual ICollection<Weather> Weathers { get; set; }
 
