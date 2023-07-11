@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using RestSharp;
 using System;
 using System.Globalization;
@@ -9,16 +10,24 @@ public partial class WeatherController
 {
     [HttpPost("getWeathersbyProvince")]
 
-    public List<Dto.Weather> GetWeathersbyProvinces(List<string> province)
+    public Object GetWeathersbyProvinces([BindRequired] List<string> province)
     {
+        if(province.First() =="string")
+        {
+            return BadRequest("inserire almeno una provincia");
+        }
         return _weatherManager.GetWeathersbyProvinces(province);
     }
     
 
     [HttpPost("getWeathersbyProvincesDates")]
 
-    public object GetWeathersbyProvincesDates(List<string> province, DateTime startDate, DateTime endDate)
+    public object GetWeathersbyProvincesDates([BindRequired] List<string> province, [BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
+        if (province.First() == "string")
+        {
+            return BadRequest("inserire almeno una provincia");
+        }
         if (startDate > endDate)
         {
             return BadRequest("La data di inizio non può essere successiva alla data di fine");

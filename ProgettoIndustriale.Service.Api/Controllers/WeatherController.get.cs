@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProgettoIndustriale.Type.Dto;
 using ProgettoIndustriale.Business;
-
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
@@ -19,7 +19,7 @@ public partial class WeatherController
 
     [HttpGet("getWeathersbyDates")]
 
-    public object GetWeathersbyDates(DateTime startDate, DateTime endDate)
+    public object GetWeathersbyDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
         if (startDate > endDate)
         {
