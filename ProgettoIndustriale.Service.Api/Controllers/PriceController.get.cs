@@ -1,14 +1,11 @@
-﻿using Dto = ProgettoIndustriale.Type.Dto;
-using Microsoft.AspNetCore.Mvc;
-using ProgettoIndustriale.Type.Dto;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
-
 public partial class PriceController
 {
-
     [HttpGet("getAllPrices")]
     public List<Dto.Price> GetAllPrices()
     {
@@ -26,7 +23,6 @@ public partial class PriceController
         if (startDate > DateTime.Now)
         {
             return BadRequest("La data di inizio non può essere futura.");
-
         }
         if (startDate == default || endDate == default)
         {
@@ -34,6 +30,4 @@ public partial class PriceController
         }
         return _priceManager.GetPricesbyDates(startDate, endDate);
     }
-
 }
-

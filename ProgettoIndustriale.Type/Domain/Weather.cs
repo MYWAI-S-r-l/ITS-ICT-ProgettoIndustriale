@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProgettoIndustriale.Type.Domain
 {
     public class Weather
 
     {
-        public Weather() { }
-
+        public Weather()
+        { }
 
         [Column("ID_weather")]
         public int Id { get; set; }
+
         //[Column ("temperature_2_m - °C")] questa è un decoratore per associare il nome alla tab
-        
+
         [Column("temperature_2m_Celsius")]
         public double Temperature { get; set; }
 
@@ -57,7 +51,7 @@ namespace ProgettoIndustriale.Type.Domain
 
         [Column("snow_depth_meters")]
         public double SnowDepth { get; set; }
- 
+
         [Column("is_day_bool")]
         public int IsDay { get; set; }
 
@@ -67,11 +61,8 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("COD_date")]
         public int IdDate { get; set; }
 
-        public virtual Province Province { get; set; }   
+        public virtual Province? Province { get; set; }
 
-        public virtual Date Date { get; set; }
-
-        
-
+        public virtual Date? Date { get; set; }
     }
 }

@@ -19,5 +19,6 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             _loadManager = new LoadManager(_context);
         }
 
+        public IConfiguration Configuration => _configuration;
     }
 }
