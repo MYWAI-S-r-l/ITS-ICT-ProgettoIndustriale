@@ -10,7 +10,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers;
 public partial class PriceController : ControllerBase
 {
     private readonly IPriceManager _priceManager;
-    private readonly IConfiguration _configuration;
+    public readonly IConfiguration _configuration;
     private readonly ProgettoIndustrialeContext _context;
 
     public PriceController(IConfiguration configuration, ProgettoIndustrialeContext context)

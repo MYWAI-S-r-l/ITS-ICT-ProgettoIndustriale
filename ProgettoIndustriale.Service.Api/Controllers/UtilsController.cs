@@ -10,7 +10,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers;
 public partial class UtilsController : ControllerBase
 {
     private readonly IUtilsManager _utilsManager;
-    private readonly IConfiguration _configuration;
+    public readonly IConfiguration _configuration;
     private readonly ProgettoIndustrialeContext _context;
 
     public UtilsController(IConfiguration configuration, ProgettoIndustrialeContext context)

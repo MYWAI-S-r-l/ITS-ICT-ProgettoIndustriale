@@ -10,7 +10,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers;
 public partial class WeatherController : ControllerBase
 {
     private readonly IWeatherManager _weatherManager;
-    private readonly IConfiguration _configuration;
+    public readonly IConfiguration _configuration;
     private readonly ProgettoIndustrialeContext _context;
 
     public WeatherController(IConfiguration configuration, ProgettoIndustrialeContext context)
