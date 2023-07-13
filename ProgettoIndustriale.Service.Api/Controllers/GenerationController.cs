@@ -10,7 +10,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers;
 public partial class GenerationController : ControllerBase
 {
     private readonly IGenerationManager _generationManager;
-    private readonly IConfiguration _configuration;
+    public readonly IConfiguration _configuration;
     private readonly ProgettoIndustrialeContext _context;
 
     public GenerationController(IConfiguration configuration, ProgettoIndustrialeContext context)
