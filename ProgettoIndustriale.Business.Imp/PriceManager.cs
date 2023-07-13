@@ -1,29 +1,27 @@
-﻿using ProgettoIndustriale.Type;
-using Dto = ProgettoIndustriale.Type.Dto;
-using Dom = ProgettoIndustriale.Type.Domain;
-using ProgettoIndustriale.Type.Dto;
+﻿using Microsoft.EntityFrameworkCore;
 using ProgettoIndustriale.Data;
-using Microsoft.Identity.Client;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+using ProgettoIndustriale.Type;
+using Dom = ProgettoIndustriale.Type.Domain;
+using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Business.Imp;
+
 public class PriceManager : IPriceManager
 
 {
     private readonly ProgettoIndustrialeContext _context;
+
     public PriceManager(ProgettoIndustrialeContext context)
-    { 
-        _context= context;
+    {
+        _context = context;
     }
+
     public List<Dto.Price> GetAllPrices()
     {
-
         var allPrices = _context.Price
-            .Include(x=> x.Date)
-            .Include(x=> x.MacroZone).ToList();
+            .Include(x => x.Date)
+            .Include(x => x.MacroZone).ToList();
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
-
     }
 
     public List<Dto.Price> GetPricesbyMacrozones(List<string> macrozones)
@@ -31,11 +29,9 @@ public class PriceManager : IPriceManager
         var allPrices = _context.Price
             .Include(x => x.MacroZone)
             .Include(x => x.Date)
-            .Where(x=> macrozones.Contains(x.MacroZone.Name)).ToList();
+            .Where(x => macrozones.Contains(x.MacroZone.Name)).ToList();
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
-        
     }
-
 
     public List<Dto.Price> GetPricesbyDates(DateTime startDate, DateTime endDate)
     {
@@ -52,14 +48,12 @@ public class PriceManager : IPriceManager
         var allPrices = _context.Price
             .Include(x => x.Date)
             .Include(x => x.MacroZone)
-            .Where(x=> x.Date.DateTime>startDate && x.Date.DateTime<endDate).ToList();
+            .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate).ToList();
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
-        
     }
 
     public List<Dto.Price> GetPricesbyMacrozonesDates(List<string> macrozones, DateTime startDate, DateTime endDate)
     {
-
         if (startDate > endDate)
         {
             throw new ArgumentException("La data di inizio non può essere successiva alla data di fine.");
@@ -70,17 +64,13 @@ public class PriceManager : IPriceManager
             throw new ArgumentException("La data di inizio non può essere futura.");
         }
 
-
-        var allPrices = _context.Price.Include(x=>x.MacroZone)
-            .Include(x=>x.Date)
+        var allPrices = _context.Price.Include(x => x.MacroZone)
+            .Include(x => x.Date)
             .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate && macrozones
             .Contains(x.MacroZone.Name)).ToList();
 
         return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
-        
-
     }
-
 }
 
 /*
@@ -106,7 +96,7 @@ public class ProvinceManager : IProvinceManager
             .FirstOrDefault(provincia => provincia.Codice == codice);
         return domainProvincia;
     }
-    
+
     public bool DeleteProvincia(string codice)
     {
         var domainProvincia = _context.Province
@@ -135,7 +125,6 @@ public class ProvinceManager : IProvinceManager
             Nome = provinciaToSave.Nome,
             Sigla = provinciaToSave.Sigla,
             Regione = provinciaToSave.Regione,
-     
         };
         _context.Province.Add((Domain.Province)domainProvincia);
         _context.SaveChanges();
@@ -149,7 +138,7 @@ public class ProvinceManager : IProvinceManager
             return new List<Dto.Provincia>();
 
         var domainProvince = provinceToSave.ConvertAll(
-            p => new Domain.Provincia 
+            p => new Domain.Provincia
                 {
                     Codice = p.Codice,
                     Nome = p.Nome,

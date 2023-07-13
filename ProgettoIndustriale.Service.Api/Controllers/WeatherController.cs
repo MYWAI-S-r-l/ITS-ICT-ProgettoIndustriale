@@ -19,6 +19,4 @@ public partial class WeatherController : ControllerBase
         _context = context;
         _weatherManager = new WeatherManager(_context);
     }
-
-    public IConfiguration Configuration => _configuration;
 }

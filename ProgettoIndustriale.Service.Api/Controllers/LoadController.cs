@@ -6,7 +6,7 @@ using ProgettoIndustriale.Data;
 namespace ProgettoIndustriale.Service.Api.Controllers
 {
     [ApiController]
-    public partial class LoadController:ControllerBase
+    public partial class LoadController : ControllerBase
     {
         private readonly ILoadManager _loadManager;
         private readonly IConfiguration _configuration;
@@ -18,7 +18,5 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             _context = context;
             _loadManager = new LoadManager(_context);
         }
-
-        public IConfiguration Configuration => _configuration;
     }
 }

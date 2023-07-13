@@ -1,12 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace ProgettoIndustriale.Type.Dto;
+﻿namespace ProgettoIndustriale.Type.Dto;
 
 public class Industry
 {
-    public Industry()
-    {
-    }
+    public Industry() { }
 
     public int Id { get; set; }
     public string Ateco { get; set; }
@@ -14,6 +10,5 @@ public class Industry
     public int CountActive { get; set; }
     public Province Province { get; set; }
 }
-
 
 //decidete cosa fare con i COD
