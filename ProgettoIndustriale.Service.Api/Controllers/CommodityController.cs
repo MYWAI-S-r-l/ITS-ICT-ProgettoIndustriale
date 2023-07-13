@@ -1,5 +1,4 @@
-﻿using Ansaldo.Protocollo.Business.Imp;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProgettoIndustriale.Business;
 using ProgettoIndustriale.Business.Imp;
 using ProgettoIndustriale.Data;
@@ -7,7 +6,7 @@ using ProgettoIndustriale.Data;
 namespace ProgettoIndustriale.Service.Api.Controllers
 {
     [ApiController]
-    public partial class CommodityController:ControllerBase
+    public partial class CommodityController : ControllerBase
     {
         private readonly ICommodityManager _commodityManager;
         private readonly IConfiguration _configuration;
@@ -19,7 +18,5 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             _context = context;
             _commodityManager = new CommodityManager(_context);
         }
-
-        public IConfiguration Configuration => _configuration;
     }
 }

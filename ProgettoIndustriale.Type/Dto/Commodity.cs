@@ -2,7 +2,6 @@
 {
     public class Commodity
     {
-
         public Commodity() { }
 
         public int Id { get; set; }
@@ -13,7 +12,6 @@
         //forse utilizzo oggetto intermedio ?
         public List<Dictionary<string, string>> Data { get; set; }
 
-        public string Unit  { get; set; }
-
+        public string Unit { get; set; }
     }
 }

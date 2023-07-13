@@ -1,15 +1,11 @@
-﻿using ProgettoIndustriale.Business;
+﻿using Microsoft.EntityFrameworkCore;
+using ProgettoIndustriale.Business;
 using ProgettoIndustriale.Data;
-using Dto = ProgettoIndustriale.Type.Dto;
-using Dom = ProgettoIndustriale.Type.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ProgettoIndustriale.Type;
-using Microsoft.EntityFrameworkCore;
 using ProgettoIndustriale.Type.Dto;
+using Dom = ProgettoIndustriale.Type.Domain;
+
+using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace Ansaldo.Protocollo.Business.Imp
 {
@@ -21,9 +17,10 @@ namespace Ansaldo.Protocollo.Business.Imp
         {
             _context = context;
         }
+
         public List<Dto.Load> getAllLoads()
         {
-            List<Dom.Load> loads = _context.Load.Include(x=>x.MacroZone).Include(y=>y.Date).ToList();
+            List<Dom.Load> loads = _context.Load.Include(x => x.MacroZone).Include(y => y.Date).ToList();
             return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
         }
 
@@ -34,7 +31,7 @@ namespace Ansaldo.Protocollo.Business.Imp
             List<Dom.Load> loads = _context.Load
                 .Include(x => x.MacroZone)
                 .Include(y => y.Date)
-                .Where(c=>c.Date.DateTime>startDate && c.Date.DateTime<endDate).ToList();
+                .Where(c => c.Date.DateTime > startDate && c.Date.DateTime < endDate).ToList();
             return MyMapper<Dom.Load, Dto.Load>.MapList(loads).ToList();
         }
 
@@ -43,17 +40,15 @@ namespace Ansaldo.Protocollo.Business.Imp
         {
             List<Dom.Load> loads = _context.Load.Include(x => x.MacroZone).Where(p => nameMacroZone.Contains(p.MacroZone.Name)).ToList();
             return MyMapper<Dom.Load, Dto.Load>.MapList(loads).ToList();
-
         }
 
         // Questo metodo restituisce una lista di oggetti Dto.Load filtrata per macrozone, data di inizio e data di fine, usando il metodo Include per caricare la relazione con l’entità Date
         public List<Dto.Load> getLoadsbyFilter(string macrozone, DateTime startDate, DateTime endDate)
         {
-           
-           List<Dom.Load> loads = _context.Load
-                .Include(x=>x.Date)
-                .Where(p=>p.Date.DateTime>startDate && p.Date.DateTime < endDate && p.MacroZone.Name==macrozone )
-                .ToList();
+            List<Dom.Load> loads = _context.Load
+                 .Include(x => x.Date)
+                 .Where(p => p.Date.DateTime > startDate && p.Date.DateTime < endDate && p.MacroZone.Name == macrozone)
+                 .ToList();
             return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
         }
     }

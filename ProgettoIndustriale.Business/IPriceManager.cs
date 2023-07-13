@@ -14,7 +14,7 @@ public interface IPriceManager
 
     public List<Dto.Price> GetAllPrices();
     public List<Dto.Price> GetPricesbyDates(DateTime startDate, DateTime endDate);
-    public List<Dto.Price> GetPricesbyMacrozones(List<string> macrozone);
-    public List<Dto.Price> GetPricesbyMacrozonesDates(List<string> macrozone, DateTime startDate, DateTime endDate);
+    public List<Dto.Price> GetPricesbyMacrozones(List<string> macrozones);
+    public List<Dto.Price> GetPricesbyMacrozonesDates(List<string> macrozones, DateTime startDate, DateTime endDate);
 
 }

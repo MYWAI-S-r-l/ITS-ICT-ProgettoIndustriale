@@ -3,8 +3,11 @@
     public class Weather
 
     {
-        public Weather() { }
+        public Weather()
+        { }
+
         public int Id { get; set; }
+
         //[Column ("temperature_2_m - °C")] questa è un decoratore per associare il nome alla tab
         public double Temperature { get; set; }
 
@@ -37,9 +40,8 @@
 
         public int IdDates { get; set; }
 
-        public virtual Province Province { get; set; }   
+        public virtual Province Province { get; set; }
 
         public virtual Date Date { get; set; }
-
     }
 }
