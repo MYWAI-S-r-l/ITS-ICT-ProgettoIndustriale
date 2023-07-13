@@ -1,24 +1,18 @@
-﻿using Dto = ProgettoIndustriale.Type.Dto;
-using Microsoft.AspNetCore.Mvc;
-using ProgettoIndustriale.Type.Dto;
-using ProgettoIndustriale.Business;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
-
 public partial class WeatherController
 {
-
     [HttpGet("getAllWeathers")]
-
-    public List<Dto.Weather>GetAllWeathers()
+    public List<Dto.Weather> GetAllWeathers()
     {
         return _weatherManager.GetAllWeathers();
     }
 
     [HttpGet("getWeathersbyDates")]
-
     public object GetWeathersbyDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
         if (startDate > endDate)
@@ -33,4 +27,3 @@ public partial class WeatherController
         return _weatherManager.GetWeathersbyDates(startDate, endDate);
     }
 }
-

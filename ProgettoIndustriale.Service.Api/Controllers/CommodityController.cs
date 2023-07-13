@@ -20,5 +20,6 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             _commodityManager = new CommodityManager(_context);
         }
 
+        public IConfiguration Configuration => _configuration;
     }
 }

@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.IdentityModel.Tokens;
 using dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers
 {
-    public partial class LoadController 
+    public partial class LoadController
     {
         [HttpGet("getLoadAll")]
         public IEnumerable<dto.Load> getAllLoad()
@@ -13,10 +12,8 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             return _loadManager.getAllLoads();
         }
 
-
         [HttpGet("getLoadByFilter")]
-
-        public object getLoadByFilter([BindRequired] string macrozone, [BindRequired] DateTime startDate, [BindRequired]  DateTime endDate)
+        public object getLoadByFilter([BindRequired] string macrozone, [BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
         {
             if (startDate > endDate)
             {
@@ -26,16 +23,13 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             if (startDate > DateTime.Now)
             {
                 return BadRequest("La data di inizio non può essere futura.");
-
             }
             if (startDate == default || endDate == default)
             {
                 return BadRequest("Inserire data");
             }
-            
-            
-            return _loadManager.getLoadsbyFilter(macrozone, startDate, endDate);
 
+            return _loadManager.getLoadsbyFilter(macrozone, startDate, endDate);
         }
 
         [HttpGet("getLoadbyDates")]
@@ -49,7 +43,6 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             if (startDate > DateTime.Now)
             {
                 return BadRequest("La data di inizio non può essere futura");
-
             }
             if (startDate == default || endDate == default)
             {
@@ -57,7 +50,5 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             }
             return _loadManager.getloadbyDates(startDate, endDate);
         }
-        
-
     }
 }
