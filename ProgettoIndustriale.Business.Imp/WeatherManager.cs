@@ -28,11 +28,12 @@ public class WeatherManager : IWeatherManager
     {
         var allWeathers = _context.Weather
 
-            .Include(x => x.Date)
-            .Include(x => x.Province)
-            .ThenInclude(x => x.Region)
-            .ThenInclude(x => x.MacroZone)
-            .Where(x => province.Contains(x.Province.Name)).ToList();
+            .Include(x => x.Date!)
+            .Include(x => x.Province!)
+            .ThenInclude(x => x.Region!)
+            .ThenInclude(x => x.MacroZone!)
+            .Where(x => x.Province != null && x.Date != null && x.Province.Name != null && province.Contains(x.Province.Name))
+            .ToList();
         return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
     }
 
@@ -49,11 +50,11 @@ public class WeatherManager : IWeatherManager
         }
 
         var allWeathers = _context.Weather
-            .Include(x => x.Province)
-            .ThenInclude(x => x.Region)
+            .Include(x => x.Province!)
+            .ThenInclude(x => x.Region!)
             .ThenInclude(x => x.MacroZone)
-            .Include(x => x.Date)
-            .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate)
+            .Include(x => x.Date!)
+            .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
             .ToList();
         return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
     }
@@ -71,11 +72,12 @@ public class WeatherManager : IWeatherManager
         }
 
         var allWeathers = _context.Weather
-            .Include(x => x.Province)
-            .ThenInclude(x => x.Region)
-            .ThenInclude(x => x.MacroZone)
-            .Include(x => x.Date)
-            .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate && province
+            .Include(x => x.Province!)
+            .ThenInclude(x => x.Region!)
+            .ThenInclude(x => x.MacroZone!)
+            .Include(x => x.Date!)
+            .Where(x => x.Province != null && x.Date != null && x.Province.Name != null && 
+            x.Date.DateTime > startDate && x.Date.DateTime < endDate && province
             .Contains(x.Province.Name)).ToList();
         return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
     }
