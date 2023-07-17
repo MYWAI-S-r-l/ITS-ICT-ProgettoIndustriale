@@ -2,9 +2,6 @@
 using Dto = ProgettoIndustriale.Type.Dto;
 using Domain = ProgettoIndustriale.Type.Domain;
 using ProgettoIndustriale.Type.Dto;
-
-//using Microsoft.AspNetCore.Mvc;
-//using Newtonsoft.Json;
 using System.Text.Json;
 using RestSharp;
 using RestSharp.Authenticators;

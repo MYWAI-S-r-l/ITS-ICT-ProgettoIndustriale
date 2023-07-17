@@ -7,12 +7,12 @@ using System;
 using ProgettoIndustriale.Type;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure; // Aggiungi questo import
-using ProgettoIndustriale.Data;
 using Microsoft.Extensions.Configuration;
-
+namespace Program;
 class Program
 {
-    static void Main()
+    protected Program(){}
+    protected static void Main()
     {
 
         var configuration = new ConfigurationBuilder()
@@ -31,7 +31,7 @@ class Program
 
         DataResetManager dataResetManager = new DataResetManager(db, configuration);
         dataResetManager.ResetData();
-        dataResetManager.ResetAutoIncrement(connectionString, serverVersion);
+        dataResetManager.ResetAutoIncrement(connectionString!, serverVersion);
         Console.WriteLine("Reset dei dati completato.");
 
         DataImportManager dataImportManager = new DataImportManager(db);

@@ -1,5 +1,4 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ProgettoIndustriale.Type;
 using ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
