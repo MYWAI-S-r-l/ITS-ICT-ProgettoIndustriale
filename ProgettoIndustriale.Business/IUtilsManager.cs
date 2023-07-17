@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using ProgettoIndustriale.Type;
 using ProgettoIndustriale.Type.Domain;
@@ -21,7 +23,7 @@ public interface IUtilsManager
     public List<Dto.Region> GetRegionsbyMacrozone(string macrozone);
 
     public Dto.MacroZone GetMacrozoneHavingRegion(string region);
-    public List<MyAtecoClass> GetNActiveIndustriesbyCatandProv(List<string> provinces = null, List<string> category = null);
+    public List<MyAtecoClass> GetNActiveIndustriesbyCatandProv(List<string> provinces, List<string> category);
 
    
     public class MyAtecoClass
@@ -33,14 +35,15 @@ public interface IUtilsManager
 
         public MyAtecoClass(string prov, string ateco, int nIndusries)
         {
+    
             this.Prov = prov;
             this.Ateco = ateco; 
             this.NIndustries = nIndusries; 
         }
 
 
-    public string Prov { get; set; }
-    public string Ateco { get; set; }
+        public string Prov { get; set; } = null!;
+        public string Ateco { get; set; } = null!;
     public int NIndustries { get; set; }
     }
        

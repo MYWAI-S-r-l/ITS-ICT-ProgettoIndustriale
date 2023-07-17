@@ -1,6 +1,7 @@
 ﻿using ProgettoIndustriale.Data;
 using ProgettoIndustriale.Type;
 using ProgettoIndustriale.Type.Dto;
+using System.Diagnostics.CodeAnalysis;
 using Domain = ProgettoIndustriale.Type.Domain;
 
 using Dto = ProgettoIndustriale.Type.Dto;
@@ -23,10 +24,11 @@ public class GenerationManager : IGenerationManager
         return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);
     }
 
-    public List<Generation> getGenerationsbyDates(DateTime startDate, DateTime endDate)
+    public List<Generation> getGenerationsbyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
     {
         var allGenerations = _context.Generation
-            .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate).ToList();
+            .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
+            .ToList();
         return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);
     }
 }
