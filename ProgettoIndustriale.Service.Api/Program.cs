@@ -6,6 +6,8 @@ using Autofac.Extensions.DependencyInjection;
 using ElmahCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProgettoIndustriale.Data;
+using Serilog;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +37,16 @@ var allowedUrlsForCors = builder.Configuration["AllowedUrlsForCors"].Split(',');
 builder.Services.ConfigureCors("CORSPolicy", allowedUrlsForCors);
 
 
+
+
 builder.Services.AddElmah();
+
+var log = new LoggerConfiguration().WriteTo.File("./logs.txt").CreateLogger();
+log.Information("Done settings");
+builder.Services.AddSingleton<Serilog.ILogger>(log);
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

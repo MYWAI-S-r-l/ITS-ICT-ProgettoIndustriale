@@ -9,7 +9,17 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         [HttpGet("getAllCommodities")]
         public IEnumerable<dto.Commodity> getAllCommodities()
         {
-            return _commodityManager.getAllCommodities();
+            try
+            {
+                return  _commodityManager.getAllCommodities();
+            }
+            catch (Exception e)
+            {
+
+                _logger.Error(e.Message);
+                return Enumerable.Empty<dto.Commodity>();
+            }
+            
         }
 
         [HttpGet("getCommoditybyDates")]
