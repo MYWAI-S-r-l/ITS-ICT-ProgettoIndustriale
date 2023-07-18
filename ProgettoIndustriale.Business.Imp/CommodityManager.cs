@@ -10,7 +10,7 @@ namespace ProgettoIndustriale.Business.Imp
     public class CommodityManager : ICommodityManager
     {
         private readonly ProgettoIndustrialeContext _context;
-
+       
         public CommodityManager(ProgettoIndustrialeContext context)
         {
             _context = context;
@@ -18,8 +18,18 @@ namespace ProgettoIndustriale.Business.Imp
 
         public List<Dto.Commodity> getAllCommodities()
         {
-            List<Domain.Commodity> commodities = _context.Commodity.ToList();
-            return MyMapper<Domain.Commodity, Dto.Commodity>.MapList(commodities);
+            try
+            {
+                List<Domain.Commodity> commodities = _context.Commodity.ToList();
+                return MyMapper<Domain.Commodity, Dto.Commodity>.MapList(commodities);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public List<Dto.Commodity> getComoditybyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
