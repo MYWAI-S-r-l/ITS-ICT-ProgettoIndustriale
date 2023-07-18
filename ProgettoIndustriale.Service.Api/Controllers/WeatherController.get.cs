@@ -9,7 +9,17 @@ public partial class WeatherController
     [HttpGet("getAllWeathers")]
     public List<Dto.Weather> GetAllWeathers()
     {
-        return _weatherManager.GetAllWeathers();
+        try
+        {
+            return _weatherManager.GetAllWeathers();
+        }
+        catch (Exception e)
+        { 
+            _logger.Error(e.Message, "Service.Api/Controllers/WeatherController.get/getAllWeather");
+            return new List<Dto.Weather>();
+
+        }
+        
     }
 
     [HttpGet("getWeathersbyDates")]

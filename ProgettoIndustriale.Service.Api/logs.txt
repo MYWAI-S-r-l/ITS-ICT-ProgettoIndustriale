@@ -21,3 +21,5 @@
 2023-07-18 11:35:37.858 +02:00 [ERR] Unknown database 'progettoindustriale'a
 2023-07-18 11:39:16.108 +02:00 [INF] Done settings
 2023-07-18 11:39:27.888 +02:00 [ERR] Unknown database 'progettoindustriale' Controllers/CommodityController.get/getAllCommodities
+2023-07-18 12:55:27.541 +02:00 [INF] Done settings
+2023-07-18 12:56:23.477 +02:00 [INF] Done settings
