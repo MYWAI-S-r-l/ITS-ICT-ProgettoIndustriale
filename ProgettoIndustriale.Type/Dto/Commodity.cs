@@ -7,6 +7,7 @@
         public int Id { get; set; }
 
         public string Name { get; set; }
+        public double ValueUsd { get; set; }
 
         //trasforma ---> dizionario {data,valore}
         //forse utilizzo oggetto intermedio ?
