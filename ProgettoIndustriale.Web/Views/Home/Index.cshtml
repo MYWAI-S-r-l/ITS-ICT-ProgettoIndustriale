@@ -1,10 +1,109 @@
-﻿@{
-    ViewData["Title"] = "Main Page";
-}
+﻿<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="logo.png">
+    <title>PROGETTO INDUSTRIALE</title>
+    <style>
+        html, body {
+            font-family: Georgia;
+            margin: 0;
+            padding: 0;
+        }
 
-<main-page></main-page>
+        .header {
+            background-color: #0e96a2;
+            color: #fff;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-@section bodyScripts
-{
-    <script src="~/js/mainPage.js" asp-append-version="true"></script>
-}
+            .header button {
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+            }
+
+                .header button img {
+                    width: 57px;
+                    height: 57px;
+                }
+
+            .header h1 {
+                font-size: 1.5rem;
+                margin: 0;
+            }
+
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact {
+            flex: 1;
+        }
+
+            .contact h3 {
+                margin-bottom: 0.5rem;
+                font-size: 1rem;
+            }
+
+        .about {
+            flex: 1;
+        }
+
+            .about h3 {
+                margin-bottom: 0.5rem;
+                font-size: 1rem;
+            }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button onclick="goToHomePage()">
+            <img src="./assets/images/logo.png" alt="Logo">
+        </button>
+        <h1>PROGETTO INDUSTRIALE (BRUTTO)</h1>
+    </div>
+
+    <noscript>
+        <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+    <div class="footer">
+        <div class="container footer-content">
+            <div class="contact">
+                <h3>Contatti</h3>
+                <p>Telefono: 123-456-7890</p>
+                <p>Email: info@example.com</p>
+            </div>
+            <div class="about">
+                <h3>Chi siamo</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToHomePage() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
