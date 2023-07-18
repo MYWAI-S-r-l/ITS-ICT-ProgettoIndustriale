@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using ProgettoIndustriale.Type;
 using ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
-
+using Serilog;
 namespace ProgettoIndustriale.Business;
 
 
@@ -25,7 +25,7 @@ public interface IUtilsManager
     public Dto.MacroZone GetMacrozoneHavingRegion(string region);
     public List<MyAtecoClass> GetNActiveIndustriesbyCatandProv(List<string> provinces, List<string> category);
 
-   
+    
     public class MyAtecoClass
     {
 

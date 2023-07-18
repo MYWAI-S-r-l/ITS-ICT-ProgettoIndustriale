@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Serilog;
+using Microsoft.Extensions.Logging;
+
 namespace Ansaldo.Protocollo.Business.Imp
 {
-    public partial class ClassLog
+    public static partial class ClassLog
     {
-        public readonly Serilog.ILogger _logger;
-        public ClassLog(Serilog.ILogger logger)
-        {
-            _logger = logger;
-        }
-
+        public static readonly Serilog.ILogger _log =
+            new LoggerConfiguration().WriteTo.File("Log/logs.txt").CreateLogger();
     }
 }

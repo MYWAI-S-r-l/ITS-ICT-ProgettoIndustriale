@@ -12,11 +12,12 @@ public partial class WeatherController : ControllerBase
     private readonly IWeatherManager _weatherManager;
     public readonly IConfiguration _configuration;
     private readonly ProgettoIndustrialeContext _context;
-
-    public WeatherController(IConfiguration configuration, ProgettoIndustrialeContext context)
+    public readonly Serilog.ILogger _logger;
+    public WeatherController(IConfiguration configuration, ProgettoIndustrialeContext context, Serilog.ILogger logger)
     {
         _configuration = configuration;
         _context = context;
         _weatherManager = new WeatherManager(_context);
+        _logger = logger;
     }
 }

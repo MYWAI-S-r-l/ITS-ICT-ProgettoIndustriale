@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Ansaldo.Protocollo.Business.Imp;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ProgettoIndustriale.Data;
 using ProgettoIndustriale.Type;
 using ProgettoIndustriale.Type.Domain;
+using System.Xml.Serialization;
 using Domain = ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
-
+using Serilog;
 namespace ProgettoIndustriale.Business.Imp;
 
 //INCLUDE ==> JOIN
@@ -20,14 +22,23 @@ public class UtilsManager : IUtilsManager
 
     public List<Dto.Province> GetAllProvinces()
     {
-        List<Domain.Province>
-            allProvince = _context.Province
-                .Include(x => x.Region!)
-                .ThenInclude(y => y.MacroZone)
-                .Where(x=> x.Region != null && x.Region.MacroZone != null)
-                .ToList();
+        try
+        {
+            List<Domain.Province>
+                allProvince = _context.Province
+                    .Include(x => x.Region!)
+                    .ThenInclude(y => y.MacroZone)
+                    .Where(x => x.Region != null && x.Region.MacroZone != null)
+                    .ToList();
 
-        return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
+            return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
+        }
+        catch(Exception ex) 
+        {
+            ClassLog._log.Error(messageTemplate: ex.Message, "Business.Imp/UtilsManager/getAllProvinces");
+            return new List<Dto.Province>();
+
+        }
     }
 
     public List<Dto.Province> GetProvincesDetails(List<string> prov)
