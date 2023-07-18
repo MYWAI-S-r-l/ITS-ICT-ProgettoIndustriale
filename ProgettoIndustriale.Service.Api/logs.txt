@@ -1,0 +1,19 @@
+2023-07-18 10:05:07.026 +02:00 [INF] Done settings
+2023-07-18 10:07:13.017 +02:00 [INF] Done settings
+2023-07-18 10:16:28.408 +02:00 [INF] Done settings
+2023-07-18 10:20:50.828 +02:00 [INF] Done settings
+2023-07-18 10:25:31.260 +02:00 [INF] Done settings
+2023-07-18 10:55:12.233 +02:00 [INF] Done settings
+2023-07-18 10:59:58.862 +02:00 [INF] Done settings
+2023-07-18 11:00:13.608 +02:00 [INF] Prova
+2023-07-18 11:02:07.837 +02:00 [INF] Done settings
+2023-07-18 11:05:09.883 +02:00 [INF] Prova
+2023-07-18 11:08:34.297 +02:00 [INF] Done settings
+2023-07-18 11:08:46.081 +02:00 [INF] Prova
+2023-07-18 11:15:10.789 +02:00 [INF] Done settings
+2023-07-18 11:16:02.358 +02:00 [INF] Done settings
+2023-07-18 11:16:31.508 +02:00 [ERR] Unknown database 'progettoindustriale'
+2023-07-18 11:17:25.451 +02:00 [INF] Done settings
+2023-07-18 11:18:06.323 +02:00 [ERR] Unknown database 'progettoindustriale'
+2023-07-18 11:20:01.084 +02:00 [INF] Done settings
+2023-07-18 11:20:31.183 +02:00 [ERR] Unknown database 'progettoindustriale'
