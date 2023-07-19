@@ -41,9 +41,7 @@ builder.Services.ConfigureCors("CORSPolicy", allowedUrlsForCors);
 
 builder.Services.AddElmah();
 
-var log = new LoggerConfiguration().WriteTo.File("./logs.txt").CreateLogger();
-log.Information("Done settings");
-builder.Services.AddSingleton<Serilog.ILogger>(log);
+
 
 
 
