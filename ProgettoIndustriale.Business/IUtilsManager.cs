@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using ProgettoIndustriale.Type;
 using ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
-using Serilog;
 namespace ProgettoIndustriale.Business;
 
 
