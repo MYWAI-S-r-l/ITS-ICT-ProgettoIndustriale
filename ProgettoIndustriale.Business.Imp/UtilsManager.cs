@@ -14,10 +14,11 @@ namespace ProgettoIndustriale.Business.Imp;
 public class UtilsManager : IUtilsManager
 {
     private readonly ProgettoIndustrialeContext _context;
-
+    private readonly ClassLog classLog;
     public UtilsManager(ProgettoIndustrialeContext context)
     {
         _context = context;
+        ClassLog classLog = new ClassLog("Business.Imp/UtilsManager");
     }
 
     public List<Dto.Province> GetAllProvinces()
@@ -35,7 +36,8 @@ public class UtilsManager : IUtilsManager
         }
         catch(Exception ex) 
         {
-            ClassLog._log.Error(messageTemplate: ex.Message, "Business.Imp/UtilsManager/getAllProvinces");
+           
+            classLog.logError();
             return new List<Dto.Province>();
 
         }
