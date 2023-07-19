@@ -2,30 +2,43 @@
 using Quartz;
 using Quartz.Impl;
 using System;
+using System.Threading.Tasks;
 
-class Program
+public class RunCalls : IJob
+{
+    public async Task Execute(IJobExecutionContext context)
+    {
+        // Inserisci qui la logica per effettuare le chiamate API o altre attività pianificate
+        // Questo metodo verrà eseguito ogni volta che il trigger pianifica il job
+        Console.WriteLine("Esecuzione delle chiamate API o delle attività pianificate...");
+        await Task.Delay(1000); // Simulazione di un'attività di un secondo
+        Console.WriteLine("Chiamate API o attività pianificate completate.");
+    }
+}
+
+    public class Program
 {
     static async Task Main(string[] args)
     {
-        // Inizializza il scheduler Quartz.NET
+        // Inizializza il factory e lo scheduler
         ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
         IScheduler scheduler = await schedulerFactory.GetScheduler();
 
-        // Funzione
-        IJobDetail job = JobBuilder.Create<MyJob>()
-            .WithIdentity("myJob", "group1")
+        // Configurazione del job
+        var jobDetail = JobBuilder.Create<RunCalls>()
+            .WithIdentity("RunCallsJob", "group1")
             .Build();
 
-        // Crea un CronTrigger per eseguire la funzione ogni giorno alle 12:00 PM
+        // Configurazione del trigger schedulato, un CronTrigger per eseguire la funzione ogni giorno alle 12:00 PM
         ITrigger trigger = TriggerBuilder.Create()
-            .WithIdentity("myTrigger", "group1")
-            .StartNow()
-            .WithCronSchedule("0 0 12 * * ?") // Espressione cron per ogni giorno alle 12:00 PM si esegue
+            .WithIdentity("RunCallsTrigger", "group1")
+            .StartNow()// Avvia immediatamente
+            .WithCronSchedule("0 0 12 * * ?") // Espressione cron per farlo eseguire ogni giorno alle 12:00 PM 
             .Build();
-
-        // Pianifica il lavoro con il trigger
-        await scheduler.ScheduleJob(job, trigger);
-
+       
+        // Aggiungi il job e il trigger al scheduler (Pianifica il lavoro con il trigger)
+        await scheduler.ScheduleJob(jobDetail, trigger);
+              
         // Avvia il scheduler
         await scheduler.Start();
 
@@ -37,22 +50,3 @@ class Program
     }
 }
 
-public class MyJob : IJob
-{
-    public Task Execute(IJobExecutionContext context)
-    {
-        // Esegui la funzione 
-        RunCalls();
-
-        return Task.CompletedTask;
-    }
-
-    private void RunCalls()
-    {
-        // Logica della funzione
-        Console.WriteLine("Esecuzione della mia funzione...");
-
-        // Chiamate a metodi o altre operazioni personalizzate
-        // ...
-    }
-}
