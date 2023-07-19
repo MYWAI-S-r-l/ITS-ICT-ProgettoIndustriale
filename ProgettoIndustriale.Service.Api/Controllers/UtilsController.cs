@@ -17,10 +17,8 @@ public partial class UtilsController : ControllerBase
     {
         _configuration = configuration;
         _context = context;
-        _utilsManager = new UtilsManager(_context);
+        _utilsManager = new UtilsManager(_context, configuration);
     }
 
-    public IConfiguration Configuration => Configuration1;
 
-    public IConfiguration Configuration1 => _configuration;
 }

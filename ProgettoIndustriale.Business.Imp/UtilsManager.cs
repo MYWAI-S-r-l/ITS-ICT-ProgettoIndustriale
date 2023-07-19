@@ -8,17 +8,20 @@ using System.Xml.Serialization;
 using Domain = ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
 using Serilog;
+using Microsoft.Extensions.Configuration;
+
 namespace ProgettoIndustriale.Business.Imp;
 
 //INCLUDE ==> JOIN
 public class UtilsManager : IUtilsManager
 {
     private readonly ProgettoIndustrialeContext _context;
-    private readonly ClassLog classLog;
-    public UtilsManager(ProgettoIndustrialeContext context)
+    public ClassLog _logger { get; set; }
+    public UtilsManager(ProgettoIndustrialeContext context, IConfiguration config)
     {
+        string path = "Business.Imp/UtilsManager";
         _context = context;
-        ClassLog classLog = new ClassLog("Business.Imp/UtilsManager");
+        _logger = new ClassLog(config);//, path);
     }
 
     public List<Dto.Province> GetAllProvinces()
@@ -37,7 +40,7 @@ public class UtilsManager : IUtilsManager
         catch(Exception ex) 
         {
            
-            classLog.logError();
+            _logger.logError(this.ToString()+":  "+ex.Message);
             return new List<Dto.Province>();
 
         }

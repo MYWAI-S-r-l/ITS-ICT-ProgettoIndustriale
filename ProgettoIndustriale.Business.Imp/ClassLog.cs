@@ -7,6 +7,7 @@ using Serilog;
 using Microsoft.Extensions.Logging;
 using Serilog.Events;
 using Serilog.Core;
+using Microsoft.Extensions.Configuration;
 
 namespace ProgettoIndustriale.Business.Imp
 {
@@ -18,13 +19,16 @@ namespace ProgettoIndustriale.Business.Imp
             new LoggerConfiguration().WriteTo.File("Log/logs.txt")
                                      .CreateLogger();
         */
-        public ClassLog(string message)
+        public ClassLog(IConfiguration config)
         {
             var loggerConfiguration = new LoggerConfiguration()
             .MinimumLevel.Debug()
             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            /*
             .WriteTo.Console()
             .WriteTo.File("Log/log.txt", outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:"+message+"}{NewLine}{Exception}\"")
+            */
+            .ReadFrom.Configuration(config)
             .CreateLogger();
 
             log = loggerConfiguration;
