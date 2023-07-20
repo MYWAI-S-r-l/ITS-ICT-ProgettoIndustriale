@@ -12,13 +12,13 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         private readonly ILoadManager _loadManager;
         public readonly IConfiguration _configuration;
         private readonly ProgettoIndustrialeContext _context;
-        public readonly ILogger<LoadController> logger;
+        public readonly ILogger<LoadController> _logger;
 
         public LoadController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<LoadController> logger)
         {
             _configuration = configuration;
             _context = context;
-            _loadManager = new LoadManager(_context);
-        }
+            _loadManager = new LoadManager(_context, configuration);
+            _logger = logger;        }
     }
 }

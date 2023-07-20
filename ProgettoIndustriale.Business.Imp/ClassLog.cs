@@ -22,7 +22,11 @@ namespace ProgettoIndustriale.Business.Imp
             var loggerConfiguration = new LoggerConfiguration()
             .MinimumLevel.Debug()
             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-            .ReadFrom.Configuration(config)
+            
+            .WriteTo.File("Log/log.txt"
+            ,outputTemplate: "{Timestamp: yyyy-mm-dd hh:mm:ss} [{Level:u3}] {Message:lj}{NewLine}"
+            ,shared: true
+            , rollingInterval: RollingInterval.Day)            
             .CreateLogger();
 
             log = loggerConfiguration;
