@@ -26,17 +26,17 @@ public class UtilsManager : IUtilsManager
 
     public List<Dto.Province> GetAllProvinces()
     {
-        _logger.logMessageTemplate(path: this.ToString(), message: "sto per eseguire GetAllProvinces()");
+        _logger.logMessageTemplate(path: this.ToString()!, message: "sto per eseguire GetAllProvinces()");
         try
         {
             
             List<Domain.Province>
                 allProvince = _context.Province
                     .Include(x => x.Region!)
-                    .ThenInclude(y => y.MacroZone)
+                    .ThenInclude(y => y.MacroZone!)
                     .Where(x => x.Region != null && x.Region.MacroZone != null)
                     .ToList();
-            _logger.logMessageTemplate(logType: "debug", message: "ho eseguito GetAllProvinces()");
+            _logger.logMessageTemplate(logType: "debug", message: "ho eseguito con successo GetAllProvinces()");
 
             return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
         }
@@ -158,7 +158,7 @@ public class UtilsManager : IUtilsManager
             result = _context.Industry
                .Include(x => x.Province!)
                .Where(x =>x.Province != null && x.Province.Name != null && lProvinces.Contains(x.Province))
-               .GroupBy(x => new Tuple<string, string>(x.Province.Name!, x.Ateco))
+               .GroupBy(x => new Tuple<string, string>(x.Province!.Name!, x.Ateco!))
                .Select(x => new Business.IUtilsManager.MyAtecoClass
                (
                    x.Key!.Item1!,
@@ -171,8 +171,8 @@ public class UtilsManager : IUtilsManager
         {
             result = _context.Industry
                 .Include(x => x.Province!)
-                .Where(x => x.Province != null && x.Province.Name != null && lProvinces.Contains(x.Province) && category.Contains(x.Ateco))
-                .GroupBy(x => new Tuple<string, string>(x.Province.Name!, x.Ateco))
+                .Where(x => x.Province != null && x.Province.Name != null && lProvinces.Contains(x.Province) && category.Contains(x.Ateco!))
+                .GroupBy(x => new Tuple<string, string>(x.Province!.Name!, x.Ateco!))
                 .Select(x => new Business.IUtilsManager.MyAtecoClass
                 (
                     x.Key.Item1,

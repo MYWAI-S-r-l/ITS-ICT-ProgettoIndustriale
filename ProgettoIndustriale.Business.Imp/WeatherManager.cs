@@ -1,19 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using ProgettoIndustriale.Data;
 using ProgettoIndustriale.Type;
 using Dom = ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
-
+using Serilog;
 namespace ProgettoIndustriale.Business.Imp;
 
 public class WeatherManager : IWeatherManager
 
 {
     private readonly ProgettoIndustrialeContext _context;
-
-    public WeatherManager(ProgettoIndustrialeContext context)
+    public ClassLog _logger { get; set; }
+    public WeatherManager(ProgettoIndustrialeContext context, IConfiguration config)
     {
         _context = context;
+        _logger = new ClassLog(config);
     }
 
     public List<Dto.Weather> GetAllWeathers()

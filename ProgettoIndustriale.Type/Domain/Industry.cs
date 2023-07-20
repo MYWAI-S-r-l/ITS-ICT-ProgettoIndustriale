@@ -14,10 +14,10 @@ namespace ProgettoIndustriale.Type.Domain
         public int Id { get; set; }
 
         [Column("ateco_code")]
-        public string Ateco { get; set; }
+        public string? Ateco { get; set; }
 
         [Column("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Column("count_active")]
         public int CountActive { get; set; }
@@ -25,6 +25,6 @@ namespace ProgettoIndustriale.Type.Domain
         [Column("COD_province")]
         public int IdProvince { get; set; }
 
-        public virtual Province Province { get; set; }
+        public virtual Province? Province { get; set; }
     }
 }

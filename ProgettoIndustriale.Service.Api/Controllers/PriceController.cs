@@ -17,7 +17,7 @@ public partial class PriceController : ControllerBase
     {
         _configuration = configuration;
         _context = context;
-        _priceManager = new PriceManager(_context);
+        _priceManager = new PriceManager(_context, configuration);
     }
 
     public IConfiguration Configuration => _configuration;

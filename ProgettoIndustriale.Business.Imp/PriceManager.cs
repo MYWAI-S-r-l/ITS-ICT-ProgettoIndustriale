@@ -1,20 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using ProgettoIndustriale.Data;
 using ProgettoIndustriale.Type;
 using System.Diagnostics.CodeAnalysis;
 using Dom = ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
-
+using Serilog;
 namespace ProgettoIndustriale.Business.Imp;
 
 public class PriceManager : IPriceManager
 
 {
     private readonly ProgettoIndustrialeContext _context;
-
-    public PriceManager(ProgettoIndustrialeContext context)
+    public ClassLog _logger { get; set; }
+    public PriceManager(ProgettoIndustrialeContext context, IConfiguration config)
     {
         _context = context;
+        _logger = new ClassLog(config);
     }
 
     public List<Dto.Price> GetAllPrices()

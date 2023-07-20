@@ -17,6 +17,6 @@ public partial class GenerationController : ControllerBase
     {
         _configuration = configuration;
         _context = context;
-        _generationManager = new GenerationManager(_context);
+        _generationManager = new GenerationManager(_context, configuration);
     }
 }

@@ -1,22 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using ProgettoIndustriale.Business;
+using ProgettoIndustriale.Business.Imp;
 using ProgettoIndustriale.Data;
 using ProgettoIndustriale.Type;
 using ProgettoIndustriale.Type.Dto;
 using System.Diagnostics.CodeAnalysis;
 using Dom = ProgettoIndustriale.Type.Domain;
-
 using Dto = ProgettoIndustriale.Type.Dto;
-
+using Serilog;
 namespace Ansaldo.Protocollo.Business.Imp
 {
     public class LoadManager : ILoadManager
     {
         private readonly ProgettoIndustrialeContext _context;
+        public ClassLog _logger { get; set; }
 
-        public LoadManager(ProgettoIndustrialeContext context)
+        public LoadManager(ProgettoIndustrialeContext context, IConfiguration config)
         {
             _context = context;
+            _logger = new ClassLog(config);
         }
 
         public List<Dto.Load> getAllLoads()

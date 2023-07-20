@@ -15,17 +15,13 @@ namespace ProgettoIndustriale.Business.Imp
     public partial class ClassLog:Serilog.ILogger
     {
         public Serilog.ILogger log { get; set; }
-        private string _path;
+        private string? _path;
         
         public ClassLog(IConfiguration config)
         {
             var loggerConfiguration = new LoggerConfiguration()
             .MinimumLevel.Debug()
             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-            /*
-            .WriteTo.Console()
-            .WriteTo.File("Log/log.txt", outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:"+message+"}{NewLine}{Exception}\"")
-            */
             .ReadFrom.Configuration(config)
             .CreateLogger();
 
@@ -33,7 +29,7 @@ namespace ProgettoIndustriale.Business.Imp
             //template --> data-ora manager errore
 
         }
-        public void logMessageTemplate(string path="", string logType="information", string message="", Exception e=null)
+        public void logMessageTemplate(string path="", string logType="information", string message="", Exception? e=null)
         {
             if (path != "") _path = path;
 
@@ -41,27 +37,22 @@ namespace ProgettoIndustriale.Business.Imp
             if(e!=null)//nel caso è un errore
             {
                 //in error puà essere inserita direttamente presa l' eccezione ed essa poi viene gestita
-                log.Error(_path + ":  " + e.Message);
+                log.Error("{_path}:  {Message}", _path, e.Message);
                 return;
             }
             else if(logType == "error")
             {
                 //in error può essere inserito nel messaggio come stringa
-                log.Error(_path + ":  " + message);
+                log.Error("{_path}:  {Message}", _path, message);
                 return;
             }
             else if(logType == "debug")
             {
                 //nel caso si vuole in modo specifico un log di tipo debug
-                log.Debug(_path + ":  " + message);
+                log.Debug("{_path}:  {Message}", _path, message);
                 return;
             }
-            log.Information(_path + ":  " + message);//default information
-            
-        }
-       
-        public void dispose()
-        {
+            log.Information("{_path}:  {Message}", _path, message);//default information
             
         }
 

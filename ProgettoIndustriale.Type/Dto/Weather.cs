@@ -40,8 +40,8 @@
 
         public int IdDates { get; set; }
 
-        public virtual Province Province { get; set; }
+        public virtual Province? Province { get; set; }
 
-        public virtual Date Date { get; set; }
+        public virtual Date? Date { get; set; }
     }
 }
