@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
+//controller di controllo nel caso vogliamo verificare il funzionamento delle API senza alcun tipo di interazione con il DB
 public class MetaController : Controller
 {
     [AllowAnonymous]

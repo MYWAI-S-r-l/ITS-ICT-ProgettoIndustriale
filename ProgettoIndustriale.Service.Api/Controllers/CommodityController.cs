@@ -6,6 +6,7 @@ using ProgettoIndustriale.Data;
 namespace ProgettoIndustriale.Service.Api.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public partial class CommodityController : ControllerBase
     {
         private readonly ICommodityManager _commodityManager;
