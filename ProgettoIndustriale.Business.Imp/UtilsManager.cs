@@ -19,28 +19,32 @@ public class UtilsManager : IUtilsManager
     public ClassLog _logger { get; set; }
     public UtilsManager(ProgettoIndustrialeContext context, IConfiguration config)
     {
-        string path = "Business.Imp/UtilsManager";
+
         _context = context;
-        _logger = new ClassLog(config);//, path);
+        _logger = new ClassLog(config);
     }
 
     public List<Dto.Province> GetAllProvinces()
     {
+        _logger.logMessageTemplate(path: this.ToString(), message: "sto per eseguire GetAllProvinces()");
         try
         {
+            
             List<Domain.Province>
                 allProvince = _context.Province
                     .Include(x => x.Region!)
                     .ThenInclude(y => y.MacroZone)
                     .Where(x => x.Region != null && x.Region.MacroZone != null)
                     .ToList();
+            _logger.logMessageTemplate(logType: "debug", message: "ho eseguito GetAllProvinces()");
 
             return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
         }
         catch(Exception ex) 
         {
+
+            _logger.logMessageTemplate(e: ex);
            
-            _logger.logError(this.ToString()+":  "+ex.Message);
             return new List<Dto.Province>();
 
         }

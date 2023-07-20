@@ -8,17 +8,15 @@ using Microsoft.Extensions.Logging;
 using Serilog.Events;
 using Serilog.Core;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ProgettoIndustriale.Business.Imp
 {
     public partial class ClassLog:Serilog.ILogger
     {
-        private readonly Serilog.ILogger log;
-        public string TemplateMessage { get; set; }
-        /*public static Serilog.ILogger _log =
-            new LoggerConfiguration().WriteTo.File("Log/logs.txt")
-                                     .CreateLogger();
-        */
+        public Serilog.ILogger log { get; set; }
+        private string _path;
+        
         public ClassLog(IConfiguration config)
         {
             var loggerConfiguration = new LoggerConfiguration()
@@ -35,19 +33,33 @@ namespace ProgettoIndustriale.Business.Imp
             //template --> data-ora manager errore
 
         }
-        public void logInformation(string info)
-        { 
-            log.Information(info);
-        }
-        public void logError(string error)
+        public void logMessageTemplate(string path="", string logType="information", string message="", Exception e=null)
         {
-            log.Error(error);
-        }
-        public void logDebug(string debug)
-        {
-            log.Debug(debug);
-        }
+            if (path != "") _path = path;
 
+
+            if(e!=null)//nel caso è un errore
+            {
+                //in error puà essere inserita direttamente presa l' eccezione ed essa poi viene gestita
+                log.Error(_path + ":  " + e.Message);
+                return;
+            }
+            else if(logType == "error")
+            {
+                //in error può essere inserito nel messaggio come stringa
+                log.Error(_path + ":  " + message);
+                return;
+            }
+            else if(logType == "debug")
+            {
+                //nel caso si vuole in modo specifico un log di tipo debug
+                log.Debug(_path + ":  " + message);
+                return;
+            }
+            log.Information(_path + ":  " + message);//default information
+            
+        }
+       
         public void dispose()
         {
             
