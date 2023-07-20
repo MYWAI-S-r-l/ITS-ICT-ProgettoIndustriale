@@ -12,11 +12,14 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         private readonly ICommodityManager _commodityManager;
         public readonly IConfiguration _configuration;
         private readonly ProgettoIndustrialeContext _context;
-        public CommodityController(IConfiguration configuration, ProgettoIndustrialeContext context)
+        public readonly ILogger<CommodityController> _logger;
+     
+        public CommodityController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<CommodityController> logger)
         {
+            _logger = logger;    
             _configuration = configuration;
             _context = context;
-            _commodityManager = new CommodityManager(_context, configuration);
+            _commodityManager = new CommodityManager(_context, _configuration);
         }
     }
 }

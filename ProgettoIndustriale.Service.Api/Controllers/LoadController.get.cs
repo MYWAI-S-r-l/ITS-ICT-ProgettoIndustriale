@@ -17,6 +17,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         {
             if (startDate > endDate)
             {
+                
                 return BadRequest("La data di inizio non può essere successiva alla data di fine");
             }
 

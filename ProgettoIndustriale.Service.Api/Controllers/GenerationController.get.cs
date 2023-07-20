@@ -15,6 +15,7 @@ public partial class GenerationController
     [HttpGet("GetGenerationsbyDates")]
     public object GetGenerationsbyDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
+
         if (startDate > endDate)
         {
             return BadRequest("La data di inizio non può essere successiva alla data di fine");

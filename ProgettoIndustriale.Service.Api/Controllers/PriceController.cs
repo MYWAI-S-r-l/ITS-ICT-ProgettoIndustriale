@@ -12,13 +12,15 @@ public partial class PriceController : ControllerBase
     private readonly IPriceManager _priceManager;
     public readonly IConfiguration _configuration;
     private readonly ProgettoIndustrialeContext _context;
+    public readonly ILogger<PriceController> _logger;
 
-    public PriceController(IConfiguration configuration, ProgettoIndustrialeContext context)
+    public PriceController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<PriceController> logger)
     {
         _configuration = configuration;
         _context = context;
+        _logger = logger;
         _priceManager = new PriceManager(_context, configuration);
     }
 
-    public IConfiguration Configuration => _configuration;
+    
 }

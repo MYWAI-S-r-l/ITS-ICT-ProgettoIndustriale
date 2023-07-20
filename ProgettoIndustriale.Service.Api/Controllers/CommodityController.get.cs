@@ -9,6 +9,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         [HttpGet("getAllCommodities")]
         public IEnumerable<dto.Commodity> getAllCommodities()
         {
+            _logger.LogInformation("Commodity executing");
             return  _commodityManager.getAllCommodities();
                         
             
