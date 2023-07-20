@@ -6,6 +6,7 @@ using ProgettoIndustriale.Data;
 namespace ProgettoIndustriale.Service.Api.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public partial class LoadController : ControllerBase
     {
         private readonly ILoadManager _loadManager;
