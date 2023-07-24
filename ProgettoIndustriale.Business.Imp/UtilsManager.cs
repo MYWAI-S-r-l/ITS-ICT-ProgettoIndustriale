@@ -212,7 +212,7 @@ public class UtilsManager : IUtilsManager
                 .Select(x => x.MacroZone)
                 .FirstOrDefault();
 
-            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetMacrozoneHavingRegion() ritorna " + macrozone!.ToString());
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetMacrozoneHavingRegion() ritorna " + MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone!)!.ToString());
 
             return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone!);
         }
@@ -234,7 +234,7 @@ public class UtilsManager : IUtilsManager
                 .Where(x => x.Region != null && x.Region.MacroZone != null && x.Name != null)
                 .FirstOrDefault(x => x.Name == province)?.Region?.MacroZone;
 
-            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetMacrozoneHavingProvince() ritorna " + macrozone!.ToString());
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetMacrozoneHavingProvince() ritorna " + MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone!).ToString());
 
             return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone!);
         }

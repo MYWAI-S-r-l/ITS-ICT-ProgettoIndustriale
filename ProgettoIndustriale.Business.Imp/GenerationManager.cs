@@ -39,7 +39,7 @@ public class GenerationManager : IGenerationManager
         }
     }
 
-    public List<Generation> getGenerationsbyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
+    public List<Dto.Generation> getGenerationsbyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
     {
         try
         {
