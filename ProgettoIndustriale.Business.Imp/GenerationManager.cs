@@ -22,15 +22,46 @@ public class GenerationManager : IGenerationManager
 
     public List<Dto.Generation> getAllGenerations()
     {
-        var allGenerations = _context.Generation.ToList();
-        return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);
+        try
+        {
+            var allGenerations = _context.Generation.ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetAllGenerations() ritorna " + allGenerations.Count.ToString() + " elementi");
+
+            return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);
+
+        }
+        catch (Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Generation>();
+        }
     }
 
     public List<Generation> getGenerationsbyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
     {
-        var allGenerations = _context.Generation
-            .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
-            .ToList();
-        return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);
+        try
+        {
+
+
+            var allGenerations = _context.Generation
+                .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
+                .ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getGenerationsbyDates() ritorna " + allGenerations.Count.ToString() + " elementi");
+
+            return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);
+
+        }
+        catch (Exception ex)
+        {
+
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Generation>();
+
+        }
+
     }
 }
