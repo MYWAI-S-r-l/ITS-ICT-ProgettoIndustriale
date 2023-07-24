@@ -15,22 +15,17 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         [HttpGet("getLoadByFilter")]
         public object getLoadByFilter([BindRequired] string macrozone, [BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
         {
-            if (startDate > endDate)
+            if (CheckDate.TryDateCheck(startDate, endDate))
             {
-                
-                return BadRequest("La data di inizio non può essere successiva alla data di fine");
+                return _loadManager.getLoadsbyFilter(macrozone, startDate, endDate);
+            }
+            else
+            {
+                return new BadRequestObjectResult(CheckDate.errorMessage);
             }
 
-            if (startDate > DateTime.Now)
-            {
-                return BadRequest("La data di inizio non può essere futura.");
-            }
-            if (startDate == default || endDate == default)
-            {
-                return BadRequest("Inserire data");
-            }
 
-            return _loadManager.getLoadsbyFilter(macrozone, startDate, endDate);
+
         }
 
         [HttpGet("getLoadbyDates")]

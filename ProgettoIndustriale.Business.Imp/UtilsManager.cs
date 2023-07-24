@@ -18,11 +18,11 @@ public class UtilsManager : IUtilsManager
 {
     private readonly ProgettoIndustrialeContext _context;
     public ClassLog _logger { get; set; }
-    public UtilsManager(ProgettoIndustrialeContext context, IConfiguration config)
+    public UtilsManager(ProgettoIndustrialeContext context )
     {
 
         _context = context;
-        _logger = new ClassLog(config);
+        _logger = new ClassLog();
     }
 
     public List<Dto.Province> GetAllProvinces()

@@ -15,7 +15,7 @@ public class WeatherManager : IWeatherManager
     public WeatherManager(ProgettoIndustrialeContext context, IConfiguration config)
     {
         _context = context;
-        _logger = new ClassLog(config);
+        _logger = new ClassLog();
     }
 
     public List<Dto.Weather> GetAllWeathers()

@@ -19,6 +19,7 @@ public partial class GenerationController : ControllerBase
         _configuration = configuration;
         _context = context;
         _logger = logger;
-        _generationManager = new GenerationManager(_context, configuration);
+        _logger.LogInformation(UtilsFunctions.SubstringController(this));
+        _generationManager = new GenerationManager(_context);
     }
 }

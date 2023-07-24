@@ -12,10 +12,11 @@ namespace ProgettoIndustriale.Business.Imp
     {
         private readonly ProgettoIndustrialeContext _context;
         public ClassLog _logger { get; set; }
-        public CommodityManager(ProgettoIndustrialeContext context, IConfiguration config)
+        public CommodityManager(ProgettoIndustrialeContext context)
         {
             _context = context;
-            _logger = new ClassLog(config);
+            _logger = new ClassLog();
+            
         }
 
         public List<Dto.Commodity> getAllCommodities()

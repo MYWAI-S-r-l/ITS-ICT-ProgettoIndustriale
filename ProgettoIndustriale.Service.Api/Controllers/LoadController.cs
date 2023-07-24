@@ -18,7 +18,9 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         {
             _configuration = configuration;
             _context = context;
-            _loadManager = new LoadManager(_context, configuration);
-            _logger = logger;        }
+            _logger = logger;
+            _logger.LogInformation(UtilsFunctions.SubstringController(this));
+            _loadManager = new LoadManager(_context);
+        }
     }
 }

@@ -17,12 +17,11 @@ namespace ProgettoIndustriale.Business.Imp
         public Serilog.ILogger log { get; set; }
         private string? _path;
         
-        public ClassLog(IConfiguration config)
+        public ClassLog()
         {
             var loggerConfiguration = new LoggerConfiguration()
             .MinimumLevel.Debug()
             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-            
             .WriteTo.File("Log/log.txt"
             ,outputTemplate: "{Timestamp: yyyy-MM-dd hh:mm:ss} [{Level:u3}] {Message:lj}{NewLine}"
             ,shared: true

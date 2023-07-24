@@ -13,7 +13,7 @@ public partial class WeatherController
         {
             return _weatherManager.GetAllWeathers();
         }
-        catch (Exception e)
+        catch (Exception)
         { 
             
             return new List<Dto.Weather>();

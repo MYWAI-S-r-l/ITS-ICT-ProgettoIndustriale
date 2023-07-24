@@ -16,10 +16,10 @@ namespace Ansaldo.Protocollo.Business.Imp
         private readonly ProgettoIndustrialeContext _context;
         public ClassLog _logger { get; set; }
 
-        public LoadManager(ProgettoIndustrialeContext context, IConfiguration config)
+        public LoadManager(ProgettoIndustrialeContext context)
         {
             _context = context;
-            _logger = new ClassLog(config);
+            _logger = new ClassLog();
         }
 
         public List<Dto.Load> getAllLoads()

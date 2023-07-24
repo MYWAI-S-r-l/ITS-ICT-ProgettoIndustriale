@@ -14,10 +14,10 @@ public class GenerationManager : IGenerationManager
 {
     private readonly ProgettoIndustrialeContext _context;
     public ClassLog _logger { get; set; }
-    public GenerationManager(ProgettoIndustrialeContext context, IConfiguration config)
+    public GenerationManager(ProgettoIndustrialeContext context)
     {
         _context = context;
-        _logger = new ClassLog(config);
+        _logger = new ClassLog();
     }
 
     public List<Dto.Generation> getAllGenerations()

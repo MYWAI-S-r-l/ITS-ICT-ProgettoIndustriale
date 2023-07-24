@@ -19,8 +19,9 @@ public partial class UtilsController : ControllerBase
         
         _configuration = configuration;
         _context = context;
-        _utilsManager = new UtilsManager(_context, configuration);
         _logger = logger;
+        _logger.LogInformation(UtilsFunctions.SubstringController(this));
+        _utilsManager = new UtilsManager(_context);
     }
 
 

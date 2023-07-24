@@ -3,6 +3,7 @@ using ProgettoIndustriale.Business;
 using ProgettoIndustriale.Business.Imp;
 using ProgettoIndustriale.Data;
 
+
 namespace ProgettoIndustriale.Service.Api.Controllers
 {
     [ApiController]
@@ -16,10 +17,12 @@ namespace ProgettoIndustriale.Service.Api.Controllers
      
         public CommodityController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<CommodityController> logger)
         {
-            _logger = logger;    
+            _logger = logger;
+
+            _logger.LogInformation(UtilsFunctions.SubstringController(this));
             _configuration = configuration;
             _context = context;
-            _commodityManager = new CommodityManager(_context, _configuration);
+            _commodityManager = new CommodityManager(_context);
         }
     }
 }

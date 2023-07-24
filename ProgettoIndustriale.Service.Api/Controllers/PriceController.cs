@@ -19,7 +19,8 @@ public partial class PriceController : ControllerBase
         _configuration = configuration;
         _context = context;
         _logger = logger;
-        _priceManager = new PriceManager(_context, configuration);
+        _logger.LogInformation(UtilsFunctions.SubstringController(this));
+        _priceManager = new PriceManager(_context);
     }
 
     

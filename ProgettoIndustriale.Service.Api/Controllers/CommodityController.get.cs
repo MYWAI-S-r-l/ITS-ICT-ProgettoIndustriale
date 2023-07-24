@@ -9,7 +9,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         [HttpGet("getAllCommodities")]
         public IEnumerable<dto.Commodity> getAllCommodities()
         {
-            _logger.LogInformation("Commodity executing");
+            
             return  _commodityManager.getAllCommodities();
                         
             
@@ -31,7 +31,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             {
                 return BadRequest("Inserire data");
             }
-
+            
             return _commodityManager.getComoditybyDates(startDate, endDate);
         }
     }
