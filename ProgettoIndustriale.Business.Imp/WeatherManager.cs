@@ -20,23 +20,46 @@ public class WeatherManager : IWeatherManager
 
     public List<Dto.Weather> GetAllWeathers()
     {
-        var allWeathers = _context.Weather
-            .Include(x => x.Province)
-            .Include(x => x.Date).ToList();
-        return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
+        try
+        {
+            var allWeathers = _context.Weather
+                .Include(x => x.Province)
+                .Include(x => x.Date).ToList();
+            return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Weather>();
+        }
     }
 
     public List<Dto.Weather> GetWeathersbyProvinces(List<string> province)
     {
-        var allWeathers = _context.Weather
+        try
+        {
+            var allWeathers = _context.Weather
 
-            .Include(x => x.Date!)
-            .Include(x => x.Province!)
-            .ThenInclude(x => x.Region!)
-            .ThenInclude(x => x.MacroZone!)
-            .Where(x => x.Province != null && x.Date != null && x.Province.Name != null && province.Contains(x.Province.Name))
-            .ToList();
-        return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
+                .Include(x => x.Date!)
+                .Include(x => x.Province!)
+                .ThenInclude(x => x.Region!)
+                .ThenInclude(x => x.MacroZone!)
+                .Where(x => x.Province != null && x.Date != null && x.Province.Name != null && province.Contains(x.Province.Name))
+                .ToList();
+
+            /*************************************************************
+             * METTI I LOG DI DEBUG
+            *************************************************************/
+
+            return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Weather>();
+        }
     }
 
     public List<Dto.Weather> GetWeathersbyDates(DateTime startDate, DateTime endDate)
@@ -50,15 +73,28 @@ public class WeatherManager : IWeatherManager
         {
             throw new ArgumentException("La data di inizio non può essere futura.");
         }
+        try
+        {
+            var allWeathers = _context.Weather
+                .Include(x => x.Province!)
+                .ThenInclude(x => x.Region!)
+                .ThenInclude(x => x.MacroZone)
+                .Include(x => x.Date!)
+                .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
+                .ToList();
 
-        var allWeathers = _context.Weather
-            .Include(x => x.Province!)
-            .ThenInclude(x => x.Region!)
-            .ThenInclude(x => x.MacroZone)
-            .Include(x => x.Date!)
-            .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
-            .ToList();
-        return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
+            /*************************************************************
+             * METTI I LOG DI DEBUG
+            *************************************************************/
+
+            return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Weather>();
+        }
     }
 
     public List<Dto.Weather> GetWeathersbyProvincesDates(List<string> province, DateTime startDate, DateTime endDate)
@@ -72,15 +108,28 @@ public class WeatherManager : IWeatherManager
         {
             throw new ArgumentException("La data di inizio non può essere futura.");
         }
+        try
+        {
+            var allWeathers = _context.Weather
+                .Include(x => x.Province!)
+                .ThenInclude(x => x.Region!)
+                .ThenInclude(x => x.MacroZone!)
+                .Include(x => x.Date!)
+                .Where(x => x.Province != null && x.Date != null && x.Province.Name != null &&
+                x.Date.DateTime > startDate && x.Date.DateTime < endDate && province
+                .Contains(x.Province.Name)).ToList();
 
-        var allWeathers = _context.Weather
-            .Include(x => x.Province!)
-            .ThenInclude(x => x.Region!)
-            .ThenInclude(x => x.MacroZone!)
-            .Include(x => x.Date!)
-            .Where(x => x.Province != null && x.Date != null && x.Province.Name != null && 
-            x.Date.DateTime > startDate && x.Date.DateTime < endDate && province
-            .Contains(x.Province.Name)).ToList();
-        return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
+            /*************************************************************
+             * METTI I LOG DI DEBUG
+            *************************************************************/
+
+            return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Weather>();
+        }
     }
 }

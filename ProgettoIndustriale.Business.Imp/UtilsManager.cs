@@ -9,6 +9,7 @@ using Domain = ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
 using Serilog;
 using Microsoft.Extensions.Configuration;
+using System.Linq.Expressions;
 
 namespace ProgettoIndustriale.Business.Imp;
 
@@ -26,7 +27,7 @@ public class UtilsManager : IUtilsManager
 
     public List<Dto.Province> GetAllProvinces()
     {
-        _logger.logMessageTemplate(path: this.ToString()!, message: "sto per eseguire GetAllProvinces()");
+       
         try
         {
             
@@ -36,14 +37,15 @@ public class UtilsManager : IUtilsManager
                     .ThenInclude(y => y.MacroZone!)
                     .Where(x => x.Region != null && x.Region.MacroZone != null)
                     .ToList();
-            _logger.logMessageTemplate(logType: "debug", message: "ho eseguito con successo GetAllProvinces()");
+
+            _logger.logMessageTemplate(path: this.ToString()!,logType: "debug", message: "GetAllProvinces() ritorna "+allProvince.Count.ToString()+" elementi");
 
             return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
         }
         catch(Exception ex) 
         {
 
-            _logger.logMessageTemplate(e: ex);
+            _logger.logMessageTemplate(path: this.ToString()!,e: ex);
            
             return new List<Dto.Province>();
 
@@ -52,89 +54,196 @@ public class UtilsManager : IUtilsManager
 
     public List<Dto.Province> GetProvincesDetails(List<string> prov)
     {
-        List<Domain.Province>
+        try
+        {
+            List<Domain.Province>
             allProvince = _context.Province
                 .Include(x => x.Region!)
                 .ThenInclude(y => y.MacroZone)
-                .Where(x=> x.Region != null  && x.Region.MacroZone != null && x.Name != null && prov.Contains(x.Name))
+                .Where(x => x.Region != null && x.Region.MacroZone != null && x.Name != null && prov.Contains(x.Name))
                 .ToList();
 
-        return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetProvincesDetails() ritorna " + allProvince.Count.ToString() + " elementi");
+
+            return MyMapper<Domain.Province, Dto.Province>.MapList(allProvince);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Province>();
+        }
     }
 
     public List<Dto.Region> GetAllRegions()
     {
-        var allRegion = _context.Region
-            .Include(x => x.MacroZone)
-            .ToList();
-        return MyMapper<Domain.Region, Dto.Region>.MapList(allRegion);
+        try
+        {
+
+            var allRegion = _context.Region
+                .Include(x => x.MacroZone)
+                .ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetAllRegions() ritorna " + allRegion.Count.ToString() + " elementi");
+
+            return MyMapper<Domain.Region, Dto.Region>.MapList(allRegion);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Region>();
+        }
     }
 
     public List<Dto.MacroZone> GetAllMacroZone()
     {
-        var allMacrozone = _context.MacroZone.ToList();
-        return MyMapper<Domain.MacroZone, Dto.MacroZone>.MapList(allMacrozone);
+        try
+        {
+            var allMacrozone = _context.MacroZone.ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetAllMacroZone() ritorna " + allMacrozone.Count.ToString() + " elementi");
+
+            return MyMapper<Domain.MacroZone, Dto.MacroZone>.MapList(allMacrozone);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.MacroZone>();
+        }
     }
 
     //QUESTO FORSE NON SERVE
-    public List<int> GetRegionsbyName(List<string> reg)
+    public List<int> GetRegionsbyName(List<string> reg)//ritorna una lista di id region
     {
-        List<int> regions = _context.Region
-            .Include(x => x.MacroZone)
-            .Where(x => x.Name != null && reg.Contains(x.Name))
-            .Select(x => x.Id)
-            .ToList();
-        return regions;
+        try
+        {
+            List<int> regions = _context.Region
+                .Include(x => x.MacroZone)
+                .Where(x => x.Name != null && reg.Contains(x.Name))
+                .Select(x => x.Id)
+                .ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetRegionsbyName() ritorna " + regions.Count.ToString() + " elementi");
+
+            return regions;
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<int>();
+        }
     }
 
     public List<Dto.Province> GetProvincebyRegion(string region)
     {
-        List<Domain.Province> listProvinces = _context.Province
-            .Include(x => x.Region!)
-                .ThenInclude(y => y.MacroZone!)
-            .Where(x => x.Region != null && x.Region.MacroZone != null && x.Region.Name == region)
-            .ToList();
-        return MyMapper<Domain.Province, Dto.Province>.MapList(listProvinces);
+        try
+        {
+            List<Domain.Province> listProvinces = _context.Province
+                .Include(x => x.Region!)
+                    .ThenInclude(y => y.MacroZone!)
+                .Where(x => x.Region != null && x.Region.MacroZone != null && x.Region.Name == region)
+                .ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetProvincebyRegion() ritorna " + listProvinces.Count.ToString() + " elementi");
+
+            return MyMapper<Domain.Province, Dto.Province>.MapList(listProvinces);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Province>();
+        }
     }
 
     public List<Dto.Province> GetProvincebyMacrozone(string macrozone)
     {
-        List<Domain.Province> listProvinces = _context.Province
-            .Include(x => x.Region!)
-                .ThenInclude(r => r.MacroZone)
-            .Where(x => x.Region != null && x.Region.MacroZone != null && x.Region.MacroZone.Name != null && x.Region.MacroZone.Name == macrozone)
-            .ToList();
-        return MyMapper<Domain.Province, Dto.Province>.MapList(listProvinces);
+        try
+        {
+            List<Domain.Province> listProvinces = _context.Province
+                .Include(x => x.Region!)
+                    .ThenInclude(r => r.MacroZone)
+                .Where(x => x.Region != null && x.Region.MacroZone != null && x.Region.MacroZone.Name != null && x.Region.MacroZone.Name == macrozone)
+                .ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetProvincebyMacrozone() ritorna " + listProvinces.Count.ToString() + " elementi");
+
+            return MyMapper<Domain.Province, Dto.Province>.MapList(listProvinces);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Province>();
+        }
     }
 
     public List<Dto.Region> GetRegionsbyMacrozone(string macrozone)
     {
-        List<Domain.Region> listRegions = _context.Region
-            .Include(r => r.MacroZone)
-            .Where(x => x.MacroZone != null && x.MacroZone.Name == macrozone).ToList();
-        return MyMapper<Domain.Region, Dto.Region>.MapList(listRegions);
+        try
+        {
+
+            List<Domain.Region> listRegions = _context.Region
+                .Include(r => r.MacroZone)
+                .Where(x => x.MacroZone != null && x.MacroZone.Name == macrozone).ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetRegionsbyMacrozone() ritorna " + listRegions.Count.ToString() + " elementi");
+
+            return MyMapper<Domain.Region, Dto.Region>.MapList(listRegions);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Region>();
+        }
     }
 
     public Dto.MacroZone GetMacrozoneHavingRegion(string region)
     {
-        Domain.MacroZone? macrozone = _context.Region
-            .Include(x => x.MacroZone!)
-            .Where(x => x.MacroZone != null && x.Name != null && x.Name == region)
-            .Select(x => x.MacroZone)
-            .FirstOrDefault();
-        return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone!);
+        try
+        {
+            Domain.MacroZone? macrozone = _context.Region
+                .Include(x => x.MacroZone!)
+                .Where(x => x.MacroZone != null && x.Name != null && x.Name == region)
+                .Select(x => x.MacroZone)
+                .FirstOrDefault();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetMacrozoneHavingRegion() ritorna " + macrozone!.ToString());
+
+            return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone!);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new Dto.MacroZone();
+        }
     }
 
     public Dto.MacroZone GetMacrozoneHavingProvince(string province)
     {
-       
-        Domain.MacroZone? macrozone = _context.Province
-            .Include(x => x.Region!)
-            .ThenInclude(y => y.MacroZone!)
-            .Where(x=> x.Region != null && x.Region.MacroZone != null && x.Name != null)
-            .FirstOrDefault(x => x.Name == province)?.Region?.MacroZone;
-            
-        return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone!);
+        try
+        {
+            Domain.MacroZone? macrozone = _context.Province
+                .Include(x => x.Region!)
+                .ThenInclude(y => y.MacroZone!)
+                .Where(x => x.Region != null && x.Region.MacroZone != null && x.Name != null)
+                .FirstOrDefault(x => x.Name == province)?.Region?.MacroZone;
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetMacrozoneHavingProvince() ritorna " + macrozone!.ToString());
+
+            return MyMapper<Domain.MacroZone, Dto.MacroZone>.Map(macrozone!);
+        }
+        catch(Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new Dto.MacroZone();
+        }
        
     }
 
@@ -152,33 +261,59 @@ public class UtilsManager : IUtilsManager
         }
         List<Domain.Province> lProvinces = MyMapper<Dto.Province, Domain.Province>.MapList(prov);
 
-        List<Business.IUtilsManager.MyAtecoClass> result;
-        if (category.IsNullOrEmpty())
+        List<Business.IUtilsManager.MyAtecoClass> result= new List<Business.IUtilsManager.MyAtecoClass>();
+        if (category.IsNullOrEmpty())//lista delle categorie vuota
         {
-            result = _context.Industry
-               .Include(x => x.Province!)
-               .Where(x =>x.Province != null && x.Province.Name != null && lProvinces.Contains(x.Province))
-               .GroupBy(x => new Tuple<string, string>(x.Province!.Name!, x.Ateco!))
-               .Select(x => new Business.IUtilsManager.MyAtecoClass
-               (
-                   x.Key!.Item1!,
-                   x.Key.Item2,
-                   x.Sum(y => y.CountActive)
-               ))
-               .ToList();
+            try
+            {
+
+
+                result = _context.Industry
+                   .Include(x => x.Province!)
+                   .Where(x => x.Province != null && x.Province.Name != null && lProvinces.Contains(x.Province))
+                   .GroupBy(x => new Tuple<string, string>(x.Province!.Name!, x.Ateco!))
+                   .Select(x => new Business.IUtilsManager.MyAtecoClass
+                   (
+                       x.Key!.Item1!,
+                       x.Key.Item2,
+                       x.Sum(y => y.CountActive)
+                   ))
+                   .ToList();
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetNActiveIndustriesbyCatandProv() ritorna " + result.Count.ToString() + " elementi");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+                return result;
+            }
         }
-        else
+        else//lista di categorie non è vuota
         {
-            result = _context.Industry
-                .Include(x => x.Province!)
-                .Where(x => x.Province != null && x.Province.Name != null && lProvinces.Contains(x.Province) && category.Contains(x.Ateco!))
-                .GroupBy(x => new Tuple<string, string>(x.Province!.Name!, x.Ateco!))
-                .Select(x => new Business.IUtilsManager.MyAtecoClass
-                (
-                    x.Key.Item1,
-                    x.Key.Item2,
-                    x.Sum(y => y.CountActive)
-                )).ToList();
+            try
+            {
+                result = _context.Industry
+                    .Include(x => x.Province!)
+                    .Where(x => x.Province != null && x.Province.Name != null && lProvinces.Contains(x.Province) && category.Contains(x.Ateco!))
+                    .GroupBy(x => new Tuple<string, string>(x.Province!.Name!, x.Ateco!))
+                    .Select(x => new Business.IUtilsManager.MyAtecoClass
+                    (
+                        x.Key.Item1,
+                        x.Key.Item2,
+                        x.Sum(y => y.CountActive)
+                    )).ToList();
+
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetNActiveIndustriesbyCatandProv() ritorna " + result.Count.ToString() + " elementi");
+
+
+            }
+            catch (Exception ex)
+            {
+                _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+                return result;
+            }
         }
 
         return result;

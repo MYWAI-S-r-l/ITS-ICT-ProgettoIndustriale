@@ -20,13 +20,12 @@ namespace ProgettoIndustriale.Business.Imp
 
         public List<Dto.Commodity> getAllCommodities()
         {
-            _logger.logMessageTemplate(path: this.ToString()!, message: "sto per eseguire getAllCommodities()");
-
+            
             try
             {
                 List<Domain.Commodity> commodities = _context.Commodity.ToList();
                 
-                _logger.logMessageTemplate(logType: "debug", message: "ho eseguito con successo getAllCommodities()");
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getAllCommodities() ritorna " + commodities.Count.ToString() + " elementi");
 
                 return MyMapper<Domain.Commodity, Dto.Commodity>.MapList(commodities);
 
@@ -34,7 +33,7 @@ namespace ProgettoIndustriale.Business.Imp
             catch (Exception ex)
             {
 
-                _logger.logMessageTemplate(e: ex);
+                _logger.logMessageTemplate(path: this.ToString()!, e: ex);
 
                 return new List<Dto.Commodity>();
             }
@@ -43,11 +42,23 @@ namespace ProgettoIndustriale.Business.Imp
 
         public List<Dto.Commodity> getComoditybyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
         {
-            List<Domain.Commodity> commodities = _context.Commodity
-                .Include(x => x.Date)
-                .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
-                .ToList();
-            return MyMapper<Domain.Commodity, Dto.Commodity>.MapList(commodities);
+            try
+            {
+                List<Domain.Commodity> commodities = _context.Commodity
+                    .Include(x => x.Date)
+                    .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
+                    .ToList();
+
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getComoditybyDates() ritorna " + commodities.Count.ToString() + " elementi");
+
+                return MyMapper<Domain.Commodity, Dto.Commodity>.MapList(commodities);
+            }
+            catch(Exception ex)
+            {
+                _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+                return new List<Dto.Commodity>();
+            }
         }
     }
 }
