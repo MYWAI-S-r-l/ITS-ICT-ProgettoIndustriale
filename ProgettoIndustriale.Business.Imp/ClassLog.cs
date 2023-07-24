@@ -24,9 +24,9 @@ namespace ProgettoIndustriale.Business.Imp
             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
             
             .WriteTo.File("Log/log.txt"
-            ,outputTemplate: "{Timestamp: yyyy-m-dd hh:mm:ss} [{Level:u3}] {Message:lj}{NewLine}"
+            ,outputTemplate: "{Timestamp: yyyy-MM-dd hh:mm:ss} [{Level:u3}] {Message:lj}{NewLine}"
             ,shared: true
-            , rollingInterval: RollingInterval.Day)            
+            , rollingInterval: RollingInterval.Month)            
             .CreateLogger();
 
             log = loggerConfiguration;
