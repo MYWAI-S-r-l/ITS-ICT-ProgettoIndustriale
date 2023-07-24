@@ -25,6 +25,9 @@ public class WeatherManager : IWeatherManager
             var allWeathers = _context.Weather
                 .Include(x => x.Province)
                 .Include(x => x.Date).ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetAllWeathers() ritorna " + allWeathers.Count.ToString() + " elementi");
+
             return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
         }
         catch(Exception ex)
@@ -48,9 +51,8 @@ public class WeatherManager : IWeatherManager
                 .Where(x => x.Province != null && x.Date != null && x.Province.Name != null && province.Contains(x.Province.Name))
                 .ToList();
 
-            /*************************************************************
-             * METTI I LOG DI DEBUG
-            *************************************************************/
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetWeathersbyProvinces() ritorna " + allWeathers.Count.ToString() + " elementi");
+
 
             return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
         }
@@ -83,9 +85,8 @@ public class WeatherManager : IWeatherManager
                 .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
                 .ToList();
 
-            /*************************************************************
-             * METTI I LOG DI DEBUG
-            *************************************************************/
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetWeathersbyDates() ritorna " + allWeathers.Count.ToString() + " elementi");
+
 
             return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
         }
@@ -119,9 +120,8 @@ public class WeatherManager : IWeatherManager
                 x.Date.DateTime > startDate && x.Date.DateTime < endDate && province
                 .Contains(x.Province.Name)).ToList();
 
-            /*************************************************************
-             * METTI I LOG DI DEBUG
-            *************************************************************/
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetWeathersbyProvincesDates() ritorna " + allWeathers.Count.ToString() + " elementi");
+
 
             return MyMapper<Dom.Weather, Dto.Weather>.MapList(allWeathers);
         }

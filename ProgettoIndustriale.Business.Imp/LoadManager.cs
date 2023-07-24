@@ -24,43 +24,95 @@ namespace Ansaldo.Protocollo.Business.Imp
 
         public List<Dto.Load> getAllLoads()
         {
-            List<Dom.Load> loads = _context.Load
+            try 
+            {
+                List<Dom.Load> loads = _context.Load
                 .Include(x => x.MacroZone)
                 .Include(y => y.Date)
                 .ToList();
-            return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
+
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getAllLoads() ritorna " + loads.Count.ToString() + " elementi");
+
+                return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
+            }
+            catch(Exception ex)
+            {
+                _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+                return new List<Dto.Load>();
+            }
+            
         }
 
         // Questo metodo restituisce una lista di oggetti Load filtrata per data di inizio e data di fine
 
-        public List<Load> getloadbyDates(DateTime startDate, DateTime endDate)
+        public List<Dto.Load> getloadbyDates(DateTime startDate, DateTime endDate)
         {
-            List<Dom.Load> loads = _context.Load
+            try
+            {
+                List<Dom.Load> loads = _context.Load
                 .Include(x => x.MacroZone)
                 .Include(y => y.Date)
                 .Where(c => c.Date.DateTime > startDate && c.Date.DateTime < endDate)
                 .ToList();
-            return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
+
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getloadbyDates() ritorna " + loads.Count.ToString() + " elementi");
+
+                return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
+            }
+            catch (Exception ex)
+            {
+                _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+                return new List<Dto.Load>();
+            }
+            
         }
 
         // Questo metodo restituisce una lista di oggetti Load filtrata per nome di macrozone, usando il metodo Include per caricare la relazione con l’entità MacroZone
-        public List<Load> getLoadbyMacrozone([NotNull]List<string> nameMacroZone)
+        public List<Dto.Load> getLoadbyMacrozone([NotNull]List<string> nameMacroZone)
         {
-            List<Dom.Load> loads = _context.Load
+            try
+            {
+                List<Dom.Load> loads = _context.Load
                 .Include(x => x.MacroZone)
                 .Where(x => x.MacroZone != null && x.MacroZone.Name != null && nameMacroZone.Contains(x.MacroZone.Name))
                 .ToList();
-            return MyMapper<Dom.Load, Dto.Load>.MapList(loads).ToList();
+
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getLoadbyMacrozone() ritorna " + loads.Count.ToString() + " elementi");
+
+                return MyMapper<Dom.Load, Dto.Load>.MapList(loads).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+                return new List<Dto.Load>();
+            }
+            
         }
 
         // Questo metodo restituisce una lista di oggetti Dto.Load filtrata per macrozone, data di inizio e data di fine, usando il metodo Include per caricare la relazione con l’entità Date
         public List<Dto.Load> getLoadsbyFilter(string macrozone, DateTime startDate, DateTime endDate)
         {
-            List<Dom.Load> loads = _context.Load
-                 .Include(x => x.Date)
-                 .Where(p => p.Date.DateTime > startDate && p.Date.DateTime < endDate && p.MacroZone.Name == macrozone)
-                 .ToList();
-            return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
+            try
+            {
+                List<Dom.Load> loads = _context.Load
+                                 .Include(x => x.Date)
+                                 .Where(p => p.Date.DateTime > startDate && p.Date.DateTime < endDate && p.MacroZone.Name == macrozone)
+                                 .ToList();
+
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getLoadsbyFilter() ritorna " + loads.Count.ToString() + " elementi");
+
+                return MyMapper<Dom.Load, Dto.Load>.MapList(loads);
+            }
+            catch (Exception ex)
+            {
+                _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+                return new List<Dto.Load>();
+            }
+            
         }
     }
 }
