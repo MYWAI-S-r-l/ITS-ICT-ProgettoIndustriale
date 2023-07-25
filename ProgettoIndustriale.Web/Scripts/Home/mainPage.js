@@ -1,6 +1,9 @@
+import { createApp } from 'vue';
 import theme from "./../theme.js";
+import App from "./App.vue";
 
 var vue = new Vue({
+    const app = createApp(App);
     el: "#myApp",
     vuetify: new Vuetify(),
     data: {
@@ -8,5 +11,7 @@ var vue = new Vue({
     },
     computed: {},
     mounted: function () {},
-    created: function () {},
+    created: function () { },
+    app.mount('#app');
+
 });

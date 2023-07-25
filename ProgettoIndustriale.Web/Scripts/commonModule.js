@@ -48,7 +48,16 @@
     };
 
     return {
-        appBaseUrl: "", // base URL app,
+
+
+
+
+
+
+
+
+
+        BaseUrl: "", // base URL app,
         webApiBaseUrl: "", // base URL web API
         webBaseUrl: "", // base URL API
         addClass: addClass,

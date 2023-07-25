@@ -1,6 +1,10 @@
 
 var vue = new Vue({
-    el: "#myApp",
+    el: "#my
+    
+    
+    
+    ",
     vuetify: new Vuetify(),
     data: {},
     methods: {
