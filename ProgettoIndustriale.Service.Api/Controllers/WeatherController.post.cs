@@ -22,15 +22,10 @@ public partial class WeatherController
         {
             return BadRequest("inserire almeno una provincia");
         }
-        if (startDate > endDate)
+        if (CheckDate.TryDateCheck(startDate, endDate))
         {
-            return BadRequest("La data di inizio non può essere successiva alla data di fine");
+            return _weatherManager.GetWeathersbyProvincesDates(province, startDate, endDate);
         }
-
-        if (startDate > DateTime.Now)
-        {
-            return BadRequest("La data di inizio non può essere futura.");
-        }
-        return _weatherManager.GetWeathersbyProvincesDates(province, startDate, endDate);
+        return BadRequest(CheckDate.errorMessage);
     }
 }

@@ -25,15 +25,11 @@ public partial class WeatherController
     [HttpGet("getWeathersbyDates")]
     public object GetWeathersbyDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
-        if (startDate > endDate)
+        if (CheckDate.TryDateCheck(startDate, endDate))
         {
-            return BadRequest("La data di inizio non può essere successiva alla data di fine");
-        }
+            return _weatherManager.GetWeathersbyDates(startDate, endDate);
 
-        if (startDate > DateTime.Now)
-        {
-            return BadRequest("La data di inizio non può essere futura.");
         }
-        return _weatherManager.GetWeathersbyDates(startDate, endDate);
+        return BadRequest(CheckDate.errorMessage);
     }
 }
