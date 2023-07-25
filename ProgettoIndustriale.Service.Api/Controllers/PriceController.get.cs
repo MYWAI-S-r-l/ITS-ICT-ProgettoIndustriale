@@ -15,19 +15,12 @@ public partial class PriceController
     [HttpGet("getPricesbyDates")]
     public object GetPricesbyDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
-        if (startDate > endDate)
+        if ( CheckDate.TryDateCheck(DateTime startDate, endDate))
         {
-            return BadRequest("La data di inizio non può essere successiva alla data di fine");
+            return _priceManager.GetPricesbyDates(startDate, endDate);
         }
 
-        if (startDate > DateTime.Now)
-        {
-            return BadRequest("La data di inizio non può essere futura.");
-        }
-        if (startDate == default || endDate == default)
-        {
-            return BadRequest("Inserire data");
-        }
-        return _priceManager.GetPricesbyDates(startDate, endDate);
+        
+        return BadRequest(CheckDate.errorMessage)
     }
 }
