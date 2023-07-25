@@ -15,12 +15,12 @@ public partial class PriceController
     [HttpGet("getPricesbyDates")]
     public object GetPricesbyDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
-        if ( CheckDate.TryDateCheck(DateTime startDate, endDate))
+        if ( CheckDate.TryDateCheck(startDate, endDate))
         {
             return _priceManager.GetPricesbyDates(startDate, endDate);
         }
 
-        
-        return BadRequest(CheckDate.errorMessage)
+
+        return BadRequest(CheckDate.errorMessage);
     }
 }
