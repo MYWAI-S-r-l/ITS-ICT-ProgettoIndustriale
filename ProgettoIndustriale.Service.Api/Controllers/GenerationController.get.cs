@@ -16,20 +16,13 @@ public partial class GenerationController
     public object GetGenerationsbyDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
 
-        if (startDate > endDate)
+        if (CheckDate.TryDateCheck(startDate, endDate))
         {
-            return BadRequest("La data di inizio non può essere successiva alla data di fine");
+            return _generationManager.getGenerationsbyDates(startDate, endDate);    
+
         }
 
-        if (startDate > DateTime.Now)
-        {
-            return BadRequest("La data di inizio non può essere futura.");
-        }
-        if (startDate == default || endDate == default)
-        {
-            return BadRequest("Inserire data");
-        }
+        return BadRequest(CheckDate.errorMessage);
 
-        return _generationManager.getGenerationsbyDates(startDate, endDate);
     }
 }
