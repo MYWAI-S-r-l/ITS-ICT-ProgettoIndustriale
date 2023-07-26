@@ -21,11 +21,17 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         {
             if (CheckDate.TryDateCheck(startDate, endDate))
             {
-                return _commodityManager.getComoditybyDates(startDate, endDate);
+                return _commodityManager.getCommoditybyDates(startDate, endDate);
             }
-                
-            return BadRequest(CheckDate.errorMessage);
-            
+
+            else
+            {
+
+                _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getCommoditybyDates() " + CheckDate.errorMessage);
+
+                return new BadRequestObjectResult(CheckDate.errorMessage);
+            }
+
         }
     }
 }

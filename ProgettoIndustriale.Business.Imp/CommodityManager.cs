@@ -12,10 +12,10 @@ namespace ProgettoIndustriale.Business.Imp
     {
         private readonly ProgettoIndustrialeContext _context;
         public ClassLog _logger { get; set; }
-        public CommodityManager(ProgettoIndustrialeContext context)
+        public CommodityManager(ProgettoIndustrialeContext context, ClassLog _genericLogger)
         {
             _context = context;
-            _logger = new ClassLog();
+            _logger = _genericLogger;
             
         }
 
@@ -41,7 +41,7 @@ namespace ProgettoIndustriale.Business.Imp
             
         }
 
-        public List<Dto.Commodity> getComoditybyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
+        public List<Dto.Commodity> getCommoditybyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
         {
             try
             {

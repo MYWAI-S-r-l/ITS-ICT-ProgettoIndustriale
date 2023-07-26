@@ -19,8 +19,12 @@ public partial class PriceController
         {
             return _priceManager.GetPricesbyDates(startDate, endDate);
         }
+        else
+        {
 
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getPricesbyDates() " + CheckDate.errorMessage);
 
-        return BadRequest(CheckDate.errorMessage);
+            return new BadRequestObjectResult(CheckDate.errorMessage);
+        }
     }
 }

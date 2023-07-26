@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Ansaldo.Protocollo.Business.Imp;
+using Microsoft.AspNetCore.Mvc;
 using ProgettoIndustriale.Business;
 using ProgettoIndustriale.Business.Imp;
 using ProgettoIndustriale.Data;
@@ -13,16 +14,15 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         private readonly ICommodityManager _commodityManager;
         public readonly IConfiguration _configuration;
         private readonly ProgettoIndustrialeContext _context;
-        public readonly ILogger<CommodityController> _logger;
-     
-        public CommodityController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<CommodityController> logger)
-        {
-            _logger = logger;
+        public readonly ClassLog _genericLogger = new ClassLog();
+        public readonly ILogger<LoadController> _detailedLogger;
 
-            _logger.LogInformation(UtilsFunctions.SubstringController(this));
+        public CommodityController(IConfiguration configuration, ProgettoIndustrialeContext context)
+        {
             _configuration = configuration;
             _context = context;
-            _commodityManager = new CommodityManager(_context);
+            _detailedLogger.LogInformation(UtilsFunctions.SubstringController(this));
+            _commodityManager = new CommodityManager(_context, _genericLogger);
         }
     }
 }

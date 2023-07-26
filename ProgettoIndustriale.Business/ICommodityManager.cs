@@ -12,7 +12,7 @@ namespace ProgettoIndustriale.Business;
 public interface ICommodityManager
 {
     public List<Dto.Commodity> getAllCommodities();
-    public List<Dto.Commodity> getComoditybyDates(DateTime startDate, DateTime endDate);
+    public List<Dto.Commodity> getCommoditybyDates(DateTime startDate, DateTime endDate);
     
     
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Ansaldo.Protocollo.Business.Imp;
+using Microsoft.AspNetCore.Mvc;
 using ProgettoIndustriale.Business;
 using ProgettoIndustriale.Business.Imp;
 using ProgettoIndustriale.Data;
@@ -12,14 +13,14 @@ public partial class GenerationController : ControllerBase
     private readonly IGenerationManager _generationManager;
     public readonly IConfiguration _configuration;
     private readonly ProgettoIndustrialeContext _context;
-    public readonly ILogger<GenerationController> _logger;
+    public readonly ClassLog _genericLogger = new ClassLog();
+    public readonly ILogger<LoadController> _detailedLogger;
 
-    public GenerationController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<GenerationController> logger)
+    public GenerationController(IConfiguration configuration, ProgettoIndustrialeContext context)
     {
         _configuration = configuration;
         _context = context;
-        _logger = logger;
-        _logger.LogInformation(UtilsFunctions.SubstringController(this));
-        _generationManager = new GenerationManager(_context);
+        _detailedLogger.LogInformation(UtilsFunctions.SubstringController(this));
+        _generationManager = new GenerationManager(_context, _genericLogger);
     }
 }

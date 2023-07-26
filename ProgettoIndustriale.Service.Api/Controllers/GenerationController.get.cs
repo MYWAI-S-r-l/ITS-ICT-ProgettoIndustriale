@@ -21,8 +21,13 @@ public partial class GenerationController
             return _generationManager.getGenerationsbyDates(startDate, endDate);    
 
         }
+        else
+        {
 
-        return BadRequest(CheckDate.errorMessage);
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getGenerationsbyDates() " + CheckDate.errorMessage);
+
+            return new BadRequestObjectResult(CheckDate.errorMessage);
+        }
 
     }
 }

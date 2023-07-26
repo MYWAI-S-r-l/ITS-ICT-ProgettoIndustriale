@@ -13,10 +13,10 @@ public class PriceManager : IPriceManager
 {
     private readonly ProgettoIndustrialeContext _context;
     public ClassLog _logger { get; set; }
-    public PriceManager(ProgettoIndustrialeContext context )
+    public PriceManager(ProgettoIndustrialeContext context, ClassLog _genericLogger)
     {
         _context = context;
-        _logger = new ClassLog();
+        _logger = _genericLogger;
     }
 
     public List<Dto.Price> GetAllPrices()
