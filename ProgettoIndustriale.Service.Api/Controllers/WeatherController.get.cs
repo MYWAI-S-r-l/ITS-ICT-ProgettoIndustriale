@@ -1,36 +1,29 @@
-﻿using Dto = ProgettoIndustriale.Type.Dto;
-using Microsoft.AspNetCore.Mvc;
-using ProgettoIndustriale.Type.Dto;
-using ProgettoIndustriale.Business;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
-
 public partial class WeatherController
 {
-
     [HttpGet("getAllWeathers")]
-
-    public List<Dto.Weather>GetAllWeathers()
+    public List<Dto.Weather> GetAllWeathers()
     {
-        return _weatherManager.GetAllWeathers();
+        return _weatherManager.GetAllWeathers();     
     }
 
     [HttpGet("getWeathersbyDates")]
-
     public object GetWeathersbyDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
-        if (startDate > endDate)
+        if (CheckDate.TryDateCheck(startDate, endDate))
         {
-            return BadRequest("La data di inizio non può essere successiva alla data di fine");
+            return _weatherManager.GetWeathersbyDates(startDate, endDate);
         }
+        else
+        {
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getWeathersbyDates() " + CheckDate.errorMessage);
 
-        if (startDate > DateTime.Now)
-        {
-            return BadRequest("La data di inizio non può essere futura.");
+            return new BadRequestObjectResult(CheckDate.errorMessage);
         }
-        return _weatherManager.GetWeathersbyDates(startDate, endDate);
     }
 }
-

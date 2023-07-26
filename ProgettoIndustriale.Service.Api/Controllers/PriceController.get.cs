@@ -1,14 +1,11 @@
-﻿using Dto = ProgettoIndustriale.Type.Dto;
-using Microsoft.AspNetCore.Mvc;
-using ProgettoIndustriale.Type.Dto;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
-
 public partial class PriceController
 {
-
     [HttpGet("getAllPrices")]
     public List<Dto.Price> GetAllPrices()
     {
@@ -18,22 +15,15 @@ public partial class PriceController
     [HttpGet("getPricesbyDates")]
     public object GetPricesbyDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
     {
-        if (startDate > endDate)
+        if ( CheckDate.TryDateCheck(startDate, endDate))
         {
-            return BadRequest("La data di inizio non può essere successiva alla data di fine");
+            return _priceManager.GetPricesbyDates(startDate, endDate);
         }
+        else
+        {
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getPricesbyDates() " + CheckDate.errorMessage);
 
-        if (startDate > DateTime.Now)
-        {
-            return BadRequest("La data di inizio non può essere futura.");
-
+            return new BadRequestObjectResult(CheckDate.errorMessage);
         }
-        if (startDate == default || endDate == default)
-        {
-            return BadRequest("Inserire data");
-        }
-        return _priceManager.GetPricesbyDates(startDate, endDate);
     }
-
 }
-

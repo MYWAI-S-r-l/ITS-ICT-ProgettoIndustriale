@@ -6,6 +6,9 @@ using Autofac.Extensions.DependencyInjection;
 using ElmahCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProgettoIndustriale.Data;
+using Serilog;
+using Microsoft.Extensions.Logging;
+using ProgettoIndustriale.Business.Imp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,9 +36,22 @@ builder.Services.AddDbContext<ProgettoIndustrialeContext>(opt =>
 });
 var allowedUrlsForCors = builder.Configuration["AllowedUrlsForCors"].Split(',');
 builder.Services.ConfigureCors("CORSPolicy", allowedUrlsForCors);
+var logger = new LoggerConfiguration().WriteTo.Console()
+                                        .ReadFrom.Configuration(builder.Configuration)
+                                        .Enrich.FromLogContext()
+                                        .CreateLogger();
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
+
 
 
 builder.Services.AddElmah();
+
+
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

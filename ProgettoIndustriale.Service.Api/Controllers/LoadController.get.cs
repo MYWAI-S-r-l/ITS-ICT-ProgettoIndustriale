@@ -1,63 +1,55 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.IdentityModel.Tokens;
-using dto = ProgettoIndustriale.Type.Dto;
+using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers
 {
-    public partial class LoadController 
+    public partial class LoadController
     {
         [HttpGet("getLoadAll")]
-        public IEnumerable<dto.Load> getAllLoad()
+        public IEnumerable<Dto.Load> getAllLoad()
         {
-            return _loadManager.getAllLoads();
+           return _loadManager.getAllLoads();
         }
 
-
         [HttpGet("getLoadByFilter")]
-
-        public object getLoadByFilter([BindRequired] string macrozone, [BindRequired] DateTime startDate, [BindRequired]  DateTime endDate)
+        public object getLoadByFilter([BindRequired] string macrozone, [BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
         {
-            if (startDate > endDate)
+            if (macrozone=="")
             {
-                return BadRequest("La data di inizio non può essere successiva alla data di fine");
+                _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getLoadByFilter() inserire una macrozone");
+
+                return BadRequest("Inserire una macrozone");
+            }
+            if (CheckDate.TryDateCheck(startDate, endDate))
+            {
+                return _loadManager.getLoadsbyFilter(macrozone, startDate, endDate);
+            }
+            else
+            {
+                _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getLoadByFilter() " + CheckDate.errorMessage);
+
+                return new BadRequestObjectResult(CheckDate.errorMessage);
             }
 
-            if (startDate > DateTime.Now)
-            {
-                return BadRequest("La data di inizio non può essere futura.");
 
-            }
-            if (startDate == default || endDate == default)
-            {
-                return BadRequest("Inserire data");
-            }
-            
-            
-            return _loadManager.getLoadsbyFilter(macrozone, startDate, endDate);
 
         }
 
         [HttpGet("getLoadbyDates")]
         public object getLoadByDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
         {
-            if (startDate > endDate)
+            if (CheckDate.TryDateCheck(startDate, endDate))
             {
-                return BadRequest("La data di inizio non può essere successiva alla data di fine");
+                return _loadManager.getloadbyDates(startDate, endDate); 
             }
+            else
+            {
+                _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getLoadbyDates() " + CheckDate.errorMessage);
 
-            if (startDate > DateTime.Now)
-            {
-                return BadRequest("La data di inizio non può essere futura");
-
+                return new BadRequestObjectResult(CheckDate.errorMessage);
             }
-            if (startDate == default || endDate == default)
-            {
-                return BadRequest("Inserire data");
-            }
-            return _loadManager.getloadbyDates(startDate, endDate);
         }
-        
-
     }
 }

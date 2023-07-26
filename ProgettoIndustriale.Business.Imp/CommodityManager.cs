@@ -1,41 +1,65 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProgettoIndustriale.Business;
+using Microsoft.Extensions.Configuration;
 using ProgettoIndustriale.Data;
 using ProgettoIndustriale.Type;
+using System.Diagnostics.CodeAnalysis;
 using Domain = ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProgettoIndustriale.Type.Domain;
-
+using Serilog;
 namespace ProgettoIndustriale.Business.Imp
 {
-    
-    
-    
     public class CommodityManager : ICommodityManager
     {
         private readonly ProgettoIndustrialeContext _context;
-        public CommodityManager(ProgettoIndustrialeContext context)
+        public ClassLog _logger { get; set; }
+        public CommodityManager(ProgettoIndustrialeContext context, ClassLog _genericLogger)
         {
             _context = context;
+            _logger = _genericLogger;
+            
         }
+
         public List<Dto.Commodity> getAllCommodities()
         {
-            List<Domain.Commodity> commodities = _context.Commodity.ToList();
-            return MyMapper<Domain.Commodity, Dto.Commodity>.MapList(commodities);
+            
+            try
+            {
+                List<Domain.Commodity> commodities = _context.Commodity.ToList();
+                
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getAllCommodities() ritorna " + commodities.Count.ToString() + " elementi");
+
+                return MyMapper<Domain.Commodity, Dto.Commodity>.MapList(commodities);
+
+            }
+            catch (Exception ex)
+            {
+
+                _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+                return new List<Dto.Commodity>();
+            }
+            
         }
 
-        public List<Dto.Commodity> getComoditybyDates(DateTime startDate, DateTime endDate)
+        public List<Dto.Commodity> getCommoditybyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
         {
+            try
+            {
+                List<Domain.Commodity> commodities = _context.Commodity
+                    .Include(x => x.Date)
+                    .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
+                    .ToList();
 
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getComoditybyDates() ritorna " + commodities.Count.ToString() + " elementi");
 
-            List<Domain.Commodity> commodities = _context.Commodity.Include(X=>X.Date).Where(p=>p.Date.DateTime > startDate && p.Date.DateTime < endDate).ToList();
-            return MyMapper<Domain.Commodity,Dto.Commodity>.MapList(commodities);
+                return MyMapper<Domain.Commodity, Dto.Commodity>.MapList(commodities);
+            }
+            catch(Exception ex)
+            {
+                _logger.logMessageTemplate(path: this.ToString()!, e: ex);
 
+                return new List<Dto.Commodity>();
+            }
         }
     }
 }

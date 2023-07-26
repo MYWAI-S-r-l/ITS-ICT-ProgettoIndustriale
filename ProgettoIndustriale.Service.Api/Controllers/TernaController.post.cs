@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-//using Newtonsoft.Json;
 using System.Text.Json;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -20,11 +19,13 @@ public class TernaTokenConfig
 }
 public partial class TernaController
 {
+    private const string ternaUrl = "https://api.terna.it";
+
     [HttpPost("updateToken")]
     public async Task<ActionResult<Dto.TernaToken>> UpdateToken() 
     {
         var config = new TernaTokenConfig();
-        var options = new RestClientOptions("https://api.terna.it")
+        var options = new RestClientOptions(ternaUrl)
         {
             MaxTimeout = -1,
         };

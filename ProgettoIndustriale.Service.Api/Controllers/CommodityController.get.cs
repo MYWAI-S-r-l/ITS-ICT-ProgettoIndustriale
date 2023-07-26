@@ -2,40 +2,32 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using dto = ProgettoIndustriale.Type.Dto;
 
+
 namespace ProgettoIndustriale.Service.Api.Controllers
 {
-    public partial class CommodityController 
+    public partial class CommodityController
     {
         [HttpGet("getAllCommodities")]
         public IEnumerable<dto.Commodity> getAllCommodities()
         {
-            return _commodityManager.getAllCommodities();
+            return  _commodityManager.getAllCommodities();
         }
-
-
-       
 
         [HttpGet("getCommoditybyDates")]
         public object getCommodityByDates([BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
         {
-            if (startDate > endDate)
+            if (CheckDate.TryDateCheck(startDate, endDate))
             {
-               return BadRequest("La data di inizio non può essere successiva alla data di fine");
+                return _commodityManager.getCommoditybyDates(startDate, endDate);
             }
 
-            if (startDate > DateTime.Now)
+            else
             {
-                return BadRequest("La data di inizio non può essere futura.");
-                
+                _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getCommoditybyDates() " + CheckDate.errorMessage);
+
+                return new BadRequestObjectResult(CheckDate.errorMessage);
             }
-            if (startDate == default || endDate == default)
-            {
-                return BadRequest("Inserire data");
-            }
-            
-            return _commodityManager.getComoditybyDates(startDate, endDate);
+
         }
-        
-
     }
 }

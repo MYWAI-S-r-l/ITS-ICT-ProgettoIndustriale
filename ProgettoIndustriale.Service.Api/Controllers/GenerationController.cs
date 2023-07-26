@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using ProgettoIndustriale.Type;
-using ProgettoIndustriale.Data;
-using ProgettoIndustriale.Business.Imp;
+﻿using Ansaldo.Protocollo.Business.Imp;
+using Microsoft.AspNetCore.Mvc;
 using ProgettoIndustriale.Business;
+using ProgettoIndustriale.Business.Imp;
+using ProgettoIndustriale.Data;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
@@ -11,15 +10,18 @@ namespace ProgettoIndustriale.Service.Api.Controllers;
 [Route("api/[controller]")]
 public partial class GenerationController : ControllerBase
 {
-    
     private readonly IGenerationManager _generationManager;
-    private readonly IConfiguration _configuration;
+    public readonly IConfiguration _configuration;
     private readonly ProgettoIndustrialeContext _context;
-   
-    public GenerationController(IConfiguration configuration, ProgettoIndustrialeContext context)
+    public readonly ClassLog _genericLogger = new ClassLog();
+    public readonly ILogger<GenerationController> _detailedLogger;
+
+    public GenerationController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<GenerationController> logger)
     {
         _configuration = configuration;
         _context = context;
-        _generationManager =new GenerationManager(_context);
+        _detailedLogger = logger;
+        _detailedLogger.LogInformation(UtilsFunctions.SubstringController(this));
+        _generationManager = new GenerationManager(_context, _genericLogger);
     }
 }

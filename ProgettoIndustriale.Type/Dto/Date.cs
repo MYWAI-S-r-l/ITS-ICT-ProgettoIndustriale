@@ -2,7 +2,6 @@
 {
     public class Date
     {
-
         public Date() { }
 
         public int Id { get; set; }
@@ -16,6 +15,5 @@
         public int Day { get; set; }
 
         public int Hour { get; set; }
-
     }
 }

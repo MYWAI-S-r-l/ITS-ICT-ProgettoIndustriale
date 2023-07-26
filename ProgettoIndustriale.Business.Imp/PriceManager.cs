@@ -1,190 +1,135 @@
-﻿using ProgettoIndustriale.Type;
-using Dto = ProgettoIndustriale.Type.Dto;
-using Dom = ProgettoIndustriale.Type.Domain;
-using ProgettoIndustriale.Type.Dto;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using ProgettoIndustriale.Data;
-using Microsoft.Identity.Client;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-
+using ProgettoIndustriale.Type;
+using System.Diagnostics.CodeAnalysis;
+using Dom = ProgettoIndustriale.Type.Domain;
+using Dto = ProgettoIndustriale.Type.Dto;
+using Serilog;
 namespace ProgettoIndustriale.Business.Imp;
+
 public class PriceManager : IPriceManager
 
 {
     private readonly ProgettoIndustrialeContext _context;
-    public PriceManager(ProgettoIndustrialeContext context)
-    { 
-        _context= context;
-    }
-    public List<Dto.Price> GetAllPrices()
-    {
-
-        var allPrices = _context.Price
-            .Include(x=> x.Date)
-            .Include(x=> x.MacroZone).ToList();
-        return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
-
-    }
-
-    public List<Dto.Price> GetPricesbyMacrozones(List<string> macrozones)
-    {
-        var allPrices = _context.Price
-            .Include(x => x.MacroZone)
-            .Include(x => x.Date)
-            .Where(x=> macrozones.Contains(x.MacroZone.Name)).ToList();
-        return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
-        
-    }
-
-
-    public List<Dto.Price> GetPricesbyDates(DateTime startDate, DateTime endDate)
-    {
-        if (startDate > endDate)
-        {
-            throw new ArgumentException("La data di inizio non può essere successiva alla data di fine.");
-        }
-
-        if (startDate > DateTime.Today)
-        {
-            throw new ArgumentException("La data di inizio non può essere futura.");
-        }
-
-        var allPrices = _context.Price
-            .Include(x => x.Date)
-            .Include(x => x.MacroZone)
-            .Where(x=> x.Date.DateTime>startDate && x.Date.DateTime<endDate).ToList();
-        return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
-        
-    }
-
-    public List<Dto.Price> GetPricesbyMacrozonesDates(List<string> macrozones, DateTime startDate, DateTime endDate)
-    {
-
-        if (startDate > endDate)
-        {
-            throw new ArgumentException("La data di inizio non può essere successiva alla data di fine.");
-        }
-
-        if (startDate > DateTime.Today)
-        {
-            throw new ArgumentException("La data di inizio non può essere futura.");
-        }
-
-
-        var allPrices = _context.Price.Include(x=>x.MacroZone)
-            .Include(x=>x.Date)
-            .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate && macrozones
-            .Contains(x.MacroZone.Name)).ToList();
-
-        return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
-        
-
-    }
-
-}
-
-/*
-public class ProvinceManager : IProvinceManager
-{
-    private readonly ProgettoIndustrialeContext _context;
-    public ProvinceManager(ProgettoIndustrialeContext context)
+    public ClassLog _logger { get; set; }
+    public PriceManager(ProgettoIndustrialeContext context, ClassLog _genericLogger)
     {
         _context = context;
+        _logger = _genericLogger;
     }
 
-    public Dto.Provincia? GetProvincia(string codice)
+    public List<Dto.Price> GetAllPrices()
     {
-        var domainProvincia = GetDomainProvincia(codice);
-        return domainProvincia == null ? null : MyMapper<Domain.Province, Dto.Provincia>.Map(domainProvincia);
-    }
-
-    private Domain.Province? GetDomainProvincia(string? codice)
-    {
-        if (codice == null)
-            return null;
-        var domainProvincia = _context.Province
-            .FirstOrDefault(provincia => provincia.Codice == codice);
-        return domainProvincia;
-    }
-    
-    public bool DeleteProvincia(string codice)
-    {
-        var domainProvincia = _context.Province
-            .FirstOrDefault(provincia => provincia.Codice == codice);
-        if (domainProvincia == null)
-            return false;
-        _context.Remove(domainProvincia);
-        _context.SaveChanges();
-        return true;
-    }
-
-    public bool DeleteProvince()
-    {
-        _context.RemoveRange(_context.Province.ToList());
-        _context.SaveChanges();
-        return true;
-    }
-
-    public Dto.Provincia? SaveProvincia(Dto.Provincia? provinciaToSave)
-    {
-        if (provinciaToSave == null)
-            return null;
-        var domainProvincia = new Domain.Provincia
+        try
         {
-            Codice = provinciaToSave.Codice,
-            Nome = provinciaToSave.Nome,
-            Sigla = provinciaToSave.Sigla,
-            Regione = provinciaToSave.Regione,
-     
-        };
-        _context.Province.Add((Domain.Province)domainProvincia);
-        _context.SaveChanges();
-        provinciaToSave.Codice = domainProvincia.Codice;
-        return provinciaToSave;
+            var allPrices = _context.Price
+            .Include(x => x.Date)
+            .Include(x => x.MacroZone)
+            .ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetAllPrices() ritorna " + allPrices.Count.ToString() + " elementi");
+
+
+            return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
+        }
+        catch(Exception ex) 
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Price>();
+        }
+        
     }
 
-    public List<Dto.Provincia> SaveProvince(List<Dto.Provincia> provinceToSave)
+    public List<Dto.Price> GetPricesbyMacrozones([NotNull] List<string> macrozones)
     {
-        if (provinceToSave == null || provinceToSave.Count == 0)
-            return new List<Dto.Provincia>();
+        try
+        {
+            var allPrices = _context.Price
+            .Include(x => x.MacroZone)
+            .Include(x => x.Date)
+            .Where(x => x.MacroZone != null && x.MacroZone.Name != null && macrozones.Contains(x.MacroZone.Name))
+            .ToList();
 
-        var domainProvince = provinceToSave.ConvertAll(
-            p => new Domain.Provincia 
-                {
-                    Codice = p.Codice,
-                    Nome = p.Nome,
-                    Sigla = p.Sigla,
-                    Regione = p.Regione,
-                }
-            );
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetPricesbyMacrozones() ritorna " + allPrices.Count.ToString() + " elementi");
 
-        _context.Province.AddRange((IEnumerable<Domain.Province>)domainProvince);
-        _context.SaveChanges();
+            return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
+        }
+        catch (Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
 
-        return provinceToSave;
+            return new List<Dto.Price>();
+        }
+        
     }
 
-    public Dto.Provincia? EditProvincia(Dto.Provincia? provinciaToEdit)
+    public List<Dto.Price> GetPricesbyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
     {
-        if (provinciaToEdit == null)
-            return null;
-        var domainProvincia = GetDomainProvincia(provinciaToEdit.Codice);
-        if (domainProvincia == null)
-            return null;
-        domainProvincia.Codice = provinciaToEdit.Codice;
-        domainProvincia.Nome = provinciaToEdit.Nome;
-        domainProvincia.Sigla = provinciaToEdit.Sigla;
-        domainProvincia.Regione = provinciaToEdit.Regione;
-        _context.Update(domainProvincia);
-        _context.SaveChanges();
-        return MyMapper<Domain.Province, Dto.Provincia>.Map(domainProvincia);
+        try
+        {
+            if (startDate > endDate)
+            {
+                throw new ArgumentException("La data di inizio non può essere successiva alla data di fine.");
+            }
+
+            if (startDate > DateTime.Today)
+            {
+                throw new ArgumentException("La data di inizio non può essere futura.");
+            }
+
+            var allPrices = _context.Price
+                .Include(x => x.Date)
+                .Include(x => x.MacroZone)
+                .Where(x => x.Date != null && x.MacroZone != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
+                .ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetPricesbyDates() ritorna " + allPrices.Count.ToString() + " elementi");
+
+            return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
+        }
+        catch (Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Price>();
+        }
+
+
+        
     }
 
-    public List<Dto.Provincia> GetAllProvince()
+    public List<Dto.Price> GetPricesbyMacrozonesDates([NotNull] List<string> macrozones, [NotNull] DateTime startDate, [NotNull] DateTime endDate)
     {
-        var allProvince = _context.Province.ToList();
-        return MyMapper<Domain.Province, Dto.Provincia>.MapList(allProvince);
+        try
+        {
+            if (startDate > endDate)
+            {
+                throw new ArgumentException("La data di inizio non può essere successiva alla data di fine.");
+            }
+
+            if (startDate > DateTime.Today)
+            {
+                throw new ArgumentException("La data di inizio non può essere futura.");
+            }
+
+            var allPrices = _context.Price.Include(x => x.MacroZone)
+                .Include(x => x.Date)
+                .Where(x => x.Date != null && x.MacroZone != null && x.MacroZone.Name != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate && macrozones
+                .Contains(x.MacroZone.Name))
+                .ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetPricesbyMacrozonesDates() ritorna " + allPrices.Count.ToString() + " elementi");
+
+            return MyMapper<Dom.Price, Dto.Price>.MapList(allPrices);
+        }
+        catch (Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Price>();
+        }
+       
     }
 }
-
-*/

@@ -1,37 +1,67 @@
-﻿using ProgettoIndustriale.Type;
-using Dto = ProgettoIndustriale.Type.Dto;
-using Domain = ProgettoIndustriale.Type.Domain;
-using ProgettoIndustriale.Type.Dto;
+﻿using Microsoft.Extensions.Configuration;
 using ProgettoIndustriale.Data;
-using Microsoft.Identity.Client;
-using System.Collections.Generic;
-using Azure;
+using ProgettoIndustriale.Type;
+using ProgettoIndustriale.Type.Dto;
+using System.Diagnostics.CodeAnalysis;
+using Domain = ProgettoIndustriale.Type.Domain;
+using Dto = ProgettoIndustriale.Type.Dto;
+using Serilog;
 
 namespace ProgettoIndustriale.Business.Imp;
+
 public class GenerationManager : IGenerationManager
 
 {
     private readonly ProgettoIndustrialeContext _context;
-    public GenerationManager(ProgettoIndustrialeContext context)
-    { 
-        _context= context;
+    public ClassLog _logger { get; set; }
+    public GenerationManager(ProgettoIndustrialeContext context, ClassLog _genericLogger)
+    {
+        _context = context;
+        _logger = _genericLogger;
     }
 
     public List<Dto.Generation> getAllGenerations()
     {
+        try
+        {
+            var allGenerations = _context.Generation.ToList();
 
-        var allGenerations = _context.Generation.ToList();
-        return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetAllGenerations() ritorna " + allGenerations.Count.ToString() + " elementi");
 
+            return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);
+
+        }
+        catch (Exception ex)
+        {
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Generation>();
+        }
     }
 
-   
-
-    public List<Generation> getGenerationsbyDates(DateTime startDate, DateTime endDate)
+    public List<Dto.Generation> getGenerationsbyDates([NotNull] DateTime startDate, [NotNull] DateTime endDate)
     {
-        
-        var allGenerations = _context.Generation
-            .Where(x => x.Date.DateTime > startDate && x.Date.DateTime < endDate).ToList();
-        return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);
+        try
+        {
+
+
+            var allGenerations = _context.Generation
+                .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
+                .ToList();
+
+            _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getGenerationsbyDates() ritorna " + allGenerations.Count.ToString() + " elementi");
+
+            return MyMapper<Domain.Generation, Dto.Generation>.MapList(allGenerations);
+
+        }
+        catch (Exception ex)
+        {
+
+            _logger.logMessageTemplate(path: this.ToString()!, e: ex);
+
+            return new List<Dto.Generation>();
+
+        }
+
     }
 }

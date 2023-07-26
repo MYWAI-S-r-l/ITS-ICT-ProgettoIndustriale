@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,16 @@ namespace ProgettoIndustriale.Type.Dto
 {
     public class RequestActiveIndustries
     {
-        public RequestActiveIndustries() { }
+        public RequestActiveIndustries(List<string> categoriesList, List<string> provincesList)
+        {
+            this.categoriesList = categoriesList;
+            this.provincesList = provincesList;
+        }
 
-        public List <string>? provincesList { get; set; }
-        public List <string>? categoriesList { get; set; }
+        [BindRequired]
+        public List <string> provincesList { get; set; }
+        [BindRequired]
+        public List <string> categoriesList { get; set; }
         
 
     }

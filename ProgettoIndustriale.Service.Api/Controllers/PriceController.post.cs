@@ -1,20 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.IdentityModel.Tokens;
-using RestSharp;
-using System;
-using System.Globalization;
-using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers;
 
 public partial class PriceController
 {
     [HttpPost("getPricesbyMacrozones")]
-    public object GetPricesbyMacrozones( [BindRequired] List<string> macrozone)
+    public object GetPricesbyMacrozones([BindRequired] List<string> macrozone)
     {
-        if (macrozone.First() == "string")
+        if (macrozone[0] == "string" || macrozone[0] == "")
         {
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "GetPricesbyMacrozones() inserire almeno una macrozone");
+
             return BadRequest("Inserire almeno una macrozone");
         }
         return _priceManager.GetPricesbyMacrozones(macrozone);
@@ -23,24 +20,23 @@ public partial class PriceController
     [HttpPost("getPricesbyMacrozonesDates")]
     public object GetPricesbyMacrozonesDates([BindRequired] List<string> macrozone, [BindRequired] DateTime startDate = default, [BindRequired] DateTime endDate = default)
     {
-        if (macrozone.First() == "string")
+        if (macrozone[0] == "string"|| macrozone[0] == "")
         {
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getPricesbyMacrozonesDates() inserire almeno una macrozone");
+
             return BadRequest("Inserire almeno una macrozone");
         }
-        if (startDate > endDate)
+        if (CheckDate.TryDateCheck(startDate, endDate))
         {
-            return BadRequest("La data di inizio non può essere successiva alla data di fine");
+            return _priceManager.GetPricesbyMacrozonesDates(macrozone, startDate, endDate);
+        }
+        else
+        {
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getPricesbyMacrozonesDates() " + CheckDate.errorMessage);
+
+            return new BadRequestObjectResult(CheckDate.errorMessage);
         }
 
-        if (startDate > DateTime.Now)
-        {
-            return BadRequest("La data di inizio non può essere futura.");
-
-        }
         
-
-        return _priceManager.GetPricesbyMacrozonesDates(macrozone, startDate, endDate);
     }
 }
-
-
