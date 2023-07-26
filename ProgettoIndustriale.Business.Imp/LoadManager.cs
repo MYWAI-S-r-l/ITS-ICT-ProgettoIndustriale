@@ -16,10 +16,10 @@ namespace Ansaldo.Protocollo.Business.Imp
         private readonly ProgettoIndustrialeContext _context;
         public ClassLog _logger { get; set; }
 
-        public LoadManager(ProgettoIndustrialeContext context)
+        public LoadManager(ProgettoIndustrialeContext context, ClassLog _genericLogger)
         {
             _context = context;
-            _logger = new ClassLog();
+            _logger = _genericLogger;
         }
 
         public List<Dto.Load> getAllLoads()
@@ -53,7 +53,7 @@ namespace Ansaldo.Protocollo.Business.Imp
                 List<Dom.Load> loads = _context.Load
                 .Include(x => x.MacroZone)
                 .Include(y => y.Date)
-                .Where(c => c.Date.DateTime > startDate && c.Date.DateTime < endDate)
+                .Where(c => c.Date!.DateTime > startDate && c.Date.DateTime < endDate)
                 .ToList();
 
                 _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getloadbyDates() ritorna " + loads.Count.ToString() + " elementi");
@@ -99,7 +99,7 @@ namespace Ansaldo.Protocollo.Business.Imp
             {
                 List<Dom.Load> loads = _context.Load
                                  .Include(x => x.Date)
-                                 .Where(p => p.Date.DateTime > startDate && p.Date.DateTime < endDate && p.MacroZone.Name == macrozone)
+                                 .Where(p => p.Date!.DateTime > startDate && p.Date.DateTime < endDate && p.MacroZone!.Name == macrozone)
                                  .ToList();
 
                 _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getLoadsbyFilter() ritorna " + loads.Count.ToString() + " elementi");

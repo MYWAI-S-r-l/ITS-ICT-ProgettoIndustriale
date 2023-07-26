@@ -14,14 +14,14 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         private readonly ILoadManager _loadManager;
         public readonly IConfiguration _configuration;
         private readonly ProgettoIndustrialeContext _context;
-        public readonly ClassLog _logger = new ClassLog();
-
+        public readonly ClassLog _genericLogger = new ClassLog();
+        public readonly ILogger<LoadController> _detailedLogger;
         public LoadController(IConfiguration configuration, ProgettoIndustrialeContext context)
         {
             _configuration = configuration;
             _context = context;
-            //_logger.LogInformation(UtilsFunctions.SubstringController(this));
-            _loadManager = new LoadManager(_context);
+            _detailedLogger.LogInformation(UtilsFunctions.SubstringController(this));
+            _loadManager = new LoadManager(_context, _genericLogger);
         }
     }
 }

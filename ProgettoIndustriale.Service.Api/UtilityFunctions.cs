@@ -55,9 +55,9 @@ namespace ProgettoIndustriale.Service.Api
             {
                 var file = File.ReadAllText("properties.json");
 
-                var jsonData = (JObject)JsonConvert.DeserializeObject(file);
+                var jsonData = (JObject)JsonConvert.DeserializeObject(file)!;
 
-                errorMessage = jsonData[k].ToString();
+                errorMessage = jsonData![k]!.ToString();
 
 
             }

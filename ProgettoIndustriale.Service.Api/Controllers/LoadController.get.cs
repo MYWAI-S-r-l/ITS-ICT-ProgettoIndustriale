@@ -23,8 +23,8 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             }
             else
             {
-               
-                _logger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getLoadByFilter() " + CheckDate.errorMessage);
+
+                _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getLoadByFilter() " + CheckDate.errorMessage);
 
                 return new BadRequestObjectResult(CheckDate.errorMessage);
             }
