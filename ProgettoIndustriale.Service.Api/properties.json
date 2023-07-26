@@ -1,0 +1,7 @@
+
+{
+  "checkDateErrorMessage_1": "La data di inizio non può essere successiva alla data di fine",
+  "checkDateErrorMessage_2": "La data di inizio non può essere futura",
+  "checkDateErrorMessage_3": "Inserire data"
+}
+

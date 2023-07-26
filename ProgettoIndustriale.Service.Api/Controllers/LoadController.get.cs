@@ -15,12 +15,17 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         [HttpGet("getLoadByFilter")]
         public object getLoadByFilter([BindRequired] string macrozone, [BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
         {
+          
             if (CheckDate.TryDateCheck(startDate, endDate))
             {
+
                 return _loadManager.getLoadsbyFilter(macrozone, startDate, endDate);
             }
             else
             {
+               
+                _logger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getLoadByFilter() " + CheckDate.errorMessage);
+
                 return new BadRequestObjectResult(CheckDate.errorMessage);
             }
 

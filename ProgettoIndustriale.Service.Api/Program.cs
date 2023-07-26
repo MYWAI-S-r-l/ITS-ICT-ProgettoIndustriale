@@ -40,6 +40,9 @@ var logger = new LoggerConfiguration().WriteTo.Console().ReadFrom.Configuration(
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 
+
+
+
 builder.Services.AddElmah();
 
 

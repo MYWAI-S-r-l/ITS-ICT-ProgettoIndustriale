@@ -1,7 +1,9 @@
-﻿using Ansaldo.Protocollo.Business.Imp;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using ProgettoIndustriale.Business;
 using ProgettoIndustriale.Data;
+using ProgettoIndustriale.Business;
+using ProgettoIndustriale.Business.Imp;
+using Ansaldo.Protocollo.Business.Imp;
 
 namespace ProgettoIndustriale.Service.Api.Controllers
 {
@@ -12,14 +14,13 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         private readonly ILoadManager _loadManager;
         public readonly IConfiguration _configuration;
         private readonly ProgettoIndustrialeContext _context;
-        public readonly ILogger<LoadController> _logger;
+        public readonly ClassLog _logger = new ClassLog();
 
-        public LoadController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<LoadController> logger)
+        public LoadController(IConfiguration configuration, ProgettoIndustrialeContext context)
         {
             _configuration = configuration;
             _context = context;
-            _logger = logger;
-            _logger.LogInformation(UtilsFunctions.SubstringController(this));
+            //_logger.LogInformation(UtilsFunctions.SubstringController(this));
             _loadManager = new LoadManager(_context);
         }
     }
