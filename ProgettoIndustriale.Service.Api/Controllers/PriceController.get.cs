@@ -21,7 +21,6 @@ public partial class PriceController
         }
         else
         {
-
             _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getPricesbyDates() " + CheckDate.errorMessage);
 
             return new BadRequestObjectResult(CheckDate.errorMessage);

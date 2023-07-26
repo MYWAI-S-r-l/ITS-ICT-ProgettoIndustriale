@@ -11,17 +11,18 @@ public partial class UtilsController : ControllerBase
 {
     private readonly IUtilsManager _utilsManager;
     public readonly IConfiguration _configuration;
-    private readonly ProgettoIndustrialeContext _context;
-    public readonly ILogger<UtilsController> _logger;
+    private readonly ProgettoIndustrialeContext _context; 
+    public readonly ClassLog _genericLogger = new ClassLog();
+    public readonly ILogger<UtilsController> _detailedLogger;
 
     public UtilsController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<UtilsController> logger)
     {
         
         _configuration = configuration;
         _context = context;
-        _logger = logger;
-        _logger.LogInformation(UtilsFunctions.SubstringController(this));
-        _utilsManager = new UtilsManager(_context);
+        _detailedLogger = logger;
+        _detailedLogger.LogInformation(UtilsFunctions.SubstringController(this));
+        _utilsManager = new UtilsManager(_context, _genericLogger);
     }
 
 

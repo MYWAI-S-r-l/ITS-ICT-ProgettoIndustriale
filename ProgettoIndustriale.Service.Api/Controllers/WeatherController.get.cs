@@ -9,17 +9,7 @@ public partial class WeatherController
     [HttpGet("getAllWeathers")]
     public List<Dto.Weather> GetAllWeathers()
     {
-        try
-        {
-            return _weatherManager.GetAllWeathers();
-        }
-        catch (Exception)
-        { 
-            
-            return new List<Dto.Weather>();
-
-        }
-        
+        return _weatherManager.GetAllWeathers();     
     }
 
     [HttpGet("getWeathersbyDates")]
@@ -28,8 +18,12 @@ public partial class WeatherController
         if (CheckDate.TryDateCheck(startDate, endDate))
         {
             return _weatherManager.GetWeathersbyDates(startDate, endDate);
-
         }
-        return BadRequest(CheckDate.errorMessage);
+        else
+        {
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getWeathersbyDates() " + CheckDate.errorMessage);
+
+            return new BadRequestObjectResult(CheckDate.errorMessage);
+        }
     }
 }

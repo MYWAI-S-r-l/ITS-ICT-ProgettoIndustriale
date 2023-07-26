@@ -12,10 +12,10 @@ public class WeatherManager : IWeatherManager
 {
     private readonly ProgettoIndustrialeContext _context;
     public ClassLog _logger { get; set; }
-    public WeatherManager(ProgettoIndustrialeContext context, IConfiguration config)
+    public WeatherManager(ProgettoIndustrialeContext context, ClassLog _genericLogger)
     {
         _context = context;
-        _logger = new ClassLog();
+        _logger = _genericLogger;
     }
 
     public List<Dto.Weather> GetAllWeathers()

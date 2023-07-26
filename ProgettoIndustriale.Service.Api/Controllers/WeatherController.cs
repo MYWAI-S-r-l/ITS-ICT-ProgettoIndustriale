@@ -12,12 +12,15 @@ public partial class WeatherController : ControllerBase
     private readonly IWeatherManager _weatherManager;
     public readonly IConfiguration _configuration;
     private readonly ProgettoIndustrialeContext _context;
-    public readonly ILogger<WeatherController> _logger;
+    public readonly ILogger<WeatherController> _detailedLogger;
+    public readonly ClassLog _genericLogger = new ClassLog();
     public WeatherController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<WeatherController> logger)
     {
         _configuration = configuration;
         _context = context;
-        _weatherManager = new WeatherManager(_context, configuration);
- 		_logger = logger;
+        _detailedLogger= logger;
+        _detailedLogger.LogInformation(UtilsFunctions.SubstringController(this));
+        _weatherManager = new WeatherManager(_context, _genericLogger);
+ 		
     }
 }

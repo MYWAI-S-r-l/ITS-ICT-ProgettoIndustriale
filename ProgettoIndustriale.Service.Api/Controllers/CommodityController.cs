@@ -15,12 +15,13 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         public readonly IConfiguration _configuration;
         private readonly ProgettoIndustrialeContext _context;
         public readonly ClassLog _genericLogger = new ClassLog();
-        public readonly ILogger<LoadController> _detailedLogger;
+        public readonly ILogger<CommodityController> _detailedLogger;
 
-        public CommodityController(IConfiguration configuration, ProgettoIndustrialeContext context)
+        public CommodityController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<CommodityController> logger)
         {
             _configuration = configuration;
             _context = context;
+            _detailedLogger= logger;    
             _detailedLogger.LogInformation(UtilsFunctions.SubstringController(this));
             _commodityManager = new CommodityManager(_context, _genericLogger);
         }

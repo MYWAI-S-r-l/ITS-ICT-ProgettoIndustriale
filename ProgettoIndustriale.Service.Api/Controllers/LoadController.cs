@@ -16,10 +16,11 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         private readonly ProgettoIndustrialeContext _context;
         public readonly ClassLog _genericLogger = new ClassLog();
         public readonly ILogger<LoadController> _detailedLogger;
-        public LoadController(IConfiguration configuration, ProgettoIndustrialeContext context)
+        public LoadController(IConfiguration configuration, ProgettoIndustrialeContext context, ILogger<LoadController> logger)
         {
             _configuration = configuration;
             _context = context;
+            _detailedLogger = logger;
             _detailedLogger.LogInformation(UtilsFunctions.SubstringController(this));
             _loadManager = new LoadManager(_context, _genericLogger);
         }

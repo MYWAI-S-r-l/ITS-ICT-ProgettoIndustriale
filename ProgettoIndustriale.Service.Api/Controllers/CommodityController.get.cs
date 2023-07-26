@@ -10,10 +10,7 @@ namespace ProgettoIndustriale.Service.Api.Controllers
         [HttpGet("getAllCommodities")]
         public IEnumerable<dto.Commodity> getAllCommodities()
         {
-            
             return  _commodityManager.getAllCommodities();
-                        
-            
         }
 
         [HttpGet("getCommoditybyDates")]
@@ -26,7 +23,6 @@ namespace ProgettoIndustriale.Service.Api.Controllers
 
             else
             {
-
                 _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getCommoditybyDates() " + CheckDate.errorMessage);
 
                 return new BadRequestObjectResult(CheckDate.errorMessage);

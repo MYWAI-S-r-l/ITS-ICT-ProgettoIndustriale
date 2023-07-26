@@ -10,8 +10,10 @@ public partial class UtilsController
     [HttpPost("getProvincesDetails")]
     public Object GetProvincesDetails([BindRequired] List<string> prov)
     {
-        if (prov.IsNullOrEmpty() || prov[0] == "string")
+        if (prov.IsNullOrEmpty() || prov[0] == "string" || prov[0]=="")
         {
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "GetProvincesDetails() inserire almeno una provincia");
+
             return BadRequest("inserire almeno una provincia");
         }
         return _utilsManager.GetProvincesDetails(prov);
@@ -22,10 +24,14 @@ public partial class UtilsController
     {
         if ((!activeIndustries.provincesList.IsNullOrEmpty()) && (activeIndustries.provincesList[0] == "string"))
         {
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "GetNActiveIndustriesbyCatandProv() inserire una provincia o mettere la lista vuota");
+
             return BadRequest("inserire una provincia o mettere la lista vuota");
         }
         if ((!activeIndustries.categoriesList.IsNullOrEmpty()) && (activeIndustries.categoriesList[0] == "string"))
         {
+            _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "GetNActiveIndustriesbyCatandProv() inserire una categoria o mettere la lista vuota");
+
             return BadRequest("inserire una categoria o mettere la lista vuota");
         }
         return _utilsManager.GetNActiveIndustriesbyCatandProv(activeIndustries.provincesList, activeIndustries.categoriesList);

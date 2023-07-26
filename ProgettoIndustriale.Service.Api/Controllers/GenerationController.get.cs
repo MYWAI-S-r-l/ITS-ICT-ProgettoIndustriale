@@ -19,11 +19,9 @@ public partial class GenerationController
         if (CheckDate.TryDateCheck(startDate, endDate))
         {
             return _generationManager.getGenerationsbyDates(startDate, endDate);    
-
         }
         else
         {
-
             _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getGenerationsbyDates() " + CheckDate.errorMessage);
 
             return new BadRequestObjectResult(CheckDate.errorMessage);

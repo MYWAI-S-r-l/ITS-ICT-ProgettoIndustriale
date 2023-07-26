@@ -1,29 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using dto = ProgettoIndustriale.Type.Dto;
+using Microsoft.IdentityModel.Tokens;
+using Dto = ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Service.Api.Controllers
 {
     public partial class LoadController
     {
         [HttpGet("getLoadAll")]
-        public IEnumerable<dto.Load> getAllLoad()
+        public IEnumerable<Dto.Load> getAllLoad()
         {
-            return _loadManager.getAllLoads();
+           return _loadManager.getAllLoads();
         }
 
         [HttpGet("getLoadByFilter")]
         public object getLoadByFilter([BindRequired] string macrozone, [BindRequired] DateTime startDate, [BindRequired] DateTime endDate)
         {
-          
+            if (macrozone=="")
+            {
+                _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getLoadByFilter() inserire una macrozone");
+
+                return BadRequest("Inserire una macrozone");
+            }
             if (CheckDate.TryDateCheck(startDate, endDate))
             {
-
                 return _loadManager.getLoadsbyFilter(macrozone, startDate, endDate);
             }
             else
             {
-
                 _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getLoadByFilter() " + CheckDate.errorMessage);
 
                 return new BadRequestObjectResult(CheckDate.errorMessage);
@@ -40,8 +44,12 @@ namespace ProgettoIndustriale.Service.Api.Controllers
             {
                 return _loadManager.getloadbyDates(startDate, endDate); 
             }
+            else
+            {
+                _genericLogger.logMessageTemplate(path: this.ToString()!, logType: "error", message: "getLoadbyDates() " + CheckDate.errorMessage);
 
-            return BadRequest(CheckDate.errorMessage);
+                return new BadRequestObjectResult(CheckDate.errorMessage);
+            }
         }
     }
 }

@@ -36,7 +36,10 @@ builder.Services.AddDbContext<ProgettoIndustrialeContext>(opt =>
 });
 var allowedUrlsForCors = builder.Configuration["AllowedUrlsForCors"].Split(',');
 builder.Services.ConfigureCors("CORSPolicy", allowedUrlsForCors);
-var logger = new LoggerConfiguration().WriteTo.Console().ReadFrom.Configuration(builder.Configuration).Enrich.FromLogContext().CreateLogger();
+var logger = new LoggerConfiguration().WriteTo.Console()
+                                        .ReadFrom.Configuration(builder.Configuration)
+                                        .Enrich.FromLogContext()
+                                        .CreateLogger();
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 
