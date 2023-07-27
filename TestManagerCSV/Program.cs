@@ -1,28 +1,84 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿//// See https://aka.ms/new-console-template for more information
+//using ProgettoIndustriale.Business.Imp;
+//using ProgettoIndustriale.Business;
+//using ProgettoIndustriale.Service.Api;
+//using ProgettoIndustriale.Data;
+//using System;
+//using ProgettoIndustriale.Type;
+//using Microsoft.EntityFrameworkCore;
+//using Pomelo.EntityFrameworkCore.MySql.Infrastructure; // Aggiungi questo import
+//using ProgettoIndustriale.Data;
+//using Microsoft.Extensions.Configuration;
+
+//class Program
+//{
+//    static void Main()
+//    {
+
+//        var configuration = new ConfigurationBuilder()
+//            .SetBasePath(Directory.GetCurrentDirectory())
+//            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+//            .AddEnvironmentVariables()
+//            .Build();
+
+//        var connectionString = configuration.GetConnectionString("ProgettoIndustriale");
+//        var serverVersion = new MariaDbServerVersion(new Version(10, 11, 3)); // Aggiungi la dichiarazione di serverVersion
+
+//        var options = new DbContextOptionsBuilder<ProgettoIndustrialeContext>()
+//            .UseMySql(connectionString, serverVersion).Options;
+
+//        var db = new ProgettoIndustrialeContext(options);
+
+//        DataResetManager dataResetManager = new DataResetManager(db, configuration);
+
+//        dataResetManager.ResetData();
+//        dataResetManager.ResetAutoIncrement(connectionString, serverVersion);
+//        Console.WriteLine("Reset dei dati completato.");
+
+//        DataImportManager dataImportManager = new DataImportManager(db);
+//        // Importa i dati per la tabella MacroZone
+//        dataImportManager.ImportData("macrozone");
+//        // Importa i dati per la tabella Regions
+//        dataImportManager.ImportData("region");
+//        // Importa i dati per la tabella Provinces
+//        dataImportManager.ImportData("province");
+//        // Importa i dati per la tabella Industry
+//        dataImportManager.ImportData("industry");
+
+//        dataImportManager.ImportData("generation");
+
+
+//        Console.WriteLine("Importazione completata.");
+
+//    }
+//}
+
+using Quartz;
+using Quartz.Impl;
+using System;
+using System.Threading.Tasks;
+using System.IO;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Microsoft.Extensions.Configuration.Json;
 using ProgettoIndustriale.Business.Imp;
 using ProgettoIndustriale.Business;
-using ProgettoIndustriale.Service.Api;
 using ProgettoIndustriale.Data;
-using System;
 using ProgettoIndustriale.Type;
-using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure; // Aggiungi questo import
-using Microsoft.Extensions.Configuration;
-namespace Program;
-class Program
-{
-    protected Program(){}
-    protected static void Main()
-    {
 
+public class ProgettoIndustrialeJob : IJob
+{
+    public async Task Execute(IJobExecutionContext context)// parametro passato automaticamente da Quartz.NET
+
+    {
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            .AddEnvironmentVariables()
             .Build();
 
         var connectionString = configuration.GetConnectionString("ProgettoIndustriale");
-        var serverVersion = new MariaDbServerVersion(new Version(10, 11, 3)); // Aggiungi la dichiarazione di serverVersion
+        var serverVersion = new MariaDbServerVersion(new Version(10, 11, 3));
 
         var options = new DbContextOptionsBuilder<ProgettoIndustrialeContext>()
             .UseMySql(connectionString, serverVersion).Options;
@@ -35,104 +91,50 @@ class Program
         Console.WriteLine("Reset dei dati completato.");
 
         DataImportManager dataImportManager = new DataImportManager(db);
-        // Importa i dati per la tabella MacroZone
         dataImportManager.ImportData("macrozone");
-        // Importa i dati per la tabella Regions
         dataImportManager.ImportData("region");
-        // Importa i dati per la tabella Provinces
         dataImportManager.ImportData("province");
-        // Importa i dati per la tabella Industry
         dataImportManager.ImportData("industry");
         dataImportManager.ImportData("generation");
 
-
         Console.WriteLine("Importazione completata.");
-
     }
 }
 
-//using Quartz;
-//using Quartz.Impl;
-//using System;
-//using System.Threading.Tasks;
-//using System.IO;
-//using Microsoft.Extensions.Configuration;
-//using Microsoft.EntityFrameworkCore;
-//using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-//using Microsoft.Extensions.Configuration.Json;
-//using ProgettoIndustriale.Business.Imp;
-//using ProgettoIndustriale.Business;
-//using ProgettoIndustriale.Data;
-//using ProgettoIndustriale.Type;
+public class SchedulerTime
+{
+    static async Task Main(string[] args)
+    {
+        // Initialize the scheduler factory
+        ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
+        IScheduler scheduler = await schedulerFactory.GetScheduler();
 
-//public class ProgettoIndustrialeJob : IJob
-//{
-//    public async Task Execute(IJobExecutionContext context)// parametro passato automaticamente da Quartz.NET
+        // Configure the job
+        var jobDetail = JobBuilder.Create<ProgettoIndustrialeJob>()
+            .WithIdentity("ProgettoIndustrialeJob", "group1")
+            .Build();
 
-//    {
-//        var configuration = new ConfigurationBuilder()
-//            .SetBasePath(Directory.GetCurrentDirectory())
-//            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-//            .Build();
-
-//        var connectionString = configuration.GetConnectionString("ProgettoIndustriale");
-//        var serverVersion = new MariaDbServerVersion(new Version(10, 11, 3));
-
-//        var options = new DbContextOptionsBuilder<ProgettoIndustrialeContext>()
-//            .UseMySql(connectionString, serverVersion).Options;
-
-//        var db = new ProgettoIndustrialeContext(options);
-
-//        DataResetManager dataResetManager = new DataResetManager(db, configuration);
-//        dataResetManager.ResetData();
-//        dataResetManager.ResetAutoIncrement(connectionString, serverVersion);
-//        Console.WriteLine("Reset dei dati completato.");
-
-//        DataImportManager dataImportManager = new DataImportManager(db);
-//        dataImportManager.ImportData("macrozone");
-//        dataImportManager.ImportData("region");
-//        dataImportManager.ImportData("province");
-//        dataImportManager.ImportData("industry");
-//        dataImportManager.ImportData("generation");
-
-//        Console.WriteLine("Importazione completata.");
-//    }
-//}
-
-//public class SchedulerTime
-//{
-//    static async Task Main(string[] args)
-//    {
-//        // Initialize the scheduler factory
-//        ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
-//        IScheduler scheduler = await schedulerFactory.GetScheduler();
-
-//        // Configure the job
-//        var jobDetail = JobBuilder.Create<ProgettoIndustrialeJob>()
-//            .WithIdentity("ProgettoIndustrialeJob", "group1")
-//            .Build();
-
-//        // Configure the trigger to run the job 
-//        ITrigger trigger = TriggerBuilder.Create()
-//            .WithIdentity("ProgettoIndustrialeTrigger", "group1")
-//            .StartNow()
-//            .WithCronSchedule("0 44 12 * * ? *")
-//            .Build();
+        // Configure the trigger to run the job 
+        ITrigger trigger = TriggerBuilder.Create()
+            .WithIdentity("ProgettoIndustrialeTrigger", "group1")
+            .StartNow()
+            .WithCronSchedule("0 54 17 * * ? *")
+            .Build();
 
 
-//        // Add the job and trigger to the scheduler
-//        await scheduler.ScheduleJob(jobDetail, trigger);
+        // Add the job and trigger to the scheduler
+        await scheduler.ScheduleJob(jobDetail, trigger);
 
-//        // Start the scheduler
-//        await scheduler.Start();
+        // Start the scheduler
+        await scheduler.Start();
 
-//        // Wait for a certain period of time to visualize the execution of the job
-//        await Task.Delay(TimeSpan.FromMinutes(1));
+        // Wait for a certain period of time to visualize the execution of the job
+        await Task.Delay(TimeSpan.FromMinutes(2));
 
-//        // Shutdown the scheduler
-//        await scheduler.Shutdown();
-//    }
-//}
+        // Shutdown the scheduler
+        await scheduler.Shutdown();
+    }
+}
 
 
 

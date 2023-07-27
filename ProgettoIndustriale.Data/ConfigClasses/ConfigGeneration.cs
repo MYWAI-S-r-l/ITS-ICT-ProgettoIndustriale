@@ -12,15 +12,12 @@ namespace ProgettoIndustriale.Data.ConfigClasses
         {
 
             entity.Property(g => g.Id).IsRequired().ValueGeneratedOnAdd();
-
             entity.HasKey(g => g.Id);
             
             entity.HasOne(w => w.Date).WithMany(a => a.Generations).HasForeignKey(g => g.IdDate);
-            
-            entity.Property(g => g.GenerationGhw).IsRequired();
-
             entity.Property(d => d.IdDate).HasColumnName("COD_date");
 
+            entity.Property(g => g.GenerationGhw).IsRequired();
 
             entity.Property(g => g.Type).IsRequired();
             
