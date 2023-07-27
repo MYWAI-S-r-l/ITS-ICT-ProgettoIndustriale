@@ -6,6 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using Domain = ProgettoIndustriale.Type.Domain;
 using Dto = ProgettoIndustriale.Type.Dto;
 using Serilog;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProgettoIndustriale.Business.Imp;
 
@@ -24,7 +25,9 @@ public class GenerationManager : IGenerationManager
     {
         try
         {
-            var allGenerations = _context.Generation.ToList();
+            var allGenerations = _context.Generation
+                .Include(x=>x.Date)
+                .ToList();
 
             _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "GetAllGenerations() ritorna " + allGenerations.Count.ToString() + " elementi");
 
@@ -46,8 +49,10 @@ public class GenerationManager : IGenerationManager
 
 
             var allGenerations = _context.Generation
+                .Include(x => x.Date)
                 .Where(x => x.Date != null && x.Date.DateTime > startDate && x.Date.DateTime < endDate)
                 .ToList();
+
 
             _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getGenerationsbyDates() ritorna " + allGenerations.Count.ToString() + " elementi");
 

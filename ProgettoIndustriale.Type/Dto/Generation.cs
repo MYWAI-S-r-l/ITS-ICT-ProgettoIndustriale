@@ -9,5 +9,7 @@
         public double GenerationGhw { get; set; }
 
         public string? Type { get; set; }
+
+        public Date Date { get; set; }
     }
 }

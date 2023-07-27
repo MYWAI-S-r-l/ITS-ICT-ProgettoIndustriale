@@ -24,7 +24,9 @@ namespace ProgettoIndustriale.Business.Imp
             
             try
             {
-                List<Domain.Commodity> commodities = _context.Commodity.ToList();
+                var commodities = _context.Commodity
+                                .Include(x => x.Date)
+                                .ToList();
                 
                 _logger.logMessageTemplate(path: this.ToString()!, logType: "debug", message: "getAllCommodities() ritorna " + commodities.Count.ToString() + " elementi");
 
