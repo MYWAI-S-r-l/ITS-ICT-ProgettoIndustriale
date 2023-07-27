@@ -11,6 +11,8 @@
 
         //trasforma ---> dizionario {data,valore}
         //forse utilizzo oggetto intermedio ?
+
+        public Date? Date { get; set; }
         public List<Dictionary<string, string>>? Data { get; set; }
 
         public string? Unit { get; set; }
