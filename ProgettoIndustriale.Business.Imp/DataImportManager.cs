@@ -24,7 +24,6 @@ namespace ProgettoIndustriale.Business.Imp
         }
 
 
-
         public void ImportData(string tableName)
         {
             List<JsonAnagrafe> tableInfos = LoadTableInfos();
@@ -76,7 +75,6 @@ namespace ProgettoIndustriale.Business.Imp
             }
 
             // Salva gli oggetti di dominio nel database
-
             _context.AddRange(domainObjects);
             _context.SaveChanges();
 
@@ -87,10 +85,15 @@ namespace ProgettoIndustriale.Business.Imp
             var property = obj.GetType().GetProperty(propertyName);
             if (property != null)
             {
-                object convertedValue = Convert.ChangeType(propertyValue, property.PropertyType);
+                // Sostituisci il punto con la virgola nel valore
+                string formattedValue = propertyValue.Replace('.', ',');
+
+                // Tenta di convertire il valore nel tipo corretto
+                object convertedValue = Convert.ChangeType(formattedValue, property.PropertyType);
                 property.SetValue(obj, convertedValue);
             }
         }
+
 
         private List<JsonAnagrafe> LoadTableInfos()
         {

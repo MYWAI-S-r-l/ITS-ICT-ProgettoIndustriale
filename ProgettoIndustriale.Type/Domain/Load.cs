@@ -14,11 +14,10 @@ namespace ProgettoIndustriale.Type.Domain
         public int Id { get; set; }
 
         [Column("total_load_MW")]
-        public int TotalLoadMW { get; set; }
-
+        public double TotalLoadMW { get; set; }
         [Column("forecast_total_load_MW")]
-        public float ForecastTotalLoadMw { get; set; }
-        
+        public double ForecastTotalLoadMw { get; set; }
+
         [Column("COD_date")]
         public int IdDate { get; set; }
 
