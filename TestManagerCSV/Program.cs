@@ -38,17 +38,25 @@
 //        DataImportManager dataImportManager = new DataImportManager(db);
 //        // Importa i dati per la tabella MacroZone
 //        dataImportManager.ImportData("macrozone");
+//        Console.WriteLine("Importazione completata per MacroZone.");
 //        // Importa i dati per la tabella Regions
 //        dataImportManager.ImportData("region");
+//        Console.WriteLine("Importazione completata per Region.");
 //        // Importa i dati per la tabella Provinces
 //        dataImportManager.ImportData("province");
+//        Console.WriteLine("Importazione completata per Province.");
 //        // Importa i dati per la tabella Industry
 //        dataImportManager.ImportData("industry");
+//        Console.WriteLine("Importazione completata per Industry.");
 
 //        dataImportManager.ImportData("generation");
+//        Console.WriteLine("Importazione completata per Generation.");
+
+//        dataImportManager.ImportData("load");
+//        Console.WriteLine("Importazione completata per Load.");
 
 
-//        Console.WriteLine("Importazione completata.");
+//        Console.WriteLine("Importazione completata per tutti i CSV.");
 
 //    }
 //}
@@ -91,13 +99,27 @@ public class ProgettoIndustrialeJob : IJob
         Console.WriteLine("Reset dei dati completato.");
 
         DataImportManager dataImportManager = new DataImportManager(db);
+        // Importa i dati per la tabella MacroZone
         dataImportManager.ImportData("macrozone");
+        Console.WriteLine("Importazione completata per MacroZone.");
+        // Importa i dati per la tabella Regions
         dataImportManager.ImportData("region");
+        Console.WriteLine("Importazione completata per Region.");
+        // Importa i dati per la tabella Provinces
         dataImportManager.ImportData("province");
+        Console.WriteLine("Importazione completata per Province.");
+        // Importa i dati per la tabella Industry
         dataImportManager.ImportData("industry");
-        dataImportManager.ImportData("generation");
+        Console.WriteLine("Importazione completata per Industry.");
 
-        Console.WriteLine("Importazione completata.");
+        dataImportManager.ImportData("generation");
+        Console.WriteLine("Importazione completata per Generation.");
+
+        dataImportManager.ImportData("load");
+        Console.WriteLine("Importazione completata per Load.");
+
+
+        Console.WriteLine("Importazione completata per tutti i CSV.");
     }
 }
 

@@ -33,6 +33,12 @@ BEGIN
     PREPARE generationStmt FROM @generationSql;
     EXECUTE generationStmt;
     DEALLOCATE PREPARE generationStmt;
+   
+    
+    SET @loadSql = 'ALTER TABLE `progettoindustriale`.`load` AUTO_INCREMENT = 1;';
+    PREPARE loadStmt FROM @loadSql;
+    EXECUTE loadStmt;
+    DEALLOCATE PREPARE loadStmt;
 END //
 
 DELIMITER ;

@@ -23,5 +23,10 @@
         "percorso": "C:\\ProgettoIndustriale\\CSV\\Generation.csv",
         "classe": "ProgettoIndustriale.Type.Domain.Generation, ProgettoIndustriale.Type",
         "nometabella": "generation"
+    },
+    {
+        "percorso": "C:\\ProgettoIndustriale\\CSV\\Load.csv",
+        "classe": "ProgettoIndustriale.Type.Domain.Load, ProgettoIndustriale.Type",
+        "nometabella": "load"
     }
 ]
