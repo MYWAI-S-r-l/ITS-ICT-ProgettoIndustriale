@@ -63,38 +63,6 @@
     "apiCalls": [
 
         {
-            "apiCallName": "Weather_Genoa_7gg",
-            "tableName": "Weather",
-            "client": "https://api.open-meteo.com/",
-            "request": "/v1/forecast",
-            "callFrequency": "daily",
-            "lag": 0,
-            "method": "Get",
-            "auth": false,
-            "authType": "",
-            "parameters": [
-                {
-                    "latitude": "44.4114",
-                    "longitude": "8.9326",
-                    "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation",
-                    "is_day": "1"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json; charset=utf-8"
-                }
-            ],
-            "dtoClass": "Dto.Weather",
-            "dtoDataClass": "Dto.WeatherData",
-            "domainClass": "Domain.Weather"
-        },
-
-        {
             "apiCallName": "Prices_Daily",
             "tableName": "Price",
             "client": "https://api.terna.it",
@@ -106,8 +74,8 @@
             "authType": "Terna",
             "parameters": [
                 {
-                    "dateFrom": "",
-                    "dateTo": "",
+                    "dateFrom": "24/07/2023",
+                    "dateTo": "25/07/2023",
                     "dataType": "Orario"
                 }
             ],
@@ -472,6 +440,38 @@
             "dtoClass": "Dto.Commodity",
             "dtoDataClass": "Dto.CommodityData",
             "domainClass": "Domain.Commodity"
+        },
+
+        {
+            "apiCallName": "Weather_Genoa_7gg",
+            "tableName": "Weather",
+            "client": "https://api.open-meteo.com/",
+            "request": "/v1/forecast",
+            "callFrequency": "daily",
+            "lag": 0,
+            "method": "Get",
+            "auth": false,
+            "authType": "",
+            "parameters": [
+                {
+                    "latitude": "44.4114",
+                    "longitude": "8.9326",
+                    "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation",
+                    "is_day": "1"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json; charset=utf-8"
+                }
+            ],
+            "dtoClass": "Dto.Weather",
+            "dtoDataClass": "Dto.WeatherData",
+            "domainClass": "Domain.Weather"
         }
 
     ]

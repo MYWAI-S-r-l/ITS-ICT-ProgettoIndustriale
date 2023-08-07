@@ -6,3 +6,5 @@ pulizia e ordine del codice. La ringraziamo per l'attenzione,
 Buonagiornata,
 
 il gruppo di Data Acquisition
+
+Path: "C:/ProgettoIndustriale/CSV"

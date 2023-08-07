@@ -182,50 +182,6 @@ public class ApiManager : IApiManager
         return Activator.CreateInstance(typeof(List<>).MakeGenericType(domainType)) as IList;
     }
 
-    public IList? GetDtoList(string dtoDataQualifiedName, object dtoObject)
-    {
-        System.Type dtoObjectType = dtoObject.GetType();
-        PropertyInfo listParameterProperty = dtoObjectType.GetProperties()
-            .FirstOrDefault(prop => typeof(IEnumerable).IsAssignableFrom(prop.PropertyType));
-
-        if(listParameterProperty != null)
-        {
-            IEnumerable listParameterValue = (IEnumerable)listParameterProperty.GetValue(dtoObject);
-
-            IList dtoList = GetList(dtoDataQualifiedName);
-
-            if(listParameterValue != null)
-            {
-                foreach (var item in listParameterValue)
-                {
-                    var dtoDataItem = GetClassInstance(dtoDataQualifiedName);
-                    System.Type? targetType = dtoDataItem!.GetType();
-
-                    if (targetType != null)
-                    {
-                        foreach (var prop in targetType.GetProperties())
-                        {
-                            var sourceProp = item.GetType().GetProperty(prop.Name);
-                            if (sourceProp != null && prop.CanWrite)
-                            {
-                                prop.SetValue(dtoDataItem, sourceProp.GetValue(item));
-                            }
-                        }
-
-                        dtoList.Add(dtoDataItem);
-
-                    }
-
-                }
-            }
-
-            return dtoList;
-        }
-
-        return null;
-
-    }
-
     public bool CheckDailyCommodityRecord(string commodityName, int dateId)
     {
         Domain.Commodity? domainRecord = _context.Commodity.FirstOrDefault(
@@ -238,6 +194,14 @@ public class ApiManager : IApiManager
     {
         Domain.Generation? domainRecord = _context.Generation.FirstOrDefault(
     dataItem => dataItem.Type.Contains(generationType) && dataItem.IdDate == dateId);
+        if (domainRecord is null) { return false; };
+        return true;
+    }
+
+    public bool CheckDailyPriceRecord(int macrozoneId, int dateId)
+    {
+        Domain.Price? domainRecord = _context.Price.FirstOrDefault(
+            dataItem => dataItem.IdMacroZone == macrozoneId && dataItem.IdDate == dateId);
         if (domainRecord is null) { return false; };
         return true;
     }
@@ -275,8 +239,15 @@ public class ApiManager : IApiManager
             if (dtoValue != null && domainValue != null)
             {
                 System.Type targetType = domainValue.PropertyType;
+
+                if (targetType.FullName!.Contains("Domain"))
+                {
+                    continue;
+                }
+
                 var convertedValue = Convert.ChangeType(dtoValue, targetType);
                 domainValue.SetValue(domainInstance, convertedValue);
+
             }
         }
     }
@@ -346,7 +317,6 @@ public class ApiManager : IApiManager
 
             if (dtoData != null)
             {
-                //this contains all the data couples from 1980 onwards
                 List<Dto.GenerationData>? dtoDataValues = dtoData.GetValue(dtoObject) as List<Dto.GenerationData>;
 
                 foreach (var value in dtoDataValues!)
@@ -404,13 +374,16 @@ public class ApiManager : IApiManager
             if(dtoData != null)
             {
                 string? dtoDataQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoDataClass);
-                var dtoList = GetDtoList(dtoDataQualifiedName, dtoObject);
+                //use this to create an empty list and move the values of dtoObject within, rather than using the explicits dtoDataValues
+
+
+                List<Dto.DailyPrice>? dtoDataValues = dtoData.GetValue(dtoObject) as List<Dto.DailyPrice>;
 
                 List<PropertyInfo> nonIdProperties = new List<PropertyInfo>();
 
-                if(dtoList!.Count != 0)
+                if(dtoDataValues!.Count != 0)
                 {
-                    foreach (var prop in dtoList[0].GetType().GetProperties().ToList())
+                    foreach (var prop in dtoDataValues[0].GetType().GetProperties().ToList())
                     {
                         if (!prop.Name.Contains("id"))
                         {
@@ -419,7 +392,7 @@ public class ApiManager : IApiManager
                     }
 
                     //each item is dtoDailyPrice
-                    foreach (var value in dtoList!)
+                    foreach (var value in dtoDataValues!)
                     {
                         var domainInstance = GetClassInstance(fullyQualifiedName);
 
@@ -434,7 +407,7 @@ public class ApiManager : IApiManager
                         int domainMacroZoneId = domainMacroZone!.Id;
 
                         var dataId = domainInstance!.GetType().GetProperty("IdDate");
-                        var macrozoneId = domainInstance!.GetType().GetProperty("IdMacrozone");
+                        var macrozoneId = domainInstance!.GetType().GetProperty("IdMacroZone");
 
                         dataId!.SetValue(domainInstance, domainDateId);
                         macrozoneId!.SetValue(domainInstance, domainMacroZoneId);
@@ -450,7 +423,18 @@ public class ApiManager : IApiManager
                     Console.WriteLine($"Empty Price record for {DateTime.Today.AddDays(-apiCall.lag)}");
                 }
 
-                
+                foreach(Domain.Price price in domainList)
+                {
+                    if (!CheckDailyPriceRecord(price.IdMacroZone, price.IdDate))
+                    {
+                        _context.Price.Add(price);
+                        _context.SaveChanges();
+
+                        //WriteLog
+                        Console.WriteLine($"Daily Price Data added for Macrozone: {price.IdMacroZone} on COD_date: {price.IdDate}");
+                    }
+                }
+
             }
         }
 
@@ -467,7 +451,7 @@ public class ApiManager : IApiManager
             {
                 string? dtoDataQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoDataClass);
                 //returns null
-                var dtoList = GetDtoList(dtoDataQualifiedName, dtoObject);
+                //var dtoList = GetDtoList(dtoDataQualifiedName, dtoObject);
             }
 
         }

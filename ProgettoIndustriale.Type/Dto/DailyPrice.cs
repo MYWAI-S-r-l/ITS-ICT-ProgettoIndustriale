@@ -16,6 +16,7 @@ namespace ProgettoIndustriale.Type.Dto
         public string IncentiveComponentEur { get; set; }
         [JsonPropertyName("unbalance_price_EURxMWh")]
         public string UnbalancePriceEur { get; set; }
+        [JsonPropertyName("macrozone")]
         public string Macrozone { get; set; }
         [JsonPropertyName("reference_date")]
         public string Date { get; set; }
