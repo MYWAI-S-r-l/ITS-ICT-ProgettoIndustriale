@@ -74,8 +74,296 @@
             "authType": "Terna",
             "parameters": [
                 {
-                    "dateFrom": "24/07/2023",
-                    "dateTo": "25/07/2023",
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_04_05_2022",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 0,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/04/2022",
+                    "dateTo": "31/05/2022",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_06_07_2022",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 0,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/06/2022",
+                    "dateTo": "31/07/2022",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_08_09_2022",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 0,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/08/2022",
+                    "dateTo": "30/09/2022",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_10_11_2022",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 0,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/10/2022",
+                    "dateTo": "30/11/2022",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_12_2022",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 0,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/12/2022",
+                    "dateTo": "31/12/2022",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_01_02_2023",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 0,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/01/2023",
+                    "dateTo": "28/02/2023",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_03_04_2023",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 0,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/03/2023",
+                    "dateTo": "31/04/2023",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_05_06_2023",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 0,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/05/2023",
+                    "dateTo": "30/06/2023",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_07_2023",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 0,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/07/2023",
+                    "dateTo": "31/07/2023",
                     "dataType": "Orario"
                 }
             ],
