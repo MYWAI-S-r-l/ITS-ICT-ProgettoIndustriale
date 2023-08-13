@@ -96,12 +96,23 @@ public class ApiManager : IApiManager
         return domainDate;
     }
 
-    public Domain.MacroZone? GetMacroZoneId(string macrozone)
+    public Domain.MacroZone? GetMacroZoneId(string macrozone, bool bidding = false)
     {
-        Domain.MacroZone? domainMacroZone = _context.MacroZone.Where(item => 
-        item.Name == macrozone).FirstOrDefault();
+        if(bidding)
+        {
+            Domain.MacroZone? domainMacroZone = _context.MacroZone.Where(
+                item => item.BiddingZone == macrozone).FirstOrDefault();
+            return domainMacroZone;
+        }
+        else if (!bidding)
+        {
+            Domain.MacroZone? domainMacroZone = _context.MacroZone.Where(
+                item =>item.Name == macrozone).FirstOrDefault();
+            return domainMacroZone;
+        }
 
-        return domainMacroZone;
+        return null;
+        
     }
 
     public Dto.ApiCallsLogs? GetApiLog(Dto.JsonApiTemplate apiCall)
@@ -198,8 +209,9 @@ public class ApiManager : IApiManager
         return true;
     }
 
-    public bool CheckDailyPriceRecord(int macrozoneId, int dateId)
+    public bool CheckDailyPriceLoadRecord(int macrozoneId, int dateId)
     {
+        //works the same for load
         Domain.Price? domainRecord = _context.Price.FirstOrDefault(
             dataItem => dataItem.IdMacroZone == macrozoneId && dataItem.IdDate == dateId);
         if (domainRecord is null) { return false; };
@@ -360,7 +372,80 @@ public class ApiManager : IApiManager
 
         if (apiCall.tableName == "Load") 
         {
+
+            //Load historical up to 30/06/2023 already 
+
             //download historical data, get daily
+            string propertyName = ExtractSubstring(apiCall.dtoDataClass);
+            var dtoData = dtoObject.GetType().GetProperty(propertyName);
+
+            if(dtoData != null)
+            {
+                string? dtoDataQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoDataClass);
+
+                IList? dtoDataValues = dtoData.GetValue(dtoObject) as IList;
+
+                List<PropertyInfo> nonIdProperties = new List<PropertyInfo>();
+
+                if (dtoDataValues!.Count != 0)
+                {
+                    foreach (var prop in dtoDataValues[0].GetType().GetProperties().ToList())
+                    {
+                        if (!prop.Name.Contains("id"))
+                        {
+                            nonIdProperties.Add(prop);
+                        }
+                    }
+
+                    foreach(var value in dtoDataValues!)
+                    {
+                        string valueDate = (string)value!.GetType().GetProperty("Date")?.GetValue(value, null);
+                        DateTime checkDate = DateTime.Parse(valueDate!);
+
+                        if (checkDate.Minute == 0 && checkDate.Second == 0)
+                        {
+                            var domainInstance = GetClassInstance(fullyQualifiedName);
+
+                            PropertyMatcher(nonIdProperties, value, domainInstance!);
+
+                            Domain.Date? domainDate = GetDate(valueDate!, false);
+                            int domainDateId = domainDate!.Id;
+
+                            string valueMacroZone = (string)value!.GetType().GetProperty("BiddingZone")?.GetValue(value, null);
+                            Domain.MacroZone? domainMacroZone = GetMacroZoneId(valueMacroZone, true);
+                            int domainMacroZoneId = domainMacroZone!.Id;
+
+                            var dataId = domainInstance!.GetType().GetProperty("IdDate");
+                            var macrozoneId = domainInstance!.GetType().GetProperty("IdMacroZone");
+
+                            dataId!.SetValue(domainInstance, domainDateId);
+                            macrozoneId!.SetValue(domainInstance, domainMacroZoneId);
+
+                            domainList.Add(domainInstance);
+
+                        }
+                    }
+                }
+
+                else
+                {
+                    //Write Log
+                    Console.WriteLine($"Empty Price record for {DateTime.Today.AddDays(-apiCall.lag)}");
+                }
+
+                foreach(Domain.Load load in domainList)
+                {
+                    if (!CheckDailyPriceLoadRecord(load.IdMacroZone, load.IdDate))
+                    {
+                        _context.Load.Add(load);
+                        _context.SaveChanges();
+
+                        //WriteLog
+                        Console.WriteLine($"Daily Load Data added for Macrozone: {load.IdMacroZone} on COD_date: {load.IdDate}");
+                    }
+                }
+            }
+
         }
 
         // ======================= Price Checks ================================
@@ -374,10 +459,10 @@ public class ApiManager : IApiManager
             if(dtoData != null)
             {
                 string? dtoDataQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoDataClass);
-                //use this to create an empty list and move the values of dtoObject within, rather than using the explicits dtoDataValues
 
+                IList? dtoDataValues = dtoData.GetValue(dtoObject) as IList;
 
-                List<Dto.DailyPrice>? dtoDataValues = dtoData.GetValue(dtoObject) as List<Dto.DailyPrice>;
+                //List<Dto.DailyPrice>? dtoDataValues = dtoData.GetValue(dtoObject) as List<Dto.DailyPrice>;
 
                 List<PropertyInfo> nonIdProperties = new List<PropertyInfo>();
 
@@ -413,7 +498,6 @@ public class ApiManager : IApiManager
                         macrozoneId!.SetValue(domainInstance, domainMacroZoneId);
 
                         domainList.Add(domainInstance);
-                        //remember to cast
                     }
                 }
 
@@ -425,7 +509,7 @@ public class ApiManager : IApiManager
 
                 foreach(Domain.Price price in domainList)
                 {
-                    if (!CheckDailyPriceRecord(price.IdMacroZone, price.IdDate))
+                    if (!CheckDailyPriceLoadRecord(price.IdMacroZone, price.IdDate))
                     {
                         _context.Price.Add(price);
                         _context.SaveChanges();
@@ -447,11 +531,12 @@ public class ApiManager : IApiManager
             string propertyName = ExtractSubstring(apiCall.dtoDataClass);
             var dtoData = dtoObject.GetType().GetProperty(propertyName);
 
-            if(dtoData != null)
+            if (dtoData != null)
             {
                 string? dtoDataQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoDataClass);
-                //returns null
-                //var dtoList = GetDtoList(dtoDataQualifiedName, dtoObject);
+                //use this to create an empty list and move the values of dtoObject within, rather than using the explicits dtoDataValues
+
+                IList dtoDataValues = (IList)dtoData.GetValue(dtoObject);
             }
 
         }
@@ -678,7 +763,17 @@ public class ApiManager : IApiManager
                         }
                         else if (key == "dateTo" && value.IsNullOrEmpty())
                         {
-                            DateTime dateTo = DateTime.Today.AddDays(-lag+1);
+                            DateTime dateTo = DateTime.Today.AddDays(-lag);
+                            value = dateTo.ToString("d");
+                        }
+                    }
+
+                    if (apiCall.callFrequency == "once" && apiCall.lag != 0)
+                    {
+                        int lag = apiCall.lag;
+                        if (key == "dateTo" && value.IsNullOrEmpty())
+                        {
+                            DateTime dateTo = DateTime.Today.AddDays(-lag);
                             value = dateTo.ToString("d");
                         }
                     }

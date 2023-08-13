@@ -1,4 +1,6 @@
-﻿namespace ProgettoIndustriale.Type.Dto
+﻿using System.Text.Json.Serialization;
+
+namespace ProgettoIndustriale.Type.Dto
 {
     public class Load
     {
@@ -9,6 +11,8 @@
         public double forecastTotalLoadMw { get; set; }
         public Date Date { get; set; }
         public  MacroZone MacroZone { get; set; }
+        [JsonPropertyName("totalLoad")]
+        public List<LoadData> LoadData { get; set; }
 
     }
 }

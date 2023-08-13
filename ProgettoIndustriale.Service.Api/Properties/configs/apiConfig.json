@@ -63,6 +63,518 @@
     "apiCalls": [
 
         {
+            "apiCallName": "Load_Daily_NORD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "NORD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_CNORD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "CNORD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_SUD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "SUD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_CSUD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "CSUD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_SARD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "SARD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_SICI",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "SICI"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_CALA",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "CALA"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_ITALY",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "ITALY"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_History_NORD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "27/07/2023",
+                    "dateTo": "",
+                    "biddingZone": "NORD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_History_CNORD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "27/07/2023",
+                    "dateTo": "",
+                    "biddingZone": "CNORD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_History_SUD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "27/07/2023",
+                    "dateTo": "",
+                    "biddingZone": "SUD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_History_CSUD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "27/07/2023",
+                    "dateTo": "",
+                    "biddingZone": "CSUD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_History_SARD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "27/07/2023",
+                    "dateTo": "",
+                    "biddingZone": "SARD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_History_SICI",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "27/07/2023",
+                    "dateTo": "",
+                    "biddingZone": "SICI"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_History_CALA",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "27/07/2023",
+                    "dateTo": "",
+                    "biddingZone": "CALA"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_History_ITALY",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "27/07/2023",
+                    "dateTo": "",
+                    "biddingZone": "ITALY"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
             "apiCallName": "Prices_Daily",
             "tableName": "Price",
             "client": "https://api.terna.it",
