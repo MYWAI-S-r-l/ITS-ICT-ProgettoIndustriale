@@ -257,9 +257,19 @@ public class ApiManager : IApiManager
                     continue;
                 }
 
-                var convertedValue = Convert.ChangeType(dtoValue, targetType);
-                domainValue.SetValue(domainInstance, convertedValue);
+                if (targetType == typeof(double) && dtoValue is string dtoString)
+                {
+                    if (double.TryParse(dtoString, NumberStyles.Any, CultureInfo.InvariantCulture, out double convertedValue))
+                    {
+                        domainValue.SetValue(domainInstance, convertedValue);
+                    }
+                }
 
+                else
+                {
+                    var convertedValue = Convert.ChangeType(dtoValue, targetType);
+                    domainValue.SetValue(domainInstance, convertedValue);
+                }
             }
         }
     }
