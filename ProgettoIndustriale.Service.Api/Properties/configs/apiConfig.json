@@ -108,7 +108,7 @@
                 {
                     "dateFrom": "",
                     "dateTo": "",
-                    "biddingZone": "CNORD"
+                    "biddingZone": "CNOR"
                 }
             ],
             "param_type": "url",
@@ -364,7 +364,7 @@
                 {
                     "dateFrom": "27/07/2023",
                     "dateTo": "",
-                    "biddingZone": "CNORD"
+                    "biddingZone": "CNOR"
                 }
             ],
             "param_type": "url",
@@ -927,6 +927,38 @@
         },
 
         {
+            "apiCallName": "Generation_Thermal_History",
+            "tableName": "Generation",
+            "client": "https://api.terna.it",
+            "request": "/transparency/v1.0/getactualgeneration",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "24/07/2023",
+                    "dateTo": "",
+                    "type": "Thermal"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Generation",
+            "dtoDataClass": "Dto.GenerationData",
+            "domainClass": "Domain.Generation"
+        },
+
+        {
             "apiCallName": "Generation_Wind_Daily",
             "tableName": "Generation",
             "client": "https://api.terna.it",
@@ -939,6 +971,38 @@
             "parameters": [
                 {
                     "dateFrom": "",
+                    "dateTo": "",
+                    "type": "Wind"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Generation",
+            "dtoDataClass": "Dto.GenerationData",
+            "domainClass": "Domain.Generation"
+        },
+
+        {
+            "apiCallName": "Generation_Wind_History",
+            "tableName": "Generation",
+            "client": "https://api.terna.it",
+            "request": "/transparency/v1.0/getactualgeneration",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "24/07/2023",
                     "dateTo": "",
                     "type": "Wind"
                 }
@@ -991,6 +1055,38 @@
         },
 
         {
+            "apiCallName": "Generation_Geothermal_History",
+            "tableName": "Generation",
+            "client": "https://api.terna.it",
+            "request": "/transparency/v1.0/getactualgeneration",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "24/07/2023",
+                    "dateTo": "",
+                    "type": "Geothermal"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Generation",
+            "dtoDataClass": "Dto.GenerationData",
+            "domainClass": "Domain.Generation"
+        },
+
+        {
             "apiCallName": "Generation_Photovoltaic_Daily",
             "tableName": "Generation",
             "client": "https://api.terna.it",
@@ -1003,6 +1099,38 @@
             "parameters": [
                 {
                     "dateFrom": "",
+                    "dateTo": "",
+                    "type": "Photovoltaic"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Generation",
+            "dtoDataClass": "Dto.GenerationData",
+            "domainClass": "Domain.Generation"
+        },
+
+        {
+            "apiCallName": "Generation_Photovoltaic_History",
+            "tableName": "Generation",
+            "client": "https://api.terna.it",
+            "request": "/transparency/v1.0/getactualgeneration",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "24/07/2023",
                     "dateTo": "",
                     "type": "Photovoltaic"
                 }
@@ -1055,6 +1183,38 @@
         },
 
         {
+            "apiCallName": "Generation_Self-consumption_History",
+            "tableName": "Generation",
+            "client": "https://api.terna.it",
+            "request": "/transparency/v1.0/getactualgeneration",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "24/07/2023",
+                    "dateTo": "",
+                    "type": "Self-consumption"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Generation",
+            "dtoDataClass": "Dto.GenerationData",
+            "domainClass": "Domain.Generation"
+        },
+
+        {
             "apiCallName": "Generation_Hydro_Daily",
             "tableName": "Generation",
             "client": "https://api.terna.it",
@@ -1085,6 +1245,38 @@
             "dtoDataClass": "Dto.GenerationData",
             "domainClass": "Domain.Generation"
         },
+
+        {
+            "apiCallName": "Generation_Hydro_History",
+            "tableName": "Generation",
+            "client": "https://api.terna.it",
+            "request": "/transparency/v1.0/getactualgeneration",
+            "callFrequency": "once",
+            "lag": 1,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "24/07/2023",
+                    "dateTo": "",
+                    "type": "Hydro"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Generation",
+            "dtoDataClass": "Dto.GenerationData",
+            "domainClass": "Domain.Generation"
+        }
 
         {
             "apiCallName": "Commodities_Natural Gas_History",
@@ -1243,7 +1435,7 @@
         },
 
         {
-            "apiCallName": "Weather_Genoa_7gg",
+            "apiCallName": "Weather_Genoa_Forecast_7gg",
             "tableName": "Weather",
             "client": "https://api.open-meteo.com/",
             "request": "/v1/forecast",
