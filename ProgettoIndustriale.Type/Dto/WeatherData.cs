@@ -47,5 +47,8 @@ namespace ProgettoIndustriale.Type.Dto
 
         [JsonPropertyName("precipitation")]
         public List<double> Precipitation { get; set; }
+
+        [JsonPropertyName("is_day")]
+        public List<int> IsDay { get; set; }
     }
 }

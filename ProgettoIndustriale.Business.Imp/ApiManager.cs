@@ -91,12 +91,17 @@ public class ApiManager : IApiManager
         else { filterDateTime = DateTime.Parse(filterDate); }
         
         Domain.Date? domainDate = _context.Date.Where(dateItem =>
-            dateItem.DateTime == filterDateTime).FirstOrDefault();
+            dateItem.DateTime == filterDateTime.Date).FirstOrDefault();
+
+        if(domainDate == null)
+        {
+            domainDate = _context.Date.Where(dateItem => dateItem.Year == filterDateTime.Year && dateItem.Month == filterDateTime.Month && dateItem.Day == filterDateTime.Day).FirstOrDefault();
+        }
 
         return domainDate;
     }
 
-    public Domain.MacroZone? GetMacroZoneId(string macrozone, bool bidding = false)
+    public Domain.MacroZone? GetMacroZone(string macrozone, bool bidding = false)
     {
         if(bidding)
         {
@@ -113,6 +118,13 @@ public class ApiManager : IApiManager
 
         return null;
         
+    }
+
+    public Domain.Province? GetProvince(string lat, string longit)
+    {
+        Domain.Province? domainProvince = _context.Province.Where(item => item.Latitude == lat && item.Longitude == longit).FirstOrDefault();
+        return domainProvince;
+
     }
 
     public Dto.ApiCallsLogs? GetApiLog(Dto.JsonApiTemplate apiCall)
@@ -214,6 +226,14 @@ public class ApiManager : IApiManager
         //works the same for load
         Domain.Price? domainRecord = _context.Price.FirstOrDefault(
             dataItem => dataItem.IdMacroZone == macrozoneId && dataItem.IdDate == dateId);
+        if (domainRecord is null) { return false; };
+        return true;
+    }
+
+    public bool CheckWeatherRecord(int provinceId, int dateId)
+    {
+        Domain.Weather? domainRecord = _context.Weather.FirstOrDefault(
+            dataItem => dataItem.IdProvince == provinceId && dataItem.IdDate == dateId);
         if (domainRecord is null) { return false; };
         return true;
     }
@@ -422,7 +442,7 @@ public class ApiManager : IApiManager
                             int domainDateId = domainDate!.Id;
 
                             string valueMacroZone = (string)value!.GetType().GetProperty("BiddingZone")?.GetValue(value, null);
-                            Domain.MacroZone? domainMacroZone = GetMacroZoneId(valueMacroZone, true);
+                            Domain.MacroZone? domainMacroZone = GetMacroZone(valueMacroZone, true);
                             int domainMacroZoneId = domainMacroZone!.Id;
 
                             var dataId = domainInstance!.GetType().GetProperty("IdDate");
@@ -468,11 +488,9 @@ public class ApiManager : IApiManager
 
             if(dtoData != null)
             {
-                string? dtoDataQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoDataClass);
+                //string? dtoDataQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoDataClass);
 
                 IList? dtoDataValues = dtoData.GetValue(dtoObject) as IList;
-
-                //List<Dto.DailyPrice>? dtoDataValues = dtoData.GetValue(dtoObject) as List<Dto.DailyPrice>;
 
                 List<PropertyInfo> nonIdProperties = new List<PropertyInfo>();
 
@@ -498,7 +516,7 @@ public class ApiManager : IApiManager
                         int domainDateId = domainDate!.Id;
 
                         string valueMacroZone = (string)value!.GetType().GetProperty("Macrozone")?.GetValue(value, null);
-                        Domain.MacroZone? domainMacroZone = GetMacroZoneId(valueMacroZone);
+                        Domain.MacroZone? domainMacroZone = GetMacroZone(valueMacroZone);
                         int domainMacroZoneId = domainMacroZone!.Id;
 
                         var dataId = domainInstance!.GetType().GetProperty("IdDate");
@@ -543,13 +561,80 @@ public class ApiManager : IApiManager
 
             if (dtoData != null)
             {
-                string? dtoDataQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoDataClass);
-                //use this to create an empty list and move the values of dtoObject within, rather than using the explicits dtoDataValues
 
-                IList dtoDataValues = (IList)dtoData.GetValue(dtoObject);
+                //string? dtoQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoClass);
+
+                WeatherData? weatherData = dtoData.GetValue(dtoObject) as WeatherData;
+
+                List<PropertyInfo> nonIdProperties = new List<PropertyInfo>();
+
+                foreach (var prop in weatherData!.GetType().GetProperties().ToList())
+                {
+                    if (!prop.Name.Contains("id"))
+                    {
+                        nonIdProperties.Add(prop);
+                    }
+                }
+
+                string lat = apiCall.parameters[0]["latitude"].Replace(".", ",");
+                string longit = apiCall.parameters[0]["longitude"].Replace(".", ",");
+                var province = GetProvince(lat, longit);
+                int domainProvinceId = province!.Id;
+
+                int count = weatherData.Time.Count;
+
+                for (int i = 0; i < count; i++)
+                {
+                    var domainInstance = GetClassInstance(fullyQualifiedName);
+
+                    var provinceId = domainInstance!.GetType().GetProperty("IdProvince");
+                    provinceId!.SetValue(domainInstance, domainProvinceId);
+
+                    foreach (PropertyInfo prop in nonIdProperties)
+                    {
+                        if (prop.Name.Contains("Time"))
+                        {
+                            string dataValue = weatherData.Time[i].Replace('T', ' ');
+                            var domainDate = GetDate(dataValue);
+                            var dataId = domainInstance!.GetType().GetProperty("IdDate");
+                            dataId!.SetValue(domainInstance, domainDate!.Id);
+                        }
+
+                        else
+                        {
+                            var weatherProp = domainInstance!.GetType().GetProperty(prop.Name);
+
+                            IList? dataValues = weatherData.GetType().GetProperty(prop.Name)?.GetValue(weatherData) as IList;
+                            var dataValue = dataValues![i];
+
+                            weatherProp!.SetValue(domainInstance, dataValue);
+                        }
+                    }
+
+                    domainList.Add(domainInstance);
+                }
+            }
+
+            else if (dtoData is null)
+            {
+                //Write Log
+                Console.WriteLine($"Empty Weather record for {DateTime.Today.AddDays(-apiCall.lag)}");
+            }
+
+            foreach (Domain.Weather weather in domainList)
+            {
+                if (!CheckDailyPriceLoadRecord(weather.IdProvince, weather.IdDate))
+                {
+                    _context.Weather.Add(weather);
+                    _context.SaveChanges();
+
+                    //WriteLog
+                    Console.WriteLine($"Daily Weather Data added for Province: {weather.IdProvince} on COD_date: {weather.IdDate}");
+                }
             }
 
         }
+
 
         // ======================= Commodity Checks ============================
 
