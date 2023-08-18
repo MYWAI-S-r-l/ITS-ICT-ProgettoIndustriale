@@ -554,25 +554,35 @@ public class ApiManager : IApiManager
 
         if (apiCall.tableName == "Weather")
         {
-            //check if api docs give historical data, otherwise both daily and historical
-            //remember to cast everything and their dog to double
             string propertyName = ExtractSubstring(apiCall.dtoDataClass);
             var dtoData = dtoObject.GetType().GetProperty(propertyName);
 
             if (dtoData != null)
             {
-
-                //string? dtoQualifiedName = string.Join(".", "ProgettoIndustriale.Type", apiCall.dtoClass);
-
                 WeatherData? weatherData = dtoData.GetValue(dtoObject) as WeatherData;
-
                 List<PropertyInfo> nonIdProperties = new List<PropertyInfo>();
 
-                foreach (var prop in weatherData!.GetType().GetProperties().ToList())
+                if (apiCall.apiCallName.Contains("Forecast"))
                 {
-                    if (!prop.Name.Contains("id"))
+                    foreach (var prop in weatherData!.GetType().GetProperties().ToList())
                     {
-                        nonIdProperties.Add(prop);
+                        if (!prop.Name.Contains("id"))
+                        {
+                            nonIdProperties.Add(prop);
+                        }
+                    }
+                }
+
+                if (apiCall.apiCallName.Contains("History"))
+                {
+                    var excludePropName = new List<string> { "id", "WindSpeed80m", "Shower", "SnowDepth" };
+                    
+                    foreach (var prop in weatherData!.GetType().GetProperties().ToList())
+                    {
+                        if (!excludePropName.Contains(prop.Name))
+                        {
+                            nonIdProperties.Add(prop);
+                        }
                     }
                 }
 
@@ -582,6 +592,7 @@ public class ApiManager : IApiManager
                 int domainProvinceId = province!.Id;
 
                 int count = weatherData.Time.Count;
+
 
                 for (int i = 0; i < count; i++)
                 {
@@ -595,6 +606,7 @@ public class ApiManager : IApiManager
                         if (prop.Name.Contains("Time"))
                         {
                             string dataValue = weatherData.Time[i].Replace('T', ' ');
+
                             var domainDate = GetDate(dataValue);
                             var dataId = domainInstance!.GetType().GetProperty("IdDate");
                             dataId!.SetValue(domainInstance, domainDate!.Id);
@@ -605,6 +617,7 @@ public class ApiManager : IApiManager
                             var weatherProp = domainInstance!.GetType().GetProperty(prop.Name);
 
                             IList? dataValues = weatherData.GetType().GetProperty(prop.Name)?.GetValue(weatherData) as IList;
+
                             var dataValue = dataValues![i];
 
                             weatherProp!.SetValue(domainInstance, dataValue);
@@ -623,13 +636,13 @@ public class ApiManager : IApiManager
 
             foreach (Domain.Weather weather in domainList)
             {
-                if (!CheckDailyPriceLoadRecord(weather.IdProvince, weather.IdDate))
+                if (!CheckWeatherRecord(weather.IdProvince, weather.IdDate))
                 {
                     _context.Weather.Add(weather);
                     _context.SaveChanges();
 
                     //WriteLog
-                    Console.WriteLine($"Daily Weather Data added for Province: {weather.IdProvince} on COD_date: {weather.IdDate}");
+                    Console.WriteLine($"Weather Data added for Province: {weather.IdProvince} on COD_date: {weather.IdDate}");
                 }
             }
 
@@ -863,13 +876,22 @@ public class ApiManager : IApiManager
                         }
                     }
 
-                    if (apiCall.callFrequency == "once" && apiCall.lag != 0)
+                    if (apiCall.callFrequency == "once")
                     {
                         int lag = apiCall.lag;
-                        if (key == "dateTo" && value.IsNullOrEmpty())
+                        if (key.Contains("dateTo") && value.IsNullOrEmpty() || key.Contains("end_date") && value.IsNullOrEmpty())
                         {
                             DateTime dateTo = DateTime.Today.AddDays(-lag);
-                            value = dateTo.ToString("d");
+
+                            if (key.Contains("dateTo"))
+                            {
+                                value = dateTo.ToString("d");
+                            }
+                            
+                            else if(key.Contains("end_date"))
+                            {
+                                value = dateTo.ToString("yyyy-MM-dd");
+                            }
                         }
                     }
 
