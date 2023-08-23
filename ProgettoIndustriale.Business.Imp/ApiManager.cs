@@ -87,18 +87,35 @@ public class ApiManager : IApiManager
     public Domain.Date? GetDate(string filterDate, bool date = true)
     {
         DateTime filterDateTime;
-        if (date) { filterDateTime = DateTime.Parse(filterDate).Date; }
-        else { filterDateTime = DateTime.Parse(filterDate); }
-        
-        Domain.Date? domainDate = _context.Date.Where(dateItem =>
+        if (date) 
+        { 
+            filterDateTime = DateTime.Parse(filterDate).Date;
+            Domain.Date? domainDate = _context.Date.Where(dateItem =>
             dateItem.DateTime == filterDateTime.Date).FirstOrDefault();
 
-        if(domainDate == null)
-        {
-            domainDate = _context.Date.Where(dateItem => dateItem.Year == filterDateTime.Year && dateItem.Month == filterDateTime.Month && dateItem.Day == filterDateTime.Day).FirstOrDefault();
-        }
+            if (domainDate == null)
+            {
+                domainDate = _context.Date.Where(dateItem => dateItem.Year == filterDateTime.Year && dateItem.Month == filterDateTime.Month && dateItem.Day == filterDateTime.Day).FirstOrDefault();
+            }
 
-        return domainDate;
+            return domainDate;
+
+        }
+        else 
+        { 
+            filterDateTime = DateTime.Parse(filterDate);
+            Domain.Date? domainDate = _context.Date.Where(dateItem =>
+            dateItem.DateTime == filterDateTime).FirstOrDefault();
+
+            if (domainDate == null)
+            {
+                domainDate = _context.Date.Where(dateItem => dateItem.Year == filterDateTime.Year && dateItem.Month == filterDateTime.Month && dateItem.Day == filterDateTime.Day).FirstOrDefault();
+            }
+
+            return domainDate;
+
+        }
+        
     }
 
     public Domain.MacroZone? GetMacroZone(string macrozone, bool bidding = false)
@@ -393,9 +410,10 @@ public class ApiManager : IApiManager
                     _context.SaveChanges();
 
                     //WriteLog
-                    Console.WriteLine($"Daily Generation Data added for Energy Type: {gen.Type} on COD_Date: {gen.IdDate}");
+                    //Console.WriteLine($"Daily Generation Data added for Energy Type: {gen.Type} on COD_Date: {gen.IdDate}");
                 }
             }
+            Console.WriteLine($"Generation Data added for Province {apiCall.apiCallName}");
         }
 
         // ======================= Load Checks =================================
@@ -471,9 +489,10 @@ public class ApiManager : IApiManager
                         _context.SaveChanges();
 
                         //WriteLog
-                        Console.WriteLine($"Daily Load Data added for Macrozone: {load.IdMacroZone} on COD_date: {load.IdDate}");
+                        //Console.WriteLine($"Daily Load Data added for Macrozone: {load.IdMacroZone} on COD_date: {load.IdDate}");
                     }
                 }
+                Console.WriteLine($"Load Data added for Province {apiCall.apiCallName}");
             }
 
         }
@@ -543,9 +562,10 @@ public class ApiManager : IApiManager
                         _context.SaveChanges();
 
                         //WriteLog
-                        Console.WriteLine($"Daily Price Data added for Macrozone: {price.IdMacroZone} on COD_date: {price.IdDate}");
+                        //Console.WriteLine($"Daily Price Data added for Macrozone: {price.IdMacroZone} on COD_date: {price.IdDate}");
                     }
                 }
+                Console.WriteLine($"Price Data added for {apiCall.apiCallName}");
 
             }
         }
@@ -593,7 +613,6 @@ public class ApiManager : IApiManager
 
                 int count = weatherData.Time.Count;
 
-
                 for (int i = 0; i < count; i++)
                 {
                     var domainInstance = GetClassInstance(fullyQualifiedName);
@@ -607,7 +626,7 @@ public class ApiManager : IApiManager
                         {
                             string dataValue = weatherData.Time[i].Replace('T', ' ');
 
-                            var domainDate = GetDate(dataValue);
+                            Domain.Date? domainDate = GetDate(dataValue, false);
                             var dataId = domainInstance!.GetType().GetProperty("IdDate");
                             dataId!.SetValue(domainInstance, domainDate!.Id);
                         }
@@ -642,9 +661,10 @@ public class ApiManager : IApiManager
                     _context.SaveChanges();
 
                     //WriteLog
-                    Console.WriteLine($"Weather Data added for Province: {weather.IdProvince} on COD_date: {weather.IdDate}");
+                    //Console.WriteLine($"Weather Data added for Province: {weather.IdProvince} on COD_date: {weather.IdDate}");
                 }
             }
+            Console.WriteLine($"Weather Data added for Province {apiCall.apiCallName}");
 
         }
 
@@ -684,7 +704,7 @@ public class ApiManager : IApiManager
                         return dataItemDate.Date == filterDate.Date;
                     });
 
-                    if (filteredDataValue is null)
+                    if (filteredDataValue == null)
                     {
                         //Write log
                         Console.WriteLine($"Commodity Log Not Found for {commodityName} on {filterDate}");
@@ -784,28 +804,10 @@ public class ApiManager : IApiManager
                     _context.Commodity.Add((Domain.Commodity)commodity);
                     _context.SaveChanges();
                     //Write Log
-                    Console.WriteLine($"Commodity Data added for {commodityName} COD_Date: {commodity.IdDate}");
+                    //Console.WriteLine($"Commodity Data added for {commodityName} COD_Date: {commodity.IdDate}");
                 }
             }
-
-
-            // Get the DbSet corresponding to the table dynamically. --> could replace last bit
-            //var dbSetProperty = _context.GetType().GetProperty(apiCall.tableName);
-            //if (dbSetProperty != null && dbSetProperty.PropertyType.IsGenericType)
-            //{
-            //    //obtains dbSet object
-            //    var dbSet = dbSetProperty.GetValue(_context);
-            //    if (dbSet != null)
-            //    {
-            //        // Add the domainObject to the DbSet. --> what if I have to do this multiple times (multiple records?)
-            //        MethodInfo? addMethod = dbSet.GetType().GetMethod("Add");
-            //        addMethod.Invoke(dbSet, new[] { domainInstance }); <-- still possible issue with domainInstance's type
-            //        _context.SaveChanges();
-
-            //    }
-
-            //    //Write Log of results
-            //}
+            Console.WriteLine($"Commodity Data added for Province {apiCall.apiCallName}");
 
         }
     }
@@ -923,7 +925,6 @@ public class ApiManager : IApiManager
 
                     UpdateTable(dtoObject, apiCall);
 
-                    //return StatusCode and check through that?
                 }
             }
 
@@ -965,14 +966,39 @@ public class ApiManager : IApiManager
                     AddApiLog(apiCall);
                 }
 
+                else if ((apiCall.callFrequency.Equals("daily", StringComparison.OrdinalIgnoreCase) &&
+                    (DateTime.Now - log.LastSuccessfulRun).TotalHours >= 24 && apiCall.auth))
+                {
+                    var tokenCall = tokenCalls!.FirstOrDefault(call => call.apiCallName == apiCall.authType);
+
+                    await Task.Delay(TimeSpan.FromSeconds(2));
+
+                    await RetrieveData(tokenCall);
+
+                    Dto.ApiCallsLogs? tokenLog = GetApiLog(tokenCall);
+
+                    if (tokenLog == null) { AddApiLog(tokenCall!); }
+                    else { UpdateApiLog(tokenCall); };
+
+                    await Task.Delay(TimeSpan.FromSeconds(2));
+
+                    await RetrieveData(apiCall);
+
+                    UpdateApiLog(apiCall);
+                }
+
                 //check that LastSucessfulRun <= 24h
                 //might need to adjust the >= 24 depending on how long it takes to run
                 else if (apiCall.callFrequency.Equals("daily", StringComparison.OrdinalIgnoreCase) &&
-                    (DateTime.Now - log.LastSuccessfulRun).TotalHours >= 24)
+                    (DateTime.Now - log.LastSuccessfulRun).TotalHours >= 24 && !apiCall.auth)
                 {
                     await RetrieveData(apiCall);
 
                     UpdateApiLog(apiCall);
+                }
+                else
+                {
+                    Console.WriteLine($"{apiCall.apiCallName} is up to date");  
                 }
             }
         }

@@ -31,15 +31,23 @@ class Program
         var apiManager = new ProgettoIndustriale.Business.Imp.ApiManager(dbContext, configuration);
 
         // Location of the config file
-        var jsonConfigLocation = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\apiConfig.json";
+        var apiConfig = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\apiConfig.json";
+        var weatherHistory2021 = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2021.json";
+        var weatherHistory2022 = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2022.json";
+        var weatherHistory2023 = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2023.json";
+        var weatherForecastConfig = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherForecastCalls.json";
 
-        // Process the config file and get the JsonApiConfig object
-        var config = apiManager.ProcessConfigFile(jsonConfigLocation);
+        List<string> pathList = new List<string> { apiConfig, weatherHistory2021, weatherHistory2022, weatherHistory2023, weatherForecastConfig };
 
-        if (config != null)
+        foreach (var path in pathList)
         {
-            // Run the API calls
-            apiManager.RunCalls(config).GetAwaiter().GetResult();
+            var config = apiManager.ProcessConfigFile(path);
+
+            if (config != null)
+            {
+                // Run the API calls
+                apiManager.RunCalls(config).GetAwaiter().GetResult();
+            }
         }
 
         // Dispose the DbContext

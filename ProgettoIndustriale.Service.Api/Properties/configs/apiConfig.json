@@ -63,269 +63,12 @@
     "apiCalls": [
 
         {
-
-            "apiCallName": "Load_Daily_NORD",
-            "tableName": "Load",
-            "client": "https://api.terna.it",
-            "request": "transparency/v1.0/gettotalload",
-            "callFrequency": "daily",
-            "lag": 1,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "",
-                    "dateTo": "",
-                    "biddingZone": "NORD"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Load",
-            "dtoDataClass": "Dto.LoadData",
-            "domainClass": "Domain.Load"
-        },
-
-        {
-            "apiCallName": "Load_Daily_CNORD",
-            "tableName": "Load",
-            "client": "https://api.terna.it",
-            "request": "transparency/v1.0/gettotalload",
-            "callFrequency": "daily",
-            "lag": 1,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "",
-                    "dateTo": "",
-                    "biddingZone": "CNOR"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Load",
-            "dtoDataClass": "Dto.LoadData",
-            "domainClass": "Domain.Load"
-        },
-
-        {
-            "apiCallName": "Load_Daily_SUD",
-            "tableName": "Load",
-            "client": "https://api.terna.it",
-            "request": "transparency/v1.0/gettotalload",
-            "callFrequency": "daily",
-            "lag": 1,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "",
-                    "dateTo": "",
-                    "biddingZone": "SUD"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Load",
-            "dtoDataClass": "Dto.LoadData",
-            "domainClass": "Domain.Load"
-        },
-
-        {
-            "apiCallName": "Load_Daily_CSUD",
-            "tableName": "Load",
-            "client": "https://api.terna.it",
-            "request": "transparency/v1.0/gettotalload",
-            "callFrequency": "daily",
-            "lag": 1,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "",
-                    "dateTo": "",
-                    "biddingZone": "CSUD"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Load",
-            "dtoDataClass": "Dto.LoadData",
-            "domainClass": "Domain.Load"
-        },
-
-        {
-            "apiCallName": "Load_Daily_SARD",
-            "tableName": "Load",
-            "client": "https://api.terna.it",
-            "request": "transparency/v1.0/gettotalload",
-            "callFrequency": "daily",
-            "lag": 1,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "",
-                    "dateTo": "",
-                    "biddingZone": "SARD"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Load",
-            "dtoDataClass": "Dto.LoadData",
-            "domainClass": "Domain.Load"
-        },
-
-        {
-            "apiCallName": "Load_Daily_SICI",
-            "tableName": "Load",
-            "client": "https://api.terna.it",
-            "request": "transparency/v1.0/gettotalload",
-            "callFrequency": "daily",
-            "lag": 1,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "",
-                    "dateTo": "",
-                    "biddingZone": "SICI"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Load",
-            "dtoDataClass": "Dto.LoadData",
-            "domainClass": "Domain.Load"
-        },
-
-        {
-            "apiCallName": "Load_Daily_CALA",
-            "tableName": "Load",
-            "client": "https://api.terna.it",
-            "request": "transparency/v1.0/gettotalload",
-            "callFrequency": "daily",
-            "lag": 1,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "",
-                    "dateTo": "",
-                    "biddingZone": "CALA"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Load",
-            "dtoDataClass": "Dto.LoadData",
-            "domainClass": "Domain.Load"
-        },
-
-        {
-            "apiCallName": "Load_Daily_ITALY",
-            "tableName": "Load",
-            "client": "https://api.terna.it",
-            "request": "transparency/v1.0/gettotalload",
-            "callFrequency": "daily",
-            "lag": 1,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "",
-                    "dateTo": "",
-                    "biddingZone": "ITALY"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Load",
-            "dtoDataClass": "Dto.LoadData",
-            "domainClass": "Domain.Load"
-        },
-
-        {
             "apiCallName": "Load_History_NORD",
             "tableName": "Load",
             "client": "https://api.terna.it",
             "request": "transparency/v1.0/gettotalload",
             "callFrequency": "daily",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -357,7 +100,7 @@
             "client": "https://api.terna.it",
             "request": "transparency/v1.0/gettotalload",
             "callFrequency": "daily",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -389,7 +132,7 @@
             "client": "https://api.terna.it",
             "request": "transparency/v1.0/gettotalload",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -421,7 +164,7 @@
             "client": "https://api.terna.it",
             "request": "transparency/v1.0/gettotalload",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -453,7 +196,7 @@
             "client": "https://api.terna.it",
             "request": "transparency/v1.0/gettotalload",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -485,7 +228,7 @@
             "client": "https://api.terna.it",
             "request": "transparency/v1.0/gettotalload",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -517,7 +260,7 @@
             "client": "https://api.terna.it",
             "request": "transparency/v1.0/gettotalload",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -549,7 +292,7 @@
             "client": "https://api.terna.it",
             "request": "transparency/v1.0/gettotalload",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -573,6 +316,551 @@
             "dtoClass": "Dto.Load",
             "dtoDataClass": "Dto.LoadData",
             "domainClass": "Domain.Load"
+        },
+
+        {
+
+            "apiCallName": "Load_Daily_NORD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "NORD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_CNORD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "CNOR"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_SUD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "SUD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_CSUD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "CSUD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_SARD",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "SARD"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_SICI",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "SICI"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_CALA",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "CALA"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Load_Daily_ITALY",
+            "tableName": "Load",
+            "client": "https://api.terna.it",
+            "request": "transparency/v1.0/gettotalload",
+            "callFrequency": "daily",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
+                    "dateTo": "",
+                    "biddingZone": "ITALY"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Load",
+            "dtoDataClass": "Dto.LoadData",
+            "domainClass": "Domain.Load"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_04_05_2022",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/04/2022",
+                    "dateTo": "31/05/2022",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_06_07_2022",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/06/2022",
+                    "dateTo": "31/07/2022",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_08_09_2022",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/08/2022",
+                    "dateTo": "30/09/2022",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_10_11_2022",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/10/2022",
+                    "dateTo": "30/11/2022",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_12_2022",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/12/2022",
+                    "dateTo": "31/12/2022",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_01_02_2023",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/01/2023",
+                    "dateTo": "28/02/2023",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_03_04_2023",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/03/2023",
+                    "dateTo": "31/04/2023",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_05_06_2023",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/05/2023",
+                    "dateTo": "30/06/2023",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
+        },
+
+        {
+            "apiCallName": "Prices_Historical_07_08_2023",
+            "tableName": "Price",
+            "client": "https://api.terna.it",
+            "request": "/market-and-fees/v1.0/daily-prices",
+            "callFrequency": "once",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "01/07/2023",
+                    "dateTo": "",
+                    "dataType": "Orario"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Price",
+            "dtoDataClass": "Dto.DailyPrice",
+            "domainClass": "Domain.Price"
         },
 
         {
@@ -608,332 +896,12 @@
         },
 
         {
-            "apiCallName": "Prices_Historical_04_05_2022",
-            "tableName": "Price",
-            "client": "https://api.terna.it",
-            "request": "/market-and-fees/v1.0/daily-prices",
-            "callFrequency": "once",
-            "lag": 0,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "01/04/2022",
-                    "dateTo": "31/05/2022",
-                    "dataType": "Orario"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Price",
-            "dtoDataClass": "Dto.DailyPrice",
-            "domainClass": "Domain.Price"
-        },
-
-        {
-            "apiCallName": "Prices_Historical_06_07_2022",
-            "tableName": "Price",
-            "client": "https://api.terna.it",
-            "request": "/market-and-fees/v1.0/daily-prices",
-            "callFrequency": "once",
-            "lag": 0,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "01/06/2022",
-                    "dateTo": "31/07/2022",
-                    "dataType": "Orario"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Price",
-            "dtoDataClass": "Dto.DailyPrice",
-            "domainClass": "Domain.Price"
-        },
-
-        {
-            "apiCallName": "Prices_Historical_08_09_2022",
-            "tableName": "Price",
-            "client": "https://api.terna.it",
-            "request": "/market-and-fees/v1.0/daily-prices",
-            "callFrequency": "once",
-            "lag": 0,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "01/08/2022",
-                    "dateTo": "30/09/2022",
-                    "dataType": "Orario"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Price",
-            "dtoDataClass": "Dto.DailyPrice",
-            "domainClass": "Domain.Price"
-        },
-
-        {
-            "apiCallName": "Prices_Historical_10_11_2022",
-            "tableName": "Price",
-            "client": "https://api.terna.it",
-            "request": "/market-and-fees/v1.0/daily-prices",
-            "callFrequency": "once",
-            "lag": 0,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "01/10/2022",
-                    "dateTo": "30/11/2022",
-                    "dataType": "Orario"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Price",
-            "dtoDataClass": "Dto.DailyPrice",
-            "domainClass": "Domain.Price"
-        },
-
-        {
-            "apiCallName": "Prices_Historical_12_2022",
-            "tableName": "Price",
-            "client": "https://api.terna.it",
-            "request": "/market-and-fees/v1.0/daily-prices",
-            "callFrequency": "once",
-            "lag": 0,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "01/12/2022",
-                    "dateTo": "31/12/2022",
-                    "dataType": "Orario"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Price",
-            "dtoDataClass": "Dto.DailyPrice",
-            "domainClass": "Domain.Price"
-        },
-
-        {
-            "apiCallName": "Prices_Historical_01_02_2023",
-            "tableName": "Price",
-            "client": "https://api.terna.it",
-            "request": "/market-and-fees/v1.0/daily-prices",
-            "callFrequency": "once",
-            "lag": 0,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "01/01/2023",
-                    "dateTo": "28/02/2023",
-                    "dataType": "Orario"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Price",
-            "dtoDataClass": "Dto.DailyPrice",
-            "domainClass": "Domain.Price"
-        },
-
-        {
-            "apiCallName": "Prices_Historical_03_04_2023",
-            "tableName": "Price",
-            "client": "https://api.terna.it",
-            "request": "/market-and-fees/v1.0/daily-prices",
-            "callFrequency": "once",
-            "lag": 0,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "01/03/2023",
-                    "dateTo": "31/04/2023",
-                    "dataType": "Orario"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Price",
-            "dtoDataClass": "Dto.DailyPrice",
-            "domainClass": "Domain.Price"
-        },
-
-        {
-            "apiCallName": "Prices_Historical_05_06_2023",
-            "tableName": "Price",
-            "client": "https://api.terna.it",
-            "request": "/market-and-fees/v1.0/daily-prices",
-            "callFrequency": "once",
-            "lag": 0,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "01/05/2023",
-                    "dateTo": "30/06/2023",
-                    "dataType": "Orario"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Price",
-            "dtoDataClass": "Dto.DailyPrice",
-            "domainClass": "Domain.Price"
-        },
-
-        {
-            "apiCallName": "Prices_Historical_07_2023",
-            "tableName": "Price",
-            "client": "https://api.terna.it",
-            "request": "/market-and-fees/v1.0/daily-prices",
-            "callFrequency": "once",
-            "lag": 0,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "01/07/2023",
-                    "dateTo": "31/07/2023",
-                    "dataType": "Orario"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Price",
-            "dtoDataClass": "Dto.DailyPrice",
-            "domainClass": "Domain.Price"
-        },
-
-        {
-            "apiCallName": "Generation_Thermal_Daily",
-            "tableName": "Generation",
-            "client": "https://api.terna.it",
-            "request": "/transparency/v1.0/getactualgeneration",
-            "callFrequency": "daily",
-            "lag": 1,
-            "method": "Get",
-            "auth": true,
-            "authType": "Terna",
-            "parameters": [
-                {
-                    "dateFrom": "",
-                    "dateTo": "",
-                    "type": "Thermal"
-                }
-            ],
-            "param_type": "url",
-            "headers": [
-                {
-                    "Accept": "*/*",
-                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Connection": "keep-alive",
-                    "Content-Type": "application/json"
-                }
-            ],
-            "dtoClass": "Dto.Generation",
-            "dtoDataClass": "Dto.GenerationData",
-            "domainClass": "Domain.Generation"
-        },
-
-        {
             "apiCallName": "Generation_Thermal_History",
             "tableName": "Generation",
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -960,12 +928,12 @@
         },
 
         {
-            "apiCallName": "Generation_Wind_Daily",
+            "apiCallName": "Generation_Thermal_Daily",
             "tableName": "Generation",
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "daily",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -973,7 +941,7 @@
                 {
                     "dateFrom": "",
                     "dateTo": "",
-                    "type": "Wind"
+                    "type": "Thermal"
                 }
             ],
             "param_type": "url",
@@ -997,7 +965,7 @@
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -1024,12 +992,12 @@
         },
 
         {
-            "apiCallName": "Generation_Geothermal_Daily",
+            "apiCallName": "Generation_Wind_Daily",
             "tableName": "Generation",
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "daily",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -1037,7 +1005,7 @@
                 {
                     "dateFrom": "",
                     "dateTo": "",
-                    "type": "Geothermal"
+                    "type": "Wind"
                 }
             ],
             "param_type": "url",
@@ -1061,7 +1029,7 @@
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -1088,12 +1056,12 @@
         },
 
         {
-            "apiCallName": "Generation_Photovoltaic_Daily",
+            "apiCallName": "Generation_Geothermal_Daily",
             "tableName": "Generation",
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "daily",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -1101,7 +1069,7 @@
                 {
                     "dateFrom": "",
                     "dateTo": "",
-                    "type": "Photovoltaic"
+                    "type": "Geothermal"
                 }
             ],
             "param_type": "url",
@@ -1125,7 +1093,7 @@
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -1152,12 +1120,12 @@
         },
 
         {
-            "apiCallName": "Generation_Self-consumption_Daily",
+            "apiCallName": "Generation_Photovoltaic_Daily",
             "tableName": "Generation",
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "daily",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -1165,7 +1133,7 @@
                 {
                     "dateFrom": "",
                     "dateTo": "",
-                    "type": "Self-consumption"
+                    "type": "Photovoltaic"
                 }
             ],
             "param_type": "url",
@@ -1189,7 +1157,7 @@
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -1216,12 +1184,12 @@
         },
 
         {
-            "apiCallName": "Generation_Hydro_Daily",
+            "apiCallName": "Generation_Self-consumption_Daily",
             "tableName": "Generation",
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "daily",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
@@ -1229,7 +1197,7 @@
                 {
                     "dateFrom": "",
                     "dateTo": "",
-                    "type": "Hydro"
+                    "type": "Self-consumption"
                 }
             ],
             "param_type": "url",
@@ -1253,13 +1221,45 @@
             "client": "https://api.terna.it",
             "request": "/transparency/v1.0/getactualgeneration",
             "callFrequency": "once",
-            "lag": 1,
+            "lag": 2,
             "method": "Get",
             "auth": true,
             "authType": "Terna",
             "parameters": [
                 {
                     "dateFrom": "24/07/2023",
+                    "dateTo": "",
+                    "type": "Hydro"
+                }
+            ],
+            "param_type": "url",
+            "headers": [
+                {
+                    "Accept": "*/*",
+                    "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
+                    "Content-Type": "application/json"
+                }
+            ],
+            "dtoClass": "Dto.Generation",
+            "dtoDataClass": "Dto.GenerationData",
+            "domainClass": "Domain.Generation"
+        },
+
+        {
+            "apiCallName": "Generation_Hydro_Daily",
+            "tableName": "Generation",
+            "client": "https://api.terna.it",
+            "request": "/transparency/v1.0/getactualgeneration",
+            "callFrequency": "daily",
+            "lag": 2,
+            "method": "Get",
+            "auth": true,
+            "authType": "Terna",
+            "parameters": [
+                {
+                    "dateFrom": "",
                     "dateTo": "",
                     "type": "Hydro"
                 }
