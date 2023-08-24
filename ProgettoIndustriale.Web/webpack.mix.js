@@ -24,6 +24,8 @@ mix.sass('./Styles/site.scss', 'css/site.css');
 mix.vue()
 
 .js('./Scripts/Services/serviceBuilder.js', 'js/site.js')
-.js(['./Vue/ComponentBuilder/Home/indexComponentBuilder.js', './Scripts/Home/mainPage.js'], 'js/mainPage.js')
+    .js(['./Vue/ComponentBuilder/Home/indexComponentBuilder.js', './Scripts/Home/mainPage.js'], 'js/mainPage.js')
+    .js(['./Vue/ComponentBuilder/ProgettoWeb/progettoWebComponentBuilder.js', './Scripts/ProgettoWeb/progettoWeb.js'], 'js/progettoWeb.js')
+    
 
 mix.copy('./Scripts/commonModule.js', './wwwroot/js/commonModule.js')
