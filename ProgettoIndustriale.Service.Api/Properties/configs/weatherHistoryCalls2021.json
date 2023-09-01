@@ -26,6 +26,7 @@
                     "Accept-Encoding": "gzip, deflate, br",
                     "Connection": "keep-alive",
                     "Content-Type": "application/json; charset=utf-8"
+   
                 }
             ],
             "dtoClass": "Dto.Weather",
