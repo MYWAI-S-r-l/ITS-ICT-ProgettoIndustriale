@@ -37,7 +37,7 @@ class Program
         var weatherHistory2023 = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2023.json";
         var weatherForecastConfig = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherForecastCalls.json";
 
-        List<string> pathList = new List<string> { apiConfig, weatherHistory2021, weatherHistory2022, weatherHistory2023, weatherForecastConfig };
+        List<string> pathList = new List<string> { apiConfig, weatherForecastConfig, weatherHistory2021, weatherHistory2022, weatherHistory2023};
 
         foreach (var path in pathList)
         {

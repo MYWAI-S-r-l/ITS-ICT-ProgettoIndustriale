@@ -139,7 +139,7 @@ class Program
 //        ITrigger trigger = TriggerBuilder.Create()
 //            .WithIdentity("ProgettoIndustrialeTrigger", "group1")
 //            .StartNow()
-////            .WithCronSchedule("0 58 14 * * ? *")
+////            .WithCronSchedule("0 58 14 * * ?")
 //            .Build();
 
 

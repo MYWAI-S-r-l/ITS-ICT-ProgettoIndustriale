@@ -14,7 +14,7 @@
                 "latitude": "37.30971088",
                 "longitude": "13.584574900000002",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -45,7 +45,7 @@
                 "latitude": "44.91297351",
                 "longitude": "8.615401155",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -76,7 +76,7 @@
                 "latitude": "43.61675973",
                 "longitude": "13.5188753",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -107,7 +107,7 @@
                 "latitude": "45.73750286",
                 "longitude": "7.320149366",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -138,7 +138,7 @@
                 "latitude": "43.46642752",
                 "longitude": "11.88228844",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -169,7 +169,7 @@
                 "latitude": "42.85322304",
                 "longitude": "13.57691127",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -200,7 +200,7 @@
                 "latitude": "44.89912921",
                 "longitude": "8.204142547",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -231,7 +231,7 @@
                 "latitude": "40.91404699",
                 "longitude": "14.79528803",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -262,7 +262,7 @@
                 "latitude": "41.12559576",
                 "longitude": "16.86736689",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -293,7 +293,7 @@
                 "latitude": "41.22705039",
                 "longitude": "16.29520432",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -324,7 +324,7 @@
                 "latitude": "46.13837528",
                 "longitude": "12.21704167",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -355,7 +355,7 @@
                 "latitude": "41.12969987",
                 "longitude": "14.78151683",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -386,7 +386,7 @@
                 "latitude": "45.69441368",
                 "longitude": "9.668424528",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -417,7 +417,7 @@
                 "latitude": "45.5665112",
                 "longitude": "8.054082167",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -448,7 +448,7 @@
                 "latitude": "44.49436681",
                 "longitude": "11.341720800000001",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -479,7 +479,7 @@
                 "latitude": "46.49933453",
                 "longitude": "11.35662422",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -510,7 +510,7 @@
                 "latitude": "45.53993052",
                 "longitude": "10.21910323",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -541,7 +541,7 @@
                 "latitude": "40.63848545",
                 "longitude": "17.94601575",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -572,7 +572,7 @@
                 "latitude": "39.21531192",
                 "longitude": "9.110616306",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -603,7 +603,7 @@
                 "latitude": "37.49213171",
                 "longitude": "14.06184973",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -634,7 +634,7 @@
                 "latitude": "41.55774754",
                 "longitude": "14.65916051",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -665,7 +665,7 @@
                 "latitude": "41.07465878",
                 "longitude": "14.33240464",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -696,7 +696,7 @@
                 "latitude": "37.50287803",
                 "longitude": "15.08704691",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -727,7 +727,7 @@
                 "latitude": "38.90597598",
                 "longitude": "16.59440194",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -758,7 +758,7 @@
                 "latitude": "42.35103167",
                 "longitude": "14.16754574",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -789,7 +789,7 @@
                 "latitude": "45.8099912",
                 "longitude": "9.085159546",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -820,7 +820,7 @@
                 "latitude": "39.29308681",
                 "longitude": "16.25609692",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -851,7 +851,7 @@
                 "latitude": "45.13336675",
                 "longitude": "10.02420865",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -882,7 +882,7 @@
                 "latitude": "39.08036878",
                 "longitude": "17.12538864",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -913,7 +913,7 @@
                 "latitude": "44.39329625",
                 "longitude": "7.551171632000001",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -944,7 +944,7 @@
                 "latitude": "37.56705701",
                 "longitude": "14.27909375",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -975,7 +975,7 @@
                 "latitude": "43.16058534",
                 "longitude": "13.71839535",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1006,7 +1006,7 @@
                 "latitude": "44.83599085",
                 "longitude": "11.61868934",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1037,7 +1037,7 @@
                 "latitude": "43.76923077",
                 "longitude": "11.25588885",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1068,7 +1068,7 @@
                 "latitude": "41.46226865",
                 "longitude": "15.54305094",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1099,7 +1099,7 @@
                 "latitude": "44.22268559",
                 "longitude": "12.04068608",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1130,7 +1130,7 @@
                 "latitude": "41.63964569",
                 "longitude": "13.35117161",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1161,7 +1161,7 @@
                 "latitude": "44.41149314",
                 "longitude": "8.9326992",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1192,7 +1192,7 @@
                 "latitude": "45.94149817",
                 "longitude": "13.62212502",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1223,7 +1223,7 @@
                 "latitude": "42.76026758",
                 "longitude": "11.11356398",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1254,7 +1254,7 @@
                 "latitude": "43.88570648",
                 "longitude": "8.027850297999999",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1285,7 +1285,7 @@
                 "latitude": "41.58800826",
                 "longitude": "14.22575407",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1316,7 +1316,7 @@
                 "latitude": "44.10704991",
                 "longitude": "9.8281897",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1347,7 +1347,7 @@
                 "latitude": "42.35122196",
                 "longitude": "13.39843823",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1378,7 +1378,7 @@
                 "latitude": "41.46759465",
                 "longitude": "12.90368482",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1409,7 +1409,7 @@
                 "latitude": "40.35354285",
                 "longitude": "18.1718973",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1440,7 +1440,7 @@
                 "latitude": "45.85575781",
                 "longitude": "9.393392246",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1471,7 +1471,7 @@
                 "latitude": "43.55234873",
                 "longitude": "10.3086781",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1502,7 +1502,7 @@
                 "latitude": "45.31440693",
                 "longitude": "9.503720769",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1533,7 +1533,7 @@
                 "latitude": "43.84432283",
                 "longitude": "10.50151366",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1564,7 +1564,7 @@
                 "latitude": "43.30023926",
                 "longitude": "13.45307182",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1595,7 +1595,7 @@
                 "latitude": "45.15726772",
                 "longitude": "10.79277363",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1626,7 +1626,7 @@
                 "latitude": "44.03674425",
                 "longitude": "10.14173829",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1657,7 +1657,7 @@
                 "latitude": "40.66751177",
                 "longitude": "16.59792442",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1688,7 +1688,7 @@
                 "latitude": "38.19395845",
                 "longitude": "15.55572302",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1719,7 +1719,7 @@
                 "latitude": "45.46679409",
                 "longitude": "9.190347404",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1750,7 +1750,7 @@
                 "latitude": "44.64600009",
                 "longitude": "10.92615487",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1781,7 +1781,7 @@
                 "latitude": "45.58439043",
                 "longitude": "9.273582472000001",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1812,7 +1812,7 @@
                 "latitude": "40.83956555",
                 "longitude": "14.25084984",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1843,7 +1843,7 @@
                 "latitude": "45.44588506",
                 "longitude": "8.621915884",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1874,7 +1874,7 @@
                 "latitude": "40.32318834",
                 "longitude": "9.330296393",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1905,7 +1905,7 @@
                 "latitude": "39.90381075",
                 "longitude": "8.591183151000001",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1936,7 +1936,7 @@
                 "latitude": "45.40692987",
                 "longitude": "11.87608718",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1967,7 +1967,7 @@
                 "latitude": "38.11569725",
                 "longitude": "13.362356699999998",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -1998,7 +1998,7 @@
                 "latitude": "44.80107394",
                 "longitude": "10.32834985",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2029,7 +2029,7 @@
                 "latitude": "45.18509264",
                 "longitude": "9.160157191",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2060,7 +2060,7 @@
                 "latitude": "43.10675841",
                 "longitude": "12.38824698",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2091,7 +2091,7 @@
                 "latitude": "43.91014021",
                 "longitude": "12.91345989",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2122,7 +2122,7 @@
                 "latitude": "42.46458398",
                 "longitude": "14.21364822",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2153,7 +2153,7 @@
                 "latitude": "45.05193462",
                 "longitude": "9.692632596000001",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2184,7 +2184,7 @@
                 "latitude": "43.71553206",
                 "longitude": "10.40127259",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2215,7 +2215,7 @@
                 "latitude": "43.933465000000005",
                 "longitude": "10.91734146",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2246,7 +2246,7 @@
                 "latitude": "45.95443546",
                 "longitude": "12.66002909",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2277,7 +2277,7 @@
                 "latitude": "40.63947052",
                 "longitude": "15.80514834",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2308,7 +2308,7 @@
                 "latitude": "43.88062274",
                 "longitude": "11.09703315",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2339,7 +2339,7 @@
                 "latitude": "36.92509198",
                 "longitude": "14.73069891",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2370,7 +2370,7 @@
                 "latitude": "44.41722493",
                 "longitude": "12.19913936",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2401,7 +2401,7 @@
                 "latitude": "38.10922769",
                 "longitude": "15.643452700000001",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2432,7 +2432,7 @@
                 "latitude": "44.69735289",
                 "longitude": "10.63007973",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2463,7 +2463,7 @@
                 "latitude": "42.40488444",
                 "longitude": "12.86205939",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2494,7 +2494,7 @@
                 "latitude": "44.06090087",
                 "longitude": "12.5656295",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2525,7 +2525,7 @@
                 "latitude": "41.89277044",
                 "longitude": "12.48366722",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2556,7 +2556,7 @@
                 "latitude": "45.07107289",
                 "longitude": "11.79007",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2587,7 +2587,7 @@
                 "latitude": "40.67821961",
                 "longitude": "14.759402599999998",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2618,7 +2618,7 @@
                 "latitude": "40.72667657",
                 "longitude": "8.559667131",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2649,7 +2649,7 @@
                 "latitude": "44.30750461",
                 "longitude": "8.481108654",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2680,7 +2680,7 @@
                 "latitude": "43.31816374",
                 "longitude": "11.33190988",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2711,7 +2711,7 @@
                 "latitude": "37.05991687",
                 "longitude": "15.29333182",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2742,7 +2742,7 @@
                 "latitude": "46.17099261",
                 "longitude": "9.87147489",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2773,7 +2773,7 @@
                 "latitude": "39.16641462",
                 "longitude": "8.526242676",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2804,7 +2804,7 @@
                 "latitude": "40.47354739",
                 "longitude": "17.23237181",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2835,7 +2835,7 @@
                 "latitude": "42.6589177",
                 "longitude": "13.70439971",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2866,7 +2866,7 @@
                 "latitude": "42.56071258",
                 "longitude": "12.6466875",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2897,7 +2897,7 @@
                 "latitude": "45.0732745",
                 "longitude": "7.680687483",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2928,7 +2928,7 @@
                 "latitude": "38.01850065",
                 "longitude": "12.51365684",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2959,7 +2959,7 @@
                 "latitude": "46.06893511",
                 "longitude": "11.12123097",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -2990,7 +2990,7 @@
                 "latitude": "45.66754571",
                 "longitude": "12.24507363",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -3021,7 +3021,7 @@
                 "latitude": "45.6494354",
                 "longitude": "13.76813649",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -3052,7 +3052,7 @@
                 "latitude": "46.06255516",
                 "longitude": "13.2348383",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -3083,7 +3083,7 @@
                 "latitude": "45.81701677",
                 "longitude": "8.822868344",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -3114,7 +3114,7 @@
                 "latitude": "45.43490485",
                 "longitude": "12.33845213",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -3145,7 +3145,7 @@
                 "latitude": "45.921445500000004",
                 "longitude": "8.551078752999999",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -3176,7 +3176,7 @@
                 "latitude": "45.32398135",
                 "longitude": "8.423234312",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -3207,7 +3207,7 @@
                 "latitude": "45.43839046",
                 "longitude": "10.99352685",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -3238,7 +3238,7 @@
                 "latitude": "38.67624147",
                 "longitude": "16.10157414",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -3269,7 +3269,7 @@
                 "latitude": "45.547497",
                 "longitude": "11.54597109",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
@@ -3300,7 +3300,7 @@
                 "latitude": "42.4173828",
                 "longitude": "12.10473416",
                 "hourly": "temperature_2m,dewpoint_2m,relativehumidity_2m,apparent_temperature,cloudcover,windspeed_10m,windspeed_80m,surface_pressure,rain,showers,snowfall,snow_depth,precipitation,is_day",
-                "past_days": 7
+                "past_days": 10
             }
         ],
         "param_type": "url",
