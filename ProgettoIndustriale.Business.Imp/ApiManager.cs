@@ -398,22 +398,27 @@ public class ApiManager : IApiManager
                     dataGen!.SetValue(domainInstance, valueGen);
                     dataType!.SetValue(domainInstance, value.Type);
 
-                    domainList.Add(domainInstance);
+                    if (!CheckDailyGenerationRecord(value.Type, valueId))
+                    {
+                        _context.Generation.Add(domainInstance as Domain.Generation);
+                        _context.SaveChanges();
+                    }
+
+                    //domainList.Add(domainInstance);
                 }
+
+                Console.WriteLine($"Generation Data added for Province {apiCall.apiCallName}");
             }
 
-            foreach(Domain.Generation? gen in domainList)
-            {
-                if(!CheckDailyGenerationRecord(gen.Type, gen.IdDate))
-                {
-                    _context.Generation.Add(gen);
-                    _context.SaveChanges();
-
-                    //WriteLog
-                    //Console.WriteLine($"Daily Generation Data added for Energy Type: {gen.Type} on COD_Date: {gen.IdDate}");
-                }
-            }
-            Console.WriteLine($"Generation Data added for Province {apiCall.apiCallName}");
+            //foreach(Domain.Generation? gen in domainList)
+            //{
+            //    if(!CheckDailyGenerationRecord(gen.Type, gen.IdDate))
+            //    {
+            //        _context.Generation.Add(gen);
+            //        _context.SaveChanges();
+            //    }
+            //}
+            
         }
 
         // ======================= Load Checks =================================
@@ -469,10 +474,18 @@ public class ApiManager : IApiManager
                             dataId!.SetValue(domainInstance, domainDateId);
                             macrozoneId!.SetValue(domainInstance, domainMacroZoneId);
 
-                            domainList.Add(domainInstance);
+                            if (!CheckDailyPriceLoadRecord(domainMacroZoneId, domainDateId))
+                            {
+                                _context.Load.Add(domainInstance as Domain.Load);
+                                _context.SaveChanges();
+                            }
+
+                            //domainList.Add(domainInstance);
 
                         }
                     }
+
+                    Console.WriteLine($"Load Data added for Province {apiCall.apiCallName}");
                 }
 
                 else
@@ -481,18 +494,18 @@ public class ApiManager : IApiManager
                     Console.WriteLine($"Empty Price record for {DateTime.Today.AddDays(-apiCall.lag)}");
                 }
 
-                foreach(Domain.Load load in domainList)
-                {
-                    if (!CheckDailyPriceLoadRecord(load.IdMacroZone, load.IdDate))
-                    {
-                        _context.Load.Add(load);
-                        _context.SaveChanges();
+                //foreach(Domain.Load load in domainList)
+                //{
+                //    if (!CheckDailyPriceLoadRecord(load.IdMacroZone, load.IdDate))
+                //    {
+                //        _context.Load.Add(load);
+                //        _context.SaveChanges();
 
-                        //WriteLog
-                        //Console.WriteLine($"Daily Load Data added for Macrozone: {load.IdMacroZone} on COD_date: {load.IdDate}");
-                    }
-                }
-                Console.WriteLine($"Load Data added for Province {apiCall.apiCallName}");
+                //        //WriteLog
+                //        //Console.WriteLine($"Daily Load Data added for Macrozone: {load.IdMacroZone} on COD_date: {load.IdDate}");
+                //    }
+                //}
+                
             }
 
         }
@@ -544,8 +557,16 @@ public class ApiManager : IApiManager
                         dataId!.SetValue(domainInstance, domainDateId);
                         macrozoneId!.SetValue(domainInstance, domainMacroZoneId);
 
-                        domainList.Add(domainInstance);
+                        if (!CheckDailyPriceLoadRecord(domainMacroZoneId, domainDateId))
+                        {
+                            _context.Price.Add(domainInstance as Domain.Price);
+                            _context.SaveChanges();
+                        }
+
+                        //domainList.Add(domainInstance);
                     }
+
+                    Console.WriteLine($"Price Data added for {apiCall.apiCallName}");
                 }
 
                 else
@@ -554,18 +575,18 @@ public class ApiManager : IApiManager
                     Console.WriteLine($"Empty Price record for {DateTime.Today.AddDays(-apiCall.lag)}");
                 }
 
-                foreach(Domain.Price price in domainList)
-                {
-                    if (!CheckDailyPriceLoadRecord(price.IdMacroZone, price.IdDate))
-                    {
-                        _context.Price.Add(price);
-                        _context.SaveChanges();
+                //foreach(Domain.Price price in domainList)
+                //{
+                //    if (!CheckDailyPriceLoadRecord(price.IdMacroZone, price.IdDate))
+                //    {
+                //        _context.Price.Add(price);
+                //        _context.SaveChanges();
 
-                        //WriteLog
-                        //Console.WriteLine($"Daily Price Data added for Macrozone: {price.IdMacroZone} on COD_date: {price.IdDate}");
-                    }
-                }
-                Console.WriteLine($"Price Data added for {apiCall.apiCallName}");
+                //        //WriteLog
+                //        //Console.WriteLine($"Daily Price Data added for Macrozone: {price.IdMacroZone} on COD_date: {price.IdDate}");
+                //    }
+                //}
+                
 
             }
         }
@@ -643,8 +664,19 @@ public class ApiManager : IApiManager
                         }
                     }
 
-                    domainList.Add(domainInstance);
+                    int domainDateValue = (int)domainInstance!.GetType().GetProperty("IdDate").GetValue(domainInstance);
+                    int domainProvinceValue = (int)domainInstance!.GetType().GetProperty("IdProvince").GetValue(domainInstance);
+
+                    if (!CheckWeatherRecord(domainProvinceValue, domainDateValue))
+                    {
+                        _context.Weather.Add(domainInstance as Domain.Weather);
+                        _context.SaveChanges();
+                    }
+
+                    //domainList.Add(domainInstance);
                 }
+
+                Console.WriteLine($"Weather Data added for Province {apiCall.apiCallName}");
             }
 
             else if (dtoData is null)
@@ -653,18 +685,18 @@ public class ApiManager : IApiManager
                 Console.WriteLine($"Empty Weather record for {DateTime.Today.AddDays(-apiCall.lag)}");
             }
 
-            foreach (Domain.Weather weather in domainList)
-            {
-                if (!CheckWeatherRecord(weather.IdProvince, weather.IdDate))
-                {
-                    _context.Weather.Add(weather);
-                    _context.SaveChanges();
+            //foreach (Domain.Weather weather in domainList)
+            //{
+            //    if (!CheckWeatherRecord(weather.IdProvince, weather.IdDate))
+            //    {
+            //        _context.Weather.Add(weather);
+            //        _context.SaveChanges();
 
-                    //WriteLog
-                    //Console.WriteLine($"Weather Data added for Province: {weather.IdProvince} on COD_date: {weather.IdDate}");
-                }
-            }
-            Console.WriteLine($"Weather Data added for Province {apiCall.apiCallName}");
+            //        //WriteLog
+            //        //Console.WriteLine($"Weather Data added for Province: {weather.IdProvince} on COD_date: {weather.IdDate}");
+            //    }
+            //}
+            
 
         }
 
