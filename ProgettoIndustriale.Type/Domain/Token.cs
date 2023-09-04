@@ -9,9 +9,9 @@ using ProgettoIndustriale.Type.Domain;
 
 namespace ProgettoIndustriale.Type.Domain
 {
-    public partial class TernaToken
+    public partial class Token
     {
-        public TernaToken()
+        public Token()
         {
         }
         
@@ -23,7 +23,7 @@ namespace ProgettoIndustriale.Type.Domain
         //[JsonPropertyName("token_type")]
         public string TokenType { get; set; }
 
-        public DateTime AddedTime { get; set; }
+        public string Provider { get; set; }
         
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace ProgettoIndustriale.Type.Dto
+﻿using System.Text.Json.Serialization;
+
+namespace ProgettoIndustriale.Type.Dto
 {
     public class Generation
     {
@@ -11,5 +13,9 @@
         public string? Type { get; set; }
 
         public Date Date { get; set; }
+        
+        [JsonPropertyName("actualGeneration")]
+        public List<GenerationData> GenerationData { get; set; }
+
     }
 }

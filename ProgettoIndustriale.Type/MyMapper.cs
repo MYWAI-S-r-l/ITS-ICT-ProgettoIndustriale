@@ -58,22 +58,23 @@ public static class MyMapper<TSource, TDestination>
                 AddMapping<Domain.Generation,   Dto.Generation>(cfg, ignores);
                 AddMapping<Domain.Weather,      Dto.Weather>(cfg, ignores);
 
-
-                AddMapping<Dto.Industry,    Domain.Industry>(cfg, ignores);
-                AddMapping<Dto.Province,    Domain.Province>(cfg, ignores);
-                AddMapping<Dto.Region,      Domain.Region>(cfg, ignores);
-                AddMapping<Dto.MacroZone,   Domain.MacroZone>(cfg, ignores);
-                AddMapping<Dto.Date,        Domain.Date>(cfg, ignores);
-                AddMapping<Dto.Commodity,   Domain.Commodity>(cfg, ignores);
-                AddMapping<Dto.Load,        Domain.Load>(cfg, ignores);
-                AddMapping<Dto.Price,       Domain.Price>(cfg, ignores);
-                AddMapping<Dto.Generation,  Domain.Generation>(cfg, ignores);
-                AddMapping<Dto.Weather,     Domain.Weather>(cfg, ignores);
-
-                AddMapping<Domain.TernaToken, Dto.TernaToken>(cfg, ignores);
+                AddMapping<Domain.Token,        Dto.Token>(cfg, ignores);
                 AddMapping<Domain.ApiCallsLogs, Dto.ApiCallsLogs>(cfg, ignores);
-                AddMapping<Dto.TernaToken, Domain.TernaToken>(cfg, ignores);
-                AddMapping<Dto.ApiCallsLogs, Domain.ApiCallsLogs>(cfg, ignores);
+
+
+                AddMapping<Dto.Industry,        Domain.Industry>(cfg, ignores);
+                AddMapping<Dto.Province,        Domain.Province>(cfg, ignores);
+                AddMapping<Dto.Region,          Domain.Region>(cfg, ignores);
+                AddMapping<Dto.MacroZone,       Domain.MacroZone>(cfg, ignores);
+                AddMapping<Dto.Date,            Domain.Date>(cfg, ignores);
+                AddMapping<Dto.Commodity,       Domain.Commodity>(cfg, ignores);
+                AddMapping<Dto.Load,            Domain.Load>(cfg, ignores);
+                AddMapping<Dto.Price,           Domain.Price>(cfg, ignores);
+                AddMapping<Dto.Generation,      Domain.Generation>(cfg, ignores);
+                AddMapping<Dto.Weather,         Domain.Weather>(cfg, ignores);
+
+                AddMapping<Dto.Token,           Domain.Token>(cfg, ignores);
+                AddMapping<Dto.ApiCallsLogs,    Domain.ApiCallsLogs>(cfg, ignores);
             };
         }
 

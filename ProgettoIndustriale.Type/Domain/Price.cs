@@ -11,13 +11,13 @@ namespace ProgettoIndustriale.Type.Domain
         public int Id { get; set; }
 
         [Column("base_price_EURxMWh")]
-        public float BasePriceEur { get; set; }
+        public double BasePriceEur { get; set; }
 
         [Column("incentive_component_EURxMWh")]
-        public float IncentiveComponentEur { get; set; }
+        public double IncentiveComponentEur { get; set; }
 
         [Column("unbalance_price_EURxMWh")]
-        public float UnbalancePriceEur { get; set; }
+        public double UnbalancePriceEur { get; set; }
 
         [Column("COD_macrozone")]
         public int IdMacroZone { get; set; }

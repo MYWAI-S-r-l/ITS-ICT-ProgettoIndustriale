@@ -18,7 +18,7 @@ namespace ProgettoIndustriale.Type.Domain
 
         [Column("unit")]
         public string? Unit { get; set; }
-
+        [Column("COD_date")]
         public int IdDate { get; set; }
 
         public virtual Date? Date { get; set; }

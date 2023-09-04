@@ -14,17 +14,13 @@
   <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.7" />
-    <PackageReference Include="Quartz" Version="3.7.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ProgettoIndustriale.Business.Imp\ProgettoIndustriale.Business.Imp.csproj" />
-    <ProjectReference Include="..\ProgettoIndustriale.Business\ProgettoIndustriale.Business.csproj" />
     <ProjectReference Include="..\ProgettoIndustriale.Data\ProgettoIndustriale.Data.csproj" />
     <ProjectReference Include="..\ProgettoIndustriale.Service.Api\ProgettoIndustriale.Service.Api.csproj" />
     <ProjectReference Include="..\ProgettoIndustriale.Type\ProgettoIndustriale.Type.csproj" />

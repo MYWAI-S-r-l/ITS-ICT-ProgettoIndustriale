@@ -46,8 +46,6 @@ namespace ProgettoIndustriale.Business.Imp
                     // Cancella tutti i dati dalla tabella
                     dbSet.RemoveRange(dbSet);
 
-                    
-
                 }
 
                 _context.SaveChanges();

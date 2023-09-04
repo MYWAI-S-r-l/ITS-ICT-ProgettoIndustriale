@@ -13,6 +13,7 @@ public class JsonApiTemplate
     public string client { get; set; }
     public string request { get; set; }
     public string callFrequency { get; set; }
+    public int lag { get; set; }
     public string method { get; set; }
     public bool auth { get; set; }
     public string authType { get; set; }
@@ -20,5 +21,6 @@ public class JsonApiTemplate
     public string param_type { get; set; }
     public List<Dictionary<string, string>> headers { get; set; }
     public string dtoClass { get; set; }
+    public string dtoDataClass { get; set; }
     public string domainClass { get; set; }
 }

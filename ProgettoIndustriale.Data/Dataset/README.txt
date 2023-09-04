@@ -1,0 +1,1 @@
+COPY ALL THE CSV FILES ON C:\ProgettoIndustriale\CSV (if not present, create anew)

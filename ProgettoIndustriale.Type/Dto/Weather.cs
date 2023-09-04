@@ -1,4 +1,6 @@
-﻿namespace ProgettoIndustriale.Type.Dto
+﻿using System.Text.Json.Serialization;
+
+namespace ProgettoIndustriale.Type.Dto
 {
     public class Weather
 
@@ -40,8 +42,12 @@
 
         public int IdDates { get; set; }
 
-        public virtual Province? Province { get; set; }
+        public virtual Province? Province { get; set; }   
 
         public virtual Date? Date { get; set; }
+        
+        [JsonPropertyName("hourly")]
+        public WeatherData WeatherData { get; set; }
+
     }
 }

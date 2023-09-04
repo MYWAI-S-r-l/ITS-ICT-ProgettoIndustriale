@@ -18,11 +18,11 @@ namespace ProgettoIndustriale.Type.Domain
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Column("ApiCallName")]
+        [Column("apiCallName")]
         public string ApiCallName { get; set; }
-        [Column("CallFrequency")]
+        [Column("callFrequency")]
         public string CallFrequency { get; set; }
-        [Column("LastSuccessfulRun")]
+        [Column("lastSuccessfulRun")]
         public DateTime LastSuccessfulRun { get; set; }
         
     }

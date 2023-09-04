@@ -11,7 +11,7 @@ namespace ProgettoIndustriale.Data.ConfigClasses
         public void Configure(EntityTypeBuilder<Commodity> entity)
         {
 
-            entity.Property(c => c.Id).IsRequired().ValueGeneratedOnAdd();
+            entity.Property(c => c.Id).IsRequired().ValueGeneratedOnAdd();  
            
             entity.HasKey(c => c.Id);
                         
