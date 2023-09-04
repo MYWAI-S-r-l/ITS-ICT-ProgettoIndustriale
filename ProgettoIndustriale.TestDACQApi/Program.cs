@@ -31,13 +31,20 @@ class Program
         var apiManager = new ProgettoIndustriale.Business.Imp.ApiManager(dbContext, configuration);
 
         // Location of the config file
-        var apiConfig = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\apiConfig.json";
-        var weatherHistory2021 = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2021.json";
-        var weatherHistory2022 = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2022.json";
-        var weatherHistory2023 = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2023.json";
-        var weatherForecastConfig = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherForecastCalls.json";
+        var dailyApiConfig = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\dailyApiConfig.json";
+        var historyApiConfig = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\apiConfig.json";
+        //var weatherHistory2021 = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2021.json";
+        //var weatherHistory2022 = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2022.json";
+        //var weatherHistory2023 = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2023.json";
+        //var weatherForecastConfig = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherForecastCalls.json";
 
-        List<string> pathList = new List<string> { apiConfig, weatherForecastConfig, weatherHistory2021, weatherHistory2022, weatherHistory2023};
+        //var weatherHistory2021Demo = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2021Demo.json";
+        //var weatherHistory2022Demo = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2022Demo.json";
+        var weatherHistory2023Demo = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherHistoryCalls2023Demo.json";
+        var weatherForecastConfigDemo = @"..\..\..\..\ProgettoIndustriale.Service.Api\Properties\configs\weatherForecastCallsDemo.json";
+
+        //List<string> pathList = new List<string> { apiConfig, weatherForecastConfig, weatherHistory2021, weatherHistory2022, weatherHistory2023};
+        List<string> pathList = new List<string> { dailyApiConfig, historyApiConfig, weatherHistory2023Demo, weatherForecastConfigDemo };
 
         foreach (var path in pathList)
         {

@@ -378,47 +378,48 @@ public class ApiManager : IApiManager
             {
                 List<Dto.GenerationData>? dtoDataValues = dtoData.GetValue(dtoObject) as List<Dto.GenerationData>;
 
-                foreach (var value in dtoDataValues!)
+                if(dtoDataValues != null && dtoDataValues!.Count != 0)
                 {
-                    var domainInstance = GetClassInstance(fullyQualifiedName);
-                    var dataId = domainInstance!.GetType().GetProperty("IdDate");
-                    var dataGen = domainInstance!.GetType().GetProperty("GenerationGhw");
-                    var dataType = domainInstance!.GetType().GetProperty("Type");
-
-                    Domain.Date? domainDateInstance = GetDate(value.Date!, false);
-                    valueId = domainDateInstance!.Id;
-
-                    double valueGen = 0.0;
-
-                    if (!value.Generation_gwh.IsNullOrEmpty()){
-                        valueGen = double.Parse(value.Generation_gwh!, CultureInfo.GetCultureInfo("en-US"));
-                    }
-
-                    dataId!.SetValue(domainInstance, valueId);
-                    dataGen!.SetValue(domainInstance, valueGen);
-                    dataType!.SetValue(domainInstance, value.Type);
-
-                    if (!CheckDailyGenerationRecord(value.Type, valueId))
+                    foreach (var value in dtoDataValues!)
                     {
-                        _context.Generation.Add(domainInstance as Domain.Generation);
-                        _context.SaveChanges();
+                        var domainInstance = GetClassInstance(fullyQualifiedName);
+                        var dataId = domainInstance!.GetType().GetProperty("IdDate");
+                        var dataGen = domainInstance!.GetType().GetProperty("GenerationGhw");
+                        var dataType = domainInstance!.GetType().GetProperty("Type");
+
+                        Domain.Date? domainDateInstance = GetDate(value.Date!, false);
+                        valueId = domainDateInstance!.Id;
+
+                        double valueGen = 0.0;
+
+                        if (!value.Generation_gwh.IsNullOrEmpty())
+                        {
+                            valueGen = double.Parse(value.Generation_gwh!, CultureInfo.GetCultureInfo("en-US"));
+                        }
+
+                        dataId!.SetValue(domainInstance, valueId);
+                        dataGen!.SetValue(domainInstance, valueGen);
+                        dataType!.SetValue(domainInstance, value.Type);
+
+                        if (!CheckDailyGenerationRecord(value.Type, valueId))
+                        {
+                            _context.Generation.Add(domainInstance as Domain.Generation);
+                            _context.SaveChanges();
+                        }
+
                     }
 
-                    //domainList.Add(domainInstance);
+                    Console.WriteLine($"Generation Data added for Province {apiCall.apiCallName}");
                 }
 
-                Console.WriteLine($"Generation Data added for Province {apiCall.apiCallName}");
+                else
+                {
+                    //Write Log
+                    Console.WriteLine($"Empty Generation record for {DateTime.Today.AddDays(-apiCall.lag)}");
+                }
+
             }
 
-            //foreach(Domain.Generation? gen in domainList)
-            //{
-            //    if(!CheckDailyGenerationRecord(gen.Type, gen.IdDate))
-            //    {
-            //        _context.Generation.Add(gen);
-            //        _context.SaveChanges();
-            //    }
-            //}
-            
         }
 
         // ======================= Load Checks =================================
@@ -440,7 +441,7 @@ public class ApiManager : IApiManager
 
                 List<PropertyInfo> nonIdProperties = new List<PropertyInfo>();
 
-                if (dtoDataValues!.Count != 0)
+                if (dtoDataValues != null && dtoDataValues!.Count != 0)
                 {
                     foreach (var prop in dtoDataValues[0].GetType().GetProperties().ToList())
                     {
@@ -480,8 +481,6 @@ public class ApiManager : IApiManager
                                 _context.SaveChanges();
                             }
 
-                            //domainList.Add(domainInstance);
-
                         }
                     }
 
@@ -493,19 +492,6 @@ public class ApiManager : IApiManager
                     //Write Log
                     Console.WriteLine($"Empty Price record for {DateTime.Today.AddDays(-apiCall.lag)}");
                 }
-
-                //foreach(Domain.Load load in domainList)
-                //{
-                //    if (!CheckDailyPriceLoadRecord(load.IdMacroZone, load.IdDate))
-                //    {
-                //        _context.Load.Add(load);
-                //        _context.SaveChanges();
-
-                //        //WriteLog
-                //        //Console.WriteLine($"Daily Load Data added for Macrozone: {load.IdMacroZone} on COD_date: {load.IdDate}");
-                //    }
-                //}
-                
             }
 
         }
@@ -526,7 +512,7 @@ public class ApiManager : IApiManager
 
                 List<PropertyInfo> nonIdProperties = new List<PropertyInfo>();
 
-                if(dtoDataValues!.Count != 0)
+                if(dtoDataValues != null && dtoDataValues!.Count != 0)
                 {
                     foreach (var prop in dtoDataValues[0].GetType().GetProperties().ToList())
                     {
@@ -573,20 +559,7 @@ public class ApiManager : IApiManager
                 {
                     //Write Log
                     Console.WriteLine($"Empty Price record for {DateTime.Today.AddDays(-apiCall.lag)}");
-                }
-
-                //foreach(Domain.Price price in domainList)
-                //{
-                //    if (!CheckDailyPriceLoadRecord(price.IdMacroZone, price.IdDate))
-                //    {
-                //        _context.Price.Add(price);
-                //        _context.SaveChanges();
-
-                //        //WriteLog
-                //        //Console.WriteLine($"Daily Price Data added for Macrozone: {price.IdMacroZone} on COD_date: {price.IdDate}");
-                //    }
-                //}
-                
+                }                
 
             }
         }
@@ -601,82 +574,94 @@ public class ApiManager : IApiManager
             if (dtoData != null)
             {
                 WeatherData? weatherData = dtoData.GetValue(dtoObject) as WeatherData;
-                List<PropertyInfo> nonIdProperties = new List<PropertyInfo>();
-
-                if (apiCall.apiCallName.Contains("Forecast"))
+                
+                if(weatherData != null)
                 {
-                    foreach (var prop in weatherData!.GetType().GetProperties().ToList())
+                    List<PropertyInfo> nonIdProperties = new List<PropertyInfo>();
+
+                    if (apiCall.apiCallName.Contains("Forecast"))
                     {
-                        if (!prop.Name.Contains("id"))
+                        foreach (var prop in weatherData!.GetType().GetProperties().ToList())
                         {
-                            nonIdProperties.Add(prop);
+                            if (!prop.Name.Contains("id"))
+                            {
+                                nonIdProperties.Add(prop);
+                            }
                         }
                     }
-                }
 
-                if (apiCall.apiCallName.Contains("History"))
+                    if (apiCall.apiCallName.Contains("History"))
+                    {
+                        var excludePropName = new List<string> { "id", "WindSpeed80m", "Shower", "SnowDepth" };
+
+                        foreach (var prop in weatherData!.GetType().GetProperties().ToList())
+                        {
+                            if (!excludePropName.Contains(prop.Name))
+                            {
+                                nonIdProperties.Add(prop);
+                            }
+                        }
+                    }
+
+                    string lat = apiCall.parameters[0]["latitude"].Replace(".", ",");
+                    string longit = apiCall.parameters[0]["longitude"].Replace(".", ",");
+                    var province = GetProvince(lat, longit);
+                    int domainProvinceId = province!.Id;
+
+                    int count = weatherData.Time.Count;
+
+                    for (int i = 0; i < count; i++)
+                    {
+                        var domainInstance = GetClassInstance(fullyQualifiedName);
+
+                        var provinceId = domainInstance!.GetType().GetProperty("IdProvince");
+                        provinceId!.SetValue(domainInstance, domainProvinceId);
+
+                        foreach (PropertyInfo prop in nonIdProperties)
+                        {
+                            if (prop.Name.Contains("Time"))
+                            {
+                                string dataValue = weatherData.Time[i].Replace('T', ' ');
+
+                                Domain.Date? domainDate = GetDate(dataValue, false);
+                                var dataId = domainInstance!.GetType().GetProperty("IdDate");
+                                dataId!.SetValue(domainInstance, domainDate!.Id);
+                            }
+
+                            else
+                            {
+                                var weatherProp = domainInstance!.GetType().GetProperty(prop.Name);
+
+                                IList? dataValues = weatherData.GetType().GetProperty(prop.Name)?.GetValue(weatherData) as IList;
+
+                                if(dataValues != null)
+                                {
+                                    var dataValue = dataValues![i];
+
+                                    weatherProp!.SetValue(domainInstance, dataValue);
+                                }
+                            }
+                        }
+
+                        int domainDateValue = (int)domainInstance!.GetType().GetProperty("IdDate").GetValue(domainInstance);
+                        int domainProvinceValue = (int)domainInstance!.GetType().GetProperty("IdProvince").GetValue(domainInstance);
+
+                        if (!CheckWeatherRecord(domainProvinceValue, domainDateValue))
+                        {
+                            _context.Weather.Add(domainInstance as Domain.Weather);
+                            _context.SaveChanges();
+                        }
+
+                        //domainList.Add(domainInstance);
+                    }
+
+                    Console.WriteLine($"Weather Data added for Province {apiCall.apiCallName}");
+                }
+                
+                else if (weatherData is null)
                 {
-                    var excludePropName = new List<string> { "id", "WindSpeed80m", "Shower", "SnowDepth" };
-                    
-                    foreach (var prop in weatherData!.GetType().GetProperties().ToList())
-                    {
-                        if (!excludePropName.Contains(prop.Name))
-                        {
-                            nonIdProperties.Add(prop);
-                        }
-                    }
+                    Console.WriteLine($"Empty Weather record for {DateTime.Today.AddDays(-apiCall.lag)}");
                 }
-
-                string lat = apiCall.parameters[0]["latitude"].Replace(".", ",");
-                string longit = apiCall.parameters[0]["longitude"].Replace(".", ",");
-                var province = GetProvince(lat, longit);
-                int domainProvinceId = province!.Id;
-
-                int count = weatherData.Time.Count;
-
-                for (int i = 0; i < count; i++)
-                {
-                    var domainInstance = GetClassInstance(fullyQualifiedName);
-
-                    var provinceId = domainInstance!.GetType().GetProperty("IdProvince");
-                    provinceId!.SetValue(domainInstance, domainProvinceId);
-
-                    foreach (PropertyInfo prop in nonIdProperties)
-                    {
-                        if (prop.Name.Contains("Time"))
-                        {
-                            string dataValue = weatherData.Time[i].Replace('T', ' ');
-
-                            Domain.Date? domainDate = GetDate(dataValue, false);
-                            var dataId = domainInstance!.GetType().GetProperty("IdDate");
-                            dataId!.SetValue(domainInstance, domainDate!.Id);
-                        }
-
-                        else
-                        {
-                            var weatherProp = domainInstance!.GetType().GetProperty(prop.Name);
-
-                            IList? dataValues = weatherData.GetType().GetProperty(prop.Name)?.GetValue(weatherData) as IList;
-
-                            var dataValue = dataValues![i];
-
-                            weatherProp!.SetValue(domainInstance, dataValue);
-                        }
-                    }
-
-                    int domainDateValue = (int)domainInstance!.GetType().GetProperty("IdDate").GetValue(domainInstance);
-                    int domainProvinceValue = (int)domainInstance!.GetType().GetProperty("IdProvince").GetValue(domainInstance);
-
-                    if (!CheckWeatherRecord(domainProvinceValue, domainDateValue))
-                    {
-                        _context.Weather.Add(domainInstance as Domain.Weather);
-                        _context.SaveChanges();
-                    }
-
-                    //domainList.Add(domainInstance);
-                }
-
-                Console.WriteLine($"Weather Data added for Province {apiCall.apiCallName}");
             }
 
             else if (dtoData is null)
@@ -901,12 +886,12 @@ public class ApiManager : IApiManager
                         if (key == "dateFrom" && value.IsNullOrEmpty())
                         {
                             DateTime dateFrom = DateTime.Today.AddDays(-lag);
-                            value = dateFrom.ToString("d");
+                            value = dateFrom.ToString("d", new CultureInfo("it-IT"));
                         }
                         else if (key == "dateTo" && value.IsNullOrEmpty())
                         {
                             DateTime dateTo = DateTime.Today.AddDays(-lag);
-                            value = dateTo.ToString("d");
+                            value = dateTo.ToString("d", new CultureInfo("it-IT"));
                         }
                     }
 
@@ -919,7 +904,7 @@ public class ApiManager : IApiManager
 
                             if (key.Contains("dateTo"))
                             {
-                                value = dateTo.ToString("d");
+                                value = dateTo.ToString("d", new CultureInfo("it-IT"));
                             }
                             
                             else if(key.Contains("end_date"))
