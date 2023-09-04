@@ -11,16 +11,16 @@
                                 </div>
                                 <div class="col-6 ">
                                     <div class="row">
-                                        <h5 class="card-title mt-5" id="priceOil">83,04$</h5>
+                                        <h3 class="card-title mt-5">83,04$</h3>
                                     </div>
 
                                 </div>
 
                             </div>
                             <div class="card-title">
-                                <h5>
+                                <h6>
                                     Prezzo barile
-                                </h5>
+                                </h6>
                             </div>
 
                         </div>
@@ -35,16 +35,16 @@
                                 </div>
                                 <div class="col-6 ">
                                     <div class="row">
-                                        <h5 class="card-title mt-5">83,04$</h5>
+                                        <h3 class="card-title mt-5">83,04$</h3>
                                     </div>
 
                                 </div>
 
                             </div>
                             <div class="card-title">
-                                <h5>
+                                <h6>
                                     Prezzo barile
-                                </h5>
+                                </h6>
                             </div>
 
                         </div>
@@ -59,16 +59,16 @@
                                 </div>
                                 <div class="col-6 ">
                                     <div class="row">
-                                        <h5 class="card-title mt-5">83,04$</h5>
+                                        <h3 class="card-title mt-5">83,04$</h3>
                                     </div>
 
                                 </div>
 
                             </div>
                             <div class="card-title">
-                                <h5>
+                                <h6>
                                     Prezzo barile
-                                </h5>
+                                </h6>
                             </div>
 
                         </div>
@@ -83,16 +83,16 @@
                                 </div>
                                 <div class="col-6 ">
                                     <div class="row">
-                                        <h5 class="card-title mt-5">83,04$</h5>
+                                        <h3 class="card-title mt-5">83,04$</h3>
                                     </div>
 
                                 </div>
 
                             </div>
                             <div class="card-title">
-                                <h5>
+                                <h6>
                                     Prezzo barile
-                                </h5>
+                                </h6>
                             </div>
 
                         </div>
