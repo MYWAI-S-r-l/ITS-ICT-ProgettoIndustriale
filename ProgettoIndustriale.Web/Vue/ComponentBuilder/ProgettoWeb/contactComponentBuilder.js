@@ -1,15 +1,12 @@
 ﻿
 import navbarprova from "../../navbar-prova.vue";
-import progettoweb from "../../progettoWeb.vue";
-import grafico from "../../grafico.vue";
 
 import { DropdownPlugin, TablePlugin } from 'bootstrap-vue'
-
+import contact from "../../contact.vue";
 
 Vue.use(DropdownPlugin);
-Vue.component("progettoweb", progettoweb);
+Vue.component("contact", contact);
 Vue.component("navbar-prova", navbarprova);
-Vue.component("grafico", grafico);
 
 
 

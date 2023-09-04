@@ -8,5 +8,9 @@ namespace ProgettoIndustriale.Web.Controllers
         {
             return View();
         }
+        public IActionResult Contact()
+        {
+            return View();
+        }
     }
 }
