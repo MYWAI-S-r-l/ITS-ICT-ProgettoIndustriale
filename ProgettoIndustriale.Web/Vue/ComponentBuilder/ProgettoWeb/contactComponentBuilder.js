@@ -9,5 +9,4 @@ Vue.component("contact", contact);
 Vue.component("navbar-prova", navbarprova);
 
 
-
 Vue.config.devtools = true;

@@ -12,5 +12,9 @@ namespace ProgettoIndustriale.Web.Controllers
         {
             return View();
         }
+        public IActionResult Chisiamo()
+        {
+            return View();
+        }
     }
 }

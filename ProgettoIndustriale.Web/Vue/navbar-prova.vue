@@ -18,15 +18,14 @@
                                 <i style="padding-right:20px; padding-left:20%"><img src="../wwwroot/assets/Icone/Icona_Grafici.png" width="30" height="30" /></i>Grafici
 
                                 <b-dropdown aria-expanded="true" id="buttonProva" text="">
-                                    <b-dropdown-item><i style="padding-right:12px"><img src="../wwwroot/assets/Icone/ImmaginiCategoria/Ico_Petrolio.png" width="25" height="25" /></i>I Grafico</b-dropdown-item>
-                                    <b-dropdown-item><i style="padding-right:12px"><img src="../wwwroot/assets/Icone/ImmaginiCategoria/Ico_EnergiaRinnovabile.png" width="25" height="25" /></i>II Grafico</b-dropdown-item>
-                                    <b-dropdown-item><i style="padding-right:12px"><img src="../wwwroot/assets/Icone/ImmaginiCategoria/Ico_Solare.png" width="25" height="25" /></i>III Grafico</b-dropdown-item>
+                                    <b-dropdown-item><i style="padding-right:12px"><img src="../wwwroot/assets/Icone/Ico_Grafico.png" width="25" height="25" /></i>I Grafico</b-dropdown-item>
+                                    <b-dropdown-item><i style="padding-right:12px"><img src="../wwwroot/assets/Icone/Ico_Italy.png" width="25" height="25" /></i>II Grafico</b-dropdown-item>
                                 </b-dropdown>
 
                             </li>
                             <li @click="changePage('contact')" class="list-group-item list-group-item-action mb-8" style="list-style:none"><i style="padding-right:20px; padding-left:20%"><img src="../wwwroot/assets/Icone/Icona_Contatti.png" width="30" height="30" /></i>Contatti</li>
-                            <li class="list-group-item list-group-item-action  mb-8" style="list-style:none"><i style="padding-right:20px; padding-left:20%"><img src="../wwwroot/assets/Icone/Ico_ChiSiamo.png" width="30" height="30" /></i>Chi siamo</li>
-                            <li class="list-group-item list-group-item-action  mb-8" style="list-style:none"><i style="padding-right:20px; padding-left:20%"><img src="../wwwroot/assets/Icone/Icona ChiSiamo (1).png" width="30" height="30" /></i>Crediti</li>
+                            <li @click="changePage('chisiamo')" class="list-group-item list-group-item-action  mb-8" style="list-style:none"><i style="padding-right:20px; padding-left:20%"><img src="../wwwroot/assets/Icone/Ico_ChiSiamo.png" width="30" height="30" /></i>Chi siamo</li>
+                           
 
 
 
@@ -150,7 +149,7 @@
                 if (!page)
                     return;
                 
-                window.location.href = "progetto/" + page
+                window.location.href = "progettoweb/" + page
             }
             
         }   
