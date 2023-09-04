@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Scripts\ProgettoWeb\contactComponentBuilder.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <AssetsSourceFiles Include="Scripts\commonModule.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AssetsSourceFiles>

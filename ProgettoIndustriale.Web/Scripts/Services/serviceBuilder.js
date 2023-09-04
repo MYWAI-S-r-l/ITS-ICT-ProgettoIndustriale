@@ -1,6 +1,7 @@
 ﻿import ApiCallerHelper from "./apiCallerHelper";
 import ApiCallerCommon from "./apiCallerCommon";
 import ApiCallerProvince from "./apiCallerProvince";
+import ApiCallerProgettoWeb from "./apiCallerProgettoWeb";
 class Services {
 
     get apiCallerHelper() {
@@ -17,6 +18,9 @@ class Services {
     
     get apiCallerProvince() {
         return new ApiCallerProvince(this.apiCallerHelper);
+    }
+    get apiCallerProgettoWeb() {
+        return new ApiCallerProgettoWeb(this.apiCallerHelper);
     }
     
     getDialogWidthVuetify(breakpoint) {
