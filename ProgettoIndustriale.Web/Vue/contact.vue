@@ -3,20 +3,20 @@
     <v-container>
         <div class="row mb-0">
             <div class="card mb-0">
-                <h1 class="col-12">CONTATTACI</h1>
+                <h1 class="col-12" style="text-align:center">CONTATTACI</h1>
             </div>
         </div>
-        <div class="row mt-0 ">
+        <div class="row mt-5">
             <div class="card mt-0">
                 <form class="form font-italic" id="myForm" method="post">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Email</label>
+                        <label class="mt-5" for="exampleFormControlInput1">Email</label>
                         <input type="email" class="form-control" id="emailtxt" placeholder="name@example.com">
-                        <label for="exampleFormControlInput1">Name</label>
+                        <label class="mt-5" for="exampleFormControlInput1">Name</label>
                         <input type="text" class="form-control" id="nametxt" placeholder="Nome">
-                        <label for="exampleFormControlInput1">Cognome </label>
+                        <label class="mt-5" for="exampleFormControlInput1">Cognome </label>
                         <input type="text" class="form-control" id="cognometxt" placeholder="Cognome">
-                        <label for="exampleFormControlInput1">Cellulare</label>
+                        <label class="mt-5" for="exampleFormControlInput1">Cellulare</label>
                         <input type="tel" class="form-control" id="celltxt" placeholder="Cellulare">
                     </div>
 

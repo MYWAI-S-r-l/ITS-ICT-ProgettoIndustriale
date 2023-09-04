@@ -27,5 +27,6 @@ mix.vue()
     .js(['./Vue/ComponentBuilder/Home/indexComponentBuilder.js', './Scripts/Home/mainPage.js'], 'js/mainPage.js')
     .js(['./Vue/ComponentBuilder/ProgettoWeb/progettoWebComponentBuilder.js', './Scripts/ProgettoWeb/progettoWeb.js'], 'js/progettoWeb.js')
     .js(['./Vue/ComponentBuilder/ProgettoWeb/contactComponentBuilder.js', './Scripts/ProgettoWeb/contact.js'], 'js/contact.js')
+    .js(['./Vue/ComponentBuilder/ProgettoWeb/chisiamoComponentBuilder.js', './Scripts/ProgettoWeb/chisiamo.js'], 'js/chisiamo.js')
 
 mix.copy('./Scripts/commonModule.js', './wwwroot/js/commonModule.js')
