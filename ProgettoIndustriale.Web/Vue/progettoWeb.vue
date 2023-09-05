@@ -142,11 +142,8 @@ import { services } from '../Scripts/Services/serviceBuilder';
                 services.apiCallerProvince.getAllProvince()
                     .then(res => {
                         that.datioil = res.data;
-                        let datipetrolio = res.data;
-                        
-                        
-                        console.log(datipetrolio[0]["valueUsd"]);
-                        
+                        let datipetrolio = res.data;                     
+                        console.log(datipetrolio[0]["valueUsd"]);                      
                         price.textContent = datipetrolio[0]["valueUsd"] + "$"; 
                     })
                     .catch(err => {
