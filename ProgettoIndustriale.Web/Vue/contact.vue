@@ -63,26 +63,25 @@
                     mail: document.querySelector("#emailtxt").value,
                     cell: document.querySelector("#celltxt").value,
                     testo: document.querySelector("Textarea").value,
-                }
-                const response = fetch("/contact", {
-                    method: "POST", // Specifica il metodo HTTP da usare
-                    body: JSON.stringify(jsonObject), // Converte il jsonObject in una stringa JSON
+                };
+
+
+                this.postData(jsonObject);
+                
+                console.log(jsonObject);
+            },
+            postData: async function (json) {
+                const data = await axios.post('https://localhost:7235/api/Contact/SendContactData', json, {
                     headers: {
-                        "Content-Type": "application/json" // Specifica il tipo di contenuto della richiesta
+                        'Content-Type': 'application/json'
                     }
                 })
-                    .then(response => response.json()) // Converte la risposta in un oggetto JSON
-                    .then(data => {
-                        // Gestisci i dati ricevuti dal controller
-                        console.log(data);
-                    })
-                    .catch(error => {
-                        // Gestisci gli eventuali errori
-                        console.error(error);
-                    });
-
-                console.log(jsonObject);
+                console.log(data.cognome);
+                
+                
             }
+
+
         }
 
     }
