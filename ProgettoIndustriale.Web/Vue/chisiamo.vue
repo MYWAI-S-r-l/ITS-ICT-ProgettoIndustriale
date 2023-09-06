@@ -19,8 +19,8 @@
 
                         <label for="exampleFormControlInput1">- Database: Alessandro Romano, Gabriele Piccardo</label>
                         <label for="exampleFormControlInput1">- Data Acquisition: Serena Schincaglia, Federico Zunino, Simone Schiano</label>
-                        <label for="exampleFormControlInput1">- Frontend: Dana Luta, Carlo Tommaso, Lorenzo Motto</label>
-                        <label for="exampleFormControlInput1">- Backend: Sara Urdangaray, Jandry Vicente, Matteo Bonino, Giacomo Cattozzo</label>
+                        <label for="exampleFormControlInput1">- Front-end: Dana Luta, Carlo Tommaso, Lorenzo Motto</label>
+                        <label for="exampleFormControlInput1">- Back-end: Sara Urdangaray, Jandry Vicente, Matteo Bonino, Giacomo Cattozzo</label>
 
                         <label class="mt-5" for="exampleFormControlInput1">DAL CONCETTO ALLA REALTÀ: L'APPLICAZIONE WEB COMPLETA</label>
                         <label for="exampleFormControlInput1">L'obiettivo principale del progetto era sviluppare un'applicazione web sofisticata che potesse raccogliere dati tramite API e file CSV da sorgenti online. Questi dati sono stati poi presentati in forma di grafici e informazioni dettagliate riguardanti domanda e consumo di energia elettrica. Il progetto ha incluso un'analisi dettagliata di variabili influenzanti come il costo delle materie prime e le condizioni meteorologiche.</label>

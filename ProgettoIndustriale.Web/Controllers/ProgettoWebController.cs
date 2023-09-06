@@ -16,5 +16,17 @@ namespace ProgettoIndustriale.Web.Controllers
         {
             return View();
         }
+        public IActionResult graficoi()
+        {
+            return View();
+        }
+        public IActionResult graficoii()
+        {
+            return View();
+        }
+        public IActionResult graficoiii()
+        {
+            return View();
+        }
     }
 }
