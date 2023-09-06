@@ -1,9 +1,9 @@
 ﻿<template>
     <v-container >
-        <div class="container mt-5" >
+        <div class="container mt-3 " >
             <div class="row">
                 <div class="col-md-3 col-sm-6">
-                    <div class="card">
+                    <div class="card ml-0">
                         <div class="card-body">
                             <div class=" row">
                                 <div class="col-6">
@@ -11,18 +11,15 @@
                                 </div>
                                 <div class="col-6 ">
                                     <div class="row">
-                                        <h3 class="card-title mt-5">83,04$</h3>
+                                        <h3 id="priceOil" class="card-title mt-5">83,04$</h3>
                                     </div>
-
                                 </div>
-
                             </div>
                             <div class="card-title">
                                 <h6>
                                     Prezzo barile
                                 </h6>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -37,16 +34,13 @@
                                     <div class="row">
                                         <h3 class="card-title mt-5">83,04$</h3>
                                     </div>
-
                                 </div>
-
                             </div>
                             <div class="card-title">
                                 <h6>
                                     Prezzo barile
                                 </h6>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -61,16 +55,13 @@
                                     <div class="row">
                                         <h3 class="card-title mt-5">83,04$</h3>
                                     </div>
-
                                 </div>
-
                             </div>
                             <div class="card-title">
                                 <h6>
                                     Prezzo barile
                                 </h6>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -85,34 +76,24 @@
                                     <div class="row">
                                         <h3 class="card-title mt-5">83,04$</h3>
                                     </div>
-
                                 </div>
-
                             </div>
                             <div class="card-title">
                                 <h6>
                                     Prezzo barile
                                 </h6>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row container ">
-                <div class="col mt-5">
-                    <p class="mb-0 font-italic">
+            <div class="row" style="width:100%">
+                <div class="col mt-1">
+                    <p class="mb-0 justify-center font-italic">
                         <grafico></grafico>
                     </p>
                 </div>
-
-                
-
             </div>
-
-
-
-
         </div>
     </v-container>
 </template>
@@ -195,7 +176,7 @@ import { services } from '../Scripts/Services/serviceBuilder';
         box-shadow: 0 5px 10px rgba(0,0,0,.2);
         border-color: darkgreen;
         height: 100px;
-        width:100%;
+        width:95%;
         -ms-word-wrap: inherit;
         word-wrap: inherit;
     }
@@ -218,6 +199,6 @@ import { services } from '../Scripts/Services/serviceBuilder';
         border-color: darkgreen;
         border: solid 2px;
         background-color: white;
-        height: 600px;
+        height: 500px;
     }
 </style>
