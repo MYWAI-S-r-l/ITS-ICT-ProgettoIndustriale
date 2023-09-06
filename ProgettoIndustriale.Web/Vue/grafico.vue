@@ -1,7 +1,10 @@
 ﻿
 <template>
-    <div class="hello mb-10" ref="chartdiv">
-        <h5>Prezzo Medio!</h5>
+    <div class="row mt-0 mb-1">
+        <div class="embed-responsive embed-responsive-16by9">
+            
+            <iframe class="embed-responsive-item" title="GetAllProvince"  src="https://app.powerbi.com/reportEmbed?reportId=b8248c3a-ee42-4ad5-a775-f77bea259e1e&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
     </div>
 </template>
 
@@ -196,8 +199,13 @@
 
 </script>
 <style scoped>
-    .hello {
+   .embed-responsive-16by9 {
         width: 100%;
-        height: 450px;
+        height: 550px;
+       
+    }
+    .embed-responsive-item {
+        border-radius: 2em;
+        padding: 1.5em .5em .5em;
     }
 </style>
