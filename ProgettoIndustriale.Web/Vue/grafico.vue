@@ -1,12 +1,12 @@
 ﻿
 <template>
 
-    <div class="row  mt-2">
+    <div class="row">
         
-            <div class="card container mt-0">
-                <div class="embed-responsive embed-responsive-16by9">
+            <div class="card customContainer mt-0">
+                <div class="embed-responsive embed-responsive-16by9 customContainer">
 
-                    <iframe class="embed-responsive-item" title="GetAllProvince" src="https://app.powerbi.com/reportEmbed?reportId=b8248c3a-ee42-4ad5-a775-f77bea259e1e&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0" allowFullScreen="true"></iframe>
+                    <iframe class="embed-responsive-item" title="home-page" src="https://app.powerbi.com/reportEmbed?reportId=0c5f7b57-5120-41de-bb16-b318c94eb80c&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0"></iframe>
 
                 </div>
             </div>
@@ -207,11 +207,14 @@
 
 </script>
 <style>
-    embed-responsive-16by9 {
-        width: 90%;
-       
+    .embed-responsive-16by9 {
+       padding: 0 0 0 0;
+       height:100%;
     }
-
+    .customContainer{
+        height:569px;
+    }
+    
     .embed-responsive-item {
         
         border-radius: 2em;
