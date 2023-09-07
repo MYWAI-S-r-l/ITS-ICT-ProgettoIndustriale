@@ -1,13 +1,21 @@
 ﻿
 <template>
-    <div class="row mt-0 mb-1">
-        <div class="embed-responsive embed-responsive-16by9">
-            
-            <iframe class="embed-responsive-item" title="GetAllProvince"  src="https://app.powerbi.com/reportEmbed?reportId=b8248c3a-ee42-4ad5-a775-f77bea259e1e&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0" allowFullScreen="true"></iframe>
-        </div>
+
+    <div class="row  mt-2">
+        
+            <div class="card container mt-0">
+                <div class="embed-responsive embed-responsive-16by9">
+
+                    <iframe class="embed-responsive-item" title="GetAllProvince" src="https://app.powerbi.com/reportEmbed?reportId=b8248c3a-ee42-4ad5-a775-f77bea259e1e&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0" allowFullScreen="true"></iframe>
+
+                </div>
+            </div>
+        
     </div>
+
 </template>
 
+<!--<iframe class="embed-responsive-item" title="GetAllProvince" src="https://app.powerbi.com/reportEmbed?reportId=b8248c3a-ee42-4ad5-a775-f77bea259e1e&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0" allowFullScreen="true"></iframe>-->
 
 <script>
     import * as am5 from '@amcharts/amcharts5';
@@ -17,7 +25,7 @@
 
     import { services } from '../Scripts/Services/serviceBuilder';
     let datigrafico = [{}];
-    
+
     export default {
         name: 'grafico',
         data: function () {
@@ -27,7 +35,7 @@
             };
         },
         methods: {
-            getMonthName: function(monthNumber){
+            getMonthName: function (monthNumber) {
                 const date = new Date();
                 date.setMonth(monthNumber - 1);
                 return date.toLocaleString([], { month: 'long' });
@@ -36,23 +44,23 @@
                 let that = this;
                 that.loading = true;
                 const dateS = new Date();
-                let currentDate = `${dateS.getFullYear()}-${dateS.getMonth()+1}-${dateS.getDate()}`
-                              
+                let currentDate = `${dateS.getFullYear()}-${dateS.getMonth() + 1}-${dateS.getDate()}`
+
 
                 await services.apiCallerProgettoWeb.getCommoditiesByDate(currentDate)
                     .then(res => {
                         let count = [];
-                        count=res.data;
-                        
+                        count = res.data;
+
                         for (var i = 0; i < count.length; i++) {
                             var schema = {
                                 Month: this.getMonthName(count[i]["date"]["month"]).toUpperCase(),
                                 value: count[i]["valueUsd"]
                             }
-                            datigrafico[i]= schema;
-                            
+                            datigrafico[i] = schema;
+
                         }
-                        
+
                         console.log("Dati grafico aggiunti");
                     })
                     .catch(err => {
@@ -61,12 +69,12 @@
                     .finally(_ => {
                         that.loading = false;
                     });
-            }            
+            }
         },
         created: function () {
             console.log("created main page");
         },
-        
+
         async mounted() {
             await this.getDataGrafico();
             var root = am5.Root.new(this.$refs.chartdiv);
@@ -112,7 +120,7 @@
             var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
                 maxDeviation: 0.3,
                 categoryField: "Month",
-           
+
                 renderer: xRenderer,
                 tooltip: am5.Tooltip.new(root, {})
             }));
@@ -152,31 +160,31 @@
             // Set data
             var data = [{
                 Month: "GENNAIO",
-                
+
             }, {
-                Month: "FEBBRAIO"              
+                Month: "FEBBRAIO"
             }, {
-                Month: "MARZO"                
+                Month: "MARZO"
             }, {
-                Month: "APRILE"                
+                Month: "APRILE"
             }, {
-                Month: "MAGGIO"                
+                Month: "MAGGIO"
             }, {
-                Month: "GIUGNO"                
+                Month: "GIUGNO"
             }, {
                 Month: "LUGLIO"
             }, {
-                Month: "AGOSTO"                
+                Month: "AGOSTO"
             }, {
-                Month: "SETTEMBRE"                
+                Month: "SETTEMBRE"
             }, {
-                Month: "OTTOBRE"               
+                Month: "OTTOBRE"
             }, {
-                Month: "NOVEMBRE"               
+                Month: "NOVEMBRE"
             }, {
-                Month: "DICEMBRE"                
+                Month: "DICEMBRE"
             }];
-        
+
             xAxis.data.setAll(data);
             series.data.setAll(datigrafico);
 
@@ -198,14 +206,53 @@
 
 
 </script>
-<style scoped>
-   .embed-responsive-16by9 {
-        width: 100%;
-        height: 550px;
+<style>
+    embed-responsive-16by9 {
+        width: 90%;
        
     }
+
     .embed-responsive-item {
+        
         border-radius: 2em;
-        padding: 1.5em .5em .5em;
+        padding: 0.0em 0.0em 0.0em;
     }
+
+    @media (min-height: 1060px) {
+        * {
+        }
+
+        .card {
+           
+            font-size: 50px;
+        }
+    }
+
+    #btn-form {
+        background: rgb(1,208,114);
+        background: linear-gradient(90deg, rgba(1,208,114,1) 0%, rgba(3,222,206,1) 100%)
+    }
+
+    main {
+        background: rgb(1,208,114);
+        background: linear-gradient(90deg, rgba(1,208,114,1) 0%, rgba(3,222,206,1) 100%);
+    }
+
+
+    .container {
+        padding: 0px;
+    }
+
+
+
+    .card {
+        
+       
+        border-radius: 0.8em;
+        text-align: left;
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        border-color: darkgreen;
+        
+    }
+    
 </style>
