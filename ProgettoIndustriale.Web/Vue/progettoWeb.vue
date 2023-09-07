@@ -1,6 +1,6 @@
 ﻿<template>
     <v-container >
-        <div class="container mt-1 " >
+        <div class="container mt-7 mb-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-3 col-sm-6">
                     <div class="card ml-0">
@@ -23,27 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class=" row">
-                                <div class="col-6">
-                                    <i><img height="50" width="50" src="../wwwroot/assets/Icone/ImmaginiCategoria/Ico_Petrolio.png" /></i>
-                                </div>
-                                <div class="col-6 ">
-                                    <div class="row">
-                                        <h3 class="card-title mt-5">83,04$</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <h5 class="container mb-0">
-                                    Prezzo barile1
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
                 <div class="col-md-3 col-sm-6">
                     <div class="card">
                         <div class="card-body">
