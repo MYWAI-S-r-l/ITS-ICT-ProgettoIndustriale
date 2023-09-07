@@ -68,9 +68,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        
             <grafico></grafico>
-        </div>
+        
 
         
         <!-- Inserimento del grafico nella homepage -->

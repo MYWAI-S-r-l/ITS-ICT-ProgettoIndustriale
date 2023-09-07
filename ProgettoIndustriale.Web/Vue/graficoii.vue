@@ -12,8 +12,8 @@
                 <div class="col-12">
                     <div class="card mt-0">
                         <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" title="stat_load" src="https://app.powerbi.com/reportEmbed?reportId=5487ed91-2cc0-445b-9143-a1a1ec139e77&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0" allowFullScreen="true"></iframe>
 
-                            <iframe class="embed-responsive-item" title="generazione_energia" src="https://app.powerbi.com/reportEmbed?reportId=d1cfbabf-7213-4eb5-949e-8cf79d4d96ad&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0" allowFullScreen="true"></iframe>
 
                         </div>
                     </div>
