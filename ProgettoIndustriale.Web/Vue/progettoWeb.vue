@@ -1,6 +1,6 @@
 ﻿<template>
     <v-container >
-        <div class="container mt-7 mb-5">
+        <div class="container mt-7 mb-7">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-3 col-sm-6">
                     <div class="card ml-0">
