@@ -44,21 +44,21 @@ import { services } from '../Scripts/Services/serviceBuilder';
                 data: [
                     {
                         id: 1,
-                        image: "Ico_Petrolio.png",
+                        image: "Ico_Barile.png",
                         price: "No data",
                         unit: "No data",
                         name: "No data",
                     },
                     {
                         id: 2,
-                        image: "Ico_Solare.png",
+                        image: "Ico_CrudeOil.png",
                         price: "No data",
                         unit: "No data",
                         name: "No data",
                     },
                     {
                         id: 3,
-                        image: "Ico_Nucleare.png",
+                        image: "Ico_Gas.png",
                         price: "No data",
                         unit: "No data",
                         name: "No data",

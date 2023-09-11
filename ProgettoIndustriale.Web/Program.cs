@@ -39,7 +39,7 @@ app.UseRouting();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=ProgettoWeb}/{action=Index}/{id?}");
 
 app.UseElmah();
 
