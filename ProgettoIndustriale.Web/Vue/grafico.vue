@@ -1,17 +1,19 @@
 ﻿
 <template>
+    <v-container>
+        <div class="row">
+            <div class="col-12">
+                <div class="card customContainer mt-0">
+                    <div class="embed-responsive embed-responsive-16by9 ">
 
-    <div class="row">
-        
-            <div class="card customContainer mt-0">
-                <div class="embed-responsive embed-responsive-16by9 customContainer">
-
-                    <iframe class="embed-responsive-item" title="home-page" src="https://app.powerbi.com/reportEmbed?reportId=0c5f7b57-5120-41de-bb16-b318c94eb80c&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0"></iframe>
-
+                        <!--<iframe class="embed-responsive-item" title="home-page" src="https://app.powerbi.com/reportEmbed?reportId=0c5f7b57-5120-41de-bb16-b318c94eb80c&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0"></iframe>-->
+                        <iframe class="embed-responsive-item" title="Report Section" src="https://app.powerbi.com/view?r=eyJrIjoiNzBjMTk4N2YtOGIzMS00NzFhLWFiNTgtYzdjMTgxNjQ4MGU5IiwidCI6ImM2YmRkMmE4LTNkNWItNGM1NC1hYzVmLTFiNTRhNWIxOTI5YSIsImMiOjh9&pageName=ReportSection9dccfc3a4dd0f01e3f92" frameborder="0" allowFullScreen="true"></iframe>
+                    </div>
                 </div>
+
             </div>
-        
-    </div>
+        </div>
+    </v-container>
 
 </template>
 
@@ -212,12 +214,13 @@
        height:100%;
     }
     .customContainer{
-        height:569px;
+        height:550px;
+        width:100%;
     }
     
     .embed-responsive-item {
-        
-        border-radius: 2em;
+       
+        border-radius: 1em;
         padding: 0.0em 0.0em 0.0em;
     }
 
@@ -249,8 +252,9 @@
 
 
     .card {
+        padding:0.2em 0.1em 0 0.1em ;
         
-       
+        width: 100%;
         border-radius: 0.8em;
         text-align: left;
         box-shadow: 0 5px 10px rgba(0,0,0,.2);

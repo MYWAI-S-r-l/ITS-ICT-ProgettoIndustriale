@@ -2,7 +2,7 @@
     
     <div class="">
 
-        <v-navigation-drawer style="width:250px; height:100%" app v-model="drawer">
+        <v-navigation-drawer style="width:230px; height:100%" app v-model="drawer">
             <div align="center" style="padding-top:40px">
                 <img src="../wwwroot/assets/Icone/logo.jpg" height="150" class="d-line-block  align-top" alt="">
 

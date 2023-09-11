@@ -3,17 +3,16 @@
     <v-container>
         <div class="row mb-0">
             <div class="col-12">
-                <div class="card mb-0">
-                    <h3 class="col-12" style="text-align:center">GRAFICO 1</h3>
-                    <h6 class="display-5" style="text-align:center">Descrizione grafico</h6>
+                <div class="card mt-7 mb-0">
+                    <h3 class="col-12" style="text-align:center">ENERGIA GENERATA</h3>
+                    <h6 class="display-5" style="text-align:center">Mostra in base ai filtri di data e tipo, la sommatoria delle energie generate in GWh.</h6>
                 </div>
             </div>
-           <div class="row mt-2">
+           <div class="row mt-7">
                 <div class="col-12">
-                    <div class="card mt-0">
+                    <div class="card customContainer mt-0">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" title="stat_prezzi" src="https://app.powerbi.com/reportEmbed?reportId=7002aba4-aaf8-46bf-9f70-da0d16631bc8&autoAuth=true&ctid=c6bdd2a8-3d5b-4c54-ac5f-1b54a5b1929a" frameborder="0" allowFullScreen="true"></iframe>
-
+                           <iframe class="embed-responsive-item" title="Report Section" src="https://app.powerbi.com/view?r=eyJrIjoiZTIyMWQ2ZjctMzIyNy00N2M0LTkwZTMtZjU3NDk4NDFkM2UyIiwidCI6ImM2YmRkMmE4LTNkNWItNGM1NC1hYzVmLTFiNTRhNWIxOTI5YSIsImMiOjh9&pageName=ReportSectionc5bd44a5651f17586460" frameborder="0" allowFullScreen="true"></iframe>
 
                         </div>
                     </div>
@@ -48,14 +47,21 @@
 
 <style>
     .embed-responsive-16by9 {
-        width: 100%;
+        padding: 0 0 0 0;
+        height: 100%;
+    }
+
+    .customContainer {
         height: 550px;
+        width: 100%;
     }
 
     .embed-responsive-item {
-         border-radius: 0.8em;
+       
+        border-radius: 1em;
         padding: 0.0em 0.0em 0.0em;
     }
+
 
     @media (min-height: 1060px) {
         * {
@@ -88,9 +94,8 @@
 
 
     .card {
-        margin-top: 0.9em;
-        border-radius: 0.8em;
-        padding: 0.5em .5em .5em;
+        padding: 0.2em 0.1em 0 0.1em;
+        width: 100%;
         border-radius: 0.8em;
         text-align: left;
         box-shadow: 0 5px 10px rgba(0,0,0,.2);
