@@ -53,4 +53,10 @@ public partial class UtilsController
     {
         return _utilsManager.GetProvincebyMacrozone(macrozone);
     }
+
+    [HttpGet("getLastCommodities")]
+    public Object GetLastCommodities()
+    {
+        return _utilsManager.GetLastCommodities();
+    }
 }

@@ -6,9 +6,9 @@
     }
 
     
-    getCommoditiesByDate(currentdate) {
+    getLastCommodities() {
         
-        const url = `${commonModule.webApiBaseUrl}/Commodity/getCommoditybyDates?startDate=2023-1-1&endDate=${currentdate}`;
+        const url = `${commonModule.webApiBaseUrl}/Utils/getLastCommodities`;
         // return this.apiCallerHelper.callGetWithBearer(url);
         return this.apiCallerHelper.callGetWithoutBearerForTest(url);
     }

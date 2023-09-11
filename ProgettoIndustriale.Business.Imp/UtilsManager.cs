@@ -10,6 +10,8 @@ using Dto = ProgettoIndustriale.Type.Dto;
 using Serilog;
 using Microsoft.Extensions.Configuration;
 using System.Linq.Expressions;
+using Newtonsoft.Json.Linq;
+using ProgettoIndustriale.Type.Dto;
 
 namespace ProgettoIndustriale.Business.Imp;
 
@@ -247,6 +249,22 @@ public class UtilsManager : IUtilsManager
        
     }
 
+    public object GetLastCommodities()
+    {
+
+        //Restitutisce gli ultimi  valori aggiornati  di commodities
+        var ris = _context.Commodity
+        .GroupBy(x => x.Name)
+        .Where(l=>l.Max(s=>s.IdDate) == l.Select(w=>w.IdDate).Max())
+        .Select(g => new { name = g.Key, valueUsd = g.First().ValueUsd, unit = g.First().Unit})
+        ;
+        return ris;
+ 
+
+        
+      
+    }
+
     public List<Business.IUtilsManager.MyAtecoClass> GetNActiveIndustriesbyCatandProv(List<string> provinces, List<string> category)
     {
         //ottengo la lista delle province con i nomi passati dalla lista
@@ -318,4 +336,6 @@ public class UtilsManager : IUtilsManager
 
         return result;
     }
+
+   
 }
