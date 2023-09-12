@@ -17,7 +17,7 @@ public partial class ContactController : ControllerBase
 
     [HttpPost("SendContactData")] // Specifica che accetta richieste POST
     public object Prova([FromBody] ContactData contactData) // Usa JObject per rappresentare il jsonObject
-    {
+   {
         // Configurazione mail
         
         try
@@ -26,6 +26,7 @@ public partial class ContactController : ControllerBase
             // Set the sender and recipient addresses.
             mail.From = new MailAddress(contactData.mail);
             mail.To.Add("be.progetto.industriale.11.2@accademiadigitaleliguria.it");
+
             // Set the subject and body of the message.
             mail.Subject = "This is a test email.";
             //Costruzione corpo mail con stringa di testo
@@ -44,12 +45,11 @@ public partial class ContactController : ControllerBase
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
             }
-            return Ok(new {messagge= "prova", ris=true});
+            return Ok(new {messagge= "messaggio inviato", ris=true});
 
         }
         catch (Exception e)
         {
-
             return Ok(new { messagge = e.Message, ris = false });
         }
         
