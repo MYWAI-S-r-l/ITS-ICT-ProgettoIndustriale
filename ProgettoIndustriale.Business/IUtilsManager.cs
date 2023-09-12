@@ -20,6 +20,7 @@ public interface IUtilsManager
     public Dto.MacroZone GetMacrozoneHavingProvince(string province);
     public List<Dto.Province> GetProvincebyRegion(string region);//nome
     public List<Dto.Region> GetRegionsbyMacrozone(string macrozone);
+    public object GetLastCommodities();
 
     public Dto.MacroZone GetMacrozoneHavingRegion(string region);
     public List<MyAtecoClass> GetNActiveIndustriesbyCatandProv(List<string> provinces, List<string> category);

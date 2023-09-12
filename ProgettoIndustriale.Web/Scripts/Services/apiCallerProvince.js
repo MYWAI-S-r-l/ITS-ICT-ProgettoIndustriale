@@ -5,7 +5,7 @@
         this.apiCallerHelper = helper;
     }
     getAllProvince() {
-        const url = `${commonModule.webApiBaseUrl}/province/getAll`;
+        const url = `${commonModule.webApiBaseUrl}/Commodity/getAllCommodities`;
         // return this.apiCallerHelper.callGetWithBearer(url);
         return this.apiCallerHelper.callGetWithoutBearerForTest(url);
     }
@@ -15,4 +15,10 @@
         return this.apiCallerHelper.callPostWithoutBearerForTest(url, provinciaForMeteo);
 
     }
+    getPriceOil() {
+        const url = `${commonModule.webApiBaseUrl}/Commodity/getAllCommodities`;
+        // return this.apiCallerHelper.callGetWithBearer(url);
+        return this.apiCallerHelper.callGetWithoutBearerForTest(url);
+    }
+    
 }

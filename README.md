@@ -6,6 +6,7 @@ Per il proggetto web si fa uso di Vue e di Laravel Mix (come wrapper di Webpack)
 Alcuni passaggi preliminari:
 1. Una volta clonato il progetto, posizionarsi nella cartella del progetto web, dove è presente anche il file package.json, e installare i pacchetti NPM con l'istruzione
 > npm install
+> npm install axios -pacchetto per invio mail-
 
 2. Al termine dell'installazione, e all'apertura ogni volta del progetto, ricordarsi di posizionarsi nella cartella del progetto web e lanciare laravel in modalità watch con l'istruzione
 > npm run watch
