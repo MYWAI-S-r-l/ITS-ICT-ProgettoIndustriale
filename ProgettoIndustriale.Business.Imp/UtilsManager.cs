@@ -258,7 +258,7 @@ public class UtilsManager : IUtilsManager
                name = g.Key, // seleziona il nome del gruppo
                valueUsd = g.Where(p => p.IdDate == g.Max(l => l.IdDate)).First().ValueUsd, // seleziona il valore usd del primo elemento del gruppo
                CodDate = g.Max(c => c.IdDate),
-               unit = g.First().ValueUsd// seleziona il cod_date massimo del gruppo
+               unit = g.First().Unit// seleziona il cod_date massimo del gruppo
            }); 
           
 
