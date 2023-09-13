@@ -251,13 +251,10 @@ public class UtilsManager : IUtilsManager
 
     public object GetLastCommodities()
     {
-
-        //Restitutisce gli ultimi  valori aggiornati  di commodities
+        //Restitutisce gli ultimi  valori aggiornati  di commodities per categoria
         var ris = _context.Commodity
-        .GroupBy(x => x.Name)
-        .Where(l=>l.Max(s=>s.IdDate) == l.Select(w=>w.IdDate).Max())
-        .Select(g => new { name = g.Key, valueUsd = g.First().ValueUsd, unit = g.First().Unit})
-        ;
+            .Where(c => c.IdDate == _context.Commodity.Max(c2 => c2.IdDate)).Select(g => new { name = g.Name, valueUsd = g.ValueUsd, unit = g.Unit });
+        //;
         return ris;
  
 
