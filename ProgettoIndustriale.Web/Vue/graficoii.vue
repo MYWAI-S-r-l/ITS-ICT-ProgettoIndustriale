@@ -12,9 +12,7 @@
                 <div class="col-12">
                     <div class="card customContainer mt-0">
                         <div class="embed-responsive embed-responsive-16by9">
-
-                            <iframe class="embed-responsive-item" title="Report Section" width="1024" height="804" src="https://app.powerbi.com/view?r=eyJrIjoiYjM4NjhhNmItNGYxMy00NjQ5LWI0YTctYzQyZmVkMzMyNzQ5IiwidCI6ImM2YmRkMmE4LTNkNWItNGM1NC1hYzVmLTFiNTRhNWIxOTI5YSIsImMiOjh9&pageName=ReportSection36e30743c461003a1d98" frameborder="0" allowFullScreen="true"></iframe>
-                         
+                            <iframe  class="embed-responsive-item" title="stat_load" width="1024" height="804" src="https://app.powerbi.com/view?r=eyJrIjoiZDc5ZmZjYTItNDU2ZC00OWViLTliNGItMTNhNmMzMDc5NjljIiwidCI6ImM2YmRkMmE4LTNkNWItNGM1NC1hYzVmLTFiNTRhNWIxOTI5YSIsImMiOjh9&pageName=ReportSection36e30743c461003a1d98" frameborder="0" allowFullScreen="true"></iframe>
                         </div>
                     </div>
                 </div>
