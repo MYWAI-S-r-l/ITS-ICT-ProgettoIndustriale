@@ -4,10 +4,10 @@
       
         <div class="row mb-0">
             <div class="card mb-0">
-                <h4 class="col-12" style="text-align:center">CONTATTACI</h4>
+                <h3 class="col-12" style="text-align:center">CONTATTACI</h3>
             </div>
         </div>
-        <div class="row mt-2">
+        <div class="row mt-5">
 
             <div class="card mt-0">
                 <form class="font-italic" id="myForm" v-on:submit="postData" method="post">
@@ -233,11 +233,11 @@
     }
 
     .card {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 25px;
+        margin-bottom: 50px;
         margin-left: 20%;
         width: 60%;
-        padding: 0.3em .3em .3em;
+        padding: 0.5em .5em .5em;
         border-radius: 0.9em;
         text-align: left;
         box-shadow: 0 5px 10px rgba(0,0,0,.2);

@@ -3,7 +3,7 @@
     <v-container>
         <div class="row mb-0">
             <div class="card mb-0">
-                <h1 class="col-12" style="text-align:center">CHI SIAMO</h1>
+                <h3 class="col-12" style="text-align:center">CHI SIAMO</h3>
             </div>
         </div>
         <div class="row mt-5">
@@ -41,16 +41,16 @@
                     </div>
 
                     <!--<div class="form-group">
-                <label for="exampleFormControlSelect2">Example multiple select</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>-->
-                    
+                    <label for="exampleFormControlSelect2">Example multiple select</label>
+                    <select multiple class="form-control" id="exampleFormControlSelect2">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>-->
+
                 </form>
 
             </div>
@@ -125,7 +125,7 @@
         margin-left: 20%;
         width: 60%;
         padding: 0.5em .5em .5em;
-        border-radius: 2em;
+        border-radius: 0.9em;
         text-align: left;
         box-shadow: 0 5px 10px rgba(0,0,0,.2);
         border-color: darkgreen;
