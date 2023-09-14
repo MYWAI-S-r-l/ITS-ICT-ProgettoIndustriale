@@ -107,12 +107,12 @@ class Program
         var configuration = GetConfig();
 
         var connectionString = configuration.GetConnectionString("ProgettoIndustriale");
+        var serverVersion = new MariaDbServerVersion(new Version(10, 11, 3));
 
         var dbcontext = GetDbContext(connectionString!, serverVersion);
 
         ApiManager apiManager = new ApiManager(dbcontext, configuration);
 
-        var serverVersion = new MariaDbServerVersion(new Version(10, 11, 3)); // Aggiungi la dichiarazione di serverVersion
         return apiManager;
     }
 
