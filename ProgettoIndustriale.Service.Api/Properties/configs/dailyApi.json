@@ -1,0 +1,596 @@
+{
+  "tokenCalls": [
+
+    {
+      "apiCallName": "Terna",
+      "tableName": "Token",
+      "client": "https://api.terna.it",
+      "request": "/transparency/oauth/accessToken",
+      "callFrequency": "",
+      "lag": 1,
+      "method": "Post",
+      "auth": false,
+      "authType": "",
+      "parameters": [
+        {
+          "client_id": "k48jhcjhyku2th7t3pg9y2be",
+          "client_secret": "g9khnFNRr8",
+          "grant_type": "client_credentials"
+        }
+      ],
+      "param_type": "body",
+      "headers": [
+        {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      ],
+      "dtoClass": "Dto.Token",
+      "dtoDataClass": "",
+      "domainClass": "Domain.Token"
+    }
+
+  ],
+
+  "apiCalls": [
+
+    {
+
+      "apiCallName": "Load_Daily_NORD",
+      "tableName": "Load",
+      "client": "https://api.terna.it",
+      "request": "transparency/v1.0/gettotalload",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "biddingZone": "NORD"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Load",
+      "dtoDataClass": "Dto.LoadData",
+      "domainClass": "Domain.Load"
+    },
+
+    {
+      "apiCallName": "Load_Daily_CNORD",
+      "tableName": "Load",
+      "client": "https://api.terna.it",
+      "request": "transparency/v1.0/gettotalload",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "biddingZone": "CNOR"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Load",
+      "dtoDataClass": "Dto.LoadData",
+      "domainClass": "Domain.Load"
+    },
+
+    {
+      "apiCallName": "Load_Daily_SUD",
+      "tableName": "Load",
+      "client": "https://api.terna.it",
+      "request": "transparency/v1.0/gettotalload",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "biddingZone": "SUD"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Load",
+      "dtoDataClass": "Dto.LoadData",
+      "domainClass": "Domain.Load"
+    },
+
+    {
+      "apiCallName": "Load_Daily_CSUD",
+      "tableName": "Load",
+      "client": "https://api.terna.it",
+      "request": "transparency/v1.0/gettotalload",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "biddingZone": "CSUD"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Load",
+      "dtoDataClass": "Dto.LoadData",
+      "domainClass": "Domain.Load"
+    },
+
+    {
+      "apiCallName": "Load_Daily_SARD",
+      "tableName": "Load",
+      "client": "https://api.terna.it",
+      "request": "transparency/v1.0/gettotalload",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "biddingZone": "SARD"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Load",
+      "dtoDataClass": "Dto.LoadData",
+      "domainClass": "Domain.Load"
+    },
+
+    {
+      "apiCallName": "Load_Daily_SICI",
+      "tableName": "Load",
+      "client": "https://api.terna.it",
+      "request": "transparency/v1.0/gettotalload",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "biddingZone": "SICI"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Load",
+      "dtoDataClass": "Dto.LoadData",
+      "domainClass": "Domain.Load"
+    },
+
+    {
+      "apiCallName": "Load_Daily_CALA",
+      "tableName": "Load",
+      "client": "https://api.terna.it",
+      "request": "transparency/v1.0/gettotalload",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "biddingZone": "CALA"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Load",
+      "dtoDataClass": "Dto.LoadData",
+      "domainClass": "Domain.Load"
+    },
+
+    {
+      "apiCallName": "Load_Daily_ITALY",
+      "tableName": "Load",
+      "client": "https://api.terna.it",
+      "request": "transparency/v1.0/gettotalload",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "biddingZone": "ITALY"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Load",
+      "dtoDataClass": "Dto.LoadData",
+      "domainClass": "Domain.Load"
+    },
+
+    {
+      "apiCallName": "Prices_Daily",
+      "tableName": "Price",
+      "client": "https://api.terna.it",
+      "request": "/market-and-fees/v1.0/daily-prices",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "dataType": "Orario"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Price",
+      "dtoDataClass": "Dto.DailyPrice",
+      "domainClass": "Domain.Price"
+    },
+
+    {
+      "apiCallName": "Generation_Thermal_Daily",
+      "tableName": "Generation",
+      "client": "https://api.terna.it",
+      "request": "/transparency/v1.0/getactualgeneration",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "type": "Thermal"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Generation",
+      "dtoDataClass": "Dto.GenerationData",
+      "domainClass": "Domain.Generation"
+    },
+
+    {
+      "apiCallName": "Generation_Wind_Daily",
+      "tableName": "Generation",
+      "client": "https://api.terna.it",
+      "request": "/transparency/v1.0/getactualgeneration",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "type": "Wind"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Generation",
+      "dtoDataClass": "Dto.GenerationData",
+      "domainClass": "Domain.Generation"
+    },
+
+    {
+      "apiCallName": "Generation_Geothermal_Daily",
+      "tableName": "Generation",
+      "client": "https://api.terna.it",
+      "request": "/transparency/v1.0/getactualgeneration",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "type": "Geothermal"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Generation",
+      "dtoDataClass": "Dto.GenerationData",
+      "domainClass": "Domain.Generation"
+    },
+
+    {
+      "apiCallName": "Generation_Photovoltaic_Daily",
+      "tableName": "Generation",
+      "client": "https://api.terna.it",
+      "request": "/transparency/v1.0/getactualgeneration",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "type": "Photovoltaic"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Generation",
+      "dtoDataClass": "Dto.GenerationData",
+      "domainClass": "Domain.Generation"
+    },
+
+    {
+      "apiCallName": "Generation_Self-consumption_Daily",
+      "tableName": "Generation",
+      "client": "https://api.terna.it",
+      "request": "/transparency/v1.0/getactualgeneration",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "type": "Self-consumption"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Generation",
+      "dtoDataClass": "Dto.GenerationData",
+      "domainClass": "Domain.Generation"
+    },
+
+    {
+      "apiCallName": "Generation_Hydro_Daily",
+      "tableName": "Generation",
+      "client": "https://api.terna.it",
+      "request": "/transparency/v1.0/getactualgeneration",
+      "callFrequency": "daily",
+      "lag": 2,
+      "method": "Get",
+      "auth": true,
+      "authType": "Terna",
+      "parameters": [
+        {
+          "dateFrom": "",
+          "dateTo": "",
+          "type": "Hydro"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {
+          "Accept": "*/*",
+          "Acces-Control-Allow-Headers": "Content-Type, api_key, Authorization",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Content-Type": "application/json"
+        }
+      ],
+      "dtoClass": "Dto.Generation",
+      "dtoDataClass": "Dto.GenerationData",
+      "domainClass": "Domain.Generation"
+    },
+
+    {
+      "apiCallName": "Commodities_WTI_Daily",
+      "tableName": "Commodity",
+      "client": "https://www.alphavantage.co",
+      "request": "query",
+      "callFrequency": "daily",
+      "lag": 0,
+      "method": "Get",
+      "auth": false,
+      "authType": "",
+      "parameters": [
+        {
+          "function": "WTI",
+          "interval": "daily",
+          "apikey": "9e6703e6-9b76-458b-abc5-1d24dc826e6d"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {}
+      ],
+      "dtoClass": "Dto.Commodity",
+      "dtoDataClass": "Dto.CommodityData",
+      "domainClass": "Domain.Commodity"
+    },
+
+    {
+      "apiCallName": "Commodities_BRENT_Daily",
+      "tableName": "Commodity",
+      "client": "https://www.alphavantage.co",
+      "request": "query",
+      "callFrequency": "daily",
+      "lag": 0,
+      "method": "Get",
+      "auth": false,
+      "authType": "",
+      "parameters": [
+        {
+          "function": "BRENT",
+          "interval": "daily",
+          "apikey": "9e6703e6-9b76-458b-abc5-1d24dc826e6d"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {}
+      ],
+      "dtoClass": "Dto.Commodity",
+      "dtoDataClass": "Dto.CommodityData",
+      "domainClass": "Domain.Commodity"
+    },
+
+    {
+      "apiCallName": "Commodities_Natural Gas_Daily",
+      "tableName": "Commodity",
+      "client": "https://www.alphavantage.co",
+      "request": "query",
+      "callFrequency": "daily",
+      "lag": 0,
+      "method": "Get",
+      "auth": false,
+      "authType": "",
+      "parameters": [
+        {
+          "function": "NATURAL_GAS",
+          "interval": "daily",
+          "apikey": "9e6703e6-9b76-458b-abc5-1d24dc826e6d"
+        }
+      ],
+      "param_type": "url",
+      "headers": [
+        {}
+      ],
+      "dtoClass": "Dto.Commodity",
+      "dtoDataClass": "Dto.CommodityData",
+      "domainClass": "Domain.Commodity"
+    }
+
+  ]
+}
